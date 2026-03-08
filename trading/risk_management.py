@@ -4,15 +4,17 @@ from trading.bybit_api import get_balance, get_position
 # trading/risk_management.py
 def calculate_order_qty(symbol, risk_level, price):
     """
-    Calcula quantidade de contratos baseado no risco.
+    Calcula quantidade de contratos baseado no risco (Max 2%).
     """
-    saldo_usdt = 100.0  # ou buscar da API get_balance('USDT')
+    saldo_usdt = 100.0  # O ideal é usar a sua função get_balance() da API aqui
+    
+    # Níveis institucionais de exposição:
     if risk_level == "baixo":
-        pct = 0.1
+        pct = 0.01   # 1% do capital
     elif risk_level == "medio":
-        pct = 0.25
+        pct = 0.015  # 1.5% do capital
     else:
-        pct = 0.5
+        pct = 0.02   # 2% do capital
 
     valor_usdt = saldo_usdt * pct
     qty = valor_usdt / price  # converte em BTC
@@ -21,7 +23,7 @@ def calculate_order_qty(symbol, risk_level, price):
     if qty < 0.001:
         qty = 0.001
 
-    return round(qty, 3)  # ou 4 casas, depende do tick size
+    return round(qty, 3)
 
 
 

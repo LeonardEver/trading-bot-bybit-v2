@@ -42,6 +42,15 @@ def calculate_indicators(df: pd.DataFrame) -> pd.DataFrame:
     # ===== VOLUME MÉDIO =====
     df['volume_ma'] = df['volume'].rolling(window=20).mean()
 
+    # ===== VOLATILIDADE (ATR) =====
+    # Mede a amplitude média dos últimos 14 candles
+    df['atr'] = ta.volatility.AverageTrueRange(
+        high=df['high'], 
+        low=df['low'], 
+        close=df['close'], 
+        window=14
+    ).average_true_range()
+
     return df
 
 

@@ -10,6 +10,7 @@ session = HTTP(
     demo=os.getenv("BYBIT_DEMO", "false").lower() == "true",
     api_key=os.getenv("BYBIT_API_KEY"),
     api_secret=os.getenv("BYBIT_API_SECRET"),
+    recv_window=60000,
 )
 
 def place_order(symbol, side, qty, take_profit=None, stop_loss=None, trailing_stop=None):

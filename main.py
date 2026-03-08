@@ -14,6 +14,8 @@ from trading.logger import log_event
 from utils.technical_indicators import calculate_indicators
 from database.mongo_logger import log_trade, log_signal_decision, update_signal_outcome
 from ml.config import FEATURES
+from pybit.unified_trading import WebSocket
+
 
 print(">>> Script main.py carregado com sucesso")
 
@@ -218,16 +220,27 @@ def abrir_ordem():
 
     qty = calculate_order_qty(SYMBOL, risk_level, price)
 
-    # --- 6) Calcula TP / SL / TS ---
-    if sinal_tecnico == "buy":
-        take_profit = round(price * (1 + TAKE_PROFIT_PCT), 2)
-        stop_loss = round(price * (1 - STOP_LOSS_PCT), 2)
-    else:
-        take_profit = round(price * (1 - TAKE_PROFIT_PCT), 2)
-        stop_loss = round(price * (1 + STOP_LOSS_PCT), 2)
+    # Obter o ATR do candle mais recente
+    atr_atual = df.iloc[-1]['atr']
 
-    trailing_stop = round(price * TRAILING_STOP_PCT, 2)
-    side = "Buy" if sinal_tecnico == "buy" else "Sell"
+    # Multiplicadores profissionais
+    # Stop Loss a 1.5x o ATR protege contra ruídos de violinada
+    # Take Profit a 2.0x o ATR garante um Risco/Retorno positivo
+    SL_MULTIPLIER = 1.5
+    TP_MULTIPLIER = 2.0
+
+    # --- 6) Calcula TP / SL Dinâmicos ---
+    if sinal_tecnico == "buy":
+        side = "Buy"  # <--- ADICIONE ESTA LINHA
+        take_profit = round(price + (atr_atual * TP_MULTIPLIER), 2)
+        stop_loss = round(price - (atr_atual * SL_MULTIPLIER), 2)
+    else: # "sell"
+        side = "Sell" # <--- ADICIONE ESTA LINHA
+        take_profit = round(price - (atr_atual * TP_MULTIPLIER), 2)
+        stop_loss = round(price + (atr_atual * SL_MULTIPLIER), 2)
+
+    # Trailing stop pode acompanhar a volatilidade também (ex: metade do ATR)
+    trailing_stop = round((atr_atual * 0.5), 2)
 
     # --- 7) Envia ordem ---
     log_event(f"Abrindo {side} | Preço: {price} | TP: {take_profit} | SL: {stop_loss} | TS: {trailing_stop}")
@@ -311,8 +324,13 @@ def fechar_ordem(side, entry_price, size, current_price):
     # Fecha posição real na corretora
     close_position(SYMBOL, side)
 
-    # Calcula PnL e %
-    pnl = (current_price - entry_price) * size if side == "Buy" else (entry_price - current_price) * size
+    # Calcula PnL e % com Taxas da Corretora embutidas (0.05% entrada + 0.05% saída)
+    taxa_corretora = 0.0005
+    custo_taxas = (entry_price * size * taxa_corretora) + (current_price * size * taxa_corretora)
+    
+    pnl_bruto = (current_price - entry_price) * size if side == "Buy" else (entry_price - current_price) * size
+    pnl = pnl_bruto - custo_taxas
+    
     pnl_pct = ((current_price / entry_price) - 1) * 100 if side == "Buy" else ((entry_price / current_price) - 1) * 100
 
     # Monta trade_data para logs
@@ -397,8 +415,15 @@ def monitorar_posicoes():
         if fechar:
                 close_position(SYMBOL, side)
 
-                pnl = (current_price - entry_price) * size if side == "Buy" else (entry_price - current_price) * size
+                # --- INÍCIO DA MATEMÁTICA DE TAXAS (CORREÇÃO 3) ---
+                taxa_corretora = 0.0005 # 0.05% de taxa da Bybit
+                custo_taxas = (entry_price * size * taxa_corretora) + (current_price * size * taxa_corretora)
+
+                pnl_bruto = (current_price - entry_price) * size if side == "Buy" else (entry_price - current_price) * size
+                pnl = pnl_bruto - custo_taxas
+                
                 pnl_pct = ((current_price / entry_price) - 1) * 100 if side == "Buy" else ((entry_price / current_price) - 1) * 100
+                # --- FIM DA MATEMÁTICA DE TAXAS ---
 
                 trade_data = {
                     "timestamp": datetime.now(),
@@ -448,78 +473,55 @@ def monitorar_posicoes():
                     })
 
 
+# =======================================================
 if __name__ == "__main__":
-    log_event("🚀 Bot iniciado. Entrando no loop principal...")
+    from pybit.unified_trading import WebSocket
+    import threading # <--- ADICIONE ESTE IMPORT AQUI
+    
+    log_event("🚀 Bot iniciado. Configurando WebSockets...")
+
+    def handle_kline(message):
+        """Callback acionado pela Bybit"""
+        data = message.get("data", [])
+        if data:
+            candle = data[0]
+            if candle.get("confirm"):
+                log_event(f"🕯️ Candle fechado! Preço: {candle.get('close')}. Iniciando análise técnica e ML...")
+                
+                # --- A MÁGICA DO MULTI-THREADING AQUI ---
+                # Criamos uma função interna só para encapsular o trabalho pesado
+                def executar_trabalho_pesado():
+                    try:
+                        calcular_performance()
+                        abrir_ordem()
+                    except Exception as e:
+                        log_event(f"❌ Erro durante a análise pós-candle: {e}")
+
+                # Disparamos o trabalho pesado em uma nova Thread (em paralelo)
+                # Assim, a função handle_kline termina instantaneamente e o WebSocket não trava!
+                thread_analise = threading.Thread(target=executar_trabalho_pesado)
+                thread_analise.start()
+                # ----------------------------------------
+
+    # 1. Inicia a conexão WebSocket
+    ws = WebSocket(
+        testnet=True, 
+        channel_type="linear"
+    )
+    
+    # 2. Assina o tempo gráfico
+    ws.kline_stream(
+        interval="15", 
+        symbol=SYMBOL, 
+        callback=handle_kline
+    )
+    
+    log_event("📡 WebSocket conectado! Aguardando o fechamento do próximo candle.")
 
     while True:
-        print(">>> Loop rodando...")
-        print("---- NOVO LOOP ----")
-        log_event("---- NOVO LOOP ----")
-
-
-        # 1) Atualiza pesos
-        calcular_performance()
-
-        # 2) Monitora posições abertas
-        log_event("Monitorando posições...")
-        monitorar_posicoes()
-
-        # 3) Tenta abrir ordem
-        log_event("Verificando condições para abrir nova ordem...")
         try:
-            # debug: candles
-            df = get_ohlcv(SYMBOL)
-            if df.empty:
-                log_event("⚠ Nenhum candle recebido, pulando iteração.")
-            else:
-                log_event(f"📊 Candles recebidos: {len(df)} | Último close = {df['close'].iloc[-1]}")
-
-            # debug: indicadores
-            df = calculate_indicators(df)
-            if not df.empty:
-                ultimo = df.iloc[-1]
-                log_event(
-                    f"📈 Indicadores → EMA20={ultimo['ema_20']:.2f}, "
-                    f"EMA50={ultimo['ema_50']:.2f}, EMA200={ultimo['ema_200']:.2f}, "
-                    f"RSI={ultimo['rsi']:.2f}, MACD={ultimo['macd']:.4f}, "
-                    f"Hist={ultimo['macd_hist']:.4f}"
-                )
-
-            # debug: previsão ML
-            if not df.empty:
-                # === prepara as colunas extras para o ML ===
-                sentimento_str = get_news_sentiment("BTC")
-                sent_score = 1.0 if sentimento_str == "bullish" else -1.0 if sentimento_str == "bearish" else 0.0
-                df["sentiment_score"] = sent_score
-
-                ts = pd.to_datetime(df["timestamp"]) if "timestamp" in df.columns else pd.to_datetime(df.index)
-                df["hour"] = ts.dt.hour if hasattr(ts, "dt") else ts.hour
-                df["minute"] = ts.dt.minute if hasattr(ts, "dt") else ts.minute
-
-                # === calcula probabilidade ML apenas se modelo existir ===
-                features_dict = df.iloc[-1].to_dict()
-                prob_ml = model_predict_prob(features_dict)
-                if prob_ml is not None:
-                    log_event(f"🤖 ML Probability (label=1): {prob_ml:.3f}")
-                    feat_debug = {k: round(features_dict[k], 4) for k in FEATURES if k in features_dict}
-                    log_event(f"🔎 Features usadas pelo ML: {feat_debug}")
-                else:
-                    log_event("🤖 ML desativado (sem modelo carregado).")
-
-                if prob_ml is not None:
-                    log_event(f"🤖 ML Probability (label=1): {prob_ml:.3f}")
-                    # mostra features relevantes para interpretar
-                    feat_debug = {k: round(features_dict[k], 4) for k in FEATURES if k in features_dict}
-                    log_event(f"🔎 Features usadas pelo ML: {feat_debug}")
-                else:
-                    log_event("🤖 ML desativado (sem modelo carregado).")
-
-            # roda fluxo normal
-            abrir_ordem()
-
+            monitorar_posicoes()
         except Exception as e:
-            log_event(f"❌ Erro no loop principal: {e}")
-
-        # pausa
+            log_event(f"❌ Erro ao monitorar posições: {e}")
+            
         time.sleep(LOOP_INTERVAL)
-
