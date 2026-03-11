@@ -221,3 +221,1055 @@
 [2026-03-08 01:19:47] Buy fechado - PnL: 0.00 (0.103%) | Origem: misto
 [2026-03-08 01:19:47] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
 [2026-03-08 01:19:47] [MONGO] Outcome atualizado em ml_dataset. trade_id=bab0c085-a58b-41f1-8b24-87c020ba8397
+[2026-03-08 01:30:00] 🕯️ Candle fechado! Preço: 66984.3. Iniciando análise técnica e ML...
+[2026-03-08 01:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 01:30:17] Sentimento: neutral (50%)
+[2026-03-08 01:30:17] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 01:30:17] Probabilidade ML: 1.000
+[2026-03-08 01:30:18] Abrindo Buy | Preço: 66945.9 | TP: 67131.31 | SL: 66806.84 | TS: 46.35
+[2026-03-08 01:30:18] [MONGO] Decisão registrada em ml_dataset. trade_id=98113e2b-9dbb-480f-a283-81edd2831ef3
+[2026-03-08 01:40:43] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-08 01:40:43] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-08 01:40:43] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-08 01:40:47] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-08 01:45:00] 🕯️ Candle fechado! Preço: 66927.3. Iniciando análise técnica e ML...
+[2026-03-08 01:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 01:45:23] Sentimento: neutral (50%)
+[2026-03-08 01:45:23] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 01:45:23] Probabilidade ML: 0.998
+[2026-03-08 01:47:19] Buy fechado - PnL: -0.14 (-0.106%) | Origem: misto
+[2026-03-08 01:47:19] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 02:00:00] 🕯️ Candle fechado! Preço: 66600.3. Iniciando análise técnica e ML...
+[2026-03-08 02:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.00
+[2026-03-08 02:00:18] Sentimento: neutral (50%)
+[2026-03-08 02:00:18] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 02:00:18] Probabilidade ML: 0.999
+[2026-03-08 02:00:18] Abrindo Buy | Preço: 66604.2 | TP: 66798.91 | SL: 66458.16 | TS: 48.68
+[2026-03-08 02:00:19] [MONGO] Decisão registrada em ml_dataset. trade_id=de85b3c1-b9e9-4e1c-94f1-8e4daf760488
+[2026-03-08 02:01:08] Buy fechado - PnL: 0.01 (0.112%) | Origem: misto
+[2026-03-08 02:01:08] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-08 02:01:08] [MONGO] Outcome atualizado em ml_dataset. trade_id=de85b3c1-b9e9-4e1c-94f1-8e4daf760488
+[2026-03-08 02:15:00] 🕯️ Candle fechado! Preço: 66948.2. Iniciando análise técnica e ML...
+[2026-03-08 02:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 02:15:18] Sentimento: neutral (50%)
+[2026-03-08 02:15:18] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 02:15:18] Probabilidade ML: 0.995
+[2026-03-08 02:15:19] Abrindo Buy | Preço: 66941.7 | TP: 67156.08 | SL: 66780.92 | TS: 53.59
+[2026-03-08 02:15:19] [MONGO] Decisão registrada em ml_dataset. trade_id=3eaf4661-f4de-47e5-ac03-773c9eb51374
+[2026-03-08 02:19:08] Buy fechado - PnL: 0.00 (0.103%) | Origem: misto
+[2026-03-08 02:19:08] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 02:19:08] [MONGO] Outcome atualizado em ml_dataset. trade_id=3eaf4661-f4de-47e5-ac03-773c9eb51374
+[2026-03-08 02:30:00] 🕯️ Candle fechado! Preço: 67092.8. Iniciando análise técnica e ML...
+[2026-03-08 02:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 02:30:21] Sentimento: neutral (50%)
+[2026-03-08 02:30:21] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 02:30:21] Probabilidade ML: 1.000
+[2026-03-08 02:30:22] Abrindo Buy | Preço: 67121.5 | TP: 67336.0 | SL: 66960.63 | TS: 53.62
+[2026-03-08 02:30:22] [MONGO] Decisão registrada em ml_dataset. trade_id=9738bb3f-0726-435e-b1f8-c1c3841c46f1
+[2026-03-08 02:45:00] 🕯️ Candle fechado! Preço: 67151.1. Iniciando análise técnica e ML...
+[2026-03-08 02:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 02:45:19] Sentimento: neutral (50%)
+[2026-03-08 02:45:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 02:45:19] Probabilidade ML: 0.999
+[2026-03-08 02:48:21] Buy fechado - PnL: 0.00 (0.100%) | Origem: misto
+[2026-03-08 02:48:21] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 02:48:21] [MONGO] Outcome atualizado em ml_dataset. trade_id=9738bb3f-0726-435e-b1f8-c1c3841c46f1
+[2026-03-08 03:00:00] 🕯️ Candle fechado! Preço: 67111.8. Iniciando análise técnica e ML...
+[2026-03-08 03:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 03:01:10] Sentimento: neutral (50%)
+[2026-03-08 03:01:10] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 03:01:10] Probabilidade ML: 0.997
+[2026-03-08 03:01:11] Abrindo Buy | Preço: 67126.2 | TP: 67355.84 | SL: 66953.97 | TS: 57.41
+[2026-03-08 03:01:11] [MONGO] Decisão registrada em ml_dataset. trade_id=f089a05e-327b-4f3f-b270-397f04aec66b
+[2026-03-08 03:04:08] Buy fechado - PnL: 0.00 (0.104%) | Origem: misto
+[2026-03-08 03:04:08] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 03:04:08] [MONGO] Outcome atualizado em ml_dataset. trade_id=f089a05e-327b-4f3f-b270-397f04aec66b
+[2026-03-08 03:15:00] 🕯️ Candle fechado! Preço: 67067.3. Iniciando análise técnica e ML...
+[2026-03-08 03:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 03:15:37] Sentimento: neutral (50%)
+[2026-03-08 03:15:37] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 03:15:37] Probabilidade ML: 0.997
+[2026-03-08 03:15:38] Abrindo Buy | Preço: 67072.9 | TP: 67313.33 | SL: 66892.58 | TS: 60.11
+[2026-03-08 03:15:38] [MONGO] Decisão registrada em ml_dataset. trade_id=849670a2-5578-4416-a81a-68973fb59bba
+[2026-03-08 03:30:00] 🕯️ Candle fechado! Preço: 67024.5. Iniciando análise técnica e ML...
+[2026-03-08 03:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 03:31:24] Sentimento: neutral (50%)
+[2026-03-08 03:31:24] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 03:31:24] Probabilidade ML: 0.998
+[2026-03-08 03:45:00] 🕯️ Candle fechado! Preço: 67091.6. Iniciando análise técnica e ML...
+[2026-03-08 03:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 03:45:19] Sentimento: neutral (50%)
+[2026-03-08 03:45:19] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 03:45:19] Probabilidade ML: 0.078
+[2026-03-08 03:45:19] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-08 03:56:06] Buy fechado - PnL: 0.01 (0.110%) | Origem: misto
+[2026-03-08 03:56:06] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-08 03:56:06] [MONGO] Outcome atualizado em ml_dataset. trade_id=849670a2-5578-4416-a81a-68973fb59bba
+[2026-03-08 04:00:00] 🕯️ Candle fechado! Preço: 67130.5. Iniciando análise técnica e ML...
+[2026-03-08 04:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 04:00:20] Sentimento: neutral (50%)
+[2026-03-08 04:00:20] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 04:00:20] Probabilidade ML: 0.999
+[2026-03-08 04:15:00] 🕯️ Candle fechado! Preço: 67356. Iniciando análise técnica e ML...
+[2026-03-08 04:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 04:15:33] Sentimento: neutral (50%)
+[2026-03-08 04:15:33] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 04:15:33] Probabilidade ML: 0.504
+[2026-03-08 04:15:33] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-08 04:30:00] 🕯️ Candle fechado! Preço: 67151.9. Iniciando análise técnica e ML...
+[2026-03-08 04:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 04:30:38] Sentimento: neutral (50%)
+[2026-03-08 04:30:38] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 04:30:38] Probabilidade ML: 0.996
+[2026-03-08 04:30:39] Abrindo Buy | Preço: 67329.6 | TP: 67526.95 | SL: 67181.58 | TS: 49.34
+[2026-03-08 04:30:39] [MONGO] Decisão registrada em ml_dataset. trade_id=dd90b509-bd84-4acd-bd69-80dc48ac21aa
+[2026-03-08 04:34:42] Buy fechado - PnL: -0.14 (-0.109%) | Origem: misto
+[2026-03-08 04:34:42] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 04:34:42] [MONGO] Outcome atualizado em ml_dataset. trade_id=dd90b509-bd84-4acd-bd69-80dc48ac21aa
+[2026-03-08 04:45:00] 🕯️ Candle fechado! Preço: 67275.4. Iniciando análise técnica e ML...
+[2026-03-08 04:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 04:45:19] Sentimento: neutral (50%)
+[2026-03-08 04:45:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 04:45:19] Probabilidade ML: 0.999
+[2026-03-08 04:45:19] Abrindo Buy | Preço: 67280.0 | TP: 67493.57 | SL: 67119.82 | TS: 53.39
+[2026-03-08 04:45:20] [MONGO] Decisão registrada em ml_dataset. trade_id=4f97ae5a-a3e7-4ecf-9243-b776dbe4f5ef
+[2026-03-08 05:00:00] 🕯️ Candle fechado! Preço: 67292.5. Iniciando análise técnica e ML...
+[2026-03-08 05:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 05:00:25] Sentimento: neutral (50%)
+[2026-03-08 05:00:25] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 05:00:25] Probabilidade ML: 0.936
+[2026-03-08 05:15:00] 🕯️ Candle fechado! Preço: 67252.9. Iniciando análise técnica e ML...
+[2026-03-08 05:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 05:15:19] Sentimento: neutral (50%)
+[2026-03-08 05:15:19] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 05:15:19] Probabilidade ML: 1.000
+[2026-03-08 05:15:26] Buy fechado - PnL: -0.14 (-0.101%) | Origem: misto
+[2026-03-08 05:15:26] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 05:15:26] [MONGO] Outcome atualizado em ml_dataset. trade_id=4f97ae5a-a3e7-4ecf-9243-b776dbe4f5ef
+[2026-03-08 05:30:00] 🕯️ Candle fechado! Preço: 67236. Iniciando análise técnica e ML...
+[2026-03-08 05:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 05:30:22] Sentimento: neutral (50%)
+[2026-03-08 05:30:22] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 05:30:22] Probabilidade ML: 0.998
+[2026-03-08 05:30:22] Abrindo Buy | Preço: 67240.0 | TP: 67416.44 | SL: 67107.67 | TS: 44.11
+[2026-03-08 05:30:23] [MONGO] Decisão registrada em ml_dataset. trade_id=3117132a-bf3a-4623-a40c-d4bc1e46d829
+[2026-03-08 05:40:17] Buy fechado - PnL: 0.02 (0.134%) | Origem: misto
+[2026-03-08 05:40:17] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.02
+[2026-03-08 05:40:17] [MONGO] Outcome atualizado em ml_dataset. trade_id=3117132a-bf3a-4623-a40c-d4bc1e46d829
+[2026-03-08 05:45:00] 🕯️ Candle fechado! Preço: 67454.1. Iniciando análise técnica e ML...
+[2026-03-08 05:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 05:45:20] Sentimento: neutral (50%)
+[2026-03-08 05:45:20] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 05:45:20] Probabilidade ML: 0.998
+[2026-03-08 05:45:21] Abrindo Buy | Preço: 67452.6 | TP: 67639.82 | SL: 67312.19 | TS: 46.8
+[2026-03-08 05:45:22] [MONGO] Decisão registrada em ml_dataset. trade_id=c6243fd6-2f14-4c93-ae21-22a315c064bc
+[2026-03-08 05:56:48] Buy fechado - PnL: 0.00 (0.104%) | Origem: misto
+[2026-03-08 05:56:48] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 05:56:48] [MONGO] Outcome atualizado em ml_dataset. trade_id=c6243fd6-2f14-4c93-ae21-22a315c064bc
+[2026-03-08 06:00:00] 🕯️ Candle fechado! Preço: 67499. Iniciando análise técnica e ML...
+[2026-03-08 06:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 06:00:18] Sentimento: neutral (50%)
+[2026-03-08 06:00:18] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 06:00:18] Probabilidade ML: 1.000
+[2026-03-08 06:00:18] Abrindo Buy | Preço: 67463.5 | TP: 67639.2 | SL: 67331.72 | TS: 43.93
+[2026-03-08 06:00:19] [MONGO] Decisão registrada em ml_dataset. trade_id=11832d84-99df-4eb8-bb5a-51347fbf2d62
+[2026-03-08 06:10:56] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-08 06:10:56] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 06:10:56] [MONGO] Outcome atualizado em ml_dataset. trade_id=11832d84-99df-4eb8-bb5a-51347fbf2d62
+[2026-03-08 06:15:00] 🕯️ Candle fechado! Preço: 67770.9. Iniciando análise técnica e ML...
+[2026-03-08 06:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 06:15:21] Sentimento: neutral (50%)
+[2026-03-08 06:15:21] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 06:15:21] Probabilidade ML: 0.995
+[2026-03-08 06:15:22] Abrindo Buy | Preço: 67727.6 | TP: 67904.31 | SL: 67595.07 | TS: 44.18
+[2026-03-08 06:15:22] [MONGO] Decisão registrada em ml_dataset. trade_id=eed76e05-3ba2-46df-87c4-9c0888806cc2
+[2026-03-08 06:16:28] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-08 06:16:28] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 06:16:28] [MONGO] Outcome atualizado em ml_dataset. trade_id=eed76e05-3ba2-46df-87c4-9c0888806cc2
+[2026-03-08 06:30:00] 🕯️ Candle fechado! Preço: 67804.9. Iniciando análise técnica e ML...
+[2026-03-08 06:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 06:30:19] Sentimento: neutral (50%)
+[2026-03-08 06:30:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 06:30:19] Probabilidade ML: 0.980
+[2026-03-08 06:30:20] Abrindo Buy | Preço: 67752.0 | TP: 67937.21 | SL: 67613.09 | TS: 46.3
+[2026-03-08 06:30:21] [MONGO] Decisão registrada em ml_dataset. trade_id=82439539-bbe1-4597-a11b-beffbba7cf9a
+[2026-03-08 06:36:02] Buy fechado - PnL: -0.14 (-0.103%) | Origem: misto
+[2026-03-08 06:36:02] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 06:36:02] [MONGO] Outcome atualizado em ml_dataset. trade_id=82439539-bbe1-4597-a11b-beffbba7cf9a
+[2026-03-08 06:45:00] 🕯️ Candle fechado! Preço: 67721.8. Iniciando análise técnica e ML...
+[2026-03-08 06:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 06:45:19] Sentimento: neutral (50%)
+[2026-03-08 06:45:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 06:45:19] Probabilidade ML: 0.968
+[2026-03-08 06:45:19] Abrindo Buy | Preço: 67706.6 | TP: 67902.67 | SL: 67559.55 | TS: 49.02
+[2026-03-08 06:45:20] [MONGO] Decisão registrada em ml_dataset. trade_id=c3082780-96b1-461d-b974-da6515eb7588
+[2026-03-08 07:00:00] 🕯️ Candle fechado! Preço: 67550.8. Iniciando análise técnica e ML...
+[2026-03-08 07:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 07:00:22] Sentimento: neutral (50%)
+[2026-03-08 07:00:22] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 07:00:22] Probabilidade ML: 0.987
+[2026-03-08 07:03:57] Buy fechado - PnL: 0.01 (0.111%) | Origem: misto
+[2026-03-08 07:03:57] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-08 07:03:57] [MONGO] Outcome atualizado em ml_dataset. trade_id=c3082780-96b1-461d-b974-da6515eb7588
+[2026-03-08 07:15:00] 🕯️ Candle fechado! Preço: 67970.9. Iniciando análise técnica e ML...
+[2026-03-08 07:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 07:15:22] Sentimento: neutral (50%)
+[2026-03-08 07:15:22] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 07:15:22] Probabilidade ML: 0.971
+[2026-03-08 07:15:23] Abrindo Buy | Preço: 67835.2 | TP: 68077.0 | SL: 67653.85 | TS: 60.45
+[2026-03-08 07:15:23] [MONGO] Decisão registrada em ml_dataset. trade_id=4b2aabcd-ceec-407f-8a76-c546680f3605
+[2026-03-08 07:19:44] Buy fechado - PnL: 0.01 (0.110%) | Origem: misto
+[2026-03-08 07:19:44] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-08 07:19:44] [MONGO] Outcome atualizado em ml_dataset. trade_id=4b2aabcd-ceec-407f-8a76-c546680f3605
+[2026-03-08 07:30:00] 🕯️ Candle fechado! Preço: 68013.3. Iniciando análise técnica e ML...
+[2026-03-08 07:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 07:30:24] Sentimento: neutral (50%)
+[2026-03-08 07:30:24] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 07:30:24] Probabilidade ML: 0.994
+[2026-03-08 07:30:25] Abrindo Buy | Preço: 67979.5 | TP: 68267.69 | SL: 67763.36 | TS: 72.05
+[2026-03-08 07:30:25] [MONGO] Decisão registrada em ml_dataset. trade_id=c7456ca1-3e28-4837-ab80-b092352bde06
+[2026-03-08 07:39:00] Buy fechado - PnL: -0.14 (-0.105%) | Origem: misto
+[2026-03-08 07:39:00] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 07:39:00] [MONGO] Outcome atualizado em ml_dataset. trade_id=c7456ca1-3e28-4837-ab80-b092352bde06
+[2026-03-08 07:45:00] 🕯️ Candle fechado! Preço: 67916.9. Iniciando análise técnica e ML...
+[2026-03-08 07:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 07:45:17] Sentimento: neutral (50%)
+[2026-03-08 07:45:17] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 07:45:17] Probabilidade ML: 0.998
+[2026-03-08 07:45:18] Abrindo Buy | Preço: 67913.4 | TP: 68159.29 | SL: 67728.98 | TS: 61.47
+[2026-03-08 07:45:18] [MONGO] Decisão registrada em ml_dataset. trade_id=7eee3e21-17ba-491d-99f3-98ec76546865
+[2026-03-08 07:51:24] Buy fechado - PnL: -0.14 (-0.112%) | Origem: misto
+[2026-03-08 07:51:24] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 07:51:24] [MONGO] Outcome atualizado em ml_dataset. trade_id=7eee3e21-17ba-491d-99f3-98ec76546865
+[2026-03-08 08:00:00] 🕯️ Candle fechado! Preço: 67881.1. Iniciando análise técnica e ML...
+[2026-03-08 08:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 08:00:19] Sentimento: neutral (50%)
+[2026-03-08 08:00:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 08:00:19] Probabilidade ML: 0.989
+[2026-03-08 08:00:20] Abrindo Buy | Preço: 67857.2 | TP: 68128.5 | SL: 67653.72 | TS: 67.83
+[2026-03-08 08:00:20] [MONGO] Decisão registrada em ml_dataset. trade_id=b4b0da13-e6bd-4948-94fd-957b7578368e
+[2026-03-08 08:03:01] Buy fechado - PnL: -0.15 (-0.123%) | Origem: misto
+[2026-03-08 08:03:01] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.15
+[2026-03-08 08:03:01] [MONGO] Outcome atualizado em ml_dataset. trade_id=b4b0da13-e6bd-4948-94fd-957b7578368e
+[2026-03-08 08:15:00] 🕯️ Candle fechado! Preço: 67527.6. Iniciando análise técnica e ML...
+[2026-03-08 08:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 08:15:18] Sentimento: neutral (50%)
+[2026-03-08 08:15:18] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 08:15:18] Probabilidade ML: 0.975
+[2026-03-08 08:15:18] Abrindo Buy | Preço: 67558.3 | TP: 67828.87 | SL: 67355.37 | TS: 67.64
+[2026-03-08 08:15:19] [MONGO] Decisão registrada em ml_dataset. trade_id=23d1fb89-34fe-44db-8db8-42b60ef0488e
+[2026-03-08 08:19:09] Buy fechado - PnL: 0.01 (0.109%) | Origem: misto
+[2026-03-08 08:19:09] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-08 08:19:09] [MONGO] Outcome atualizado em ml_dataset. trade_id=23d1fb89-34fe-44db-8db8-42b60ef0488e
+[2026-03-08 08:30:00] 🕯️ Candle fechado! Preço: 67641.9. Iniciando análise técnica e ML...
+[2026-03-08 08:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 08:30:41] Sentimento: neutral (50%)
+[2026-03-08 08:30:41] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 08:30:41] Probabilidade ML: 0.936
+[2026-03-08 08:30:42] Abrindo Buy | Preço: 67661.8 | TP: 67943.78 | SL: 67450.32 | TS: 70.49
+[2026-03-08 08:30:42] [MONGO] Decisão registrada em ml_dataset. trade_id=b37d7d06-0eda-4350-a9b1-2d1c7a1788c0
+[2026-03-08 08:32:03] Buy fechado - PnL: 0.00 (0.107%) | Origem: misto
+[2026-03-08 08:32:03] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 08:32:03] [MONGO] Outcome atualizado em ml_dataset. trade_id=b37d7d06-0eda-4350-a9b1-2d1c7a1788c0
+[2026-03-08 08:45:00] 🕯️ Candle fechado! Preço: 67462. Iniciando análise técnica e ML...
+[2026-03-08 08:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 08:45:21] Sentimento: neutral (50%)
+[2026-03-08 08:45:21] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 08:45:21] Probabilidade ML: 0.972
+[2026-03-08 08:45:22] Abrindo Buy | Preço: 67467.2 | TP: 67778.23 | SL: 67233.92 | TS: 77.76
+[2026-03-08 08:45:23] [MONGO] Decisão registrada em ml_dataset. trade_id=7fbc633d-7475-4b24-8340-3f2d2f7e6237
+[2026-03-08 08:50:46] Buy fechado - PnL: -0.14 (-0.104%) | Origem: misto
+[2026-03-08 08:50:46] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 08:50:46] [MONGO] Outcome atualizado em ml_dataset. trade_id=7fbc633d-7475-4b24-8340-3f2d2f7e6237
+[2026-03-08 09:00:00] 🕯️ Candle fechado! Preço: 67488.5. Iniciando análise técnica e ML...
+[2026-03-08 09:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 09:00:19] Sentimento: neutral (50%)
+[2026-03-08 09:00:19] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 09:00:19] Probabilidade ML: 1.000
+[2026-03-08 09:15:00] 🕯️ Candle fechado! Preço: 67002. Iniciando análise técnica e ML...
+[2026-03-08 09:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 09:15:19] Sentimento: neutral (50%)
+[2026-03-08 09:15:19] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 09:15:19] Probabilidade ML: 0.988
+[2026-03-08 09:30:00] 🕯️ Candle fechado! Preço: 67399. Iniciando análise técnica e ML...
+[2026-03-08 09:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 09:30:20] Sentimento: neutral (50%)
+[2026-03-08 09:30:20] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 09:30:20] Probabilidade ML: 0.998
+[2026-03-08 09:30:21] Abrindo Sell | Preço: 67344.4 | TP: 67109.37 | SL: 67520.67 | TS: 58.76
+[2026-03-08 09:30:21] [MONGO] Decisão registrada em ml_dataset. trade_id=64a32cfb-7659-4c5f-b6f4-be62dfe578cc
+[2026-03-08 09:33:45] Sell fechado - PnL: 0.01 (0.114%) | Origem: misto
+[2026-03-08 09:33:45] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-08 09:33:45] [MONGO] Outcome atualizado em ml_dataset. trade_id=64a32cfb-7659-4c5f-b6f4-be62dfe578cc
+[2026-03-08 09:45:00] 🕯️ Candle fechado! Preço: 67377.4. Iniciando análise técnica e ML...
+[2026-03-08 09:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 09:45:26] Sentimento: neutral (50%)
+[2026-03-08 09:45:26] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 09:45:26] Probabilidade ML: 0.961
+[2026-03-08 09:45:27] Abrindo Sell | Preço: 67343.6 | TP: 67153.29 | SL: 67486.33 | TS: 47.58
+[2026-03-08 09:45:27] [MONGO] Decisão registrada em ml_dataset. trade_id=5cd70312-59f0-4dd4-8f55-1d601eef6871
+[2026-03-08 09:46:18] Sell fechado - PnL: 0.01 (0.119%) | Origem: misto
+[2026-03-08 09:46:18] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-08 09:46:18] [MONGO] Outcome atualizado em ml_dataset. trade_id=5cd70312-59f0-4dd4-8f55-1d601eef6871
+[2026-03-08 10:00:00] 🕯️ Candle fechado! Preço: 67275.7. Iniciando análise técnica e ML...
+[2026-03-08 10:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 10:00:21] Sentimento: neutral (50%)
+[2026-03-08 10:00:21] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 10:00:21] Probabilidade ML: 0.909
+[2026-03-08 10:15:00] 🕯️ Candle fechado! Preço: 66943.5. Iniciando análise técnica e ML...
+[2026-03-08 10:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 10:15:18] Sentimento: neutral (50%)
+[2026-03-08 10:15:18] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 10:15:18] Probabilidade ML: 0.981
+[2026-03-08 10:15:19] Abrindo Buy | Preço: 66910.7 | TP: 67099.4 | SL: 66769.17 | TS: 47.18
+[2026-03-08 10:15:19] [MONGO] Decisão registrada em ml_dataset. trade_id=d6a3e4a0-07cf-4cc2-b5de-c4c0d81830b1
+[2026-03-08 10:15:57] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-08 10:15:57] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 10:15:57] [MONGO] Outcome atualizado em ml_dataset. trade_id=d6a3e4a0-07cf-4cc2-b5de-c4c0d81830b1
+[2026-03-08 10:30:00] 🕯️ Candle fechado! Preço: 67123.6. Iniciando análise técnica e ML...
+[2026-03-08 10:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 10:30:40] Sentimento: neutral (50%)
+[2026-03-08 10:30:40] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 10:30:40] Probabilidade ML: 0.998
+[2026-03-08 10:30:42] Abrindo Buy | Preço: 67093.0 | TP: 67288.04 | SL: 66946.72 | TS: 48.76
+[2026-03-08 10:30:42] [MONGO] Decisão registrada em ml_dataset. trade_id=06ef7a48-9924-4a86-807e-d76e527bec32
+[2026-03-08 10:33:19] Buy fechado - PnL: -0.14 (-0.116%) | Origem: misto
+[2026-03-08 10:33:19] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 10:33:19] [MONGO] Outcome atualizado em ml_dataset. trade_id=06ef7a48-9924-4a86-807e-d76e527bec32
+[2026-03-08 10:45:00] 🕯️ Candle fechado! Preço: 67027.5. Iniciando análise técnica e ML...
+[2026-03-08 10:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 10:45:21] Sentimento: neutral (50%)
+[2026-03-08 10:45:21] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 10:45:21] Probabilidade ML: 1.000
+[2026-03-08 10:45:22] Abrindo Buy | Preço: 67046.2 | TP: 67239.95 | SL: 66900.89 | TS: 48.44
+[2026-03-08 10:45:22] [MONGO] Decisão registrada em ml_dataset. trade_id=7636403e-a988-4882-beaf-7db890e4a76d
+[2026-03-08 10:48:17] Buy fechado - PnL: 0.00 (0.103%) | Origem: misto
+[2026-03-08 10:48:17] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 10:48:17] [MONGO] Outcome atualizado em ml_dataset. trade_id=7636403e-a988-4882-beaf-7db890e4a76d
+[2026-03-08 11:00:00] 🕯️ Candle fechado! Preço: 67199.1. Iniciando análise técnica e ML...
+[2026-03-08 11:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 11:00:55] Sentimento: neutral (50%)
+[2026-03-08 11:00:55] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 11:00:55] Probabilidade ML: 1.000
+[2026-03-08 11:00:56] Abrindo Buy | Preço: 67233.5 | TP: 67437.41 | SL: 67080.57 | TS: 50.98
+[2026-03-08 11:00:56] [MONGO] Decisão registrada em ml_dataset. trade_id=cb726c67-b95e-45df-816f-09356077731d
+[2026-03-08 11:02:22] Buy fechado - PnL: -0.15 (-0.117%) | Origem: misto
+[2026-03-08 11:02:22] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.15
+[2026-03-08 11:02:22] [MONGO] Outcome atualizado em ml_dataset. trade_id=cb726c67-b95e-45df-816f-09356077731d
+[2026-03-08 11:15:00] 🕯️ Candle fechado! Preço: 67271.2. Iniciando análise técnica e ML...
+[2026-03-08 11:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 11:15:19] Sentimento: neutral (50%)
+[2026-03-08 11:15:19] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 11:15:19] Probabilidade ML: 0.998
+[2026-03-08 11:30:00] 🕯️ Candle fechado! Preço: 67229.5. Iniciando análise técnica e ML...
+[2026-03-08 11:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 11:30:18] Sentimento: neutral (50%)
+[2026-03-08 11:30:18] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 11:30:18] Probabilidade ML: 0.999
+[2026-03-08 11:30:19] Abrindo Buy | Preço: 67240.5 | TP: 67451.29 | SL: 67082.41 | TS: 52.7
+[2026-03-08 11:30:19] [MONGO] Decisão registrada em ml_dataset. trade_id=f10c3fb4-63b2-40c7-a4ab-7bf40800a53e
+[2026-03-08 11:32:49] Buy fechado - PnL: 0.01 (0.112%) | Origem: misto
+[2026-03-08 11:32:49] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-08 11:32:49] [MONGO] Outcome atualizado em ml_dataset. trade_id=f10c3fb4-63b2-40c7-a4ab-7bf40800a53e
+[2026-03-08 11:45:00] 🕯️ Candle fechado! Preço: 67151.9. Iniciando análise técnica e ML...
+[2026-03-08 11:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 11:45:33] Sentimento: neutral (50%)
+[2026-03-08 11:45:33] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 11:45:33] Probabilidade ML: 0.999
+[2026-03-08 11:45:34] Abrindo Buy | Preço: 67053.3 | TP: 67262.8 | SL: 66896.18 | TS: 52.37
+[2026-03-08 11:45:34] [MONGO] Decisão registrada em ml_dataset. trade_id=774e78c1-cffe-4362-9e61-bc3291314a60
+[2026-03-08 11:48:12] Buy fechado - PnL: 0.00 (0.103%) | Origem: misto
+[2026-03-08 11:48:12] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 11:48:12] [MONGO] Outcome atualizado em ml_dataset. trade_id=774e78c1-cffe-4362-9e61-bc3291314a60
+[2026-03-08 12:00:00] 🕯️ Candle fechado! Preço: 67307.1. Iniciando análise técnica e ML...
+[2026-03-08 12:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 12:00:40] Sentimento: neutral (50%)
+[2026-03-08 12:00:40] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 12:00:40] Probabilidade ML: 1.000
+[2026-03-08 12:15:00] 🕯️ Candle fechado! Preço: 67320.9. Iniciando análise técnica e ML...
+[2026-03-08 12:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 12:15:39] Sentimento: neutral (50%)
+[2026-03-08 12:15:39] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 12:15:39] Probabilidade ML: 0.899
+[2026-03-08 12:30:00] 🕯️ Candle fechado! Preço: 67144. Iniciando análise técnica e ML...
+[2026-03-08 12:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 12:30:34] Sentimento: neutral (50%)
+[2026-03-08 12:30:34] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 12:30:34] Probabilidade ML: 1.000
+[2026-03-08 12:45:00] 🕯️ Candle fechado! Preço: 67161.8. Iniciando análise técnica e ML...
+[2026-03-08 12:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 12:45:21] Sentimento: neutral (50%)
+[2026-03-08 12:45:21] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 12:45:21] Probabilidade ML: 1.000
+[2026-03-08 12:45:22] Abrindo Buy | Preço: 67156.3 | TP: 67342.85 | SL: 67016.39 | TS: 46.64
+[2026-03-08 12:45:22] [MONGO] Decisão registrada em ml_dataset. trade_id=989e126a-d53f-48ee-b4cf-d80f579232f1
+[2026-03-08 12:53:38] Buy fechado - PnL: -0.14 (-0.103%) | Origem: misto
+[2026-03-08 12:53:38] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 12:53:38] [MONGO] Outcome atualizado em ml_dataset. trade_id=989e126a-d53f-48ee-b4cf-d80f579232f1
+[2026-03-08 13:00:00] 🕯️ Candle fechado! Preço: 67310.9. Iniciando análise técnica e ML...
+[2026-03-08 13:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 13:00:18] Sentimento: neutral (50%)
+[2026-03-08 13:00:18] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 13:00:18] Probabilidade ML: 0.999
+[2026-03-08 13:00:20] Abrindo Buy | Preço: 67151.3 | TP: 67349.01 | SL: 67003.02 | TS: 49.43
+[2026-03-08 13:00:21] [MONGO] Decisão registrada em ml_dataset. trade_id=b086eb93-6f68-4397-be0b-ab479cb9f25e
+[2026-03-08 13:03:11] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-08 13:03:11] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 13:03:11] [MONGO] Outcome atualizado em ml_dataset. trade_id=b086eb93-6f68-4397-be0b-ab479cb9f25e
+[2026-03-08 13:15:00] 🕯️ Candle fechado! Preço: 66982.9. Iniciando análise técnica e ML...
+[2026-03-08 13:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 13:15:19] Sentimento: neutral (50%)
+[2026-03-08 13:15:19] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 13:15:19] Probabilidade ML: 1.000
+[2026-03-08 13:15:19] Abrindo Buy | Preço: 67060.1 | TP: 67268.12 | SL: 66904.09 | TS: 52.0
+[2026-03-08 13:15:20] [MONGO] Decisão registrada em ml_dataset. trade_id=a3c47b66-00c5-4d6f-a6f5-42a91fba5f86
+[2026-03-08 13:30:00] 🕯️ Candle fechado! Preço: 67077.4. Iniciando análise técnica e ML...
+[2026-03-08 13:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 13:30:18] Sentimento: neutral (50%)
+[2026-03-08 13:30:18] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 13:30:18] Probabilidade ML: 1.000
+[2026-03-08 13:32:59] Buy fechado - PnL: -0.16 (-0.137%) | Origem: misto
+[2026-03-08 13:32:59] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.16
+[2026-03-08 13:32:59] [MONGO] Outcome atualizado em ml_dataset. trade_id=a3c47b66-00c5-4d6f-a6f5-42a91fba5f86
+[2026-03-08 13:45:00] 🕯️ Candle fechado! Preço: 66967.7. Iniciando análise técnica e ML...
+[2026-03-08 13:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 13:45:18] Sentimento: neutral (50%)
+[2026-03-08 13:45:18] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 13:45:18] Probabilidade ML: 1.000
+[2026-03-08 13:45:18] Abrindo Buy | Preço: 66896.4 | TP: 67102.58 | SL: 66741.76 | TS: 51.55
+[2026-03-08 13:45:19] [MONGO] Decisão registrada em ml_dataset. trade_id=133b7716-fae3-4873-a56a-67e0090b02d1
+[2026-03-08 13:58:32] Buy fechado - PnL: -0.13 (-0.101%) | Origem: misto
+[2026-03-08 13:58:32] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.13
+[2026-03-08 13:58:32] [MONGO] Outcome atualizado em ml_dataset. trade_id=133b7716-fae3-4873-a56a-67e0090b02d1
+[2026-03-08 14:00:00] 🕯️ Candle fechado! Preço: 66849.5. Iniciando análise técnica e ML...
+[2026-03-08 14:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 14:00:28] Sentimento: neutral (50%)
+[2026-03-08 14:00:28] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 14:00:28] Probabilidade ML: 1.000
+[2026-03-08 14:00:28] Abrindo Buy | Preço: 66849.3 | TP: 67074.72 | SL: 66680.24 | TS: 56.35
+[2026-03-08 14:00:29] [MONGO] Decisão registrada em ml_dataset. trade_id=c39fa798-bf29-4f22-8b09-8fd34ae87e09
+[2026-03-08 14:01:01] Buy fechado - PnL: -0.13 (-0.101%) | Origem: misto
+[2026-03-08 14:01:01] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.13
+[2026-03-08 14:01:01] [MONGO] Outcome atualizado em ml_dataset. trade_id=c39fa798-bf29-4f22-8b09-8fd34ae87e09
+[2026-03-08 14:15:00] 🕯️ Candle fechado! Preço: 67060.4. Iniciando análise técnica e ML...
+[2026-03-08 14:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 14:15:19] Sentimento: neutral (50%)
+[2026-03-08 14:15:19] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 14:15:19] Probabilidade ML: 0.999
+[2026-03-08 14:15:19] Abrindo Buy | Preço: 67065.8 | TP: 67303.07 | SL: 66887.84 | TS: 59.32
+[2026-03-08 14:15:20] [MONGO] Decisão registrada em ml_dataset. trade_id=292e383a-7ea8-4aec-9254-4b8c22e6021c
+[2026-03-08 14:30:00] 🕯️ Candle fechado! Preço: 67033.7. Iniciando análise técnica e ML...
+[2026-03-08 14:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 14:30:44] Sentimento: neutral (50%)
+[2026-03-08 14:30:44] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 14:30:44] Probabilidade ML: 1.000
+[2026-03-08 14:34:17] Buy fechado - PnL: -0.14 (-0.106%) | Origem: misto
+[2026-03-08 14:34:17] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 14:34:17] [MONGO] Outcome atualizado em ml_dataset. trade_id=292e383a-7ea8-4aec-9254-4b8c22e6021c
+[2026-03-08 14:45:00] 🕯️ Candle fechado! Preço: 67019.6. Iniciando análise técnica e ML...
+[2026-03-08 14:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 14:45:22] Sentimento: neutral (50%)
+[2026-03-08 14:45:22] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 14:45:22] Probabilidade ML: 0.998
+[2026-03-08 14:45:23] Abrindo Buy | Preço: 67011.7 | TP: 67265.65 | SL: 66821.24 | TS: 63.49
+[2026-03-08 14:45:23] [MONGO] Decisão registrada em ml_dataset. trade_id=cfc4b131-e3a6-4a6f-a67a-fca917314f78
+[2026-03-08 14:49:02] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-08 14:49:02] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 14:49:02] [MONGO] Outcome atualizado em ml_dataset. trade_id=cfc4b131-e3a6-4a6f-a67a-fca917314f78
+[2026-03-08 15:00:00] 🕯️ Candle fechado! Preço: 66990.6. Iniciando análise técnica e ML...
+[2026-03-08 15:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 15:00:21] Sentimento: neutral (50%)
+[2026-03-08 15:00:21] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 15:00:21] Probabilidade ML: 0.802
+[2026-03-08 15:00:22] Abrindo Buy | Preço: 67007.1 | TP: 67271.79 | SL: 66808.58 | TS: 66.17
+[2026-03-08 15:00:22] [MONGO] Decisão registrada em ml_dataset. trade_id=166f7d8b-1025-4037-a319-1cf04dc7bf1d
+[2026-03-08 15:04:09] Buy fechado - PnL: -0.13 (-0.100%) | Origem: misto
+[2026-03-08 15:04:09] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.13
+[2026-03-08 15:04:09] [MONGO] Outcome atualizado em ml_dataset. trade_id=166f7d8b-1025-4037-a319-1cf04dc7bf1d
+[2026-03-08 15:15:00] 🕯️ Candle fechado! Preço: 66982.9. Iniciando análise técnica e ML...
+[2026-03-08 15:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 15:15:18] Sentimento: neutral (50%)
+[2026-03-08 15:15:18] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-08 15:15:18] Probabilidade ML: 0.988
+[2026-03-08 15:15:19] Abrindo Buy | Preço: 66890.0 | TP: 67151.18 | SL: 66694.11 | TS: 65.3
+[2026-03-08 15:15:19] [MONGO] Decisão registrada em ml_dataset. trade_id=f7a5e53c-3eca-4f18-a0dc-a2933ab4df14
+[2026-03-08 15:16:51] Buy fechado - PnL: -0.15 (-0.117%) | Origem: misto
+[2026-03-08 15:16:51] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.15
+[2026-03-08 15:16:51] [MONGO] Outcome atualizado em ml_dataset. trade_id=f7a5e53c-3eca-4f18-a0dc-a2933ab4df14
+[2026-03-08 15:30:00] 🕯️ Candle fechado! Preço: 66894.7. Iniciando análise técnica e ML...
+[2026-03-08 15:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 15:30:28] Sentimento: neutral (50%)
+[2026-03-08 15:30:28] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 15:30:28] Probabilidade ML: 0.982
+[2026-03-08 15:30:29] Abrindo Buy | Preço: 66910.4 | TP: 67170.18 | SL: 66715.56 | TS: 64.95
+[2026-03-08 15:30:29] [MONGO] Decisão registrada em ml_dataset. trade_id=1722e30b-02bd-4d0a-baaa-7187b1d59c81
+[2026-03-08 15:37:02] Buy fechado - PnL: -0.14 (-0.102%) | Origem: misto
+[2026-03-08 15:37:02] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 15:37:02] [MONGO] Outcome atualizado em ml_dataset. trade_id=1722e30b-02bd-4d0a-baaa-7187b1d59c81
+[2026-03-08 15:45:00] 🕯️ Candle fechado! Preço: 66645. Iniciando análise técnica e ML...
+[2026-03-08 15:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 15:45:19] Sentimento: neutral (50%)
+[2026-03-08 15:45:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 15:45:19] Probabilidade ML: 1.000
+[2026-03-08 15:45:19] Abrindo Buy | Preço: 66745.5 | TP: 67032.36 | SL: 66530.35 | TS: 71.72
+[2026-03-08 15:45:20] [MONGO] Decisão registrada em ml_dataset. trade_id=d2b767cb-7302-425e-8a97-248a0a318eb2
+[2026-03-08 15:53:26] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-08 15:53:26] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-08 15:53:26] [MONGO] Outcome atualizado em ml_dataset. trade_id=d2b767cb-7302-425e-8a97-248a0a318eb2
+[2026-03-08 16:00:00] 🕯️ Candle fechado! Preço: 66790.5. Iniciando análise técnica e ML...
+[2026-03-08 16:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 16:00:26] Sentimento: neutral (50%)
+[2026-03-08 16:00:26] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 16:00:26] Probabilidade ML: 0.943
+[2026-03-08 16:15:00] 🕯️ Candle fechado! Preço: 66975.5. Iniciando análise técnica e ML...
+[2026-03-08 16:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 16:15:24] Sentimento: neutral (50%)
+[2026-03-08 16:15:24] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 16:15:24] Probabilidade ML: 1.000
+[2026-03-08 16:30:00] 🕯️ Candle fechado! Preço: 67158.4. Iniciando análise técnica e ML...
+[2026-03-08 16:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 16:30:20] Sentimento: neutral (50%)
+[2026-03-08 16:30:20] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 16:30:20] Probabilidade ML: 0.991
+[2026-03-08 16:43:41] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-08 16:43:41] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-08 16:43:41] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-08 16:43:45] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-08 16:45:00] 🕯️ Candle fechado! Preço: 67354. Iniciando análise técnica e ML...
+[2026-03-08 16:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 16:45:22] Sentimento: neutral (50%)
+[2026-03-08 16:45:22] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 16:45:22] Probabilidade ML: 1.000
+[2026-03-08 16:45:22] Abrindo Sell | Preço: 67310.3 | TP: 67095.71 | SL: 67471.24 | TS: 53.65
+[2026-03-08 16:45:23] [MONGO] Decisão registrada em ml_dataset. trade_id=c28028a4-36dd-43cf-b511-c4398a2c6649
+[2026-03-08 16:47:46] Sell fechado - PnL: -0.14 (-0.106%) | Origem: misto
+[2026-03-08 16:47:46] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.14
+[2026-03-08 16:47:46] [MONGO] Outcome atualizado em ml_dataset. trade_id=c28028a4-36dd-43cf-b511-c4398a2c6649
+[2026-03-08 16:48:36] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-08 16:48:36] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-08 16:48:36] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-08 16:48:41] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-08 17:00:00] 🕯️ Candle fechado! Preço: 67291.5. Iniciando análise técnica e ML...
+[2026-03-08 17:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 17:00:22] Sentimento: neutral (50%)
+[2026-03-08 17:00:22] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 17:00:22] Probabilidade ML: 0.999
+[2026-03-08 17:15:00] 🕯️ Candle fechado! Preço: 67059.8. Iniciando análise técnica e ML...
+[2026-03-08 17:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 17:15:18] Sentimento: neutral (50%)
+[2026-03-08 17:15:18] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 17:15:18] Probabilidade ML: 1.000
+[2026-03-08 17:15:19] Abrindo Sell | Preço: 67081.9 | TP: 66857.32 | SL: 67250.34 | TS: 56.15
+[2026-03-08 17:15:19] [MONGO] Decisão registrada em ml_dataset. trade_id=2f45a08f-9530-4f4c-8cc3-9a448c80ab48
+[2026-03-08 17:16:45] Sell fechado - PnL: 0.00 (0.104%) | Origem: misto
+[2026-03-08 17:16:45] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.0
+[2026-03-08 17:16:45] [MONGO] Outcome atualizado em ml_dataset. trade_id=2f45a08f-9530-4f4c-8cc3-9a448c80ab48
+[2026-03-08 17:30:00] 🕯️ Candle fechado! Preço: 67028.8. Iniciando análise técnica e ML...
+[2026-03-08 17:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 17:30:19] Sentimento: neutral (50%)
+[2026-03-08 17:30:19] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 17:30:19] Probabilidade ML: 0.999
+[2026-03-08 17:30:20] Abrindo Sell | Preço: 67030.5 | TP: 66786.78 | SL: 67213.29 | TS: 60.93
+[2026-03-08 17:30:20] [MONGO] Decisão registrada em ml_dataset. trade_id=f9721e8f-27be-4aa1-9e6b-432268a9b7ab
+[2026-03-08 17:30:36] Sell fechado - PnL: -0.14 (-0.104%) | Origem: misto
+[2026-03-08 17:30:36] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.14
+[2026-03-08 17:30:36] [MONGO] Outcome atualizado em ml_dataset. trade_id=f9721e8f-27be-4aa1-9e6b-432268a9b7ab
+[2026-03-08 17:45:00] 🕯️ Candle fechado! Preço: 67301.2. Iniciando análise técnica e ML...
+[2026-03-08 17:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 17:45:20] Sentimento: neutral (50%)
+[2026-03-08 17:45:20] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 17:45:20] Probabilidade ML: 0.999
+[2026-03-08 18:00:00] 🕯️ Candle fechado! Preço: 67320.9. Iniciando análise técnica e ML...
+[2026-03-08 18:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 18:00:20] Sentimento: neutral (50%)
+[2026-03-08 18:00:20] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-08 18:00:20] Probabilidade ML: 0.998
+[2026-03-08 18:15:00] 🕯️ Candle fechado! Preço: 66752.6. Iniciando análise técnica e ML...
+[2026-03-08 18:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 18:15:20] Sentimento: neutral (50%)
+[2026-03-08 18:15:20] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 18:15:20] Probabilidade ML: 0.997
+[2026-03-08 18:15:21] Abrindo Sell | Preço: 66789.9 | TP: 66485.08 | SL: 67018.52 | TS: 76.21
+[2026-03-08 18:15:21] [MONGO] Decisão registrada em ml_dataset. trade_id=1667ca43-ccd1-4309-969a-fb907d21f944
+[2026-03-08 18:20:28] Sell fechado - PnL: -0.14 (-0.110%) | Origem: misto
+[2026-03-08 18:20:28] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.14
+[2026-03-08 18:20:28] [MONGO] Outcome atualizado em ml_dataset. trade_id=1667ca43-ccd1-4309-969a-fb907d21f944
+[2026-03-08 18:30:00] 🕯️ Candle fechado! Preço: 66890.3. Iniciando análise técnica e ML...
+[2026-03-08 18:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 18:30:24] Sentimento: neutral (50%)
+[2026-03-08 18:30:24] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 18:30:24] Probabilidade ML: 1.000
+[2026-03-08 18:30:24] Abrindo Sell | Preço: 66912.1 | TP: 66613.98 | SL: 67135.69 | TS: 74.53
+[2026-03-08 18:30:25] [MONGO] Decisão registrada em ml_dataset. trade_id=ed1ba0d8-480c-4576-aa1a-c0a9b98ff997
+[2026-03-08 18:38:00] Sell fechado - PnL: -0.13 (-0.100%) | Origem: misto
+[2026-03-08 18:38:00] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.13
+[2026-03-08 18:38:00] [MONGO] Outcome atualizado em ml_dataset. trade_id=ed1ba0d8-480c-4576-aa1a-c0a9b98ff997
+[2026-03-08 18:45:00] 🕯️ Candle fechado! Preço: 66983. Iniciando análise técnica e ML...
+[2026-03-08 18:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 18:45:21] Sentimento: neutral (50%)
+[2026-03-08 18:45:21] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 18:45:21] Probabilidade ML: 0.665
+[2026-03-08 18:45:21] Abrindo Sell | Preço: 66992.9 | TP: 66757.88 | SL: 67169.17 | TS: 58.76
+[2026-03-08 18:45:22] [MONGO] Decisão registrada em ml_dataset. trade_id=5080942e-d9b0-450c-988f-fc34cc064b7c
+[2026-03-08 18:50:16] Sell fechado - PnL: 0.03 (0.139%) | Origem: misto
+[2026-03-08 18:50:16] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.03
+[2026-03-08 18:50:16] [MONGO] Outcome atualizado em ml_dataset. trade_id=5080942e-d9b0-450c-988f-fc34cc064b7c
+[2026-03-08 19:00:00] 🕯️ Candle fechado! Preço: 66910.6. Iniciando análise técnica e ML...
+[2026-03-08 19:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 19:00:22] Sentimento: neutral (50%)
+[2026-03-08 19:00:22] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 19:00:22] Probabilidade ML: 0.975
+[2026-03-08 19:00:23] Abrindo Sell | Preço: 66810.2 | TP: 66603.12 | SL: 66965.51 | TS: 51.77
+[2026-03-08 19:00:23] [MONGO] Decisão registrada em ml_dataset. trade_id=33e74a7f-4b46-4095-9d9c-95de292418db
+[2026-03-08 19:00:42] Sell fechado - PnL: 0.03 (0.147%) | Origem: misto
+[2026-03-08 19:00:42] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.03
+[2026-03-08 19:00:42] [MONGO] Outcome atualizado em ml_dataset. trade_id=33e74a7f-4b46-4095-9d9c-95de292418db
+[2026-03-08 19:15:00] 🕯️ Candle fechado! Preço: 66040. Iniciando análise técnica e ML...
+[2026-03-08 19:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 19:15:29] Sentimento: neutral (50%)
+[2026-03-08 19:15:29] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 19:15:29] Probabilidade ML: 1.000
+[2026-03-08 19:15:30] Abrindo Sell | Preço: 66079.7 | TP: 65881.26 | SL: 66228.53 | TS: 49.61
+[2026-03-08 19:15:30] [MONGO] Decisão registrada em ml_dataset. trade_id=fb5fb04a-7fae-4ca2-a4cd-47398eb5fe3a
+[2026-03-08 19:15:42] Sell fechado - PnL: 0.04 (0.156%) | Origem: misto
+[2026-03-08 19:15:42] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.04
+[2026-03-08 19:15:42] [MONGO] Outcome atualizado em ml_dataset. trade_id=fb5fb04a-7fae-4ca2-a4cd-47398eb5fe3a
+[2026-03-08 19:30:00] 🕯️ Candle fechado! Preço: 65878.2. Iniciando análise técnica e ML...
+[2026-03-08 19:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 19:30:25] Sentimento: neutral (50%)
+[2026-03-08 19:30:25] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 19:30:25] Probabilidade ML: 0.999
+[2026-03-08 19:30:26] Abrindo Sell | Preço: 65813.9 | TP: 65603.14 | SL: 65971.97 | TS: 52.69
+[2026-03-08 19:30:26] [MONGO] Decisão registrada em ml_dataset. trade_id=3dc28013-1b56-4025-b287-8b76e8575e10
+[2026-03-08 19:30:56] Sell fechado - PnL: 0.02 (0.130%) | Origem: misto
+[2026-03-08 19:30:56] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.02
+[2026-03-08 19:30:56] [MONGO] Outcome atualizado em ml_dataset. trade_id=3dc28013-1b56-4025-b287-8b76e8575e10
+[2026-03-08 19:45:00] 🕯️ Candle fechado! Preço: 66017.6. Iniciando análise técnica e ML...
+[2026-03-08 19:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 19:45:29] Sentimento: neutral (50%)
+[2026-03-08 19:45:29] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 19:45:29] Probabilidade ML: 1.000
+[2026-03-08 19:45:30] Abrindo Sell | Preço: 66079.9 | TP: 65866.65 | SL: 66239.84 | TS: 53.31
+[2026-03-08 19:45:30] [MONGO] Decisão registrada em ml_dataset. trade_id=1264d2d1-6422-4d3c-b55b-7711f4ae9b7a
+[2026-03-08 19:46:43] Sell fechado - PnL: -0.14 (-0.118%) | Origem: misto
+[2026-03-08 19:46:43] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.14
+[2026-03-08 19:46:43] [MONGO] Outcome atualizado em ml_dataset. trade_id=1264d2d1-6422-4d3c-b55b-7711f4ae9b7a
+[2026-03-08 20:00:00] 🕯️ Candle fechado! Preço: 66202.8. Iniciando análise técnica e ML...
+[2026-03-08 20:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 20:00:22] Sentimento: neutral (50%)
+[2026-03-08 20:00:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 20:00:22] Probabilidade ML: 0.996
+[2026-03-08 20:00:23] Abrindo Sell | Preço: 66212.7 | TP: 66007.4 | SL: 66366.68 | TS: 51.33
+[2026-03-08 20:00:23] [MONGO] Decisão registrada em ml_dataset. trade_id=ebfa1184-9be7-421f-b9ab-3b882102887b
+[2026-03-08 20:01:17] Sell fechado - PnL: -0.15 (-0.128%) | Origem: misto
+[2026-03-08 20:01:17] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.15
+[2026-03-08 20:01:17] [MONGO] Outcome atualizado em ml_dataset. trade_id=ebfa1184-9be7-421f-b9ab-3b882102887b
+[2026-03-08 20:15:00] 🕯️ Candle fechado! Preço: 66295.1. Iniciando análise técnica e ML...
+[2026-03-08 20:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 20:16:22] Sentimento: neutral (50%)
+[2026-03-08 20:16:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 20:16:22] Probabilidade ML: 0.998
+[2026-03-08 20:16:22] Abrindo Sell | Preço: 66281.7 | TP: 66075.13 | SL: 66436.63 | TS: 51.64
+[2026-03-08 20:16:23] [MONGO] Decisão registrada em ml_dataset. trade_id=23cfd3d2-fa83-4650-99cc-37088c37cc13
+[2026-03-08 20:17:04] Sell fechado - PnL: -0.17 (-0.155%) | Origem: misto
+[2026-03-08 20:17:04] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.17
+[2026-03-08 20:17:04] [MONGO] Outcome atualizado em ml_dataset. trade_id=23cfd3d2-fa83-4650-99cc-37088c37cc13
+[2026-03-08 20:30:00] 🕯️ Candle fechado! Preço: 66445.5. Iniciando análise técnica e ML...
+[2026-03-08 20:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 20:30:21] Sentimento: neutral (50%)
+[2026-03-08 20:30:21] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 20:30:21] Probabilidade ML: 0.896
+[2026-03-08 20:30:22] Abrindo Sell | Preço: 66447.2 | TP: 66218.78 | SL: 66618.51 | TS: 57.1
+[2026-03-08 20:30:22] [MONGO] Decisão registrada em ml_dataset. trade_id=f09f50bc-0e6c-43b7-9a3f-2be4c2c2418c
+[2026-03-08 20:35:04] Sell fechado - PnL: 0.01 (0.108%) | Origem: misto
+[2026-03-08 20:35:04] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-08 20:35:04] [MONGO] Outcome atualizado em ml_dataset. trade_id=f09f50bc-0e6c-43b7-9a3f-2be4c2c2418c
+[2026-03-08 20:45:00] 🕯️ Candle fechado! Preço: 66085.8. Iniciando análise técnica e ML...
+[2026-03-08 20:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 20:45:19] Sentimento: neutral (50%)
+[2026-03-08 20:45:19] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 20:45:19] Probabilidade ML: 0.974
+[2026-03-08 20:45:19] Abrindo Sell | Preço: 66052.7 | TP: 65835.04 | SL: 66215.95 | TS: 54.42
+[2026-03-08 20:45:20] [MONGO] Decisão registrada em ml_dataset. trade_id=a955a965-f0ac-4664-b905-5b9722c0b8b1
+[2026-03-08 20:46:07] Sell fechado - PnL: 0.02 (0.129%) | Origem: misto
+[2026-03-08 20:46:07] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.02
+[2026-03-08 20:46:07] [MONGO] Outcome atualizado em ml_dataset. trade_id=a955a965-f0ac-4664-b905-5b9722c0b8b1
+[2026-03-08 21:00:00] 🕯️ Candle fechado! Preço: 65969.1. Iniciando análise técnica e ML...
+[2026-03-08 21:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 21:00:20] Sentimento: neutral (50%)
+[2026-03-08 21:00:20] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 21:00:20] Probabilidade ML: 0.999
+[2026-03-08 21:00:21] Abrindo Sell | Preço: 65941.2 | TP: 65718.36 | SL: 66108.33 | TS: 55.71
+[2026-03-08 21:00:21] [MONGO] Decisão registrada em ml_dataset. trade_id=4f237f7a-b23a-4648-ae4e-6cb37390b5f6
+[2026-03-08 21:01:36] Sell fechado - PnL: -0.13 (-0.104%) | Origem: misto
+[2026-03-08 21:01:36] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.13
+[2026-03-08 21:01:36] [MONGO] Outcome atualizado em ml_dataset. trade_id=4f237f7a-b23a-4648-ae4e-6cb37390b5f6
+[2026-03-08 21:15:00] 🕯️ Candle fechado! Preço: 66293.7. Iniciando análise técnica e ML...
+[2026-03-08 21:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 21:15:21] Sentimento: neutral (50%)
+[2026-03-08 21:15:21] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 21:15:21] Probabilidade ML: 1.000
+[2026-03-08 21:15:21] Abrindo Sell | Preço: 66307.7 | TP: 66087.4 | SL: 66472.93 | TS: 55.08
+[2026-03-08 21:15:22] [MONGO] Decisão registrada em ml_dataset. trade_id=3899da65-81df-46d0-9433-a31d8793eab2
+[2026-03-08 21:16:28] Sell fechado - PnL: 0.02 (0.138%) | Origem: misto
+[2026-03-08 21:16:28] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.02
+[2026-03-08 21:16:28] [MONGO] Outcome atualizado em ml_dataset. trade_id=3899da65-81df-46d0-9433-a31d8793eab2
+[2026-03-08 21:30:00] 🕯️ Candle fechado! Preço: 66127.3. Iniciando análise técnica e ML...
+[2026-03-08 21:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 21:30:27] Sentimento: neutral (50%)
+[2026-03-08 21:30:27] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 21:30:27] Probabilidade ML: 0.983
+[2026-03-08 21:30:28] Abrindo Sell | Preço: 66206.4 | TP: 65965.34 | SL: 66387.19 | TS: 60.26
+[2026-03-08 21:30:28] [MONGO] Decisão registrada em ml_dataset. trade_id=81443cfe-7153-44af-8195-67e5dc1b5ca9
+[2026-03-08 21:32:08] Sell fechado - PnL: -0.14 (-0.118%) | Origem: misto
+[2026-03-08 21:32:08] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.14
+[2026-03-08 21:32:08] [MONGO] Outcome atualizado em ml_dataset. trade_id=81443cfe-7153-44af-8195-67e5dc1b5ca9
+[2026-03-08 21:35:17] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-08 21:35:17] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-08 21:35:17] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-08 21:35:22] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-08 21:36:00] 🕯️ Candle fechado! Preço: 66536.3. Iniciando análise técnica e ML...
+[2026-03-08 21:36:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 21:36:32] Sentimento: neutral (50%)
+[2026-03-08 21:36:32] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 21:36:32] Probabilidade ML: 0.442
+[2026-03-08 21:36:32] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-08 21:37:00] 🕯️ Candle fechado! Preço: 66705.8. Iniciando análise técnica e ML...
+[2026-03-08 21:37:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 21:37:27] Sentimento: neutral (50%)
+[2026-03-08 21:37:27] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 21:37:27] Probabilidade ML: 0.442
+[2026-03-08 21:37:27] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-08 21:38:00] 🕯️ Candle fechado! Preço: 66520.7. Iniciando análise técnica e ML...
+[2026-03-08 21:38:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 21:38:26] Sentimento: neutral (50%)
+[2026-03-08 21:38:26] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 21:38:26] Probabilidade ML: 0.442
+[2026-03-08 21:38:26] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-08 21:48:18] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-08 21:48:19] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-08 21:48:19] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-08 21:48:22] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-08 22:00:00] 🕯️ Candle fechado! Preço: 66348.7. Iniciando análise técnica e ML...
+[2026-03-08 22:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 22:00:19] Sentimento: neutral (50%)
+[2026-03-08 22:00:19] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-08 22:00:19] Probabilidade ML: 0.900
+[2026-03-08 22:00:19] Abrindo Sell | Preço: 66340.2 | TP: 66064.06 | SL: 66547.3 | TS: 69.03
+[2026-03-08 22:00:20] [MONGO] Decisão registrada em ml_dataset. trade_id=49aa4747-fa6f-4d12-8fa2-cb844f727c61
+[2026-03-08 22:04:03] Sell fechado - PnL: 0.01 (0.113%) | Origem: misto
+[2026-03-08 22:04:03] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-08 22:04:03] [MONGO] Outcome atualizado em ml_dataset. trade_id=49aa4747-fa6f-4d12-8fa2-cb844f727c61
+[2026-03-08 22:15:00] 🕯️ Candle fechado! Preço: 66442.2. Iniciando análise técnica e ML...
+[2026-03-08 22:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 22:15:21] Sentimento: neutral (50%)
+[2026-03-08 22:15:21] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 22:15:21] Probabilidade ML: 0.984
+[2026-03-08 22:15:22] Abrindo Sell | Preço: 66293.4 | TP: 65983.63 | SL: 66525.73 | TS: 77.44
+[2026-03-08 22:15:22] [MONGO] Decisão registrada em ml_dataset. trade_id=85c90551-e6f4-4742-bf99-b29fe02dee0a
+[2026-03-08 22:16:48] Sell fechado - PnL: -0.14 (-0.105%) | Origem: misto
+[2026-03-08 22:16:48] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.14
+[2026-03-08 22:16:48] [MONGO] Outcome atualizado em ml_dataset. trade_id=85c90551-e6f4-4742-bf99-b29fe02dee0a
+[2026-03-08 22:30:00] 🕯️ Candle fechado! Preço: 66439.5. Iniciando análise técnica e ML...
+[2026-03-08 22:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 22:30:18] Sentimento: neutral (50%)
+[2026-03-08 22:30:18] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-08 22:30:18] Probabilidade ML: 0.999
+[2026-03-08 22:30:18] Abrindo Sell | Preço: 66403.7 | TP: 66106.68 | SL: 66626.46 | TS: 74.25
+[2026-03-08 22:30:19] [MONGO] Decisão registrada em ml_dataset. trade_id=4da742f2-b51f-48da-9f62-176afb3212f6
+[2026-03-08 22:30:50] Sell fechado - PnL: -0.13 (-0.102%) | Origem: misto
+[2026-03-08 22:30:50] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.13
+[2026-03-08 22:30:50] [MONGO] Outcome atualizado em ml_dataset. trade_id=4da742f2-b51f-48da-9f62-176afb3212f6
+[2026-03-08 22:45:00] 🕯️ Candle fechado! Preço: 66587.7. Iniciando análise técnica e ML...
+[2026-03-08 22:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 22:45:26] Sentimento: neutral (50%)
+[2026-03-08 22:45:26] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-08 22:45:26] Probabilidade ML: 1.000
+[2026-03-08 22:45:26] Abrindo Buy | Preço: 66559.5 | TP: 66873.31 | SL: 66324.14 | TS: 78.45
+[2026-03-08 22:45:27] [MONGO] Decisão registrada em ml_dataset. trade_id=c16e2fd6-92ce-4433-877e-3c750201113b
+[2026-03-08 22:47:41] Buy fechado - PnL: -0.14 (-0.114%) | Origem: misto
+[2026-03-08 22:47:41] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-08 22:47:41] [MONGO] Outcome atualizado em ml_dataset. trade_id=c16e2fd6-92ce-4433-877e-3c750201113b
+[2026-03-08 23:00:00] 🕯️ Candle fechado! Preço: 66168.4. Iniciando análise técnica e ML...
+[2026-03-08 23:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 23:00:28] Sentimento: neutral (50%)
+[2026-03-08 23:00:28] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 23:00:28] Probabilidade ML: 0.996
+[2026-03-08 23:15:00] 🕯️ Candle fechado! Preço: 66153. Iniciando análise técnica e ML...
+[2026-03-08 23:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-08 23:15:24] Sentimento: neutral (50%)
+[2026-03-08 23:15:24] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-08 23:15:24] Probabilidade ML: 1.000
+[2026-03-09 23:48:40] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-09 23:48:41] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-09 23:48:41] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-09 23:48:45] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-10 00:00:00] 🕯️ Candle fechado! Preço: 70241.4. Iniciando análise técnica e ML...
+[2026-03-10 00:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 00:00:23] Sentimento: neutral (50%)
+[2026-03-10 00:00:23] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-10 00:00:23] Probabilidade ML: 0.999
+[2026-03-10 00:15:00] 🕯️ Candle fechado! Preço: 70150.8. Iniciando análise técnica e ML...
+[2026-03-10 00:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 00:15:21] Sentimento: neutral (50%)
+[2026-03-10 00:15:21] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 00:15:21] Probabilidade ML: 1.000
+[2026-03-10 00:15:22] Abrindo Sell | Preço: 70137.3 | TP: 69735.29 | SL: 70438.81 | TS: 100.5
+[2026-03-10 00:15:22] [MONGO] Decisão registrada em ml_dataset. trade_id=cd0c55de-38e1-4110-b42f-738c68180479
+[2026-03-10 00:21:18] Sell fechado - PnL: -0.15 (-0.113%) | Origem: misto
+[2026-03-10 00:21:18] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.15
+[2026-03-10 00:21:18] [MONGO] Outcome atualizado em ml_dataset. trade_id=cd0c55de-38e1-4110-b42f-738c68180479
+[2026-03-10 00:30:00] 🕯️ Candle fechado! Preço: 70444. Iniciando análise técnica e ML...
+[2026-03-10 00:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 00:30:24] Sentimento: neutral (50%)
+[2026-03-10 00:30:24] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 00:30:24] Probabilidade ML: 1.000
+[2026-03-10 00:30:24] Abrindo Sell | Preço: 70080.1 | TP: 69669.11 | SL: 70388.35 | TS: 102.75
+[2026-03-10 00:30:25] [MONGO] Decisão registrada em ml_dataset. trade_id=ecee30b3-df1c-4bfd-8726-026b790d2935
+[2026-03-10 00:35:22] Sell fechado - PnL: 0.00 (0.106%) | Origem: misto
+[2026-03-10 00:35:22] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.0
+[2026-03-10 00:35:22] [MONGO] Outcome atualizado em ml_dataset. trade_id=ecee30b3-df1c-4bfd-8726-026b790d2935
+[2026-03-10 00:45:00] 🕯️ Candle fechado! Preço: 69816.3. Iniciando análise técnica e ML...
+[2026-03-10 00:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 00:45:20] Sentimento: neutral (50%)
+[2026-03-10 00:45:20] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 00:45:20] Probabilidade ML: 0.819
+[2026-03-10 00:45:21] Abrindo Sell | Preço: 69786.9 | TP: 69343.23 | SL: 70119.65 | TS: 110.92
+[2026-03-10 00:45:21] [MONGO] Decisão registrada em ml_dataset. trade_id=a4d4d5ce-ac1e-4974-b68a-759ffc17b604
+[2026-03-10 00:45:31] Sell fechado - PnL: 0.01 (0.112%) | Origem: misto
+[2026-03-10 00:45:31] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-10 00:45:31] [MONGO] Outcome atualizado em ml_dataset. trade_id=a4d4d5ce-ac1e-4974-b68a-759ffc17b604
+[2026-03-10 18:01:48] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-03-10 18:01:48] Modelo ML carregado de ml\model_lgb.pkl
+[2026-03-10 18:01:48] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-03-10 18:01:52] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-03-10 18:15:00] 🕯️ Candle fechado! Preço: 70268.8. Iniciando análise técnica e ML...
+[2026-03-10 18:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 18:15:31] Sentimento: neutral (50%)
+[2026-03-10 18:15:31] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 18:15:31] Probabilidade ML: 0.999
+[2026-03-10 18:15:32] Abrindo Sell | Preço: 70124.2 | TP: 69772.58 | SL: 70387.91 | TS: 87.9
+[2026-03-10 18:15:33] [MONGO] Decisão registrada em ml_dataset. trade_id=739202b4-df5d-433b-b8e3-4a5742ff9ddf
+[2026-03-10 18:16:54] Sell fechado - PnL: 0.01 (0.116%) | Origem: misto
+[2026-03-10 18:16:54] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-10 18:16:54] [MONGO] Outcome atualizado em ml_dataset. trade_id=739202b4-df5d-433b-b8e3-4a5742ff9ddf
+[2026-03-10 18:30:00] 🕯️ Candle fechado! Preço: 69894.5. Iniciando análise técnica e ML...
+[2026-03-10 18:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 18:30:22] Sentimento: neutral (50%)
+[2026-03-10 18:30:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 18:30:22] Probabilidade ML: 0.999
+[2026-03-10 18:30:23] Abrindo Sell | Preço: 69950.2 | TP: 69582.51 | SL: 70225.96 | TS: 91.92
+[2026-03-10 18:30:23] [MONGO] Decisão registrada em ml_dataset. trade_id=5e282af4-cf7a-4a4e-9d79-71bf881013a9
+[2026-03-10 18:37:51] Sell fechado - PnL: 0.06 (0.190%) | Origem: misto
+[2026-03-10 18:37:51] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.06
+[2026-03-10 18:37:51] [MONGO] Outcome atualizado em ml_dataset. trade_id=5e282af4-cf7a-4a4e-9d79-71bf881013a9
+[2026-03-10 18:45:00] 🕯️ Candle fechado! Preço: 69658.6. Iniciando análise técnica e ML...
+[2026-03-10 18:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 18:45:24] Sentimento: neutral (50%)
+[2026-03-10 18:45:24] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-10 18:45:24] Probabilidade ML: 0.964
+[2026-03-10 19:00:00] 🕯️ Candle fechado! Preço: 69771.1. Iniciando análise técnica e ML...
+[2026-03-10 19:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 19:00:24] Sentimento: neutral (50%)
+[2026-03-10 19:00:24] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-10 19:00:24] Probabilidade ML: 0.998
+[2026-03-10 19:00:25] Abrindo Sell | Preço: 69768.6 | TP: 69435.85 | SL: 70018.16 | TS: 83.19
+[2026-03-10 19:00:25] [MONGO] Decisão registrada em ml_dataset. trade_id=c7447604-fce4-42cd-85ef-650af3b51a91
+[2026-03-10 19:05:00] Sell fechado - PnL: 0.02 (0.126%) | Origem: misto
+[2026-03-10 19:05:00] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.02
+[2026-03-10 19:05:00] [MONGO] Outcome atualizado em ml_dataset. trade_id=c7447604-fce4-42cd-85ef-650af3b51a91
+[2026-03-10 19:15:00] 🕯️ Candle fechado! Preço: 69566.6. Iniciando análise técnica e ML...
+[2026-03-10 19:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 19:15:22] Sentimento: neutral (50%)
+[2026-03-10 19:15:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 19:15:22] Probabilidade ML: 0.999
+[2026-03-10 19:15:22] Abrindo Sell | Preço: 69523.9 | TP: 69191.13 | SL: 69773.47 | TS: 83.19
+[2026-03-10 19:15:23] [MONGO] Decisão registrada em ml_dataset. trade_id=b40ea302-d7e3-447a-a5c5-8760e4cbb93e
+[2026-03-10 19:16:13] Sell fechado - PnL: 0.00 (0.106%) | Origem: misto
+[2026-03-10 19:16:13] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.0
+[2026-03-10 19:16:13] [MONGO] Outcome atualizado em ml_dataset. trade_id=b40ea302-d7e3-447a-a5c5-8760e4cbb93e
+[2026-03-10 19:30:00] 🕯️ Candle fechado! Preço: 69589.3. Iniciando análise técnica e ML...
+[2026-03-10 19:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 19:30:21] Sentimento: neutral (50%)
+[2026-03-10 19:30:21] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 19:30:21] Probabilidade ML: 1.000
+[2026-03-10 19:30:22] Abrindo Sell | Preço: 69588.2 | TP: 69211.92 | SL: 69870.41 | TS: 94.07
+[2026-03-10 19:30:22] [MONGO] Decisão registrada em ml_dataset. trade_id=41a0804d-37fc-451a-9d02-5f2b041f513b
+[2026-03-10 19:33:06] Sell fechado - PnL: 0.00 (0.103%) | Origem: misto
+[2026-03-10 19:33:06] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.0
+[2026-03-10 19:33:06] [MONGO] Outcome atualizado em ml_dataset. trade_id=41a0804d-37fc-451a-9d02-5f2b041f513b
+[2026-03-10 19:45:00] 🕯️ Candle fechado! Preço: 69590. Iniciando análise técnica e ML...
+[2026-03-10 19:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 19:45:22] Sentimento: neutral (50%)
+[2026-03-10 19:45:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 19:45:22] Probabilidade ML: 0.784
+[2026-03-10 19:45:23] Abrindo Sell | Preço: 69587.5 | TP: 69162.43 | SL: 69906.31 | TS: 106.27
+[2026-03-10 19:45:23] [MONGO] Decisão registrada em ml_dataset. trade_id=e18a52b5-4f69-450d-978f-4570c1a28954
+[2026-03-10 19:49:33] Sell fechado - PnL: -0.16 (-0.123%) | Origem: misto
+[2026-03-10 19:49:33] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.16
+[2026-03-10 19:49:33] [MONGO] Outcome atualizado em ml_dataset. trade_id=e18a52b5-4f69-450d-978f-4570c1a28954
+[2026-03-10 20:00:00] 🕯️ Candle fechado! Preço: 69635.5. Iniciando análise técnica e ML...
+[2026-03-10 20:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 20:00:23] Sentimento: neutral (50%)
+[2026-03-10 20:00:23] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-10 20:00:23] Probabilidade ML: 0.999
+[2026-03-10 20:00:24] Abrindo Sell | Preço: 69674.7 | TP: 69250.35 | SL: 69992.97 | TS: 106.09
+[2026-03-10 20:00:24] [MONGO] Decisão registrada em ml_dataset. trade_id=7dfed442-7b8d-42bc-808f-7acf55f19816
+[2026-03-10 20:01:09] Sell fechado - PnL: -0.15 (-0.109%) | Origem: misto
+[2026-03-10 20:01:09] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.15
+[2026-03-10 20:01:09] [MONGO] Outcome atualizado em ml_dataset. trade_id=7dfed442-7b8d-42bc-808f-7acf55f19816
+[2026-03-10 20:15:00] 🕯️ Candle fechado! Preço: 69763.8. Iniciando análise técnica e ML...
+[2026-03-10 20:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 20:15:26] Sentimento: neutral (50%)
+[2026-03-10 20:15:26] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 20:15:26] Probabilidade ML: 0.996
+[2026-03-10 20:15:27] Abrindo Sell | Preço: 69761.9 | TP: 69342.58 | SL: 70076.39 | TS: 104.83
+[2026-03-10 20:15:27] [MONGO] Decisão registrada em ml_dataset. trade_id=1fe2015f-ed86-411c-b13c-b66c8f868570
+[2026-03-10 20:21:05] Sell fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-10 20:21:05] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.0
+[2026-03-10 20:21:05] [MONGO] Outcome atualizado em ml_dataset. trade_id=1fe2015f-ed86-411c-b13c-b66c8f868570
+[2026-03-10 20:30:00] 🕯️ Candle fechado! Preço: 69754.3. Iniciando análise técnica e ML...
+[2026-03-10 20:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 20:30:25] Sentimento: neutral (50%)
+[2026-03-10 20:30:25] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 20:30:25] Probabilidade ML: 0.911
+[2026-03-10 20:30:26] Abrindo Sell | Preço: 69765.7 | TP: 69308.98 | SL: 70108.24 | TS: 114.18
+[2026-03-10 20:30:26] [MONGO] Decisão registrada em ml_dataset. trade_id=d2ea855f-05be-4ef5-b647-47be2b88cebf
+[2026-03-10 20:31:19] Sell fechado - PnL: -0.15 (-0.108%) | Origem: misto
+[2026-03-10 20:31:19] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.15
+[2026-03-10 20:31:19] [MONGO] Outcome atualizado em ml_dataset. trade_id=d2ea855f-05be-4ef5-b647-47be2b88cebf
+[2026-03-10 20:45:00] 🕯️ Candle fechado! Preço: 69863.3. Iniciando análise técnica e ML...
+[2026-03-10 20:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 20:45:24] Sentimento: neutral (50%)
+[2026-03-10 20:45:24] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-10 20:45:24] Probabilidade ML: 0.999
+[2026-03-10 20:45:24] Abrindo Sell | Preço: 69909.1 | TP: 69482.24 | SL: 70229.24 | TS: 106.71
+[2026-03-10 20:45:25] [MONGO] Decisão registrada em ml_dataset. trade_id=ea639839-23dc-40c9-ac30-39db18603585
+[2026-03-10 20:49:45] Sell fechado - PnL: 0.00 (0.105%) | Origem: misto
+[2026-03-10 20:49:45] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.0
+[2026-03-10 20:49:45] [MONGO] Outcome atualizado em ml_dataset. trade_id=ea639839-23dc-40c9-ac30-39db18603585
+[2026-03-10 21:00:00] 🕯️ Candle fechado! Preço: 69909.8. Iniciando análise técnica e ML...
+[2026-03-10 21:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 21:00:22] Sentimento: neutral (50%)
+[2026-03-10 21:00:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 21:00:22] Probabilidade ML: 0.684
+[2026-03-10 21:00:23] Abrindo Sell | Preço: 69866.2 | TP: 69469.84 | SL: 70163.47 | TS: 99.09
+[2026-03-10 21:00:24] [MONGO] Decisão registrada em ml_dataset. trade_id=31be02c9-30a0-415e-b1ed-022683ed60c9
+[2026-03-10 21:01:03] Sell fechado - PnL: 0.01 (0.115%) | Origem: misto
+[2026-03-10 21:01:03] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-10 21:01:03] [MONGO] Outcome atualizado em ml_dataset. trade_id=31be02c9-30a0-415e-b1ed-022683ed60c9
+[2026-03-10 21:15:00] 🕯️ Candle fechado! Preço: 70012.3. Iniciando análise técnica e ML...
+[2026-03-10 21:15:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 21:15:22] Sentimento: neutral (50%)
+[2026-03-10 21:15:22] Sinal técnico: sell | Conf. técnica: 0.0% | Conf. final: 25.0% | Risco: alto
+[2026-03-10 21:15:22] Probabilidade ML: 0.969
+[2026-03-10 21:15:23] Abrindo Sell | Preço: 69981.0 | TP: 69532.0 | SL: 70317.75 | TS: 112.25
+[2026-03-10 21:15:23] [MONGO] Decisão registrada em ml_dataset. trade_id=ac65abeb-fcd8-4647-b032-27c00e6f85c7
+[2026-03-10 21:17:48] Sell fechado - PnL: 0.01 (0.108%) | Origem: misto
+[2026-03-10 21:17:48] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-10 21:17:48] [MONGO] Outcome atualizado em ml_dataset. trade_id=ac65abeb-fcd8-4647-b032-27c00e6f85c7
+[2026-03-10 21:30:00] 🕯️ Candle fechado! Preço: 70018.9. Iniciando análise técnica e ML...
+[2026-03-10 21:30:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 21:30:24] Sentimento: neutral (50%)
+[2026-03-10 21:30:24] Sinal técnico: sell | Conf. técnica: 20.0% | Conf. final: 35.0% | Risco: alto
+[2026-03-10 21:30:24] Probabilidade ML: 0.997
+[2026-03-10 21:30:25] Abrindo Sell | Preço: 69991.6 | TP: 69499.8 | SL: 70360.45 | TS: 122.95
+[2026-03-10 21:30:25] [MONGO] Decisão registrada em ml_dataset. trade_id=d83514b4-b41d-4097-856e-9fadf90a231f
+[2026-03-10 21:32:08] Sell fechado - PnL: 0.01 (0.113%) | Origem: misto
+[2026-03-10 21:32:08] [MONGO] Trade salvo: BTCUSDT Sell | PnL: 0.01
+[2026-03-10 21:32:08] [MONGO] Outcome atualizado em ml_dataset. trade_id=d83514b4-b41d-4097-856e-9fadf90a231f
+[2026-03-10 21:45:00] 🕯️ Candle fechado! Preço: 69828.3. Iniciando análise técnica e ML...
+[2026-03-10 21:45:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 21:45:25] Sentimento: neutral (50%)
+[2026-03-10 21:45:25] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-10 21:45:25] Probabilidade ML: 1.000
+[2026-03-10 21:45:25] Abrindo Buy | Preço: 69867.2 | TP: 70268.07 | SL: 69566.55 | TS: 100.22
+[2026-03-10 21:45:26] [MONGO] Decisão registrada em ml_dataset. trade_id=1fb20b1b-eed8-41a7-8b2c-ba4d67469cb4
+[2026-03-10 21:46:39] Buy fechado - PnL: 0.00 (0.102%) | Origem: misto
+[2026-03-10 21:46:39] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-10 21:46:39] [MONGO] Outcome atualizado em ml_dataset. trade_id=1fb20b1b-eed8-41a7-8b2c-ba4d67469cb4
+[2026-03-10 22:00:00] 🕯️ Candle fechado! Preço: 69994.6. Iniciando análise técnica e ML...
+[2026-03-10 22:00:00] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 22:00:38] Sentimento: neutral (50%)
+[2026-03-10 22:00:38] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-10 22:00:38] Probabilidade ML: 0.999
+[2026-03-10 22:14:59] 🕯️ Candle fechado! Preço: 70032.9. Iniciando análise técnica e ML...
+[2026-03-10 22:14:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 22:15:22] Sentimento: neutral (50%)
+[2026-03-10 22:15:22] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-10 22:15:22] Probabilidade ML: 1.000
+[2026-03-10 22:15:22] Abrindo Buy | Preço: 69949.5 | TP: 70357.47 | SL: 69643.52 | TS: 101.99
+[2026-03-10 22:15:23] [MONGO] Decisão registrada em ml_dataset. trade_id=a315bb49-7d3d-48a5-875f-813ee22df3c0
+[2026-03-10 22:16:36] Buy fechado - PnL: 0.00 (0.102%) | Origem: misto
+[2026-03-10 22:16:36] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-10 22:16:36] [MONGO] Outcome atualizado em ml_dataset. trade_id=a315bb49-7d3d-48a5-875f-813ee22df3c0
+[2026-03-10 22:29:59] 🕯️ Candle fechado! Preço: 70055.4. Iniciando análise técnica e ML...
+[2026-03-10 22:29:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 22:30:21] Sentimento: neutral (50%)
+[2026-03-10 22:30:21] Sinal técnico: hold | Conf. técnica: 60.0% | Conf. final: 55.0% | Risco: alto
+[2026-03-10 22:30:21] Probabilidade ML: 1.000
+[2026-03-10 22:44:59] 🕯️ Candle fechado! Preço: 69912.6. Iniciando análise técnica e ML...
+[2026-03-10 22:44:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 22:45:47] Sentimento: neutral (50%)
+[2026-03-10 22:45:47] Sinal técnico: hold | Conf. técnica: 40.0% | Conf. final: 45.0% | Risco: alto
+[2026-03-10 22:45:47] Probabilidade ML: 1.000
+[2026-03-10 22:59:59] 🕯️ Candle fechado! Preço: 70029.6. Iniciando análise técnica e ML...
+[2026-03-10 22:59:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 23:00:21] Sentimento: neutral (50%)
+[2026-03-10 23:00:21] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 75.0% | Risco: medio
+[2026-03-10 23:00:21] Probabilidade ML: 0.995
+[2026-03-10 23:00:22] Abrindo Buy | Preço: 70056.0 | TP: 70408.08 | SL: 69791.94 | TS: 88.02
+[2026-03-10 23:00:22] [MONGO] Decisão registrada em ml_dataset. trade_id=8af65b53-c9fa-4a85-a3c7-76a7df8aaf56
+[2026-03-10 23:12:01] Buy fechado - PnL: -0.14 (-0.106%) | Origem: misto
+[2026-03-10 23:12:01] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-10 23:12:01] [MONGO] Outcome atualizado em ml_dataset. trade_id=8af65b53-c9fa-4a85-a3c7-76a7df8aaf56
+[2026-03-10 23:14:59] 🕯️ Candle fechado! Preço: 69952.6. Iniciando análise técnica e ML...
+[2026-03-10 23:14:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 23:15:29] Sentimento: neutral (50%)
+[2026-03-10 23:15:29] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-10 23:15:29] Probabilidade ML: 0.991
+[2026-03-10 23:15:30] Abrindo Buy | Preço: 69966.0 | TP: 70300.64 | SL: 69715.02 | TS: 83.66
+[2026-03-10 23:15:30] [MONGO] Decisão registrada em ml_dataset. trade_id=d392006e-adbc-4278-a198-717ebc60708b
+[2026-03-10 23:23:03] Buy fechado - PnL: -0.14 (-0.100%) | Origem: misto
+[2026-03-10 23:23:03] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-10 23:23:03] [MONGO] Outcome atualizado em ml_dataset. trade_id=d392006e-adbc-4278-a198-717ebc60708b
+[2026-03-10 23:29:59] 🕯️ Candle fechado! Preço: 69923.2. Iniciando análise técnica e ML...
+[2026-03-10 23:29:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 23:30:24] Sentimento: neutral (50%)
+[2026-03-10 23:30:24] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-10 23:30:24] Probabilidade ML: 0.958
+[2026-03-10 23:30:24] Abrindo Buy | Preço: 69915.9 | TP: 70258.93 | SL: 69658.63 | TS: 85.76
+[2026-03-10 23:30:25] [MONGO] Decisão registrada em ml_dataset. trade_id=a7dc72e3-dc1a-4368-9c64-865014f7f355
+[2026-03-10 23:32:46] Buy fechado - PnL: -0.14 (-0.103%) | Origem: misto
+[2026-03-10 23:32:46] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.14
+[2026-03-10 23:32:46] [MONGO] Outcome atualizado em ml_dataset. trade_id=a7dc72e3-dc1a-4368-9c64-865014f7f355
+[2026-03-10 23:44:59] 🕯️ Candle fechado! Preço: 69658.7. Iniciando análise técnica e ML...
+[2026-03-10 23:44:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-10 23:45:26] Sentimento: neutral (50%)
+[2026-03-10 23:45:26] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-10 23:45:26] Probabilidade ML: 1.000
+[2026-03-10 23:45:27] Abrindo Buy | Preço: 69637.2 | TP: 69990.54 | SL: 69372.2 | TS: 88.33
+[2026-03-10 23:45:27] [MONGO] Decisão registrada em ml_dataset. trade_id=2d2f391a-0376-4439-8ff8-77732ed1629e
+[2026-03-10 23:52:01] Buy fechado - PnL: 0.00 (0.101%) | Origem: misto
+[2026-03-10 23:52:01] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.0
+[2026-03-10 23:52:01] [MONGO] Outcome atualizado em ml_dataset. trade_id=2d2f391a-0376-4439-8ff8-77732ed1629e
+[2026-03-10 23:59:59] 🕯️ Candle fechado! Preço: 69828.3. Iniciando análise técnica e ML...
+[2026-03-10 23:59:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-11 00:00:20] Sentimento: neutral (50%)
+[2026-03-11 00:00:20] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-11 00:00:20] Probabilidade ML: 0.999
+[2026-03-11 00:00:20] Abrindo Buy | Preço: 69747.6 | TP: 70114.51 | SL: 69472.42 | TS: 91.73
+[2026-03-11 00:00:21] [MONGO] Decisão registrada em ml_dataset. trade_id=fb44f56b-e938-461f-918b-cad751c8c81c
+[2026-03-11 00:01:03] Buy fechado - PnL: 0.01 (0.111%) | Origem: misto
+[2026-03-11 00:01:03] [MONGO] Trade salvo: BTCUSDT Buy | PnL: 0.01
+[2026-03-11 00:01:03] [MONGO] Outcome atualizado em ml_dataset. trade_id=fb44f56b-e938-461f-918b-cad751c8c81c
+[2026-03-11 00:14:59] 🕯️ Candle fechado! Preço: 69653. Iniciando análise técnica e ML...
+[2026-03-11 00:14:59] [ADAPTAÇÃO] Pesos → Técnico: 0.50 | Sentimento: 0.50 | Taxas: Téc 0.50, Sent 0.50, Misto 0.50
+[2026-03-11 00:15:19] Sentimento: neutral (50%)
+[2026-03-11 00:15:19] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 65.0% | Risco: medio
+[2026-03-11 00:15:19] Probabilidade ML: 1.000
+[2026-03-11 00:15:20] Abrindo Buy | Preço: 69630.0 | TP: 69998.11 | SL: 69353.91 | TS: 92.03
+[2026-03-11 00:15:20] [MONGO] Decisão registrada em ml_dataset. trade_id=e541aed4-6376-4912-8df1-fadb5c374864
+[2026-03-11 00:19:51] Buy fechado - PnL: -0.15 (-0.110%) | Origem: misto
+[2026-03-11 00:19:51] [MONGO] Trade salvo: BTCUSDT Buy | PnL: -0.15
+[2026-03-11 00:19:51] [MONGO] Outcome atualizado em ml_dataset. trade_id=e541aed4-6376-4912-8df1-fadb5c374864

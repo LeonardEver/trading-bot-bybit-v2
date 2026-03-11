@@ -127,13 +127,24 @@ def model_predict_prob(row):
         for f in FEATURES:
             if f not in df_row.columns:
                 df_row[f] = 0.0  # preenche faltantes
+        
         X = df_row[FEATURES].fillna(0)
-        return float(model.predict(X)[0])
+        
+        # --- CORREÇÃO DA API DO MACHINE LEARNING ---
+        # Verifica se o modelo tem a função predict_proba (API Scikit-Learn)
+        if hasattr(model, "predict_proba"):
+            # predict_proba retorna [[prob_0, prob_1]]. Pegamos a prob_1 (Lucro)
+            probabilidade = model.predict_proba(X)[0][1]
+        else:
+            # API nativa do LightGBM
+            probabilidade = model.predict(X)[0]
+            
+        return float(probabilidade)
+        
     except Exception as e:
         log_event(f"[ERRO] Previsão ML: {e}")
         return None
 
-    
 
 def abrir_ordem():
     global ultima_ordem

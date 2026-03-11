@@ -1,5 +1,3 @@
-# trading/position_mode.py
-
 from pybit.unified_trading import HTTP
 import os
 from dotenv import load_dotenv
