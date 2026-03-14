@@ -61,59 +61,76 @@ def salvar_log_csv(data):
 
 
 def calcular_performance():
-    """Ajusta pesos de decisão com base na performance dos últimos trades."""
+    """Ajusta pesos de decisão com base no PnL real (Dinheiro) gerado nos últimos trades."""
     global peso_tecnico, peso_sentimento
 
     try:
+        if not Path(LOG_FILE).exists():
+            return
+
         with open(LOG_FILE, 'r') as f:
             reader = list(csv.DictReader(f))
+            
         if not reader:
             return
 
-        ultimos = reader[-20:]
-        if not ultimos:
+        # Aumentamos a janela de memória para 50 trades para ter relevância estatística
+        ultimos = reader[-50:]
+        if len(ultimos) < 10: # Não ajusta pesos se não tiver pelo menos 10 trades de histórico
             return
 
-        acertos_tecnicos = acertos_sentimento = acertos_mistos = 0
-        total_tecnicos = total_sentimento = total_mistos = 0
+        pnl_tecnico_total = 0.0
+        pnl_sentimento_total = 0.0
 
         for trade in ultimos:
-            pnl = float(trade.get("pnl", 0))
-            origem = trade.get("decision_source", "misto")
+            try:
+                pnl = float(trade.get("pnl", 0))
+                origem = trade.get("decision_source", "misto")
 
-            if origem == "tecnico":
-                total_tecnicos += 1
-                if pnl > 0:
-                    acertos_tecnicos += 1
-            elif origem == "sentimento":
-                total_sentimento += 1
-                if pnl > 0:
-                    acertos_sentimento += 1
-            elif origem == "misto":
-                total_mistos += 1
-                if pnl > 0:
-                    acertos_mistos += 1
+                if origem == "tecnico":
+                    pnl_tecnico_total += pnl
+                elif origem == "sentimento":
+                    pnl_sentimento_total += pnl
+                elif origem == "misto":
+                    # Se foi misto, divide o mérito ou a culpa financeiramente
+                    pnl_tecnico_total += pnl / 2
+                    pnl_sentimento_total += pnl / 2
+            except ValueError:
+                continue
 
-        taxa_tecnico = acertos_tecnicos / total_tecnicos if total_tecnicos > 0 else 0.5
-        taxa_sentimento = acertos_sentimento / total_sentimento if total_sentimento > 0 else 0.5
-        taxa_misto = acertos_mistos / total_mistos if total_mistos > 0 else 0.5
+        # Evita divisão por zero e adiciona um "piso" de segurança
+        if pnl_tecnico_total == 0 and pnl_sentimento_total == 0:
+            return
 
-        ajuste = 0.05
-        peso_tecnico += ajuste * (taxa_tecnico - 0.5)
-        peso_sentimento += ajuste * (taxa_sentimento - 0.5)
-        peso_tecnico += (ajuste/2) * (taxa_misto - 0.5)
-        peso_sentimento += (ajuste/2) * (taxa_misto - 0.5)
+        # --- A MÁGICA DA ADAPTAÇÃO POR RENTABILIDADE ---
+        # Se os dois estão dando prejuízo, não mudamos os pesos agressivamente
+        if pnl_tecnico_total <= 0 and pnl_sentimento_total <= 0:
+            log_event("[ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.")
+            return
 
-        soma = peso_tecnico + peso_sentimento
-        if soma > 0:
-            peso_tecnico = max(0.1, min(0.9, peso_tecnico / soma))
-            peso_sentimento = 1 - peso_tecnico
+        # Zera perdas para o cálculo de proporção (quem perde não ganha peso)
+        peso_t_calc = max(0.01, pnl_tecnico_total)
+        peso_s_calc = max(0.01, pnl_sentimento_total)
 
-        log_event(f"[ADAPTAÇÃO] Pesos → Técnico: {peso_tecnico:.2f} | Sentimento: {peso_sentimento:.2f} | "
-                  f"Taxas: Téc {taxa_tecnico:.2f}, Sent {taxa_sentimento:.2f}, Misto {taxa_misto:.2f}")
+        soma = peso_t_calc + peso_s_calc
+        
+        # O novo peso alvo é estritamente proporcional a quem está ganhando mais dinheiro
+        alvo_tecnico = peso_t_calc / soma
+        alvo_sentimento = peso_s_calc / soma
 
-    except FileNotFoundError:
-        pass
+        # Suavização: O bot não muda o peso do zero a 100% de uma vez. 
+        # Ele caminha 10% em direção ao alvo a cada ciclo para não ser enganado por um único trade de sorte
+        taxa_suavizacao = 0.10 
+        peso_tecnico = (peso_tecnico * (1 - taxa_suavizacao)) + (alvo_tecnico * taxa_suavizacao)
+        peso_sentimento = (peso_sentimento * (1 - taxa_suavizacao)) + (alvo_sentimento * taxa_suavizacao)
+
+        # Garante limites máximos e mínimos
+        peso_tecnico = max(0.1, min(0.9, peso_tecnico))
+        peso_sentimento = 1 - peso_tecnico
+
+        log_event(f"[ADAPTAÇÃO-PnL] Pesos Ajustados → Técnico: {peso_tecnico:.2f} | Sentimento: {peso_sentimento:.2f} | "
+                  f"PnL Gerado: Téc ${pnl_tecnico_total:.2f}, Sent ${pnl_sentimento_total:.2f}")
+
     except Exception as e:
         log_event(f"[ERRO] Calcular performance: {e}")
 

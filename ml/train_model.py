@@ -29,21 +29,32 @@ def load_dataset():
     if not DATA_CSV.exists():
         raise FileNotFoundError(f"Dataset não encontrado: {DATA_CSV}")
 
-    df = pd.read_csv(DATA_CSV, parse_dates=["timestamp"])
+    # 1. Lê o dataset sem forçar a busca pela coluna timestamp
+    df = pd.read_csv(DATA_CSV)
     print(f"🔹 Dataset carregado: {df.shape[0]} linhas")
 
-    # Garantir label
+    # 2. Se o timestamp existir (dataset antigo), organiza e descarta
+    if "timestamp" in df.columns:
+        df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
+        df = df.sort_values("timestamp")
+        df = df.drop(columns=["timestamp"])
+
+    # 3. Garantir label
     if "label" not in df.columns:
         print("⚠ Coluna 'label' ausente — criando a partir do PnL")
-        df["label"] = np.where(df["pnl"] > 0, 1, 0)
+        if "pnl" in df.columns:
+            df["label"] = np.where(df["pnl"] > 0, 1, 0)
+        else:
+            df["label"] = 0
 
     df = df.dropna(subset=["label"])
 
-    # Converter risco para número
-    risk_map = {"baixo": 0, "medio": 1, "alto": 2}
-    df["risk_level_encoded"] = df["risk_level"].map(risk_map).fillna(1)
+    # 4. Converter risco para número
+    if "risk_level" in df.columns:
+        risk_map = {"baixo": 0, "medio": 1, "alto": 2}
+        df["risk_level_encoded"] = df["risk_level"].map(risk_map).fillna(1)
 
-    # Garantir todas as features
+    # 5. Garantir todas as features
     for f in FEATURES:
         if f not in df.columns:
             print(f"[WARN] Feature ausente: {f} -> preenchendo com 0")
@@ -53,7 +64,7 @@ def load_dataset():
 
 def train():
     df = load_dataset()
-    X = df[FEATURES].fillna(method="ffill").fillna(0)
+    X = df[FEATURES].ffill().fillna(0)
     y = df["label"].astype(int)
 
     tscv = TimeSeriesSplit(n_splits=5)
