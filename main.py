@@ -30,6 +30,9 @@ TRAILING_STOP_PCT = 0.0008
 
 ultima_ordem = {"side": None, "hora": datetime.min}
 
+# Variavel para Circuit Breaker
+bloqueio_ate = datetime.min
+
 # Pesos iniciais
 peso_tecnico = 0.5
 peso_sentimento = 0.5
@@ -74,7 +77,6 @@ def calcular_performance():
         if not reader:
             return
 
-        # Aumentamos a janela de memória para 50 trades para ter relevância estatística
         ultimos = reader[-50:]
         if len(ultimos) < 10: # Não ajusta pesos se não tiver pelo menos 10 trades de histórico
             return
@@ -164,7 +166,12 @@ def model_predict_prob(row):
 
 
 def abrir_ordem():
-    global ultima_ordem
+    global ultima_ordem, bloqueio_ate # EDITADO: Adicionada global
+
+        # ADICIONADO: Trava do Circuit Breaker para evitar perder mais dinheiro
+    if datetime.now() < bloqueio_ate:
+        log_event(f"⏳ Bot em modo Circuit Breaker. Operações suspensas até {bloqueio_ate.strftime('%H:%M:%S')}.")
+        return
 
     # --- 1) Coleta dados de mercado ---
     df = get_ohlcv(SYMBOL)
@@ -173,14 +180,17 @@ def abrir_ordem():
 
     df = calculate_indicators(df)
 
+    #Log com DataFrame
+    log_event(f"📊 Preço de fechamento real (DataFrame): {df['close'].iloc[-1]}")
+
     # --- 2) Análise de sentimento ---
-    sentimento_str = get_news_sentiment("BTC")
+    sentimento_str, sent_score = get_news_sentiment("BTC")
     if sentimento_str == "bullish":
-        confiança_sentimento, sent_score = 100, 1.0
+        confiança_sentimento = 100
     elif sentimento_str == "bearish":
-        confiança_sentimento, sent_score = 0, -1.0
+        confiança_sentimento = 0
     else:
-        confiança_sentimento, sent_score = 50, 0.0
+        confiança_sentimento = 50
 
     df["sentiment_score"] = sent_score
 
@@ -218,6 +228,12 @@ def abrir_ordem():
         if prob_ml < 0.6:
             log_event("⚠ ML filtrou a entrada — probabilidade abaixo do threshold.")
             return
+
+        # ADICIONADO: Filtro de Consenso Mínimo (Quebra da ditadura do ML)
+        if prob_ml > 0.60:
+            if confiança_final < 50.0 and prob_ml < 0.85:
+                log_event("⚠ Trade cancelado: ML quer operar contra a tendência, mas sem confluência macro/técnica.")
+                return
 
     # --- DEBUG EXTRA (para investigar decisões) ---
     ultimo = df.iloc[-1]
@@ -504,7 +520,7 @@ def monitorar_posicoes():
 # =======================================================
 if __name__ == "__main__":
     from pybit.unified_trading import WebSocket
-    import threading # <--- ADICIONE ESTE IMPORT AQUI
+    import threading
     
     log_event("🚀 Bot iniciado. Configurando WebSockets...")
 
@@ -514,7 +530,8 @@ if __name__ == "__main__":
         if data:
             candle = data[0]
             if candle.get("confirm"):
-                log_event(f"🕯️ Candle fechado! Preço: {candle.get('close')}. Iniciando análise técnica e ML...")
+                # O preço será logado de forma correta e garantida lá na função abrir_ordem()
+                log_event("🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...")
                 
                 # --- A MÁGICA DO MULTI-THREADING AQUI ---
                 # Criamos uma função interna só para encapsular o trabalho pesado
