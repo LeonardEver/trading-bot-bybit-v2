@@ -44,48 +44,64 @@ def check_trade_signal(df: pd.DataFrame) -> str:
 
     return "hold"
 
+# strategies/strategy.py
+
 def generate_trade_signal(df):
     """
     Retorna um dict com sinal e confiança baseada em múltiplos indicadores.
+    Sistema de pontuação: +1 (Bullish) / -1 (Bearish)
     """
     if df.empty or len(df) < 2:
-        return {"signal": "hold", "confidence": 50.0}
+        return {"signal": "hold", "confidence": 0.0}
 
     last = df.iloc[-1]
-    prev = df.iloc[-2]
+    score = 0.0
+    max_score = 5.0  # Quantidade de indicadores avaliados
 
-    score = 0
-    total_points = 5  # Quantidade de indicadores usados
-
-    # Indicador 1 - EMA curto acima do longo (tendência de alta)
+    # Indicador 1 - EMA cruzamento
     if last["ema_20"] > last["ema_50"]:
         score += 1
+    elif last["ema_20"] < last["ema_50"]:
+        score -= 1
 
-    # Indicador 2 - RSI acima de 50 (força compradora)
-    if last["rsi"] > 50:
+    # Indicador 2 - RSI
+    if last["rsi"] > 55:
         score += 1
+    elif last["rsi"] < 45:
+        score -= 1
 
-    # Indicador 3 - Volume acima da média (confirmação de movimento)
-    if last["volume"] > df["volume"].rolling(20).mean().iloc[-1]:
-        score += 1
+    # Indicador 3 - Volume
+    volume_ma = df["volume"].rolling(20).mean().iloc[-1]
+    if last["volume"] > volume_ma:
+        # Só dá o ponto se o volume alto acompanhou a tendência do preço
+        if last["close"] > last["open"]:
+            score += 1
+        else:
+            score -= 1
 
-    # Indicador 4 - MACD positivo
-    if "macd" in df.columns and last["macd"] > 0:
-        score += 1
+    # Indicador 4 - MACD
+    if "macd" in df.columns:
+        if last["macd"] > 0 and last["macd"] > last["macd_signal"]:
+            score += 1
+        elif last["macd"] < 0 and last["macd"] < last["macd_signal"]:
+            score -= 1
 
-    # Indicador 5 - Candle atual fechando acima da EMA 20
+    # Indicador 5 - Preço vs EMA 20
     if last["close"] > last["ema_20"]:
         score += 1
+    elif last["close"] < last["ema_20"]:
+        score -= 1
 
-    # Calcular confiança como percentual de acertos
-    confidence = round((score / total_points) * 100, 2)
+    # ----------------------------------------------------
+    # O CÁLCULO MÁGICO DA CONFIANÇA
+    # ----------------------------------------------------
+    confidence = (abs(score) / max_score) * 100
 
-    # Determinar sinal final
-    if score >= 4:  # maioria esmagadora de sinais bullish
+    if score >= 2:
         signal = "buy"
-    elif score <= 1:  # maioria esmagadora bearish
+    elif score <= -2:
         signal = "sell"
     else:
         signal = "hold"
 
-    return {"signal": signal, "confidence": confidence}
+    return {"signal": signal, "confidence": round(confidence, 1)}

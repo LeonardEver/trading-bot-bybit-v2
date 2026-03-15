@@ -1,55 +1,82 @@
 # sentiment/sentiment_analysis.py
 
-from newspaper import Article
-from textblob import TextBlob
+import os
+import time
 import requests
-from datetime import datetime, timedelta
+from dotenv import load_dotenv
 
-# Sites confiáveis
-NEWS_SOURCES = {
-    "coindesk": "https://www.coindesk.com",
-    "cointelegraph": "https://cointelegraph.com",
-}
+load_dotenv()
 
-def get_articles_from_source(base_url, keyword="bitcoin"):
-    from newspaper import build
-    paper = build(base_url, memoize_articles=False)
-    articles = []
-    for article in paper.articles[:10]:
-        try:
-            article.download()
-            article.parse()
-            if keyword.lower() in article.text.lower():
-                articles.append(article)
-        except:
-            continue
-    return articles
-
-def analyze_article_sentiment(article):
-    blob = TextBlob(article.text)
-    sentiment_score = blob.sentiment.polarity
-    return sentiment_score
+# Variáveis Globais de Cache (Memória de 12h)
+_CACHE_SENTIMENT_STR = "neutral"
+_CACHE_SENTIMENT_SCORE = 0.0
+_CACHE_TIMESTAMP = 0
+CACHE_DURATION_SECONDS = 12 * 3600  # 12 horas
 
 def get_news_sentiment(symbol="BTC"):
-    keyword = "bitcoin" if symbol == "BTC" else "ethereum"
-    total_score = 0
-    count = 0
+    """
+    Busca o Índice de Medo e Ganância via API da CoinMarketCap.
+    Retorna uma tupla: (sentiment_str, sentiment_score_normalizado)
+    """
+    global _CACHE_SENTIMENT_STR, _CACHE_SENTIMENT_SCORE, _CACHE_TIMESTAMP
+    
+    agora = time.time()
+    
+    # Retorna o cache se ainda estiver dentro da validade
+    if (agora - _CACHE_TIMESTAMP) < CACHE_DURATION_SECONDS:
+        return _CACHE_SENTIMENT_STR, _CACHE_SENTIMENT_SCORE
 
-    for source, url in NEWS_SOURCES.items():
-        articles = get_articles_from_source(url, keyword)
-        for article in articles:
-            score = analyze_article_sentiment(article)
-            total_score += score
-            count += 1
+    print("📰 [CACHE EXPIRADO] Atualizando Fear & Greed Index via CoinMarketCap...")
+    
+    api_key = os.getenv("CMC_API_KEY")
+    if not api_key:
+        print("⚠ [AVISO] 'CMC_API_KEY' não encontrada no .env.")
+        return _CACHE_SENTIMENT_STR, _CACHE_SENTIMENT_SCORE
 
-    if count == 0:
-        return "neutral"
+    url = "https://pro-api.coinmarketcap.com/v3/fear-and-greed/latest"
+    headers = {
+        "Accepts": "application/json",
+        "X-CMC_PRO_API_KEY": api_key
+    }
 
-    avg_score = total_score / count
+    try:
+        resp = requests.get(url, headers=headers, timeout=10)
+        data = resp.json()
+        
+        # O SEGREDO ESTAVA AQUI: Convertendo para string para garantir a igualdade
+        status_code = str(data.get("status", {}).get("error_code"))
+        
+        if status_code == "0":
+            fg_value = data.get("data", {}).get("value")
+            
+            if fg_value is not None:
+                fg_value = int(fg_value)
+                
+                # Normaliza de 0-100 para a escala do Machine Learning (-1.0 a 1.0)
+                normalized_score = (fg_value - 50) / 50.0
+                
+                # Define a string classificatória
+                if fg_value >= 55:
+                    sentiment_str = "bullish"
+                elif fg_value <= 45:
+                    sentiment_str = "bearish"
+                else:
+                    sentiment_str = "neutral"
+                    
+                # Salva na memória
+                _CACHE_SENTIMENT_STR = sentiment_str
+                _CACHE_SENTIMENT_SCORE = round(normalized_score, 2)
+                _CACHE_TIMESTAMP = agora
+                
+                print(f"✅ [SENTIMENTO CMC] Valor: {fg_value}/100 | Score ML: {_CACHE_SENTIMENT_SCORE} | Viés: {_CACHE_SENTIMENT_STR.upper()}")
+            else:
+                print("❌ [ERRO CMC] Valor 'value' não encontrado no nó 'data'.")
+                
+        else:
+            error_msg = data.get("status", {}).get("error_message", "Erro desconhecido")
+            print(f"❌ [ERRO CMC] Código {status_code}: {error_msg}")
 
-    if avg_score > 0.1:
-        return "bullish"
-    elif avg_score < -0.1:
-        return "bearish"
-    else:
-        return "neutral"
+    except Exception as e:
+        print(f"❌ [ERRO DE REDE] Falha ao conectar com CMC: {e}")
+        
+    return _CACHE_SENTIMENT_STR, _CACHE_SENTIMENT_SCORE
