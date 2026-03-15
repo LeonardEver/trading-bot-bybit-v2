@@ -3,6 +3,7 @@ import csv
 import joblib
 import pandas as pd
 import uuid
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
 from utils.ohlcv import get_ohlcv
@@ -21,7 +22,7 @@ print(">>> Script main.py carregado com sucesso")
 
 
 SYMBOL = "BTCUSDT"
-LOOP_INTERVAL = 2  # segundos
+LOOP_INTERVAL = 15
 LOG_FILE = "trading_log.csv"
 
 TAKE_PROFIT_PCT = 0.0010
@@ -138,9 +139,20 @@ def calcular_performance():
 
 
 def model_predict_prob(row):
-    """Recebe última linha do DF e calcula probabilidade do label=1"""
+    """Recebe última linha do DF e calcula probabilidade do label=1, atualizando o modelo dinamicamente"""
+    global model, ultima_modificacao_modelo
+    
+    # Sistema de Hot-Reload: Verifica se o arquivo .pkl foi atualizado no disco
+    if MODEL_PATH.exists():
+        modificacao_atual = os.path.getmtime(MODEL_PATH)
+        if modificacao_atual > ultima_modificacao_modelo:
+            model = joblib.load(MODEL_PATH)
+            ultima_modificacao_modelo = modificacao_atual
+            log_event("🧠 [HOT-RELOAD] Novo modelo ML detectado e carregado em tempo de execução!")
+            
     if model is None:
         return None
+        
     try:
         df_row = pd.DataFrame([row])
         for f in FEATURES:
@@ -149,13 +161,9 @@ def model_predict_prob(row):
         
         X = df_row[FEATURES].fillna(0)
         
-        # --- CORREÇÃO DA API DO MACHINE LEARNING ---
-        # Verifica se o modelo tem a função predict_proba (API Scikit-Learn)
         if hasattr(model, "predict_proba"):
-            # predict_proba retorna [[prob_0, prob_1]]. Pegamos a prob_1 (Lucro)
             probabilidade = model.predict_proba(X)[0][1]
         else:
-            # API nativa do LightGBM
             probabilidade = model.predict(X)[0]
             
         return float(probabilidade)
@@ -163,7 +171,6 @@ def model_predict_prob(row):
     except Exception as e:
         log_event(f"[ERRO] Previsão ML: {e}")
         return None
-
 
 def abrir_ordem():
     global ultima_ordem, bloqueio_ate # EDITADO: Adicionada global
@@ -450,12 +457,16 @@ def monitorar_posicoes():
         print(f"[MONITOR] {side} {size} @ {entry_price} | Preço atual: {current_price}")
 
         fechar = False
+        tp_real = ultima_ordem.get("take_profit", entry_price * 1.02)
+        sl_real = ultima_ordem.get("stop_loss", entry_price * 0.98)
+
         if side == "Buy":
-            if current_price >= entry_price * (1 + TAKE_PROFIT_PCT) or current_price <= entry_price * (1 - STOP_LOSS_PCT):
+            if current_price >= tp_real or current_price <= sl_real:
                 fechar = True
         elif side == "Sell":
-            if current_price <= entry_price * (1 - TAKE_PROFIT_PCT) or current_price >= entry_price * (1 + STOP_LOSS_PCT):
+            if current_price <= tp_real or current_price >= sl_real:
                 fechar = True
+                
         if fechar:
                 close_position(SYMBOL, side)
 
