@@ -22,7 +22,7 @@ print(">>> Script main.py carregado com sucesso")
 
 
 SYMBOL = "BTCUSDT"
-LOOP_INTERVAL = 15
+LOOP_INTERVAL = 5
 LOG_FILE = "trading_log.csv"
 
 TAKE_PROFIT_PCT = 0.0010
@@ -259,8 +259,8 @@ def abrir_ordem():
 
     atr_atual = df.iloc[-1]['atr']
 
-    SL_MULTIPLIER = 1.5
-    TP_MULTIPLIER = 2.0
+    SL_MULTIPLIER = 1.2
+    TP_MULTIPLIER = 1.0
 
     # ADICIONADO: Forçado o arredondamento para 1 casa decimal (Tick Size do BTC na Bybit)
     if sinal_tecnico == "buy":
@@ -272,7 +272,7 @@ def abrir_ordem():
         take_profit = round(price - (atr_atual * TP_MULTIPLIER), 1)
         stop_loss = round(price + (atr_atual * SL_MULTIPLIER), 1)
 
-    trailing_stop = round((atr_atual * 0.5), 1)
+    trailing_stop = round((atr_atual * 0.4), 1)
 
     log_event(f"Abrindo {side} | Preço: {price} | TP: {take_profit} | SL: {stop_loss} | TS: {trailing_stop}")
     order_result = place_order(
@@ -531,7 +531,7 @@ if __name__ == "__main__":
     )
     
     ws.kline_stream(
-        interval="15", 
+        interval="5", 
         symbol=SYMBOL, 
         callback=handle_kline
     )
@@ -553,7 +553,7 @@ if __name__ == "__main__":
                 time.sleep(5)
                 # Recria a conexão do zero
                 ws = WebSocket(testnet=True, channel_type="linear")
-                ws.kline_stream(interval="15", symbol=SYMBOL, callback=handle_kline)
+                ws.kline_stream(interval="5", symbol=SYMBOL, callback=handle_kline)
                 
                 ultimo_candle_recebido = datetime.now() # Reseta o tempo após reiniciar
 
