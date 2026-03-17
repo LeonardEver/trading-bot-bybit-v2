@@ -31,8 +31,10 @@ TRAILING_STOP_PCT = 0.0008
 
 ultima_ordem = {"side": None, "hora": datetime.min}
 
-# Variavel para Circuit Breaker
+# Variáveis Globais de Controle e Proteção
 bloqueio_ate = datetime.min
+ultima_modificacao_modelo = 0.0  # CORREÇÃO: Variável do Hot-Reload declarada aqui no topo!
+ultimo_candle_recebido = datetime.now() # ADICIONADO: Variável do Cão de Guarda (Watchdog)
 
 # Pesos iniciais
 peso_tecnico = 0.5
@@ -45,6 +47,7 @@ MODEL_PATH = Path("ml/model_lgb.pkl")
 model = None
 if MODEL_PATH.exists():
     model = joblib.load(MODEL_PATH)
+    ultima_modificacao_modelo = os.path.getmtime(MODEL_PATH) # Já anota a hora do modelo atual
     log_event(f"Modelo ML carregado de {MODEL_PATH}")
 else:
     log_event("⚠ Modelo ML não encontrado — rodando sem filtro de ML.")
@@ -79,7 +82,7 @@ def calcular_performance():
             return
 
         ultimos = reader[-50:]
-        if len(ultimos) < 10: # Não ajusta pesos se não tiver pelo menos 10 trades de histórico
+        if len(ultimos) < 10:
             return
 
         pnl_tecnico_total = 0.0
@@ -95,39 +98,30 @@ def calcular_performance():
                 elif origem == "sentimento":
                     pnl_sentimento_total += pnl
                 elif origem == "misto":
-                    # Se foi misto, divide o mérito ou a culpa financeiramente
                     pnl_tecnico_total += pnl / 2
                     pnl_sentimento_total += pnl / 2
             except ValueError:
                 continue
 
-        # Evita divisão por zero e adiciona um "piso" de segurança
         if pnl_tecnico_total == 0 and pnl_sentimento_total == 0:
             return
 
-        # --- A MÁGICA DA ADAPTAÇÃO POR RENTABILIDADE ---
-        # Se os dois estão dando prejuízo, não mudamos os pesos agressivamente
         if pnl_tecnico_total <= 0 and pnl_sentimento_total <= 0:
             log_event("[ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.")
             return
 
-        # Zera perdas para o cálculo de proporção (quem perde não ganha peso)
         peso_t_calc = max(0.01, pnl_tecnico_total)
         peso_s_calc = max(0.01, pnl_sentimento_total)
 
         soma = peso_t_calc + peso_s_calc
         
-        # O novo peso alvo é estritamente proporcional a quem está ganhando mais dinheiro
         alvo_tecnico = peso_t_calc / soma
         alvo_sentimento = peso_s_calc / soma
 
-        # Suavização: O bot não muda o peso do zero a 100% de uma vez. 
-        # Ele caminha 10% em direção ao alvo a cada ciclo para não ser enganado por um único trade de sorte
         taxa_suavizacao = 0.10 
         peso_tecnico = (peso_tecnico * (1 - taxa_suavizacao)) + (alvo_tecnico * taxa_suavizacao)
         peso_sentimento = (peso_sentimento * (1 - taxa_suavizacao)) + (alvo_sentimento * taxa_suavizacao)
 
-        # Garante limites máximos e mínimos
         peso_tecnico = max(0.1, min(0.9, peso_tecnico))
         peso_sentimento = 1 - peso_tecnico
 
@@ -142,7 +136,7 @@ def model_predict_prob(row):
     """Recebe última linha do DF e calcula probabilidade do label=1, atualizando o modelo dinamicamente"""
     global model, ultima_modificacao_modelo
     
-    # Sistema de Hot-Reload: Verifica se o arquivo .pkl foi atualizado no disco
+    # Sistema de Hot-Reload agora funcionará porque a variável foi declarada no topo!
     if MODEL_PATH.exists():
         modificacao_atual = os.path.getmtime(MODEL_PATH)
         if modificacao_atual > ultima_modificacao_modelo:
@@ -157,7 +151,7 @@ def model_predict_prob(row):
         df_row = pd.DataFrame([row])
         for f in FEATURES:
             if f not in df_row.columns:
-                df_row[f] = 0.0  # preenche faltantes
+                df_row[f] = 0.0
         
         X = df_row[FEATURES].fillna(0)
         
@@ -173,24 +167,20 @@ def model_predict_prob(row):
         return None
 
 def abrir_ordem():
-    global ultima_ordem, bloqueio_ate # EDITADO: Adicionada global
+    global ultima_ordem, bloqueio_ate
 
-        # ADICIONADO: Trava do Circuit Breaker para evitar perder mais dinheiro
     if datetime.now() < bloqueio_ate:
         log_event(f"⏳ Bot em modo Circuit Breaker. Operações suspensas até {bloqueio_ate.strftime('%H:%M:%S')}.")
         return
 
-    # --- 1) Coleta dados de mercado ---
     df = get_ohlcv(SYMBOL)
     if df.empty:
         return
 
     df = calculate_indicators(df)
 
-    #Log com DataFrame
     log_event(f"📊 Preço de fechamento real (DataFrame): {df['close'].iloc[-1]}")
 
-    # --- 2) Análise de sentimento ---
     sentimento_str, sent_score = get_news_sentiment("BTC")
     if sentimento_str == "bullish":
         confiança_sentimento = 100
@@ -201,7 +191,6 @@ def abrir_ordem():
 
     df["sentiment_score"] = sent_score
 
-    # Extrai hora/minuto
     ts = pd.to_datetime(df["timestamp"]) if "timestamp" in df.columns else pd.to_datetime(df.index)
     if isinstance(ts, pd.DatetimeIndex):
         df["hour"], df["minute"] = ts.hour, ts.minute
@@ -210,14 +199,12 @@ def abrir_ordem():
 
     log_event(f"Sentimento: {sentimento_str} ({confiança_sentimento}%)")
 
-    # --- 3) Sinal técnico ---
     trade_decision = generate_trade_signal(df)
     sinal_tecnico = trade_decision.get("signal")
     confiança_tecnica = trade_decision.get("confidence", 50.0)
 
     confiança_final = (peso_tecnico * confiança_tecnica) + (peso_sentimento * confiança_sentimento)
 
-    # Define risco
     if confiança_final >= 80:
         risk_level = "baixo"
     elif confiança_final >= 60:
@@ -228,7 +215,6 @@ def abrir_ordem():
     log_event(f"Sinal técnico: {sinal_tecnico} | Conf. técnica: {confiança_tecnica}% | "
               f"Conf. final: {confiança_final:.1f}% | Risco: {risk_level}")
 
-    # --- 4) Machine Learning ---
     prob_ml = model_predict_prob(df.iloc[-1].to_dict())
     if prob_ml is not None:
         log_event(f"Probabilidade ML: {prob_ml:.3f}")
@@ -236,20 +222,17 @@ def abrir_ordem():
             log_event("⚠ ML filtrou a entrada — probabilidade abaixo do threshold.")
             return
 
-        # ADICIONADO: Filtro de Consenso Mínimo (Quebra da ditadura do ML)
         if prob_ml > 0.60:
-            if confiança_final < 50.0 and prob_ml < 0.85:
+            if confiança_final < 50.0 and prob_ml < 0.72: # CONFIGURA CHANCE DO ML
                 log_event("⚠ Trade cancelado: ML quer operar contra a tendência, mas sem confluência macro/técnica.")
                 return
 
-    # --- DEBUG EXTRA (para investigar decisões) ---
     ultimo = df.iloc[-1]
     print(f"[DEBUG] ML prob: {prob_ml:.2f} | Sentimento: {sentimento_str} ({sent_score:.2f})")
     print(f"[DEBUG] RSI: {ultimo['rsi']:.2f} | MACD: {ultimo['macd']:.2f} | "
           f"Signal: {ultimo['macd_signal']:.2f} | EMA20: {ultimo['ema_20']:.2f} | EMA50: {ultimo['ema_50']:.2f}")
     print(f"[DEBUG] Decisão: {'Abrir trade' if sinal_tecnico in ['buy', 'sell'] else 'Ignorar sinal'}")
 
-    # --- 5) Valida sinal ---
     if sinal_tecnico not in ["buy", "sell"]:
         return
 
@@ -270,33 +253,30 @@ def abrir_ordem():
         return
 
     qty = calculate_order_qty(SYMBOL, risk_level, price)
+    
+    # ADICIONADO: Arredonda a QTY para 3 casas decimais (Step Size do BTC na Bybit)
+    qty = round(qty, 3) 
 
-    # Obter o ATR do candle mais recente
     atr_atual = df.iloc[-1]['atr']
 
-    # Multiplicadores profissionais
-    # Stop Loss a 1.5x o ATR protege contra ruídos de violinada
-    # Take Profit a 2.0x o ATR garante um Risco/Retorno positivo
     SL_MULTIPLIER = 1.5
     TP_MULTIPLIER = 2.0
 
-    # --- 6) Calcula TP / SL Dinâmicos ---
+    # ADICIONADO: Forçado o arredondamento para 1 casa decimal (Tick Size do BTC na Bybit)
     if sinal_tecnico == "buy":
-        side = "Buy"  # <--- ADICIONE ESTA LINHA
-        take_profit = round(price + (atr_atual * TP_MULTIPLIER), 2)
-        stop_loss = round(price - (atr_atual * SL_MULTIPLIER), 2)
-    else: # "sell"
-        side = "Sell" # <--- ADICIONE ESTA LINHA
-        take_profit = round(price - (atr_atual * TP_MULTIPLIER), 2)
-        stop_loss = round(price + (atr_atual * SL_MULTIPLIER), 2)
+        side = "Buy"
+        take_profit = round(price + (atr_atual * TP_MULTIPLIER), 1)
+        stop_loss = round(price - (atr_atual * SL_MULTIPLIER), 1)
+    else: 
+        side = "Sell"
+        take_profit = round(price - (atr_atual * TP_MULTIPLIER), 1)
+        stop_loss = round(price + (atr_atual * SL_MULTIPLIER), 1)
 
-    # Trailing stop pode acompanhar a volatilidade também (ex: metade do ATR)
-    trailing_stop = round((atr_atual * 0.5), 2)
+    trailing_stop = round((atr_atual * 0.5), 1)
 
-    # --- 7) Envia ordem ---
     log_event(f"Abrindo {side} | Preço: {price} | TP: {take_profit} | SL: {stop_loss} | TS: {trailing_stop}")
     order_result = place_order(
-        SYMBOL, side, qty,
+        SYMBOL, side, str(qty),
         str(take_profit),
         str(stop_loss),
         str(trailing_stop)
@@ -312,7 +292,6 @@ def abrir_ordem():
         log_event(f"❌ Falha ao abrir ordem {side} em {SYMBOL}: {order_result}")
         return
 
-    # --- 8) trade_id + log de decisão ---
     trade_id = str(uuid.uuid4())
     decision_doc = {
         "trade_id": trade_id,
@@ -340,8 +319,6 @@ def abrir_ordem():
     }
     log_signal_decision(decision_doc)
 
-
-    # --- 9) Atualiza ultima_ordem (inclui trade_id e alvos) ---
     ultima_ordem = {
         "trade_id": trade_id,
         "side": sinal_tecnico,
@@ -372,10 +349,8 @@ def abrir_ordem():
     }
 
 def fechar_ordem(side, entry_price, size, current_price):
-    # Fecha posição real na corretora
     close_position(SYMBOL, side)
 
-    # Calcula PnL e % com Taxas da Corretora embutidas (0.05% entrada + 0.05% saída)
     taxa_corretora = 0.0005
     custo_taxas = (entry_price * size * taxa_corretora) + (current_price * size * taxa_corretora)
     
@@ -384,7 +359,6 @@ def fechar_ordem(side, entry_price, size, current_price):
     
     pnl_pct = ((current_price / entry_price) - 1) * 100 if side == "Buy" else ((entry_price / current_price) - 1) * 100
 
-    # Monta trade_data para logs
     trade_data = {
         "timestamp": datetime.now(),
         "trade_id": ultima_ordem.get("trade_id"),
@@ -418,12 +392,10 @@ def fechar_ordem(side, entry_price, size, current_price):
         "minute": ultima_ordem.get("minute")
     }
 
-    # Salva em CSV e log local
     salvar_log_csv(trade_data)
     log_event(f"{side} fechado - PnL: {pnl:.2f} ({pnl_pct:.3f}%) | Origem: {trade_data['decision_source']}")
     log_trade(trade_data)
 
-    # Atualiza outcome no Mongo (ml_dataset)
     trade_id = trade_data.get("trade_id")
     if trade_id:
         label = 1 if pnl > 0 else 0
@@ -436,7 +408,6 @@ def fechar_ordem(side, entry_price, size, current_price):
             "closed_at": datetime.utcnow()
         })
 
-    # Reseta cooldown para liberar novas ordens
     ultima_ordem["side"] = None
     ultima_ordem["hora"] = datetime.min
 
@@ -470,19 +441,17 @@ def monitorar_posicoes():
         if fechar:
                 close_position(SYMBOL, side)
 
-                # --- INÍCIO DA MATEMÁTICA DE TAXAS (CORREÇÃO 3) ---
-                taxa_corretora = 0.0005 # 0.05% de taxa da Bybit
+                taxa_corretora = 0.0005
                 custo_taxas = (entry_price * size * taxa_corretora) + (current_price * size * taxa_corretora)
 
                 pnl_bruto = (current_price - entry_price) * size if side == "Buy" else (entry_price - current_price) * size
                 pnl = pnl_bruto - custo_taxas
                 
                 pnl_pct = ((current_price / entry_price) - 1) * 100 if side == "Buy" else ((entry_price / current_price) - 1) * 100
-                # --- FIM DA MATEMÁTICA DE TAXAS ---
 
                 trade_data = {
                     "timestamp": datetime.now(),
-                    "trade_id": ultima_ordem.get("trade_id"),   # <--- vincula entrada/saída
+                    "trade_id": ultima_ordem.get("trade_id"),
                     "symbol": SYMBOL,
                     "side": side,
                     "entry_price": entry_price,
@@ -516,7 +485,6 @@ def monitorar_posicoes():
                 log_event(f"{side} fechado - PnL: {pnl:.2f} ({pnl_pct:.3f}%) | Origem: {trade_data['decision_source']}")
                 log_trade(trade_data)
 
-                # >>> Atualiza outcome no documento de decisão do ML
                 trade_id = trade_data.get("trade_id")
                 if trade_id:
                     label = 1 if pnl > 0 else 0
@@ -537,15 +505,16 @@ if __name__ == "__main__":
 
     def handle_kline(message):
         """Callback acionado pela Bybit"""
+        global ultimo_candle_recebido # ADICIONADO: Avisa a Thread principal que o WebSocket está vivo!
+        
         data = message.get("data", [])
         if data:
             candle = data[0]
             if candle.get("confirm"):
-                # O preço será logado de forma correta e garantida lá na função abrir_ordem()
+                ultimo_candle_recebido = datetime.now() # Reseta o relógio do Watchdog
+                
                 log_event("🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...")
                 
-                # --- A MÁGICA DO MULTI-THREADING AQUI ---
-                # Criamos uma função interna só para encapsular o trabalho pesado
                 def executar_trabalho_pesado():
                     try:
                         calcular_performance()
@@ -553,19 +522,14 @@ if __name__ == "__main__":
                     except Exception as e:
                         log_event(f"❌ Erro durante a análise pós-candle: {e}")
 
-                # Disparamos o trabalho pesado em uma nova Thread (em paralelo)
-                # Assim, a função handle_kline termina instantaneamente e o WebSocket não trava!
                 thread_analise = threading.Thread(target=executar_trabalho_pesado)
                 thread_analise.start()
-                # ----------------------------------------
 
-    # 1. Inicia a conexão WebSocket
     ws = WebSocket(
         testnet=True, 
         channel_type="linear"
     )
     
-    # 2. Assina o tempo gráfico
     ws.kline_stream(
         interval="15", 
         symbol=SYMBOL, 
@@ -576,7 +540,26 @@ if __name__ == "__main__":
 
     while True:
         try:
+            # ADICIONADO: Cão de Guarda (Watchdog) para reinicialização em caso de queda silenciosa
+            agora = datetime.now()
+            if (agora - ultimo_candle_recebido).total_seconds() > (16 * 60): # 16 minutos sem novidades do mercado
+                log_event("💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...")
+                
+                try:
+                    ws.ws.close() # Mata a conexão travada
+                except:
+                    pass
+                
+                time.sleep(5)
+                # Recria a conexão do zero
+                ws = WebSocket(testnet=True, channel_type="linear")
+                ws.kline_stream(interval="15", symbol=SYMBOL, callback=handle_kline)
+                
+                ultimo_candle_recebido = datetime.now() # Reseta o tempo após reiniciar
+
+            # Monitora as ordens abertas respeitando o rate limit da Bybit (15s)
             monitorar_posicoes()
+            
         except Exception as e:
             log_event(f"❌ Erro ao monitorar posições: {e}")
             
