@@ -3167,3 +3167,262 @@
 [2026-03-17 20:00:00] Sinal técnico: buy | Conf. técnica: 40.0% | Conf. final: 20.0% | Risco: alto
 [2026-03-17 20:00:00] Probabilidade ML: 0.117
 [2026-03-17 20:00:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:04:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:04:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:05:00] 📊 Preço de fechamento real (DataFrame): 74186.8
+[2026-03-17 20:05:00] Sentimento: bearish (0%)
+[2026-03-17 20:05:00] Sinal técnico: hold | Conf. técnica: 20.0% | Conf. final: 10.0% | Risco: alto
+[2026-03-17 20:05:00] Probabilidade ML: 0.163
+[2026-03-17 20:05:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:09:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:09:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:10:00] 📊 Preço de fechamento real (DataFrame): 74239.9
+[2026-03-17 20:10:00] Sentimento: bearish (0%)
+[2026-03-17 20:10:00] Sinal técnico: hold | Conf. técnica: 20.0% | Conf. final: 10.0% | Risco: alto
+[2026-03-17 20:10:00] Probabilidade ML: 0.140
+[2026-03-17 20:10:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:14:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:14:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:15:00] 📊 Preço de fechamento real (DataFrame): 73968.9
+[2026-03-17 20:15:00] Sentimento: bearish (0%)
+[2026-03-17 20:15:00] Sinal técnico: sell | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 20:15:00] Probabilidade ML: 0.243
+[2026-03-17 20:15:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:19:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:19:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:20:00] 📊 Preço de fechamento real (DataFrame): 73928.3
+[2026-03-17 20:20:00] Sentimento: bearish (0%)
+[2026-03-17 20:20:00] Sinal técnico: sell | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 20:20:00] Probabilidade ML: 0.263
+[2026-03-17 20:20:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:24:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:24:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:25:00] 📊 Preço de fechamento real (DataFrame): 73980.1
+[2026-03-17 20:25:00] Sentimento: bearish (0%)
+[2026-03-17 20:25:00] Sinal técnico: sell | Conf. técnica: 40.0% | Conf. final: 20.0% | Risco: alto
+[2026-03-17 20:25:00] Probabilidade ML: 0.319
+[2026-03-17 20:25:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:29:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:29:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:30:00] 📊 Preço de fechamento real (DataFrame): 74045.1
+[2026-03-17 20:30:00] Sentimento: bearish (0%)
+[2026-03-17 20:30:00] Sinal técnico: hold | Conf. técnica: 20.0% | Conf. final: 10.0% | Risco: alto
+[2026-03-17 20:30:00] Probabilidade ML: 0.244
+[2026-03-17 20:30:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:34:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:34:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:35:00] 📊 Preço de fechamento real (DataFrame): 74150.0
+[2026-03-17 20:35:00] Sentimento: bearish (0%)
+[2026-03-17 20:35:00] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-03-17 20:35:00] Probabilidade ML: 0.268
+[2026-03-17 20:35:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:39:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:39:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:40:00] 📊 Preço de fechamento real (DataFrame): 74155.2
+[2026-03-17 20:40:00] Sentimento: bearish (0%)
+[2026-03-17 20:40:00] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-03-17 20:40:00] Probabilidade ML: 0.258
+[2026-03-17 20:40:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:44:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:44:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:45:00] 📊 Preço de fechamento real (DataFrame): 74291.5
+[2026-03-17 20:45:00] Sentimento: bearish (0%)
+[2026-03-17 20:45:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 20:45:00] Probabilidade ML: 0.234
+[2026-03-17 20:45:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:49:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:49:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:50:00] 📊 Preço de fechamento real (DataFrame): 74359.5
+[2026-03-17 20:50:00] Sentimento: bearish (0%)
+[2026-03-17 20:50:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 20:50:00] Probabilidade ML: 0.183
+[2026-03-17 20:50:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:54:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:54:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 20:55:00] 📊 Preço de fechamento real (DataFrame): 74380.7
+[2026-03-17 20:55:00] Sentimento: bearish (0%)
+[2026-03-17 20:55:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 20:55:00] Probabilidade ML: 0.195
+[2026-03-17 20:55:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 20:59:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 20:59:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:00:00] 📊 Preço de fechamento real (DataFrame): 74366.0
+[2026-03-17 21:00:00] Sentimento: bearish (0%)
+[2026-03-17 21:00:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 21:00:00] Probabilidade ML: 0.184
+[2026-03-17 21:00:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:04:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:04:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:05:00] 📊 Preço de fechamento real (DataFrame): 74310.7
+[2026-03-17 21:05:00] Sentimento: bearish (0%)
+[2026-03-17 21:05:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 21:05:00] Probabilidade ML: 0.238
+[2026-03-17 21:05:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:09:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:09:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:10:00] 📊 Preço de fechamento real (DataFrame): 74300.0
+[2026-03-17 21:10:00] Sentimento: bearish (0%)
+[2026-03-17 21:10:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 21:10:00] Probabilidade ML: 0.244
+[2026-03-17 21:10:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:14:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:14:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:15:00] 📊 Preço de fechamento real (DataFrame): 74366.5
+[2026-03-17 21:15:00] Sentimento: bearish (0%)
+[2026-03-17 21:15:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 21:15:00] Probabilidade ML: 0.188
+[2026-03-17 21:15:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:19:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:19:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:20:00] 📊 Preço de fechamento real (DataFrame): 74294.5
+[2026-03-17 21:20:00] Sentimento: bearish (0%)
+[2026-03-17 21:20:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 21:20:00] Probabilidade ML: 0.257
+[2026-03-17 21:20:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:24:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:24:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:25:00] 📊 Preço de fechamento real (DataFrame): 74199.9
+[2026-03-17 21:25:00] Sentimento: bearish (0%)
+[2026-03-17 21:25:00] Sinal técnico: buy | Conf. técnica: 40.0% | Conf. final: 20.0% | Risco: alto
+[2026-03-17 21:25:00] Probabilidade ML: 0.100
+[2026-03-17 21:25:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:29:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:29:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:30:00] 📊 Preço de fechamento real (DataFrame): 74219.9
+[2026-03-17 21:30:00] Sentimento: bearish (0%)
+[2026-03-17 21:30:00] Sinal técnico: buy | Conf. técnica: 40.0% | Conf. final: 20.0% | Risco: alto
+[2026-03-17 21:30:00] Probabilidade ML: 0.100
+[2026-03-17 21:30:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:34:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:34:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:35:00] 📊 Preço de fechamento real (DataFrame): 74394.4
+[2026-03-17 21:35:00] Sentimento: bearish (0%)
+[2026-03-17 21:35:00] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 50.0% | Risco: alto
+[2026-03-17 21:35:00] Probabilidade ML: 0.159
+[2026-03-17 21:35:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:39:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:39:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:40:00] 📊 Preço de fechamento real (DataFrame): 74269.4
+[2026-03-17 21:40:00] Sentimento: bearish (0%)
+[2026-03-17 21:40:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 21:40:00] Probabilidade ML: 0.087
+[2026-03-17 21:40:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:44:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:44:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:45:00] 📊 Preço de fechamento real (DataFrame): 74191.1
+[2026-03-17 21:45:00] Sentimento: bearish (0%)
+[2026-03-17 21:45:00] Sinal técnico: hold | Conf. técnica: 20.0% | Conf. final: 10.0% | Risco: alto
+[2026-03-17 21:45:00] Probabilidade ML: 0.087
+[2026-03-17 21:45:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:49:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:49:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:50:00] 📊 Preço de fechamento real (DataFrame): 74289.9
+[2026-03-17 21:50:00] Sentimento: bearish (0%)
+[2026-03-17 21:50:00] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 50.0% | Risco: alto
+[2026-03-17 21:50:00] Probabilidade ML: 0.106
+[2026-03-17 21:50:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:54:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:54:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 21:55:00] 📊 Preço de fechamento real (DataFrame): 74243.6
+[2026-03-17 21:55:00] Sentimento: bearish (0%)
+[2026-03-17 21:55:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 21:55:00] Probabilidade ML: 0.068
+[2026-03-17 21:55:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 21:59:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 21:59:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:00:01] 📊 Preço de fechamento real (DataFrame): 74279.0
+[2026-03-17 22:00:01] Sentimento: bearish (0%)
+[2026-03-17 22:00:01] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:00:01] Probabilidade ML: 0.102
+[2026-03-17 22:00:01] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:04:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:04:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:05:00] 📊 Preço de fechamento real (DataFrame): 74228.6
+[2026-03-17 22:05:00] Sentimento: bearish (0%)
+[2026-03-17 22:05:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:05:00] Probabilidade ML: 0.133
+[2026-03-17 22:05:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:09:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:09:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:10:00] 📊 Preço de fechamento real (DataFrame): 74169.2
+[2026-03-17 22:10:00] Sentimento: bearish (0%)
+[2026-03-17 22:10:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:10:00] Probabilidade ML: 0.126
+[2026-03-17 22:10:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:14:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:14:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:15:00] 📊 Preço de fechamento real (DataFrame): 74363.5
+[2026-03-17 22:15:00] Sentimento: bearish (0%)
+[2026-03-17 22:15:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:15:00] Probabilidade ML: 0.292
+[2026-03-17 22:15:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:19:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:19:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:20:00] 📊 Preço de fechamento real (DataFrame): 74371.1
+[2026-03-17 22:20:00] Sentimento: bearish (0%)
+[2026-03-17 22:20:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:20:00] Probabilidade ML: 0.352
+[2026-03-17 22:20:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:24:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:24:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:25:00] 📊 Preço de fechamento real (DataFrame): 74297.4
+[2026-03-17 22:25:00] Sentimento: bearish (0%)
+[2026-03-17 22:25:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:25:00] Probabilidade ML: 0.346
+[2026-03-17 22:25:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:29:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:29:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:30:00] 📊 Preço de fechamento real (DataFrame): 74158.1
+[2026-03-17 22:30:00] Sentimento: bearish (0%)
+[2026-03-17 22:30:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:30:00] Probabilidade ML: 0.114
+[2026-03-17 22:30:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:34:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:34:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:35:00] 📊 Preço de fechamento real (DataFrame): 74056.1
+[2026-03-17 22:35:00] Sentimento: bearish (0%)
+[2026-03-17 22:35:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 22:35:00] Probabilidade ML: 0.102
+[2026-03-17 22:35:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:39:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:39:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:40:00] 📊 Preço de fechamento real (DataFrame): 74063.8
+[2026-03-17 22:40:00] Sentimento: bearish (0%)
+[2026-03-17 22:40:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:40:00] Probabilidade ML: 0.096
+[2026-03-17 22:40:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:44:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:44:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:45:00] 📊 Preço de fechamento real (DataFrame): 74012.9
+[2026-03-17 22:45:00] Sentimento: bearish (0%)
+[2026-03-17 22:45:00] Sinal técnico: buy | Conf. técnica: 60.0% | Conf. final: 30.0% | Risco: alto
+[2026-03-17 22:45:00] Probabilidade ML: 0.085
+[2026-03-17 22:45:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:49:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:49:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:50:00] 📊 Preço de fechamento real (DataFrame): 74151.9
+[2026-03-17 22:50:00] Sentimento: bearish (0%)
+[2026-03-17 22:50:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:50:00] Probabilidade ML: 0.137
+[2026-03-17 22:50:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:54:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:54:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 22:55:00] 📊 Preço de fechamento real (DataFrame): 74166.3
+[2026-03-17 22:55:00] Sentimento: bearish (0%)
+[2026-03-17 22:55:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 22:55:00] Probabilidade ML: 0.166
+[2026-03-17 22:55:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 22:59:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 22:59:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 23:00:00] 📊 Preço de fechamento real (DataFrame): 74278.1
+[2026-03-17 23:00:00] Sentimento: bearish (0%)
+[2026-03-17 23:00:00] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 50.0% | Risco: alto
+[2026-03-17 23:00:00] Probabilidade ML: 0.098
+[2026-03-17 23:00:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
+[2026-03-17 23:04:59] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-03-17 23:04:59] [ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.
+[2026-03-17 23:05:00] 📊 Preço de fechamento real (DataFrame): 74140.0
+[2026-03-17 23:05:00] Sentimento: bearish (0%)
+[2026-03-17 23:05:00] Sinal técnico: buy | Conf. técnica: 80.0% | Conf. final: 40.0% | Risco: alto
+[2026-03-17 23:05:00] Probabilidade ML: 0.099
+[2026-03-17 23:05:00] ⚠ ML filtrou a entrada — probabilidade abaixo do threshold.
