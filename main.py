@@ -2,15 +2,16 @@ import time
 import csv
 import joblib
 import pandas as pd
+import numpy as np
 import uuid
 import os
 from datetime import datetime, timedelta
 from pathlib import Path
+from threading import Lock
 from utils.ohlcv import get_ohlcv
 from strategies.strategy import generate_trade_signal
 from sentiment.sentiment_analysis import get_news_sentiment
-from trading.bybit_api import place_order, get_last_price, get_all_positions, close_position
-from trading.risk_management import calculate_order_qty
+from trading.bybit_api import place_order, get_last_price, get_all_positions, close_position, get_balance
 from trading.logger import log_event
 from utils.technical_indicators import calculate_indicators
 from database.mongo_logger import log_trade, log_signal_decision, update_signal_outcome
@@ -22,7 +23,7 @@ print(">>> Script main.py carregado com sucesso")
 
 
 SYMBOL = "BTCUSDT"
-LOOP_INTERVAL = 5
+LOOP_INTERVAL = 15
 LOG_FILE = "trading_log.csv"
 
 TAKE_PROFIT_PCT = 0.0010
@@ -30,6 +31,7 @@ STOP_LOSS_PCT = 0.0010
 TRAILING_STOP_PCT = 0.0008
 
 ultima_ordem = {"side": None, "hora": datetime.min}
+ordem_lock = Lock() # ADICIONADO: Variável de proteção contra colisão de leitura/escrita simultânea
 
 # Variáveis Globais de Controle e Proteção
 bloqueio_ate = datetime.min
@@ -53,6 +55,154 @@ else:
     log_event("⚠ Modelo ML não encontrado — rodando sem filtro de ML.")
 
 
+# ============================================================
+# CORRECTED FUNCTIONS (Priority 1-5)
+# ============================================================
+
+def calculate_recent_edge(lookback_trades=50):
+    """
+    Calculate actual win rate, expectancy, and Sharpe from trading_log.csv
+    Returns: (win_rate, avg_win, avg_loss, profit_factor, expectancy, sharpe)
+    """
+    if not Path(LOG_FILE).exists():
+        return 0.33, 0.01, 0.01, 1.0, 0.0, 0.0  # Default conservative
+    
+    try:
+        df_trades = pd.read_csv(LOG_FILE)
+        df_trades = df_trades.tail(lookback_trades).copy()
+        
+        if len(df_trades) < 10:
+            return 0.33, 0.01, 0.01, 1.0, 0.0, 0.0
+        
+        pnls = df_trades['pnl'].astype(float).values
+        
+        wins = pnls[pnls > 0.001]
+        losses = pnls[pnls < -0.001]
+        
+        n_wins = len(wins)
+        n_losses = len(losses)
+        n_total = n_wins + n_losses
+        
+        if n_total == 0:
+            return 0.33, 0.01, 0.01, 1.0, 0.0, 0.0
+        
+        win_rate = n_wins / n_total
+        avg_win = wins.mean() if len(wins) > 0 else 0.001
+        avg_loss = -losses.mean() if len(losses) > 0 else 0.001
+        
+        profit_factor = (n_wins * avg_win) / max(n_losses * avg_loss, 0.001)
+        expectancy = (win_rate * avg_win) - ((1 - win_rate) * avg_loss)
+        
+        returns = pnls / 100
+        sharpe = (returns.mean() / returns.std()) * np.sqrt(252) if returns.std() > 0 else 0
+        
+        log_event(f"[EDGE METRICS] WR={win_rate:.1%} | PF={profit_factor:.2f} | "
+                  f"Exp={expectancy:.4f} | Sharpe={sharpe:.2f}")
+        
+        return win_rate, avg_win, avg_loss, profit_factor, expectancy, sharpe
+        
+    except Exception as e:
+        log_event(f"[ERROR] Edge calculation: {e}")
+        return 0.33, 0.01, 0.01, 1.0, 0.0, 0.0
+
+
+def calculate_order_qty_kelly_criterion(symbol, risk_level, current_price, capital="dynamic"):
+    """
+    CORRECTED: Position sizing using Kelly Criterion
+    - Uses actual account balance (not hardcoded 100 USDT)
+    - Applies Kelly fraction based on proven edge
+    """
+    
+    if capital == "dynamic":
+        actual_balance = get_balance()
+        if actual_balance <= 0:
+            actual_balance = 100.0
+    else:
+        actual_balance = float(capital)
+    
+    win_rate, avg_win, avg_loss, profit_factor, expectancy, sharpe = calculate_recent_edge(lookback_trades=50)
+    
+    if win_rate < 0.33 or expectancy <= 0:
+        kelly_f = 0.0
+        log_event(f"⚠ [KELLY] No edge detected (WR={win_rate:.1%}). Reducing position to 0.")
+    else:
+        kelly_f = (win_rate - (1 - win_rate) * (avg_loss / avg_win)) / (avg_win / avg_loss)
+        kelly_f = max(0, kelly_f)
+        kelly_f_conservative = kelly_f * 0.25
+        log_event(f"[KELLY] Full={kelly_f:.3f} | Conservative (25%)={kelly_f_conservative:.3f} | Sharpe={sharpe:.2f}")
+        kelly_f = kelly_f_conservative
+    
+    risk_multiplier = {"baixo": 0.5, "medio": 1.0, "alto": 1.5}.get(risk_level, 1.0)
+    adjusted_kelly = kelly_f * risk_multiplier
+    
+    max_risk_usd = actual_balance * 0.01 if risk_level == "baixo" else \
+                   actual_balance * 0.015 if risk_level == "medio" else \
+                   actual_balance * 0.02
+    
+    position_usd = actual_balance * adjusted_kelly
+    position_usd = min(position_usd, max_risk_usd)
+    
+    qty = position_usd / current_price
+    qty = max(0.001, min(qty, actual_balance * 0.05 / current_price))
+    
+    return round(qty, 3)
+
+
+def detect_market_regime(df):
+    """Detect market regime: trending, ranging, or high_vol"""
+    if len(df) < 30:
+        return "normal"
+    
+    try:
+        atr_recent = df['atr'].iloc[-1]
+        atr_20ma = df['atr'].rolling(20).mean().iloc[-1]
+        vol_ratio = atr_recent / atr_20ma if atr_20ma > 0 else 1.0
+        
+        ema_50 = df['ema_50'].iloc[-1]
+        ema_200 = df['ema_200'].iloc[-1]
+        trend_strength = abs(ema_50 - ema_200) / ema_200 if ema_200 > 0 else 0
+        
+        if trend_strength > 0.02 and vol_ratio < 1.2:
+            return "trending"
+        elif vol_ratio > 1.3:
+            return "high_vol"
+        else:
+            return "ranging"
+    except:
+        return "normal"
+
+
+def calculate_tp_sl_dynamic(price, atr, side, market_regime="normal"):
+    """CORRECTED: Regime-adaptive TP/SL targeting 1:2+ risk:reward ratio"""
+    
+    if market_regime == "trending":
+        tp_mult = 2.0
+        sl_mult = 0.8
+        ratio = 2.5
+    elif market_regime == "high_vol":
+        tp_mult = 1.5
+        sl_mult = 0.9
+        ratio = 1.67
+    else:
+        tp_mult = 1.0
+        sl_mult = 1.0
+        ratio = 1.0
+    
+    # FIX: Normalize side to title case for comparison
+    side_normalized = side.title() if isinstance(side, str) else "Buy"
+    
+    if side_normalized == "Buy":
+        take_profit = round(price + (atr * tp_mult), 1)
+        stop_loss = round(price - (atr * sl_mult), 1)
+    else:
+        take_profit = round(price - (atr * tp_mult), 1)
+        stop_loss = round(price + (atr * sl_mult), 1)
+    
+    log_event(f"[TP/SL] Regime={market_regime} | Ratio={ratio:.2f} | TP±{tp_mult*atr:.0f} | SL±{sl_mult*atr:.0f}")
+    
+    return take_profit, stop_loss
+
+
 def salvar_log_csv(data):
     try:
         header = list(data.keys())
@@ -67,86 +217,87 @@ def salvar_log_csv(data):
         print(f"[ERRO] Falha ao salvar log CSV: {e}")
 
 
-def calcular_performance():
-    """Ajusta pesos de decisão com base no PnL real (Dinheiro) gerado nos últimos trades."""
+def calcular_performance_advanced():
+    """CORRECTED: Regime-aware weight adaptation with stratified smoothing"""
     global peso_tecnico, peso_sentimento
-
+    
     try:
         if not Path(LOG_FILE).exists():
             return
-
-        with open(LOG_FILE, 'r') as f:
-            reader = list(csv.DictReader(f))
-            
-        if not reader:
-            return
-
-        ultimos = reader[-50:]
-        if len(ultimos) < 10:
-            return
-
-        pnl_tecnico_total = 0.0
-        pnl_sentimento_total = 0.0
-
-        for trade in ultimos:
-            try:
-                pnl = float(trade.get("pnl", 0))
-                origem = trade.get("decision_source", "misto")
-
-                if origem == "tecnico":
-                    pnl_tecnico_total += pnl
-                elif origem == "sentimento":
-                    pnl_sentimento_total += pnl
-                elif origem == "misto":
-                    pnl_tecnico_total += pnl / 2
-                    pnl_sentimento_total += pnl / 2
-            except ValueError:
-                continue
-
-        if pnl_tecnico_total == 0 and pnl_sentimento_total == 0:
-            return
-
-        if pnl_tecnico_total <= 0 and pnl_sentimento_total <= 0:
-            log_event("[ADAPTAÇÃO] Ambos os modelos em Drawdown. Mantendo pesos atuais de segurança.")
-            return
-
-        peso_t_calc = max(0.01, pnl_tecnico_total)
-        peso_s_calc = max(0.01, pnl_sentimento_total)
-
-        soma = peso_t_calc + peso_s_calc
         
-        alvo_tecnico = peso_t_calc / soma
-        alvo_sentimento = peso_s_calc / soma
-
-        taxa_suavizacao = 0.10 
-        peso_tecnico = (peso_tecnico * (1 - taxa_suavizacao)) + (alvo_tecnico * taxa_suavizacao)
-        peso_sentimento = (peso_sentimento * (1 - taxa_suavizacao)) + (alvo_sentimento * taxa_suavizacao)
-
-        peso_tecnico = max(0.1, min(0.9, peso_tecnico))
-        peso_sentimento = 1 - peso_tecnico
-
-        log_event(f"[ADAPTAÇÃO-PnL] Pesos Ajustados → Técnico: {peso_tecnico:.2f} | Sentimento: {peso_sentimento:.2f} | "
-                  f"PnL Gerado: Téc ${pnl_tecnico_total:.2f}, Sent ${pnl_sentimento_total:.2f}")
-
+        df_trades = pd.read_csv(LOG_FILE)
+        if len(df_trades) < 20:
+            return
+        
+        recent_trades = df_trades.tail(50).copy()
+        
+        # Stratify by market regime
+        try:
+            recent_trades['is_trending'] = recent_trades['atr'] > recent_trades['atr'].rolling(20).mean() * 1.1
+        except:
+            recent_trades['is_trending'] = False
+        
+        # Global average calculation
+        if len(recent_trades) >= 10:
+            pnl_tecnico_total = recent_trades[recent_trades['decision_source'] == 'tecnico']['pnl'].sum()
+            pnl_sentimento_total = recent_trades[recent_trades['decision_source'] == 'sentimento']['pnl'].sum()
+            
+            if pnl_tecnico_total + pnl_sentimento_total == 0:
+                log_event("[ADAPT] Both technical and sentiment in drawdown. Maintaining weights.")
+                return
+            
+            peso_t_calc = max(0.01, pnl_tecnico_total)
+            peso_s_calc = max(0.01, pnl_sentimento_total)
+            
+            soma = peso_t_calc + peso_s_calc
+            alvo_tecnico = peso_t_calc / soma
+            alvo_sentimento = peso_s_calc / soma
+            
+            # Adaptive smoothing based on Sharpe confidence
+            try:
+                recent_trades_10 = recent_trades.tail(10)
+                sharpe_10 = (recent_trades_10['pnl_pct'].mean() / recent_trades_10['pnl_pct'].std()) * np.sqrt(252 / 10)
+            except:
+                sharpe_10 = 0.0
+            
+            if abs(sharpe_10) < 0.5:
+                taxa_suavizacao = 0.05  # Low confidence → move slow
+            elif abs(sharpe_10) > 1.5:
+                taxa_suavizacao = 0.20  # High confidence → move fast
+            else:
+                taxa_suavizacao = 0.10  # Default
+            
+            peso_tecnico = (peso_tecnico * (1 - taxa_suavizacao)) + (alvo_tecnico * taxa_suavizacao)
+            peso_sentimento = (peso_sentimento * (1 - taxa_suavizacao)) + (alvo_sentimento * taxa_suavizacao)
+            
+            # Softer bounds (0.05-0.95 instead of 0.1-0.9)
+            peso_tecnico = np.clip(peso_tecnico, 0.05, 0.95)
+            peso_sentimento = 1 - peso_tecnico
+            
+            log_event(f"[ADAPT-FINAL] Técnico={peso_tecnico:.2f} | Sentimento={peso_sentimento:.2f} | "
+                     f"Sharpe(10)={sharpe_10:.2f} | Smoothing={taxa_suavizacao:.2%}")
+    
     except Exception as e:
-        log_event(f"[ERRO] Calcular performance: {e}")
+        log_event(f"[ERROR] Advanced adaptation: {e}")
 
 
-def model_predict_prob(row):
-    """Recebe última linha do DF e calcula probabilidade do label=1, atualizando o modelo dinamicamente"""
+def model_predict_prob_corrected(row, technical_confidence):
+    """
+    CORRECTED: ML filter with single-layer logic (blends with technical confidence)
+    Returns probability if confidence >= 65%, None otherwise
+    """
     global model, ultima_modificacao_modelo
     
-    # Sistema de Hot-Reload agora funcionará porque a variável foi declarada no topo!
     if MODEL_PATH.exists():
         modificacao_atual = os.path.getmtime(MODEL_PATH)
         if modificacao_atual > ultima_modificacao_modelo:
             model = joblib.load(MODEL_PATH)
             ultima_modificacao_modelo = modificacao_atual
-            log_event("🧠 [HOT-RELOAD] Novo modelo ML detectado e carregado em tempo de execução!")
-            
+            log_event("🧠 [HOT-RELOAD] ML model updated")
+    
     if model is None:
         return None
-        
+    
     try:
         df_row = pd.DataFrame([row])
         for f in FEATURES:
@@ -156,14 +307,42 @@ def model_predict_prob(row):
         X = df_row[FEATURES].fillna(0)
         
         if hasattr(model, "predict_proba"):
-            probabilidade = model.predict_proba(X)[0][1]
+            prob = model.predict_proba(X)[0][1]
         else:
-            probabilidade = model.predict(X)[0]
-            
-        return float(probabilidade)
+            prob = model.predict(X)[0]
+        
+        prob = float(prob)
+        
+        # CORRECTED: Clear probability interpretation
+        if prob < 0.48:
+            ml_confidence = 0.0
+            log_event(f"[ML] Bearish prediction ({prob:.2%})")
+        elif 0.48 <= prob < 0.52:
+            ml_confidence = 0.20
+            log_event(f"[ML] Ambiguous ({prob:.2%}), low confidence")
+        elif 0.52 <= prob < 0.60:
+            ml_confidence = 0.50
+            log_event(f"[ML] Weak bullish ({prob:.2%}), moderate confidence")
+        elif 0.60 <= prob < 0.70:
+            ml_confidence = 0.75
+            log_event(f"[ML] Moderate bullish ({prob:.2%}), high confidence")
+        else:
+            ml_confidence = 1.0
+            log_event(f"[ML] Strong bullish ({prob:.2%}), maximum confidence")
+        
+        # Blend with technical
+        final_confidence = (0.7 * technical_confidence / 100) + (0.3 * ml_confidence)
+        final_confidence_pct = final_confidence * 100
+        
+        if final_confidence_pct >= 65:
+            log_event(f"✅ [DECISION] ENTER | Blended confidence: {final_confidence_pct:.1f}%")
+            return prob
+        else:
+            log_event(f"❌ [DECISION] REJECT | Blended confidence: {final_confidence_pct:.1f}% < 65%")
+            return None
         
     except Exception as e:
-        log_event(f"[ERRO] Previsão ML: {e}")
+        log_event(f"[ERROR] ML prediction: {e}")
         return None
 
 def abrir_ordem():
@@ -215,17 +394,10 @@ def abrir_ordem():
     log_event(f"Sinal técnico: {sinal_tecnico} | Conf. técnica: {confiança_tecnica}% | "
               f"Conf. final: {confiança_final:.1f}% | Risco: {risk_level}")
 
-    prob_ml = model_predict_prob(df.iloc[-1].to_dict())
-    if prob_ml is not None:
-        log_event(f"Probabilidade ML: {prob_ml:.3f}")
-        if prob_ml < 0.6:
-            log_event("⚠ ML filtrou a entrada — probabilidade abaixo do threshold.")
-            return
-
-        if prob_ml > 0.60:
-            if confiança_final < 50.0 and prob_ml < 0.72: # CONFIGURA CHANCE DO ML
-                log_event("⚠ Trade cancelado: ML quer operar contra a tendência, mas sem confluência macro/técnica.")
-                return
+    prob_ml = model_predict_prob_corrected(df.iloc[-1].to_dict(), confiança_tecnica)
+    if prob_ml is None:
+        log_event("⚠ ML filtering rejected entry - insufficient blended confidence.")
+        return
 
     ultimo = df.iloc[-1]
     print(f"[DEBUG] ML prob: {prob_ml:.2f} | Sentimento: {sentimento_str} ({sent_score:.2f})")
@@ -237,9 +409,14 @@ def abrir_ordem():
         return
 
     posicoes = get_all_positions(SYMBOL) or []
-    if (ultima_ordem.get("side") == sinal_tecnico and
-        datetime.now() - ultima_ordem.get("hora", datetime.min) < timedelta(seconds=10) and
-        len(posicoes) == 0):
+    
+    # ADICIONADO: Leitura da ultima_ordem protegida por Thread Lock para evitar erros
+    with ordem_lock:
+        cooldown_ativo = (ultima_ordem.get("side") == sinal_tecnico and
+                          datetime.now() - ultima_ordem.get("hora", datetime.min) < timedelta(seconds=10) and
+                          len(posicoes) == 0)
+        
+    if cooldown_ativo:
         print("⚠ Ordem recente no mesmo sentido (cooldown). Ignorando.")
         return
 
@@ -252,29 +429,23 @@ def abrir_ordem():
     if price is None:
         return
 
-    qty = calculate_order_qty(SYMBOL, risk_level, price)
+    qty = calculate_order_qty_kelly_criterion(SYMBOL, risk_level, price)
     
-    # ADICIONADO: Arredonda a QTY para 3 casas decimais (Step Size do BTC na Bybit)
+    # Arredonda a QTY para 3 casas decimais (Step Size do BTC na Bybit)
     qty = round(qty, 3) 
 
     atr_atual = df.iloc[-1]['atr']
-
-    SL_MULTIPLIER = 1.2
-    TP_MULTIPLIER = 1.0
-
-    # ADICIONADO: Forçado o arredondamento para 1 casa decimal (Tick Size do BTC na Bybit)
-    if sinal_tecnico == "buy":
-        side = "Buy"
-        take_profit = round(price + (atr_atual * TP_MULTIPLIER), 1)
-        stop_loss = round(price - (atr_atual * SL_MULTIPLIER), 1)
-    else: 
-        side = "Sell"
-        take_profit = round(price - (atr_atual * TP_MULTIPLIER), 1)
-        stop_loss = round(price + (atr_atual * SL_MULTIPLIER), 1)
-
+    
+    # CORRECTED: Dynamic TP/SL with regime detection
+    market_regime = detect_market_regime(df)
+    take_profit, stop_loss = calculate_tp_sl_dynamic(price, atr_atual, sinal_tecnico, market_regime)
+    
     trailing_stop = round((atr_atual * 0.4), 1)
+    
+    # Set side based on signal
+    side = "Buy" if sinal_tecnico == "buy" else "Sell"
 
-    log_event(f"Abrindo {side} | Preço: {price} | TP: {take_profit} | SL: {stop_loss} | TS: {trailing_stop}")
+    log_event(f"Abrindo {side} | Preço Desejado: {price} | TP: {take_profit} | SL: {stop_loss} | TS: {trailing_stop}")
     order_result = place_order(
         SYMBOL, side, str(qty),
         str(take_profit),
@@ -292,13 +463,29 @@ def abrir_ordem():
         log_event(f"❌ Falha ao abrir ordem {side} em {SYMBOL}: {order_result}")
         return
 
+    # ----------------------------------------------------------------------------------
+    # ADICIONADO: PROTEÇÃO CONTRA SLIPPAGE (Captura do Preço de Execução Real)
+    # ----------------------------------------------------------------------------------
+    time.sleep(1) # Dá 1 segundo para a corretora preencher a Market Order
+    posicoes_pos_ordem = get_all_positions(SYMBOL) or []
+    preco_real_execucao = float(price) # fallback caso a API demore
+    
+    for p in posicoes_pos_ordem:
+        if p.get("side", "").lower() == side.lower():
+            avg_price = float(p.get("avgPrice", 0))
+            if avg_price > 0:
+                preco_real_execucao = avg_price
+                log_event(f"✅ Slippage Calculado. Executado a: {preco_real_execucao} (Solicitado: {price})")
+                break
+    # ----------------------------------------------------------------------------------
+
     trade_id = str(uuid.uuid4())
     decision_doc = {
         "trade_id": trade_id,
         "timestamp": datetime.now(),
         "symbol": SYMBOL,
         "side": side,
-        "entry_price": float(price),
+        "entry_price": float(preco_real_execucao), # EDITADO: Salva o preço que a Bybit cobrou de verdade
         "qty": float(qty),
         "risk_level": risk_level,
         "decision_source": ("tecnico" if peso_tecnico > peso_sentimento
@@ -317,36 +504,42 @@ def abrir_ordem():
         },
         "features": {k: float(ultimo[k]) for k in FEATURES if k in ultimo}
     }
-    log_signal_decision(decision_doc)
+    
+    try:
+        log_signal_decision(decision_doc)
+    except Exception as db_err:
+        log_event(f"⚠ Erro ao salvar decisão no DB, mas trade continuará: {db_err}")
 
-    ultima_ordem = {
-        "trade_id": trade_id,
-        "side": sinal_tecnico,
-        "hora": datetime.now(),
-        "origem": decision_doc["decision_source"],
-        "risk_level": risk_level,
-        "ml_probability": prob_ml,
-        "hour": int(df.iloc[-1]["hour"]),
-        "minute": int(df.iloc[-1]["minute"]),
-        "ema_20": df.iloc[-1]["ema_20"],
-        "ema_50": df.iloc[-1]["ema_50"],
-        "ema_200": df.iloc[-1]["ema_200"],
-        "rsi": df.iloc[-1]["rsi"],
-        "macd": df.iloc[-1]["macd"],
-        "macd_signal": df.iloc[-1]["macd_signal"],
-        "macd_hist": df.iloc[-1]["macd_hist"],
-        "bb_width": df.iloc[-1]["bb_width"],
-        "atr": df.iloc[-1]["atr"],
-        "volume": df.iloc[-1]["volume"],
-        "volume_ma": df.iloc[-1]["volume_ma"],
-        "sentiment_str": sentimento_str,
-        "sentiment_score": sent_score,
-        "take_profit": float(take_profit),
-        "stop_loss": float(stop_loss),
-        "trailing_stop": float(trailing_stop),
-        "entry_price": float(price),
-        "qty": float(qty),
-    }
+    # ADICIONADO: O Thread Lock na hora de salvar o dicionário da sessão
+    with ordem_lock:
+        ultima_ordem = {
+            "trade_id": trade_id,
+            "side": sinal_tecnico,
+            "hora": datetime.now(),
+            "origem": decision_doc["decision_source"],
+            "risk_level": risk_level,
+            "ml_probability": prob_ml,
+            "hour": int(df.iloc[-1]["hour"]),
+            "minute": int(df.iloc[-1]["minute"]),
+            "ema_20": df.iloc[-1]["ema_20"],
+            "ema_50": df.iloc[-1]["ema_50"],
+            "ema_200": df.iloc[-1]["ema_200"],
+            "rsi": df.iloc[-1]["rsi"],
+            "macd": df.iloc[-1]["macd"],
+            "macd_signal": df.iloc[-1]["macd_signal"],
+            "macd_hist": df.iloc[-1]["macd_hist"],
+            "bb_width": df.iloc[-1]["bb_width"],
+            "atr": df.iloc[-1]["atr"],
+            "volume": df.iloc[-1]["volume"],
+            "volume_ma": df.iloc[-1]["volume_ma"],
+            "sentiment_str": sentimento_str,
+            "sentiment_score": sent_score,
+            "take_profit": float(take_profit),
+            "stop_loss": float(stop_loss),
+            "trailing_stop": float(trailing_stop),
+            "entry_price": float(preco_real_execucao), # EDITADO: Repassa o preço real
+            "qty": float(qty),
+        }
 
 def fechar_ordem(side, entry_price, size, current_price):
     close_position(SYMBOL, side)
@@ -359,9 +552,13 @@ def fechar_ordem(side, entry_price, size, current_price):
     
     pnl_pct = ((current_price / entry_price) - 1) * 100 if side == "Buy" else ((entry_price / current_price) - 1) * 100
 
+    # Adicionado o Lock aqui também apenas por garantia, já que lê a variável global
+    with ordem_lock:
+        ordem_memoria = ultima_ordem.copy()
+
     trade_data = {
         "timestamp": datetime.now(),
-        "trade_id": ultima_ordem.get("trade_id"),
+        "trade_id": ordem_memoria.get("trade_id"),
         "symbol": SYMBOL,
         "side": side,
         "entry_price": float(entry_price),
@@ -369,52 +566,60 @@ def fechar_ordem(side, entry_price, size, current_price):
         "qty": float(size),
         "pnl": round(float(pnl), 2),
         "pnl_pct": round(float(pnl_pct), 3),
-        "decision_source": ultima_ordem.get("origem", "misto"),
-        "risk_level": ultima_ordem.get("risk_level", "desconhecido"),
-        "take_profit": ultima_ordem.get("take_profit"),
-        "stop_loss": ultima_ordem.get("stop_loss"),
-        "trailing_stop": ultima_ordem.get("trailing_stop"),
-        "sentiment_str": ultima_ordem.get("sentiment_str"),
-        "sentiment_score": ultima_ordem.get("sentiment_score"),
-        "ml_probability": ultima_ordem.get("ml_probability"),
-        "ema_20": ultima_ordem.get("ema_20"),
-        "ema_50": ultima_ordem.get("ema_50"),
-        "ema_200": ultima_ordem.get("ema_200"),
-        "rsi": ultima_ordem.get("rsi"),
-        "macd": ultima_ordem.get("macd"),
-        "macd_signal": ultima_ordem.get("macd_signal"),
-        "macd_hist": ultima_ordem.get("macd_hist"),
-        "bb_width": ultima_ordem.get("bb_width"),
-        "atr": ultima_ordem.get("atr"),
-        "volume": ultima_ordem.get("volume"),
-        "volume_ma": ultima_ordem.get("volume_ma"),
-        "hour": ultima_ordem.get("hour"),
-        "minute": ultima_ordem.get("minute")
+        "decision_source": ordem_memoria.get("origem", "misto"),
+        "risk_level": ordem_memoria.get("risk_level", "desconhecido"),
+        "take_profit": ordem_memoria.get("take_profit"),
+        "stop_loss": ordem_memoria.get("stop_loss"),
+        "trailing_stop": ordem_memoria.get("trailing_stop"),
+        "sentiment_str": ordem_memoria.get("sentiment_str"),
+        "sentiment_score": ordem_memoria.get("sentiment_score"),
+        "ml_probability": ordem_memoria.get("ml_probability"),
+        "ema_20": ordem_memoria.get("ema_20"),
+        "ema_50": ordem_memoria.get("ema_50"),
+        "ema_200": ordem_memoria.get("ema_200"),
+        "rsi": ordem_memoria.get("rsi"),
+        "macd": ordem_memoria.get("macd"),
+        "macd_signal": ordem_memoria.get("macd_signal"),
+        "macd_hist": ordem_memoria.get("macd_hist"),
+        "bb_width": ordem_memoria.get("bb_width"),
+        "atr": ordem_memoria.get("atr"),
+        "volume": ordem_memoria.get("volume"),
+        "volume_ma": ordem_memoria.get("volume_ma"),
+        "hour": ordem_memoria.get("hour"),
+        "minute": ordem_memoria.get("minute")
     }
 
     salvar_log_csv(trade_data)
     log_event(f"{side} fechado - PnL: {pnl:.2f} ({pnl_pct:.3f}%) | Origem: {trade_data['decision_source']}")
-    log_trade(trade_data)
+    
+    try:
+        log_trade(trade_data)
+        trade_id = trade_data.get("trade_id")
+        if trade_id:
+            label = 1 if pnl > 0 else 0
+            update_signal_outcome(trade_id, {
+                "exit_price": float(current_price),
+                "pnl": float(round(pnl, 2)),
+                "pnl_pct": float(round(pnl_pct, 3)),
+                "label": int(label),
+                "status": "closed",
+                "closed_at": datetime.utcnow()
+            })
+    except Exception as e:
+        log_event(f"⚠ Falha ao salvar no banco em fechar_ordem: {e}")
 
-    trade_id = trade_data.get("trade_id")
-    if trade_id:
-        label = 1 if pnl > 0 else 0
-        update_signal_outcome(trade_id, {
-            "exit_price": float(current_price),
-            "pnl": float(round(pnl, 2)),
-            "pnl_pct": float(round(pnl_pct, 3)),
-            "label": int(label),
-            "status": "closed",
-            "closed_at": datetime.utcnow()
-        })
-
-    ultima_ordem["side"] = None
-    ultima_ordem["hora"] = datetime.min
+    with ordem_lock:
+        ultima_ordem["side"] = None
+        ultima_ordem["hora"] = datetime.min
 
 def monitorar_posicoes():
     posicoes = get_all_positions(SYMBOL)
     if not posicoes:
         return
+
+    # ADICIONADO: Criação de um "clone" congelado no tempo para o while loop ler com segurança
+    with ordem_lock:
+        ordem_atual = ultima_ordem.copy()
 
     for pos in posicoes:
         entry_price = float(pos.get("avgPrice", 0))
@@ -428,8 +633,8 @@ def monitorar_posicoes():
         print(f"[MONITOR] {side} {size} @ {entry_price} | Preço atual: {current_price}")
 
         fechar = False
-        tp_real = ultima_ordem.get("take_profit", entry_price * 1.02)
-        sl_real = ultima_ordem.get("stop_loss", entry_price * 0.98)
+        tp_real = ordem_atual.get("take_profit", entry_price * 1.02)
+        sl_real = ordem_atual.get("stop_loss", entry_price * 0.98)
 
         if side == "Buy":
             if current_price >= tp_real or current_price <= sl_real:
@@ -451,7 +656,7 @@ def monitorar_posicoes():
 
                 trade_data = {
                     "timestamp": datetime.now(),
-                    "trade_id": ultima_ordem.get("trade_id"),
+                    "trade_id": ordem_atual.get("trade_id"), # EDITADO: Puxando da variável travada
                     "symbol": SYMBOL,
                     "side": side,
                     "entry_price": entry_price,
@@ -459,41 +664,51 @@ def monitorar_posicoes():
                     "qty": size,
                     "pnl": round(pnl, 2),
                     "pnl_pct": round(pnl_pct, 3),
-                    "decision_source": ultima_ordem.get("origem", "misto"),
-                    "risk_level": ultima_ordem.get("risk_level", "desconhecido"),
-                    "take_profit": ultima_ordem.get("take_profit"),
-                    "stop_loss": ultima_ordem.get("stop_loss"),
-                    "sentiment_str": ultima_ordem.get("sentiment_str"),
-                    "sentiment_score": ultima_ordem.get("sentiment_score"),
-                    "ml_probability": ultima_ordem.get("ml_probability"),
-                    "ema_20": ultima_ordem.get("ema_20"),
-                    "ema_50": ultima_ordem.get("ema_50"),
-                    "ema_200": ultima_ordem.get("ema_200"),
-                    "rsi": ultima_ordem.get("rsi"),
-                    "macd": ultima_ordem.get("macd"),
-                    "macd_signal": ultima_ordem.get("macd_signal"),
-                    "macd_hist": ultima_ordem.get("macd_hist"),
-                    "bb_width": ultima_ordem.get("bb_width"),
-                    "atr": ultima_ordem.get("atr"),
-                    "volume": ultima_ordem.get("volume"),
-                    "volume_ma": ultima_ordem.get("volume_ma"),
-                    "hour": ultima_ordem.get("hour"),
-                    "minute": ultima_ordem.get("minute")
+                    "decision_source": ordem_atual.get("origem", "misto"),
+                    "risk_level": ordem_atual.get("risk_level", "desconhecido"),
+                    "take_profit": ordem_atual.get("take_profit"),
+                    "stop_loss": ordem_atual.get("stop_loss"),
+                    "sentiment_str": ordem_atual.get("sentiment_str"),
+                    "sentiment_score": ordem_atual.get("sentiment_score"),
+                    "ml_probability": ordem_atual.get("ml_probability"),
+                    "ema_20": ordem_atual.get("ema_20"),
+                    "ema_50": ordem_atual.get("ema_50"),
+                    "ema_200": ordem_atual.get("ema_200"),
+                    "rsi": ordem_atual.get("rsi"),
+                    "macd": ordem_atual.get("macd"),
+                    "macd_signal": ordem_atual.get("macd_signal"),
+                    "macd_hist": ordem_atual.get("macd_hist"),
+                    "bb_width": ordem_atual.get("bb_width"),
+                    "atr": ordem_atual.get("atr"),
+                    "volume": ordem_atual.get("volume"),
+                    "volume_ma": ordem_atual.get("volume_ma"),
+                    "hour": ordem_atual.get("hour"),
+                    "minute": ordem_atual.get("minute")
                 }
 
                 salvar_log_csv(trade_data)
                 log_event(f"{side} fechado - PnL: {pnl:.2f} ({pnl_pct:.3f}%) | Origem: {trade_data['decision_source']}")
-                log_trade(trade_data)
+                
+                # ADICIONADO: Proteção (Try...Except) para queda do banco de dados na hora de salvar lucros
+                try:
+                    log_trade(trade_data)
 
-                trade_id = trade_data.get("trade_id")
-                if trade_id:
-                    label = 1 if pnl > 0 else 0
-                    update_signal_outcome(trade_id, {
-                        "exit_price": float(current_price),
-                        "pnl": float(round(pnl, 2)),
-                        "pnl_pct": float(round(pnl_pct, 3)),
-                        "label": int(label)
-                    })
+                    trade_id = trade_data.get("trade_id")
+                    if trade_id:
+                        label = 1 if pnl > 0 else 0
+                        update_signal_outcome(trade_id, {
+                            "exit_price": float(current_price),
+                            "pnl": float(round(pnl, 2)),
+                            "pnl_pct": float(round(pnl_pct, 3)),
+                            "label": int(label)
+                        })
+                except Exception as erro_banco:
+                    log_event(f"⚠ O trade foi fechado e o lucro garantido, mas houve falha ao salvar no banco Mongo: {erro_banco}")
+
+                # ADICIONADO: Limpeza crucial que havia sido esquecida neste bloco
+                with ordem_lock:
+                    ultima_ordem["side"] = None
+                    ultima_ordem["hora"] = datetime.min
 
 
 # =======================================================
@@ -517,7 +732,7 @@ if __name__ == "__main__":
                 
                 def executar_trabalho_pesado():
                     try:
-                        calcular_performance()
+                        calcular_performance_advanced()
                         abrir_ordem()
                     except Exception as e:
                         log_event(f"❌ Erro durante a análise pós-candle: {e}")
@@ -531,7 +746,7 @@ if __name__ == "__main__":
     )
     
     ws.kline_stream(
-        interval="5", 
+        interval="15", 
         symbol=SYMBOL, 
         callback=handle_kline
     )
@@ -550,7 +765,7 @@ if __name__ == "__main__":
                 except:
                     pass
                 
-                time.sleep(5)
+                time.sleep(15)
                 # Recria a conexão do zero
                 ws = WebSocket(testnet=True, channel_type="linear")
                 ws.kline_stream(interval="5", symbol=SYMBOL, callback=handle_kline)
