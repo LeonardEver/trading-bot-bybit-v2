@@ -11,11 +11,32 @@ from threading import Lock
 from utils.ohlcv import get_ohlcv
 from strategies.strategy import generate_trade_signal
 from sentiment.sentiment_analysis import get_news_sentiment
-from trading.bybit_api import place_order, get_last_price, get_all_positions, close_position, get_balance
+from trading.bybit_api import (
+    place_order,
+    get_last_price,
+    get_all_positions,
+    close_position,
+    get_balance,
+    get_derivatives_metrics,
+    get_public_trades,
+    get_open_interest_metrics,
+    get_maker_price,
+    place_maker_order,
+    slippage_within_threshold,
+    cancel_order,
+)
 from trading.logger import log_event
 from utils.technical_indicators import calculate_indicators
 from database.mongo_logger import log_trade, log_signal_decision, update_signal_outcome
 from ml.config import FEATURES
+from ml.features import prepare_features
+from trading.risk_management import calculate_atr_exit_prices
+from utils.order_flow import (
+    add_order_flow_features,
+    calculate_cvd_from_trades,
+    calculate_liquidation_metrics,
+    estimate_cvd_from_candles,
+)
 from pybit.unified_trading import WebSocket
 
 
@@ -23,6 +44,7 @@ print(">>> Script main.py carregado com sucesso")
 
 
 SYMBOL = "BTCUSDT"
+WS_INTERVAL = "15"
 LOOP_INTERVAL = 15
 LOG_FILE = "trading_log.csv"
 
@@ -37,6 +59,12 @@ ordem_lock = Lock() # ADICIONADO: Variável de proteção contra colisão de lei
 bloqueio_ate = datetime.min
 ultima_modificacao_modelo = 0.0  # CORREÇÃO: Variável do Hot-Reload declarada aqui no topo!
 ultimo_candle_recebido = datetime.now() # ADICIONADO: Variável do Cão de Guarda (Watchdog)
+
+historico_candles_ws = pd.DataFrame()
+candle_cache_lock = Lock()
+trade_tape_ws = []
+liquidation_events_ws = []
+market_flow_lock = Lock()
 
 # Pesos iniciais
 peso_tecnico = 0.5
@@ -299,6 +327,13 @@ def model_predict_prob_corrected(row, technical_confidence):
         return None
     
     try:
+        if hasattr(model, "num_feature") and model.num_feature() != len(FEATURES):
+            log_event(
+                f"[ML] Modelo incompatível com features estacionarias "
+                f"({model.num_feature()} != {len(FEATURES)}). Retreine ml/train_model.py."
+            )
+            return None
+
         df_row = pd.DataFrame([row])
         for f in FEATURES:
             if f not in df_row.columns:
@@ -345,18 +380,106 @@ def model_predict_prob_corrected(row, technical_confidence):
         log_event(f"[ERROR] ML prediction: {e}")
         return None
 
-def abrir_ordem():
+
+def atualizar_cache_candle_ws(candle):
+    """Append a confirmed WebSocket kline to the in-memory OHLCV cache."""
+    global historico_candles_ws
+
+    try:
+        row = {
+            "timestamp": pd.to_datetime(int(candle.get("start")), unit="ms"),
+            "open": float(candle.get("open")),
+            "high": float(candle.get("high")),
+            "low": float(candle.get("low")),
+            "close": float(candle.get("close")),
+            "volume": float(candle.get("volume")),
+        }
+    except Exception as e:
+        log_event(f"[WS] Candle invalido recebido: {e}")
+        return
+
+    with candle_cache_lock:
+        historico_candles_ws = pd.concat([historico_candles_ws, pd.DataFrame([row])], ignore_index=True)
+        historico_candles_ws = (
+            historico_candles_ws
+            .drop_duplicates(subset=["timestamp"], keep="last")
+            .sort_values("timestamp")
+            .tail(500)
+            .reset_index(drop=True)
+        )
+
+
+def obter_candles_para_analise():
+    """Prefer WebSocket-fed candles and fall back to REST only while warming up."""
+    with candle_cache_lock:
+        df_ws = historico_candles_ws.copy()
+
+    if len(df_ws) >= 320:
+        return df_ws
+
+    df_rest = get_ohlcv(SYMBOL, interval="15", limit=500)
+    if not df_rest.empty:
+        with candle_cache_lock:
+            globals()["historico_candles_ws"] = df_rest.tail(500).reset_index(drop=True)
+        log_event("[DATA] Cache WebSocket aquecida via REST inicial.")
+    return df_rest
+
+
+def anexar_metricas_derivativos(df, metrics):
+    df = df.copy()
+    for key in ["funding_rate", "predicted_funding_rate", "premium_index", "premium_basis_pct"]:
+        df[key] = float(metrics.get(key, 0.0) or 0.0)
+    return df
+
+
+def obter_metricas_order_flow(df):
+    with market_flow_lock:
+        trades_ws = list(trade_tape_ws)
+        liquidation_events = list(liquidation_events_ws)
+
+    trades = trades_ws or get_public_trades(SYMBOL, limit=200)
+    cvd_metrics = calculate_cvd_from_trades(trades)
+    if not trades:
+        cvd_metrics = estimate_cvd_from_candles(df)
+
+    oi_metrics = get_open_interest_metrics(SYMBOL, interval_time="5min", limit=2)
+    liquidation_metrics = calculate_liquidation_metrics(liquidation_events)
+
+    log_event(
+        "[FLOW] CVD={:.4f} ({:.2%}) | OIΔ={:.2%} | LiqImb={:.2%}".format(
+            cvd_metrics.get("cvd", 0.0),
+            cvd_metrics.get("cvd_ratio", 0.0),
+            oi_metrics.get("oi_change_pct", 0.0),
+            liquidation_metrics.get("liquidation_imbalance", 0.0),
+        )
+    )
+    return cvd_metrics, oi_metrics, liquidation_metrics
+
+
+def abrir_ordem(df=None):
     global ultima_ordem, bloqueio_ate
 
     if datetime.now() < bloqueio_ate:
         log_event(f"⏳ Bot em modo Circuit Breaker. Operações suspensas até {bloqueio_ate.strftime('%H:%M:%S')}.")
         return
 
-    df = get_ohlcv(SYMBOL)
+    df = df.copy() if df is not None else obter_candles_para_analise()
     if df.empty:
         return
 
     df = calculate_indicators(df)
+    derivatives_metrics = get_derivatives_metrics(SYMBOL)
+    df = anexar_metricas_derivativos(df, derivatives_metrics)
+    cvd_metrics, oi_metrics, liquidation_metrics = obter_metricas_order_flow(df)
+    df = add_order_flow_features(df, cvd_metrics, oi_metrics, liquidation_metrics)
+    df = prepare_features(df)
+    log_event(
+        "[DERIV] Funding={:.4%} | PredFunding={:.4%} | Premium={:.4%}".format(
+            derivatives_metrics.get("funding_rate", 0.0) or 0.0,
+            derivatives_metrics.get("predicted_funding_rate", 0.0) or 0.0,
+            derivatives_metrics.get("premium_basis_pct", 0.0) or 0.0,
+        )
+    )
 
     log_event(f"📊 Preço de fechamento real (DataFrame): {df['close'].iloc[-1]}")
 
@@ -378,7 +501,7 @@ def abrir_ordem():
 
     log_event(f"Sentimento: {sentimento_str} ({confiança_sentimento}%)")
 
-    trade_decision = generate_trade_signal(df)
+    trade_decision = generate_trade_signal(df, derivatives_metrics=derivatives_metrics)
     sinal_tecnico = trade_decision.get("signal")
     confiança_tecnica = trade_decision.get("confidence", 50.0)
 
@@ -438,19 +561,33 @@ def abrir_ordem():
     
     # CORRECTED: Dynamic TP/SL with regime detection
     market_regime = detect_market_regime(df)
-    take_profit, stop_loss = calculate_tp_sl_dynamic(price, atr_atual, sinal_tecnico, market_regime)
+    side = "Buy" if sinal_tecnico == "buy" else "Sell"
+    exits = calculate_atr_exit_prices(price, atr_atual, side, market_regime)
+    take_profit = exits["take_profit"]
+    stop_loss = exits["stop_loss"]
     
     trailing_stop = round((atr_atual * 0.4), 1)
     
     # Set side based on signal
-    side = "Buy" if sinal_tecnico == "buy" else "Sell"
+    maker_price = get_maker_price(SYMBOL, side)
+    if maker_price is None:
+        log_event("⚠ Ordem maker cancelada: spread acima do limite ou book indisponivel.")
+        return
+
+    if not slippage_within_threshold(price, maker_price, side, max_slippage_pct=0.0008):
+        log_event(f"⚠ Ordem maker cancelada por slippage esperado: ref={price} maker={maker_price}")
+        return
 
     log_event(f"Abrindo {side} | Preço Desejado: {price} | TP: {take_profit} | SL: {stop_loss} | TS: {trailing_stop}")
-    order_result = place_order(
+    log_event(
+        f"[MAKER] Limit={maker_price} | ATR SLx={exits['sl_atr_multiple']} TPx={exits['tp_atr_multiple']}"
+    )
+    order_result = place_maker_order(
         SYMBOL, side, str(qty),
         str(take_profit),
         str(stop_loss),
-        str(trailing_stop)
+        str(trailing_stop),
+        price=maker_price,
     )
 
     ok = False
@@ -463,21 +600,39 @@ def abrir_ordem():
         log_event(f"❌ Falha ao abrir ordem {side} em {SYMBOL}: {order_result}")
         return
 
+    order_id = None
+    if isinstance(order_result, dict):
+        order_id = order_result.get("result", {}).get("orderId")
+
     # ----------------------------------------------------------------------------------
     # ADICIONADO: PROTEÇÃO CONTRA SLIPPAGE (Captura do Preço de Execução Real)
     # ----------------------------------------------------------------------------------
     time.sleep(1) # Dá 1 segundo para a corretora preencher a Market Order
     posicoes_pos_ordem = get_all_positions(SYMBOL) or []
     preco_real_execucao = float(price) # fallback caso a API demore
+    ordem_preenchida = False
     
     for p in posicoes_pos_ordem:
         if p.get("side", "").lower() == side.lower():
             avg_price = float(p.get("avgPrice", 0))
             if avg_price > 0:
                 preco_real_execucao = avg_price
+                ordem_preenchida = True
                 log_event(f"✅ Slippage Calculado. Executado a: {preco_real_execucao} (Solicitado: {price})")
                 break
     # ----------------------------------------------------------------------------------
+
+    if not ordem_preenchida:
+        if order_id:
+            cancel_order(SYMBOL, order_id=order_id)
+        log_event("⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.")
+        return
+
+    if not slippage_within_threshold(price, preco_real_execucao, side, max_slippage_pct=0.0008):
+        if order_id:
+            cancel_order(SYMBOL, order_id=order_id)
+        log_event(f"⚠ Slippage real acima do limite: ref={price} exec={preco_real_execucao}.")
+        return
 
     trade_id = str(uuid.uuid4())
     decision_doc = {
@@ -726,6 +881,7 @@ if __name__ == "__main__":
         if data:
             candle = data[0]
             if candle.get("confirm"):
+                atualizar_cache_candle_ws(candle)
                 ultimo_candle_recebido = datetime.now() # Reseta o relógio do Watchdog
                 
                 log_event("🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...")
@@ -733,12 +889,35 @@ if __name__ == "__main__":
                 def executar_trabalho_pesado():
                     try:
                         calcular_performance_advanced()
-                        abrir_ordem()
+                        abrir_ordem(obter_candles_para_analise())
                     except Exception as e:
                         log_event(f"❌ Erro durante a análise pós-candle: {e}")
 
                 thread_analise = threading.Thread(target=executar_trabalho_pesado)
                 thread_analise.start()
+
+    def handle_public_trade(message):
+        data = message.get("data", [])
+        if not isinstance(data, list):
+            data = [data]
+        with market_flow_lock:
+            trade_tape_ws.extend(data)
+            del trade_tape_ws[:-500]
+
+    def handle_liquidation(message):
+        data = message.get("data", [])
+        if not isinstance(data, list):
+            data = [data]
+        normalized = []
+        for event in data:
+            normalized.append({
+                "side": event.get("side") or event.get("S"),
+                "price": event.get("price") or event.get("p"),
+                "qty": event.get("size") or event.get("qty") or event.get("v"),
+            })
+        with market_flow_lock:
+            liquidation_events_ws.extend(normalized)
+            del liquidation_events_ws[:-500]
 
     ws = WebSocket(
         testnet=True, 
@@ -746,12 +925,24 @@ if __name__ == "__main__":
     )
     
     ws.kline_stream(
-        interval="15", 
+        interval=WS_INTERVAL, 
         symbol=SYMBOL, 
         callback=handle_kline
     )
     
     log_event("📡 WebSocket conectado! Aguardando o fechamento do próximo candle.")
+
+    if hasattr(ws, "public_trade_stream"):
+        ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
+    else:
+        log_event("[WS] public_trade_stream indisponivel nesta versao do pybit; CVD usara fallback REST/candles.")
+
+    if hasattr(ws, "liquidation_stream"):
+        ws.liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+    elif hasattr(ws, "all_liquidation_stream"):
+        ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+    else:
+        log_event("[WS] liquidation_stream indisponivel nesta versao do pybit; tracker aguardara eventos.")
 
     while True:
         try:
@@ -768,7 +959,13 @@ if __name__ == "__main__":
                 time.sleep(15)
                 # Recria a conexão do zero
                 ws = WebSocket(testnet=True, channel_type="linear")
-                ws.kline_stream(interval="5", symbol=SYMBOL, callback=handle_kline)
+                ws.kline_stream(interval=WS_INTERVAL, symbol=SYMBOL, callback=handle_kline)
+                if hasattr(ws, "public_trade_stream"):
+                    ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
+                if hasattr(ws, "liquidation_stream"):
+                    ws.liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+                elif hasattr(ws, "all_liquidation_stream"):
+                    ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
                 
                 ultimo_candle_recebido = datetime.now() # Reseta o tempo após reiniciar
 

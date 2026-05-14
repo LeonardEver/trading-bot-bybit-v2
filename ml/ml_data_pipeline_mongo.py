@@ -8,16 +8,9 @@ import pandas as pd
 from pymongo import MongoClient
 from pathlib import Path
 from trading.logger import log_event
+from ml.config import FEATURES
 
 OUT_CSV = Path("ml/dataset_mongo.csv")
-
-# Features usadas no modelo (devem bater com main.py)
-FEATURES = [
-    "ema_20", "ema_50", "ema_200",
-    "rsi", "macd", "macd_signal", "macd_hist",
-    "bb_width", "atr", "volume", "volume_ma",
-    "sentiment_score", "hour", "minute"
-]
 
 def get_trades_from_mongo(limit=None):
     """Busca trades reais do MongoDB"""

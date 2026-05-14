@@ -17,8 +17,10 @@ import pandas as pd
 import numpy as np
 import os
 from utils.ohlcv import get_ohlcv
-from utils.technical_indicators import calculate_indicators
+from ml.features import prepare_features
 from sentiment.sentiment_analysis import get_news_sentiment
+from ml.config import FEATURES
+from ml.features import prepare_features
 
 
 # Parâmetros
@@ -29,16 +31,6 @@ TP_ATR_MULT = 0.8
 SL_ATR_MULT = 0.6
 LOOKBACK = 5000          # quantos candles buscar (ajuste)
 OUT_CSV = Path("ml/dataset.csv")
-
-# Lista usada no Treino
-FEATURES = [
-    "ema_20", "ema_50", "ema_200",
-    "rsi", "macd", "macd_signal", "macd_hist",
-    "bb_width", "atr", "volume_ma",
-    "sentiment_score", "hour", "minute",
-    "risk_level_encoded", "ml_probability"
-]
-
 
 def fetch_ohlcv(symbol, interval=None, limit=LOOKBACK):
     """
@@ -187,11 +179,11 @@ def main():
         df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
 
     # 🔹 Calcular indicadores antes de labels
-    print("Calculando indicadores...")
+    print("Calculando features ML (FracDiff, LogReturns, etc)...")
     try:
-        df = calculate_indicators(df)
+        df = prepare_features(df)
     except Exception as e:
-        print("Erro ao calcular indicadores:", e)
+        print("Erro ao calcular features:", e)
         return
 
     # 🔹 Anexar sentimento
@@ -211,6 +203,9 @@ def main():
     df = assign_risk_level(df)
 
     # 🔹 Salvar dataset
+    print("Preparando features estacionarias...")
+    df = prepare_features(df)
+
     print(f"Salvando dataset em {OUT_CSV}")
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUT_CSV, index=False)

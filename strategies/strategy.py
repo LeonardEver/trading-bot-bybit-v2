@@ -3,6 +3,9 @@
 import pandas as pd
 from utils.technical_indicators import calculate_indicators as add_indicators
 
+MAX_LONG_FUNDING_RATE = 0.0005
+MAX_LONG_PREDICTED_FUNDING_RATE = 0.0007
+
 
 def check_trade_signal(df: pd.DataFrame) -> str:
     """
@@ -46,7 +49,20 @@ def check_trade_signal(df: pd.DataFrame) -> str:
 
 # strategies/strategy.py
 
-def generate_trade_signal(df):
+def funding_allows_long(derivatives_metrics=None) -> bool:
+    """Avoid new longs when the perpetual carry cost is unusually expensive."""
+    if not derivatives_metrics:
+        return True
+
+    funding_rate = float(derivatives_metrics.get("funding_rate") or 0.0)
+    predicted_funding = float(derivatives_metrics.get("predicted_funding_rate") or funding_rate)
+    return (
+        funding_rate <= MAX_LONG_FUNDING_RATE
+        and predicted_funding <= MAX_LONG_PREDICTED_FUNDING_RATE
+    )
+
+
+def generate_trade_signal(df, derivatives_metrics=None):
     """
     Retorna um dict com sinal e confiança baseada em múltiplos indicadores.
     Sistema de pontuação: +1 (Bullish) / -1 (Bearish)
@@ -56,7 +72,7 @@ def generate_trade_signal(df):
 
     last = df.iloc[-1]
     score = 0.0
-    max_score = 5.0  # Quantidade de indicadores avaliados
+    max_score = 8.0  # Quantidade de indicadores avaliados
 
     # Indicador 1 - EMA cruzamento
     if last["ema_20"] > last["ema_50"]:
@@ -92,6 +108,25 @@ def generate_trade_signal(df):
     elif last["close"] < last["ema_20"]:
         score -= 1
 
+    # Indicador 6 - CVD / agressao de fluxo
+    if "cvd_ratio" in df.columns:
+        if last["cvd_ratio"] > 0.10:
+            score += 1
+        elif last["cvd_ratio"] < -0.10:
+            score -= 1
+
+    # Indicador 7 - Open Interest confirma movimento com capital novo
+    if "oi_change_pct" in df.columns:
+        price_direction = 1 if last["close"] > last["open"] else -1
+        if last["oi_change_pct"] > 0.002:
+            score += price_direction
+        elif last["oi_change_pct"] < -0.002:
+            score -= price_direction * 0.5
+
+    # Indicador 8 - Cascatas de liquidacao sugerem reversao a media
+    if "liquidation_reversal_signal" in df.columns:
+        score += float(last["liquidation_reversal_signal"])
+
     # ----------------------------------------------------
     # O CÁLCULO MÁGICO DA CONFIANÇA
     # ----------------------------------------------------
@@ -103,5 +138,9 @@ def generate_trade_signal(df):
         signal = "sell"
     else:
         signal = "hold"
+
+    if signal == "buy" and not funding_allows_long(derivatives_metrics):
+        signal = "hold"
+        confidence = 0.0
 
     return {"signal": signal, "confidence": round(confidence, 1)}

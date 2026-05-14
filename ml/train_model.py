@@ -5,25 +5,25 @@ Usa dataset gerado do MongoDB ou CSV (ml/dataset.csv)
 Salva o modelo em ml/model_lgb.pkl
 """
 
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import pandas as pd
 import numpy as np
 import joblib
 import lightgbm as lgb
 from sklearn.model_selection import TimeSeriesSplit
 from sklearn.metrics import roc_auc_score, accuracy_score
-from pathlib import Path
 import matplotlib.pyplot as plt
+from ml.config import FEATURES
 
-DATA_CSV = Path("ml/dataset.csv")
-MODEL_OUT = Path("ml/model_lgb.pkl")
-
-# Features usadas pelo modelo
-FEATURES = [
-    "close","volume","ema_20","ema_50","ema_200",
-    "rsi","macd","macd_signal","macd_hist","bb_width","atr","volume_ma",
-    "sentiment_score","hour","minute",
-    "risk_level_encoded","ml_probability"
-]
+DATA_CSV = ROOT / "ml" / "dataset.csv"
+MODEL_OUT = ROOT / "ml" / "model_lgb.pkl"
+METRICS_OUT = ROOT / "ml" / "training_metrics.png"
 
 def load_dataset():
     if not DATA_CSV.exists():
@@ -116,8 +116,8 @@ def train():
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("ml/training_metrics.png")
-    print("📊 Métricas salvas em ml/training_metrics.png")
+    plt.savefig(METRICS_OUT)
+    print(f"📊 Métricas salvas em {METRICS_OUT}")
 
 if __name__ == "__main__":
     train()

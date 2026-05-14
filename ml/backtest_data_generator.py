@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 from utils.technical_indicators import calculate_indicators
 from strategies.strategy import generate_trade_signal
 from ml.config import FEATURES
+from ml.features import prepare_features
 
 SYMBOL = "BTCUSDT"
 INTERVAL = "15"
@@ -87,6 +88,7 @@ def generate_backtest_dataset():
     
     # Mock do sentimento (0.0 = neutro) para o passado
     df['sentiment_score'] = 0.0 
+    df = prepare_features(df)
 
     # 3. Máquina do Tempo: Simular operações
     print("🚀 A iniciar Máquina do Tempo (Simulação de Trades)...")
