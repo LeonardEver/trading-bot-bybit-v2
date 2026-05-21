@@ -29,7 +29,7 @@ TF = "5"                # timeframe base (ajuste se quiser: '1m','5m','15m')
 HORIZON_MIN = 15         # horizonte para o label (minutos)
 TP_ATR_MULT = 0.8
 SL_ATR_MULT = 0.6
-LOOKBACK = 5000          # quantos candles buscar (ajuste)
+LOOKBACK = 100000
 OUT_CSV = Path("dataset.csv")
 
 def fetch_ohlcv(symbol, interval=None, limit=LOOKBACK):

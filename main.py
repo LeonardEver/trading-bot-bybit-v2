@@ -44,8 +44,8 @@ print(">>> Script main.py carregado com sucesso")
 
 
 SYMBOL = "BTCUSDT"
-WS_INTERVAL = "15"
-LOOP_INTERVAL = 15
+WS_INTERVAL = "5"
+LOOP_INTERVAL = 5
 LOG_FILE = "trading_log.csv"
 
 TAKE_PROFIT_PCT = 0.0010
@@ -309,10 +309,9 @@ def calcular_performance_advanced():
         log_event(f"[ERROR] Advanced adaptation: {e}")
 
 
-def model_predict_prob_corrected(row, technical_confidence):
+def model_predict_prob_corrected(row, technical_confidence, sinal_tecnico):
     """
-    CORRECTED: ML filter with single-layer logic (blends with technical confidence)
-    Returns probability if confidence >= 65%, None otherwise
+    CORRECTED: ML filter that respects technical direction to avoid divergence trades.
     """
     global model, ultima_modificacao_modelo
     
@@ -347,26 +346,42 @@ def model_predict_prob_corrected(row, technical_confidence):
             prob = model.predict(X)[0]
         
         prob = float(prob)
+        ml_confidence = 0.0
         
-        # CORRECTED: Clear probability interpretation
-        if prob < 0.48:
-            ml_confidence = 0.0
-            log_event(f"[ML] Bearish prediction ({prob:.2%})")
-        elif 0.48 <= prob < 0.52:
-            ml_confidence = 0.20
-            log_event(f"[ML] Ambiguous ({prob:.2%}), low confidence")
-        elif 0.52 <= prob < 0.60:
-            ml_confidence = 0.50
-            log_event(f"[ML] Weak bullish ({prob:.2%}), moderate confidence")
-        elif 0.60 <= prob < 0.70:
-            ml_confidence = 0.75
-            log_event(f"[ML] Moderate bullish ({prob:.2%}), high confidence")
+        # CORRECTED: Avaliação direcional com base no sinal técnico
+        if sinal_tecnico == "buy":
+            if prob < 0.50:
+                log_event(f"❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish ({prob:.2%})")
+                ml_confidence = 0.0
+            elif 0.50 <= prob < 0.60:
+                ml_confidence = 0.50
+                log_event(f"[ML] Weak bullish ({prob:.2%}), moderate confidence")
+            elif 0.60 <= prob < 0.70:
+                ml_confidence = 0.75
+                log_event(f"[ML] Moderate bullish ({prob:.2%}), high confidence")
+            else:
+                ml_confidence = 1.0
+                log_event(f"[ML] Strong bullish ({prob:.2%}), maximum confidence")
+                
+        elif sinal_tecnico == "sell":
+            if prob > 0.50:
+                log_event(f"❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish ({prob:.2%})")
+                ml_confidence = 0.0
+            elif 0.40 < prob <= 0.50:
+                ml_confidence = 0.50
+                log_event(f"[ML] Weak bearish ({(1-prob):.2%}), moderate confidence")
+            elif 0.30 < prob <= 0.40:
+                ml_confidence = 0.75
+                log_event(f"[ML] Moderate bearish ({(1-prob):.2%}), high confidence")
+            else:
+                ml_confidence = 1.0
+                log_event(f"[ML] Strong bearish ({(1-prob):.2%}), maximum confidence")
+                
         else:
-            ml_confidence = 1.0
-            log_event(f"[ML] Strong bullish ({prob:.2%}), maximum confidence")
+            ml_confidence = 0.0
         
         # Blend with technical
-        final_confidence = (0.7 * technical_confidence / 100) + (0.3 * ml_confidence)
+        final_confidence = (0.7 * (technical_confidence / 100)) + (0.3 * ml_confidence)
         final_confidence_pct = final_confidence * 100
         
         if final_confidence_pct >= 65:
@@ -517,7 +532,7 @@ def abrir_ordem(df=None):
     log_event(f"Sinal técnico: {sinal_tecnico} | Conf. técnica: {confiança_tecnica}% | "
               f"Conf. final: {confiança_final:.1f}% | Risco: {risk_level}")
 
-    prob_ml = model_predict_prob_corrected(df.iloc[-1].to_dict(), confiança_tecnica)
+    prob_ml = model_predict_prob_corrected(df.iloc[-1].to_dict(), confiança_tecnica, sinal_tecnico)
     if prob_ml is None:
         log_event("⚠ ML filtering rejected entry - insufficient blended confidence.")
         return
@@ -920,29 +935,44 @@ if __name__ == "__main__":
             del liquidation_events_ws[:-500]
 
     ws = WebSocket(
-        testnet=True, 
-        channel_type="linear"
-    )
-    
+            testnet=False, # Mude para True se for operar em papel
+            channel_type="linear",
+        )
+
     ws.kline_stream(
-        interval=WS_INTERVAL, 
-        symbol=SYMBOL, 
+        interval=WS_INTERVAL,
+        symbol=SYMBOL,
         callback=handle_kline
     )
+
+    log_event("📡 WebSocket conectado! Aguardando o fechamento do próximo candle.")
     
     log_event("📡 WebSocket conectado! Aguardando o fechamento do próximo candle.")
 
     if hasattr(ws, "public_trade_stream"):
-        ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
+        try:
+            ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
+            log_event("[WS] Inscrito no Public Trade Stream com sucesso.")
+        except Exception as e:
+            if "already subscribed" in str(e).lower():
+                pass # Ignora silenciosamente se já estiver inscrito na memória
+            else:
+                log_event(f"[WS] Erro ao assinar trades: {e}")
     else:
-        log_event("[WS] public_trade_stream indisponivel nesta versao do pybit; CVD usara fallback REST/candles.")
+        log_event("[WS] public_trade_stream indisponivel; CVD usara fallback REST.")
 
-    if hasattr(ws, "liquidation_stream"):
-        ws.liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
-    elif hasattr(ws, "all_liquidation_stream"):
-        ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+    # 2. Inscrição no fluxo de Liquidações (Priorizando V5 - all_liquidation_stream)
+    if hasattr(ws, "all_liquidation_stream"):
+        try:
+            ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+            log_event("[WS] Inscrito no Liquidation Stream (V5) com sucesso.")
+        except Exception as e:
+            if "already subscribed" in str(e).lower():
+                pass # Ignora silenciosamente se já estiver inscrito na memória
+            else:
+                log_event(f"[WS] Erro ao assinar liquidações: {e}")
     else:
-        log_event("[WS] liquidation_stream indisponivel nesta versao do pybit; tracker aguardara eventos.")
+        log_event("[WS] all_liquidation_stream indisponivel nesta versão do pybit.")
 
     while True:
         try:
@@ -961,11 +991,16 @@ if __name__ == "__main__":
                 ws = WebSocket(testnet=True, channel_type="linear")
                 ws.kline_stream(interval=WS_INTERVAL, symbol=SYMBOL, callback=handle_kline)
                 if hasattr(ws, "public_trade_stream"):
-                    ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
-                if hasattr(ws, "liquidation_stream"):
-                    ws.liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
-                elif hasattr(ws, "all_liquidation_stream"):
-                    ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+                    try:
+                        ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
+                    except Exception:
+                        pass
+                
+                if hasattr(ws, "all_liquidation_stream"):
+                    try:
+                        ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+                    except Exception:
+                        pass
                 
                 ultimo_candle_recebido = datetime.now() # Reseta o tempo após reiniciar
 

@@ -1,11 +1,15 @@
 # utils/ohlcv.py
 import os
 import sys
+import time
 from pathlib import Path
 import pandas as pd
 import numpy as np
 import requests
 import joblib
+from pybit.unified_trading import HTTP
+
+session = HTTP(testnet=False)
 
 # ------------------------------------------------------------------
 # Garante que a RAIZ do projeto esteja no sys.path
@@ -134,33 +138,62 @@ def _normalize_ohlcv_df(df):
 # ==============================
 # Pega candles Bybit
 # ==============================
-def get_ohlcv(symbol="BTCUSDT", interval="5", limit=200):
+def get_ohlcv(symbol="BTCUSDT", interval="5", limit=50000):
     """
-    Usa a API v5 pública da Bybit.
-    interval: "1","3","5","15","30","60","240","D","W","M"
+    Busca histórico massivo de candles na Bybit V5 burlando o limite de 1000 por request.
     """
-    url = "https://api.bybit.com/v5/market/kline"
-    params = {"category": "linear", "symbol": symbol, "interval": str(interval), "limit": limit}
+    print(f"📥 Iniciando extração de {limit} velas para {symbol} (Tempo: {interval}m)...")
+    all_klines = []
+    current_end_time = int(time.time() * 1000)
+    
+    # Paginação: cada loop pega até 1000 velas e volta no tempo
+    while len(all_klines) < limit:
+        fetch_limit = min(1000, limit - len(all_klines))
+        
+        try:
+            response = session.get_kline(
+                category="linear",
+                symbol=symbol,
+                interval=interval,
+                limit=fetch_limit,
+                end=current_end_time
+            )
+            
+            if not response.get('result') or not response['result']['list']:
+                print("\n⚠ Fim dos dados disponíveis na corretora alcançado.")
+                break
+                
+            klines = response['result']['list']
+            all_klines.extend(klines)
+            
+            # Encontra a vela mais antiga recebida para pedir as anteriores a ela
+            oldest_time = int(klines[-1][0])
+            current_end_time = oldest_time - 1  
+            
+            print(f"⏳ Baixadas {len(all_klines)} / {limit} velas...", end='\r')
+            
+            # Pausa cirúrgica para evitar Ban por excesso de requisições (Rate Limit)
+            time.sleep(0.15)
+            
+        except Exception as e:
+            print(f"\n❌ Erro na extração da API: {e}")
+            break
 
-    try:
-        resp = requests.get(url, params=params, timeout=10)
-        data = resp.json()
-        if data.get("retCode") != 0:
-            print(f"Erro ao obter OHLCV de {symbol}: {data}")
-            return pd.DataFrame()
-
-        raw = data.get("result", {}).get("list", [])
-        if not raw:
-            print("Erro: nenhum dado OHLCV retornado.")
-            return pd.DataFrame()
-
-        # A API da Bybit retorna: [start, open, high, low, close, volume, turnover]
-        df = pd.DataFrame(raw, columns=["timestamp", "open", "high", "low", "close", "volume", "turnover"])
-        return _normalize_ohlcv_df(df)
-
-    except Exception as e:
-        print(f"Erro em get_ohlcv: {e}")
-        return pd.DataFrame()
+    print(f"\n🚀 Extração concluída! Total processado: {len(all_klines)} velas.")
+    
+    # Formatação padrão que as features do bot exigem
+    df = pd.DataFrame(all_klines, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume', 'turnover'])
+    
+    # Conversão de tipos de dados para evitar bugs matemáticos
+    numeric_cols = ['open', 'high', 'low', 'close', 'volume', 'turnover']
+    df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric)
+    df['timestamp'] = pd.to_numeric(df['timestamp'])
+    
+    # Inverte para ordem cronológica (antigo -> novo) e limpa sobreposições
+    df = df.sort_values('timestamp', ascending=True).reset_index(drop=True)
+    df = df.drop_duplicates(subset=['timestamp'])
+    
+    return df
 
 # ==============================
 # Predição com modelo treinado
