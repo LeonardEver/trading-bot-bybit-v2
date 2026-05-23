@@ -6990,3 +6990,72 @@
 [2026-05-21 18:30:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
 [2026-05-21 18:46:04] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
 [2026-05-21 19:02:24] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-21 23:29:21] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-05-21 23:29:22] Modelo ML carregado de ml\model_lgb.pkl
+[2026-05-21 23:29:22] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-05-21 23:29:23] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-21 23:29:23] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-21 23:29:23] [WS] public_trade_stream indisponivel; CVD usara fallback REST.
+[2026-05-21 23:29:23] [WS] Inscrito no Liquidation Stream (V5) com sucesso.
+[2026-05-21 23:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-21 23:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-21 23:30:00] [DATA] Cache WebSocket aquecida via REST inicial.
+[2026-05-21 23:30:01] [FLOW] CVD=1.0180 (18.06%) | OIΔ=0.00% | LiqImb=0.00%
+[2026-05-21 23:30:01] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0481%
+[2026-05-21 23:30:01] 📊 Preço de fechamento real (DataFrame): 77629.4
+[2026-05-21 23:30:02] Sentimento: bearish (0%)
+[2026-05-21 23:30:02] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-21 23:30:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (32.33%)
+[2026-05-21 23:30:02] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-21 23:30:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-21 23:46:03] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 00:02:22] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 00:18:42] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 00:35:01] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 00:38:32] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-05-22 00:38:34] Modelo ML carregado de ml\model_lgb.pkl
+[2026-05-22 00:38:34] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-05-22 00:38:35] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-22 00:38:35] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-22 00:38:35] [WS] public_trade_stream indisponivel; CVD usara fallback REST.
+[2026-05-22 00:38:35] [WS] Inscrito no Liquidation Stream (V5) com sucesso.
+[2026-05-22 00:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-22 00:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-22 00:40:00] [DATA] Cache WebSocket aquecida via REST inicial.
+[2026-05-22 00:40:02] [FLOW] CVD=14.3680 (96.56%) | OIΔ=0.01% | LiqImb=0.00%
+[2026-05-22 00:40:02] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0472%
+[2026-05-22 00:40:02] 📊 Preço de fechamento real (DataFrame): 77756.2
+[2026-05-22 00:40:03] Sentimento: bearish (0%)
+[2026-05-22 00:40:03] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-22 00:40:03] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (27.95%)
+[2026-05-22 00:40:03] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-22 00:40:03] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-22 00:46:04] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 00:52:25] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 00:58:46] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 01:05:05] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-22 01:11:25] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-23 18:45:16] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-05-23 18:45:22] Modelo ML carregado de ml\model_lgb.pkl
+[2026-05-23 18:45:22] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-05-23 18:45:23] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-23 18:45:23] [WS] public_trade_stream indisponivel; CVD usara fallback REST.
+[2026-05-23 18:45:23] [WS] Inscrito no Liquidation Stream (V5) com sucesso.
+[2026-05-23 18:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-23 18:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-23 18:50:01] [DATA] Cache WebSocket aquecida via REST inicial.
+[2026-05-23 18:50:03] [FLOW] CVD=0.5080 (20.29%) | OIΔ=0.00% | LiqImb=100.00%
+[2026-05-23 18:50:03] [DERIV] Funding=0.0029% | PredFunding=0.0029% | Premium=-0.0420%
+[2026-05-23 18:50:03] 📊 Preço de fechamento real (DataFrame): 76603.5
+[2026-05-23 18:50:03] Sentimento: bearish (0%)
+[2026-05-23 18:50:03] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-23 18:50:03] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-23 18:50:03] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-23 19:06:05] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-23 19:06:21] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-23 19:22:23] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-23 19:22:39] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-23 19:38:44] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-23 19:39:00] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-23 19:55:02] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-23 19:55:18] ✅ WatchDog reconectou o WebSocket com sucesso.

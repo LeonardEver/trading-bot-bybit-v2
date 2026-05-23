@@ -21,7 +21,7 @@ from sklearn.metrics import roc_auc_score, accuracy_score
 import matplotlib.pyplot as plt
 from ml.config import FEATURES
 
-DATA_CSV = ROOT / "dataset.csv"
+DATA_CSV = ROOT / "ml" / "dataset.csv"
 MODEL_OUT = ROOT / "ml" / "model_lgb.pkl"
 METRICS_OUT = ROOT / "ml" / "training_metrics.png"
 

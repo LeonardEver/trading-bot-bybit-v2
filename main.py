@@ -47,6 +47,9 @@ SYMBOL = "BTCUSDT"
 WS_INTERVAL = "5"
 LOOP_INTERVAL = 5
 LOG_FILE = "trading_log.csv"
+WATCHDOG_TIMEOUT_SECONDS = 16 * 60  # 16 minutos sem candles confirmados
+TESTNET_MODE = False
+WEBSOCKET_CHANNEL_TYPE = "linear"
 
 TAKE_PROFIT_PCT = 0.0010
 STOP_LOSS_PCT = 0.0010
@@ -432,7 +435,7 @@ def obter_candles_para_analise():
     if len(df_ws) >= 320:
         return df_ws
 
-    df_rest = get_ohlcv(SYMBOL, interval="15", limit=500)
+    df_rest = get_ohlcv(SYMBOL, interval="5", limit=1000)
     if not df_rest.empty:
         with candle_cache_lock:
             globals()["historico_candles_ws"] = df_rest.tail(500).reset_index(drop=True)
@@ -890,7 +893,7 @@ if __name__ == "__main__":
 
     def handle_kline(message):
         """Callback acionado pela Bybit"""
-        global ultimo_candle_recebido # ADICIONADO: Avisa a Thread principal que o WebSocket está vivo!
+        global ws_cache_df, df_rest, in_position, session_metrics, model_weights, regime_history, ultimo_candle_recebido # ADICIONADO: Avisa a Thread principal que o WebSocket está vivo!
         
         data = message.get("data", [])
         if data:
@@ -935,8 +938,8 @@ if __name__ == "__main__":
             del liquidation_events_ws[:-500]
 
     ws = WebSocket(
-            testnet=False, # Mude para True se for operar em papel
-            channel_type="linear",
+            testnet=TESTNET_MODE, # Mude para True se for operar em papel
+            channel_type=WEBSOCKET_CHANNEL_TYPE,
         )
 
     ws.kline_stream(
@@ -945,8 +948,6 @@ if __name__ == "__main__":
         callback=handle_kline
     )
 
-    log_event("📡 WebSocket conectado! Aguardando o fechamento do próximo candle.")
-    
     log_event("📡 WebSocket conectado! Aguardando o fechamento do próximo candle.")
 
     if hasattr(ws, "public_trade_stream"):
@@ -978,30 +979,39 @@ if __name__ == "__main__":
         try:
             # ADICIONADO: Cão de Guarda (Watchdog) para reinicialização em caso de queda silenciosa
             agora = datetime.now()
-            if (agora - ultimo_candle_recebido).total_seconds() > (16 * 60): # 16 minutos sem novidades do mercado
+            if (agora - ultimo_candle_recebido).total_seconds() > WATCHDOG_TIMEOUT_SECONDS:
                 log_event("💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...")
                 
                 try:
-                    ws.ws.close() # Mata a conexão travada
-                except:
-                    pass
+                    if hasattr(ws, "ws"):
+                        ws.ws.close()
+                    elif hasattr(ws, "close"):
+                        ws.close()
+                except Exception as close_error:
+                    log_event(f"⚠ Falha ao fechar WebSocket antigo: {close_error}")
                 
                 time.sleep(15)
-                # Recria a conexão do zero
-                ws = WebSocket(testnet=True, channel_type="linear")
-                ws.kline_stream(interval=WS_INTERVAL, symbol=SYMBOL, callback=handle_kline)
-                if hasattr(ws, "public_trade_stream"):
-                    try:
-                        ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
-                    except Exception:
-                        pass
                 
-                if hasattr(ws, "all_liquidation_stream"):
-                    try:
-                        ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
-                    except Exception:
-                        pass
-                
+                try:
+                    ws = WebSocket(testnet=TESTNET_MODE, channel_type=WEBSOCKET_CHANNEL_TYPE)
+                    ws.kline_stream(interval=WS_INTERVAL, symbol=SYMBOL, callback=handle_kline)
+
+                    if hasattr(ws, "public_trade_stream"):
+                        try:
+                            ws.public_trade_stream(symbol=SYMBOL, callback=handle_public_trade)
+                        except Exception as e:
+                            log_event(f"⚠ Não foi possível reinscrever public_trade_stream: {e}")
+
+                    if hasattr(ws, "all_liquidation_stream"):
+                        try:
+                            ws.all_liquidation_stream(symbol=SYMBOL, callback=handle_liquidation)
+                        except Exception as e:
+                            log_event(f"⚠ Não foi possível reinscrever all_liquidation_stream: {e}")
+
+                    log_event("✅ WatchDog reconectou o WebSocket com sucesso.")
+                except Exception as reconnect_error:
+                    log_event(f"❌ Falha ao reconectar WebSocket no WatchDog: {reconnect_error}")
+
                 ultimo_candle_recebido = datetime.now() # Reseta o tempo após reiniciar
 
             # Monitora as ordens abertas respeitando o rate limit da Bybit (15s)
