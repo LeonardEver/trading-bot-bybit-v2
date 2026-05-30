@@ -37,7 +37,7 @@ from utils.order_flow import (
     calculate_liquidation_metrics,
     estimate_cvd_from_candles,
 )
-from pybit.unified_trading import WebSocket
+from pybit.unified_trading import WebSocket 
 
 
 print(">>> Script main.py carregado com sucesso")
@@ -47,7 +47,7 @@ SYMBOL = "BTCUSDT"
 WS_INTERVAL = "5"
 LOOP_INTERVAL = 5
 LOG_FILE = "trading_log.csv"
-WATCHDOG_TIMEOUT_SECONDS = 16 * 60  # 16 minutos sem candles confirmados
+WATCHDOG_TIMEOUT_SECONDS = 6 * 60
 TESTNET_MODE = False
 WEBSOCKET_CHANNEL_TYPE = "linear"
 
@@ -56,12 +56,12 @@ STOP_LOSS_PCT = 0.0010
 TRAILING_STOP_PCT = 0.0008
 
 ultima_ordem = {"side": None, "hora": datetime.min}
-ordem_lock = Lock() # ADICIONADO: Variável de proteção contra colisão de leitura/escrita simultânea
+ordem_lock = Lock()
 
 # Variáveis Globais de Controle e Proteção
 bloqueio_ate = datetime.min
-ultima_modificacao_modelo = 0.0  # CORREÇÃO: Variável do Hot-Reload declarada aqui no topo!
-ultimo_candle_recebido = datetime.now() # ADICIONADO: Variável do Cão de Guarda (Watchdog)
+ultima_modificacao_modelo = 0.0
+ultimo_candle_recebido = datetime.now()
 
 historico_candles_ws = pd.DataFrame()
 candle_cache_lock = Lock()
@@ -405,7 +405,7 @@ def atualizar_cache_candle_ws(candle):
 
     try:
         row = {
-            "timestamp": pd.to_datetime(int(candle.get("start")), unit="ms"),
+            "timestamp": int(candle.get("start")),
             "open": float(candle.get("open")),
             "high": float(candle.get("high")),
             "low": float(candle.get("low")),
@@ -893,17 +893,28 @@ if __name__ == "__main__":
 
     def handle_kline(message):
         """Callback acionado pela Bybit"""
-        global ws_cache_df, df_rest, in_position, session_metrics, model_weights, regime_history, ultimo_candle_recebido # ADICIONADO: Avisa a Thread principal que o WebSocket está vivo!
-        
-        data = message.get("data", [])
-        if data:
+        try:
+            # 1. Escudo Global: Garante que o Python veja as variáveis da Thread Principal
+            global ultimo_candle_recebido, in_position, session_metrics, model_weights, regime_history
+            
+            data = message.get("data", [])
+            
+            # Se a corretora mandar um pacote vazio, ignora e protege o código
+            if not data: 
+                return
+                
             candle = data[0]
+            
+            # 2. Quando o candle fechar oficialmente (confirm = True)
             if candle.get("confirm"):
                 atualizar_cache_candle_ws(candle)
-                ultimo_candle_recebido = datetime.now() # Reseta o relógio do Watchdog
+                
+                # Reseta o relógio do Watchdog para provar que a conexão está viva
+                ultimo_candle_recebido = datetime.now() 
                 
                 log_event("🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...")
                 
+                # 3. Processamento em Sub-Thread para o WebSocket não engasgar
                 def executar_trabalho_pesado():
                     try:
                         calcular_performance_advanced()
@@ -911,8 +922,13 @@ if __name__ == "__main__":
                     except Exception as e:
                         log_event(f"❌ Erro durante a análise pós-candle: {e}")
 
+                import threading
                 thread_analise = threading.Thread(target=executar_trabalho_pesado)
                 thread_analise.start()
+                
+        except Exception as e:
+            # 4. Escudo Final: Se QUALQUER coisa der errado, loga o erro mas NÃO mata a conexão
+            log_event(f"🚨 [CRÍTICO] Erro interno ignorado no WebSocket (A thread foi salva!): {e}")
 
     def handle_public_trade(message):
         data = message.get("data", [])

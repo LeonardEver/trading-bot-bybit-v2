@@ -7059,3 +7059,2018 @@
 [2026-05-23 19:39:00] ✅ WatchDog reconectou o WebSocket com sucesso.
 [2026-05-23 19:55:02] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
 [2026-05-23 19:55:18] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-24 02:47:15] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-05-24 02:47:21] Modelo ML carregado de ml\model_lgb.pkl
+[2026-05-24 02:47:21] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-05-24 02:47:22] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-24 02:47:22] [WS] public_trade_stream indisponivel; CVD usara fallback REST.
+[2026-05-24 02:47:22] [WS] Inscrito no Liquidation Stream (V5) com sucesso.
+[2026-05-24 02:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 02:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 02:50:01] [DATA] Cache WebSocket aquecida via REST inicial.
+[2026-05-24 02:50:02] [FLOW] CVD=15.4160 (98.44%) | OIΔ=-0.00% | LiqImb=0.00%
+[2026-05-24 02:50:02] [DERIV] Funding=0.0065% | PredFunding=0.0065% | Premium=-0.0274%
+[2026-05-24 02:50:02] 📊 Preço de fechamento real (DataFrame): 76760.7
+[2026-05-24 02:50:02] Sentimento: bearish (0%)
+[2026-05-24 02:50:02] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-24 02:50:02] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-24 02:50:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 02:55:00] 🚨 [CRÍTICO] Erro interno ignorado no WebSocket (A thread foi salva!): '<' not supported between instances of 'Timestamp' and 'int'
+[2026-05-24 02:56:04] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-24 02:56:21] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-24 03:00:00] 🚨 [CRÍTICO] Erro interno ignorado no WebSocket (A thread foi salva!): '<' not supported between instances of 'Timestamp' and 'int'
+[2026-05-24 03:02:21] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-24 03:02:38] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-24 03:05:00] 🚨 [CRÍTICO] Erro interno ignorado no WebSocket (A thread foi salva!): '<' not supported between instances of 'Timestamp' and 'int'
+[2026-05-24 03:09:28] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-05-24 03:09:29] Modelo ML carregado de ml\model_lgb.pkl
+[2026-05-24 03:09:29] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-05-24 03:09:30] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-24 03:09:30] [WS] public_trade_stream indisponivel; CVD usara fallback REST.
+[2026-05-24 03:09:30] [WS] Inscrito no Liquidation Stream (V5) com sucesso.
+[2026-05-24 03:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:10:01] [DATA] Cache WebSocket aquecida via REST inicial.
+[2026-05-24 03:10:02] [FLOW] CVD=0.1590 (4.46%) | OIΔ=-0.03% | LiqImb=0.00%
+[2026-05-24 03:10:02] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0405%
+[2026-05-24 03:10:02] 📊 Preço de fechamento real (DataFrame): 76799.0
+[2026-05-24 03:10:03] Sentimento: bearish (0%)
+[2026-05-24 03:10:03] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-24 03:10:03] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (33.89%)
+[2026-05-24 03:10:03] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-24 03:10:03] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:15:01] [FLOW] CVD=-0.7790 (-56.25%) | OIΔ=-0.00% | LiqImb=0.00%
+[2026-05-24 03:15:01] [DERIV] Funding=0.0069% | PredFunding=0.0069% | Premium=-0.0458%
+[2026-05-24 03:15:01] 📊 Preço de fechamento real (DataFrame): 76810.7
+[2026-05-24 03:15:01] Sentimento: bearish (0%)
+[2026-05-24 03:15:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-24 03:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (32.91%)
+[2026-05-24 03:15:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-24 03:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:20:01] [FLOW] CVD=0.1020 (7.41%) | OIΔ=-0.00% | LiqImb=0.00%
+[2026-05-24 03:20:01] [DERIV] Funding=0.0069% | PredFunding=0.0069% | Premium=-0.0472%
+[2026-05-24 03:20:01] 📊 Preço de fechamento real (DataFrame): 76759.4
+[2026-05-24 03:20:01] Sentimento: bearish (0%)
+[2026-05-24 03:20:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-24 03:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (43.02%)
+[2026-05-24 03:20:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-24 03:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:25:02] [FLOW] CVD=-6.5410 (-65.12%) | OIΔ=0.08% | LiqImb=0.00%
+[2026-05-24 03:25:02] [DERIV] Funding=0.0069% | PredFunding=0.0069% | Premium=-0.0409%
+[2026-05-24 03:25:02] 📊 Preço de fechamento real (DataFrame): 76722.0
+[2026-05-24 03:25:02] Sentimento: bearish (0%)
+[2026-05-24 03:25:02] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-24 03:25:02] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-24 03:25:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:30:02] [FLOW] CVD=8.4280 (41.33%) | OIΔ=-0.08% | LiqImb=0.00%
+[2026-05-24 03:30:02] [DERIV] Funding=0.0066% | PredFunding=0.0066% | Premium=-0.0482%
+[2026-05-24 03:30:02] 📊 Preço de fechamento real (DataFrame): 76698.9
+[2026-05-24 03:30:02] Sentimento: bearish (0%)
+[2026-05-24 03:30:02] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-24 03:30:02] [ML] Moderate bearish (62.28%), high confidence
+[2026-05-24 03:30:02] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-24 03:30:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:35:01] [FLOW] CVD=-14.0890 (-52.86%) | OIΔ=-0.81% | LiqImb=0.00%
+[2026-05-24 03:35:01] [DERIV] Funding=0.0066% | PredFunding=0.0066% | Premium=-0.0433%
+[2026-05-24 03:35:01] 📊 Preço de fechamento real (DataFrame): 76696.3
+[2026-05-24 03:35:01] Sentimento: bearish (0%)
+[2026-05-24 03:35:01] Sinal técnico: sell | Conf. técnica: 56.2% | Conf. final: 28.1% | Risco: alto
+[2026-05-24 03:35:01] [ML] Weak bearish (57.44%), moderate confidence
+[2026-05-24 03:35:01] ❌ [DECISION] REJECT | Blended confidence: 54.3% < 65%
+[2026-05-24 03:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:40:02] [FLOW] CVD=6.3710 (71.83%) | OIΔ=-0.09% | LiqImb=0.00%
+[2026-05-24 03:40:02] [DERIV] Funding=0.0066% | PredFunding=0.0066% | Premium=-0.0346%
+[2026-05-24 03:40:02] 📊 Preço de fechamento real (DataFrame): 76710.9
+[2026-05-24 03:40:02] Sentimento: bearish (0%)
+[2026-05-24 03:40:02] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-24 03:40:02] [ML] Weak bearish (58.28%), moderate confidence
+[2026-05-24 03:40:02] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-24 03:40:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:45:02] [FLOW] CVD=4.5040 (56.90%) | OIΔ=-0.00% | LiqImb=-100.00%
+[2026-05-24 03:45:02] [DERIV] Funding=0.0067% | PredFunding=0.0067% | Premium=-0.0364%
+[2026-05-24 03:45:02] 📊 Preço de fechamento real (DataFrame): 76785.2
+[2026-05-24 03:45:02] Sentimento: bearish (0%)
+[2026-05-24 03:45:02] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-24 03:45:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (46.81%)
+[2026-05-24 03:45:02] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-24 03:45:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:50:02] [FLOW] CVD=10.7870 (98.30%) | OIΔ=-0.00% | LiqImb=-100.00%
+[2026-05-24 03:50:02] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0338%
+[2026-05-24 03:50:02] 📊 Preço de fechamento real (DataFrame): 76880.9
+[2026-05-24 03:50:02] Sentimento: bearish (0%)
+[2026-05-24 03:50:02] Sinal técnico: buy | Conf. técnica: 87.5% | Conf. final: 43.8% | Risco: alto
+[2026-05-24 03:50:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (26.34%)
+[2026-05-24 03:50:02] ❌ [DECISION] REJECT | Blended confidence: 61.2% < 65%
+[2026-05-24 03:50:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 03:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 03:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 03:55:02] [FLOW] CVD=8.1370 (52.00%) | OIΔ=0.79% | LiqImb=-100.00%
+[2026-05-24 03:55:02] [DERIV] Funding=0.0071% | PredFunding=0.0071% | Premium=-0.0401%
+[2026-05-24 03:55:02] 📊 Preço de fechamento real (DataFrame): 76980.2
+[2026-05-24 03:55:02] Sentimento: bearish (0%)
+[2026-05-24 03:55:02] Sinal técnico: buy | Conf. técnica: 100.0% | Conf. final: 50.0% | Risco: alto
+[2026-05-24 03:55:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (30.60%)
+[2026-05-24 03:55:02] ✅ [DECISION] ENTER | Blended confidence: 70.0%
+[2026-05-24 03:55:03] [EDGE METRICS] WR=33.3% | PF=0.05 | Exp=-0.0700 | Sharpe=-14.07
+[2026-05-24 03:55:03] ⚠ [KELLY] No edge detected (WR=33.3%). Reducing position to 0.
+[2026-05-24 03:55:03] Abrindo Buy | Preço Desejado: 76980.1 | TP: 77116.8 | SL: 76889.0 | TS: 30.4
+[2026-05-24 03:55:03] [MAKER] Limit=76980.1 | ATR SLx=1.2 TPx=1.8
+[2026-05-24 03:55:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-24 04:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:00:01] [FLOW] CVD=-0.5880 (-12.51%) | OIΔ=0.79% | LiqImb=-100.00%
+[2026-05-24 04:00:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0440%
+[2026-05-24 04:00:01] 📊 Preço de fechamento real (DataFrame): 76956.0
+[2026-05-24 04:00:01] Sentimento: bearish (0%)
+[2026-05-24 04:00:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-24 04:00:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (26.75%)
+[2026-05-24 04:00:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-24 04:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:05:01] [FLOW] CVD=-3.7310 (-66.73%) | OIΔ=0.05% | LiqImb=-100.00%
+[2026-05-24 04:05:01] [DERIV] Funding=0.0071% | PredFunding=0.0071% | Premium=-0.0466%
+[2026-05-24 04:05:01] 📊 Preço de fechamento real (DataFrame): 76956.0
+[2026-05-24 04:05:01] Sentimento: bearish (0%)
+[2026-05-24 04:05:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-24 04:05:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (36.16%)
+[2026-05-24 04:05:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-24 04:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:10:02] [FLOW] CVD=-1.0790 (-46.97%) | OIΔ=0.02% | LiqImb=-100.00%
+[2026-05-24 04:10:02] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0460%
+[2026-05-24 04:10:02] 📊 Preço de fechamento real (DataFrame): 76897.7
+[2026-05-24 04:10:02] Sentimento: bearish (0%)
+[2026-05-24 04:10:02] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-24 04:10:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (43.91%)
+[2026-05-24 04:10:02] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-24 04:10:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:15:01] [FLOW] CVD=-13.7970 (-88.80%) | OIΔ=0.04% | LiqImb=-100.00%
+[2026-05-24 04:15:01] [DERIV] Funding=0.0069% | PredFunding=0.0069% | Premium=-0.0476%
+[2026-05-24 04:15:01] 📊 Preço de fechamento real (DataFrame): 76860.2
+[2026-05-24 04:15:01] Sentimento: bearish (0%)
+[2026-05-24 04:15:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-24 04:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (44.90%)
+[2026-05-24 04:15:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-24 04:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:20:01] [FLOW] CVD=1.1590 (72.57%) | OIΔ=-0.08% | LiqImb=-100.00%
+[2026-05-24 04:20:01] [DERIV] Funding=0.0068% | PredFunding=0.0068% | Premium=-0.0389%
+[2026-05-24 04:20:01] 📊 Preço de fechamento real (DataFrame): 76878.3
+[2026-05-24 04:20:01] Sentimento: bearish (0%)
+[2026-05-24 04:20:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-24 04:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (42.66%)
+[2026-05-24 04:20:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-24 04:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:25:02] [FLOW] CVD=4.2490 (49.92%) | OIΔ=0.02% | LiqImb=-100.00%
+[2026-05-24 04:25:02] [DERIV] Funding=0.0069% | PredFunding=0.0069% | Premium=-0.0323%
+[2026-05-24 04:25:02] 📊 Preço de fechamento real (DataFrame): 76863.2
+[2026-05-24 04:25:02] Sentimento: bearish (0%)
+[2026-05-24 04:25:02] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-24 04:25:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (30.42%)
+[2026-05-24 04:25:02] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-24 04:25:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:30:01] [FLOW] CVD=1.1800 (49.54%) | OIΔ=0.04% | LiqImb=-100.00%
+[2026-05-24 04:30:01] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0358%
+[2026-05-24 04:30:01] 📊 Preço de fechamento real (DataFrame): 76874.0
+[2026-05-24 04:30:01] Sentimento: bearish (0%)
+[2026-05-24 04:30:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-24 04:30:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (37.56%)
+[2026-05-24 04:30:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-24 04:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:35:01] [FLOW] CVD=30.7180 (98.70%) | OIΔ=0.04% | LiqImb=-100.00%
+[2026-05-24 04:35:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0294%
+[2026-05-24 04:35:01] 📊 Preço de fechamento real (DataFrame): 76889.5
+[2026-05-24 04:35:01] Sentimento: bearish (0%)
+[2026-05-24 04:35:01] Sinal técnico: buy | Conf. técnica: 87.5% | Conf. final: 43.8% | Risco: alto
+[2026-05-24 04:35:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (32.49%)
+[2026-05-24 04:35:01] ❌ [DECISION] REJECT | Blended confidence: 61.2% < 65%
+[2026-05-24 04:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:40:02] [FLOW] CVD=-0.6260 (-62.48%) | OIΔ=0.09% | LiqImb=-100.00%
+[2026-05-24 04:40:02] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0337%
+[2026-05-24 04:40:02] 📊 Preço de fechamento real (DataFrame): 76842.8
+[2026-05-24 04:40:02] Sentimento: bearish (0%)
+[2026-05-24 04:40:02] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-24 04:40:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (47.00%)
+[2026-05-24 04:40:02] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-24 04:40:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-24 04:51:53] 💀 [WATCHDOG] O WebSocket da Bybit parou de enviar dados (Estado Zumbi). Reiniciando conexão...
+[2026-05-24 04:52:09] ✅ WatchDog reconectou o WebSocket com sucesso.
+[2026-05-24 04:55:01] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-24 04:55:01] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-24 04:55:03] [FLOW] CVD=-1.2340 (-87.27%) | OIΔ=0.13% | LiqImb=-100.00%
+[2026-05-24 04:55:03] [DERIV] Funding=0.0082% | PredFunding=0.0082% | Premium=-0.0289%
+[2026-05-24 04:55:03] 📊 Preço de fechamento real (DataFrame): 76778.4
+[2026-05-24 04:55:03] Sentimento: bearish (0%)
+[2026-05-24 04:55:03] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-24 04:55:03] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-24 04:55:03] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 12:39:44] [MONGO] Conectado em mongodb://localhost:27017/ / DB=trading_bot
+[2026-05-29 12:39:49] Modelo ML carregado de ml\model_lgb.pkl
+[2026-05-29 12:39:49] 🚀 Bot iniciado. Configurando WebSockets...
+[2026-05-29 12:39:50] 📡 WebSocket conectado! Aguardando o fechamento do próximo candle.
+[2026-05-29 12:39:50] [WS] public_trade_stream indisponivel; CVD usara fallback REST.
+[2026-05-29 12:39:50] [WS] Inscrito no Liquidation Stream (V5) com sucesso.
+[2026-05-29 12:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 12:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 12:40:01] [DATA] Cache WebSocket aquecida via REST inicial.
+[2026-05-29 12:40:02] [FLOW] CVD=0.7100 (27.22%) | OIΔ=-0.53% | LiqImb=0.00%
+[2026-05-29 12:40:02] [DERIV] Funding=0.0022% | PredFunding=0.0022% | Premium=-0.0260%
+[2026-05-29 12:40:02] 📊 Preço de fechamento real (DataFrame): 74074.4
+[2026-05-29 12:40:03] Sentimento: bearish (0%)
+[2026-05-29 12:40:03] Sinal técnico: buy | Conf. técnica: 68.8% | Conf. final: 34.4% | Risco: alto
+[2026-05-29 12:40:03] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (17.68%)
+[2026-05-29 12:40:03] ❌ [DECISION] REJECT | Blended confidence: 48.2% < 65%
+[2026-05-29 12:40:03] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 12:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 12:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 12:45:02] [FLOW] CVD=-1.8550 (-51.31%) | OIΔ=-0.53% | LiqImb=-92.70%
+[2026-05-29 12:45:02] [DERIV] Funding=0.0023% | PredFunding=0.0023% | Premium=-0.0344%
+[2026-05-29 12:45:02] 📊 Preço de fechamento real (DataFrame): 73790.7
+[2026-05-29 12:45:02] Sentimento: bearish (0%)
+[2026-05-29 12:45:02] Sinal técnico: buy | Conf. técnica: 43.8% | Conf. final: 21.9% | Risco: alto
+[2026-05-29 12:45:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (27.84%)
+[2026-05-29 12:45:02] ❌ [DECISION] REJECT | Blended confidence: 30.7% < 65%
+[2026-05-29 12:45:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 12:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 12:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 12:50:02] [FLOW] CVD=-4.2390 (-73.07%) | OIΔ=-2.07% | LiqImb=-92.70%
+[2026-05-29 12:50:02] [DERIV] Funding=0.0024% | PredFunding=0.0024% | Premium=-0.0356%
+[2026-05-29 12:50:02] 📊 Preço de fechamento real (DataFrame): 73842.4
+[2026-05-29 12:50:02] Sentimento: bearish (0%)
+[2026-05-29 12:50:02] Sinal técnico: buy | Conf. técnica: 43.8% | Conf. final: 21.9% | Risco: alto
+[2026-05-29 12:50:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (26.66%)
+[2026-05-29 12:50:02] ❌ [DECISION] REJECT | Blended confidence: 30.7% < 65%
+[2026-05-29 12:50:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 12:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 12:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 12:55:01] [FLOW] CVD=-0.0980 (-5.44%) | OIΔ=-0.10% | LiqImb=-92.70%
+[2026-05-29 12:55:01] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0421%
+[2026-05-29 12:55:01] 📊 Preço de fechamento real (DataFrame): 73728.1
+[2026-05-29 12:55:01] Sentimento: bearish (0%)
+[2026-05-29 12:55:01] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 12:55:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (26.91%)
+[2026-05-29 12:55:01] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-29 12:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:00:01] [FLOW] CVD=2.7890 (89.13%) | OIΔ=-0.10% | LiqImb=-99.58%
+[2026-05-29 13:00:01] [DERIV] Funding=0.0026% | PredFunding=0.0026% | Premium=-0.0653%
+[2026-05-29 13:00:01] 📊 Preço de fechamento real (DataFrame): 73774.1
+[2026-05-29 13:00:01] Sentimento: bearish (0%)
+[2026-05-29 13:00:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 13:00:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (23.79%)
+[2026-05-29 13:00:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-29 13:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:05:02] [FLOW] CVD=0.1460 (7.38%) | OIΔ=-0.28% | LiqImb=-99.44%
+[2026-05-29 13:05:02] [DERIV] Funding=0.0031% | PredFunding=0.0031% | Premium=-0.0475%
+[2026-05-29 13:05:02] 📊 Preço de fechamento real (DataFrame): 73835.9
+[2026-05-29 13:05:02] Sentimento: bearish (0%)
+[2026-05-29 13:05:02] Sinal técnico: buy | Conf. técnica: 56.2% | Conf. final: 28.1% | Risco: alto
+[2026-05-29 13:05:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (26.11%)
+[2026-05-29 13:05:02] ❌ [DECISION] REJECT | Blended confidence: 39.3% < 65%
+[2026-05-29 13:05:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:10:01] [FLOW] CVD=-12.7970 (-93.91%) | OIΔ=-0.13% | LiqImb=-99.44%
+[2026-05-29 13:10:01] [DERIV] Funding=0.0046% | PredFunding=0.0046% | Premium=-0.0414%
+[2026-05-29 13:10:01] 📊 Preço de fechamento real (DataFrame): 73865.7
+[2026-05-29 13:10:01] Sentimento: bearish (0%)
+[2026-05-29 13:10:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 13:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (32.45%)
+[2026-05-29 13:10:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 13:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:15:02] [FLOW] CVD=-3.7760 (-66.88%) | OIΔ=-0.13% | LiqImb=-99.44%
+[2026-05-29 13:15:02] [DERIV] Funding=0.0079% | PredFunding=0.0079% | Premium=-0.0400%
+[2026-05-29 13:15:02] 📊 Preço de fechamento real (DataFrame): 73923.5
+[2026-05-29 13:15:02] Sentimento: bearish (0%)
+[2026-05-29 13:15:02] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 13:15:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (48.66%)
+[2026-05-29 13:15:02] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 13:15:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:20:01] [FLOW] CVD=-1.8090 (-46.02%) | OIΔ=-0.07% | LiqImb=-99.44%
+[2026-05-29 13:20:01] [DERIV] Funding=0.0057% | PredFunding=0.0057% | Premium=-0.0402%
+[2026-05-29 13:20:01] 📊 Preço de fechamento real (DataFrame): 73709.2
+[2026-05-29 13:20:01] Sentimento: bearish (0%)
+[2026-05-29 13:20:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 13:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (25.63%)
+[2026-05-29 13:20:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 13:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:25:01] [FLOW] CVD=48.8430 (95.68%) | OIΔ=-0.07% | LiqImb=15.00%
+[2026-05-29 13:25:01] [DERIV] Funding=0.0058% | PredFunding=0.0058% | Premium=-0.0361%
+[2026-05-29 13:25:01] 📊 Preço de fechamento real (DataFrame): 73608.9
+[2026-05-29 13:25:01] Sentimento: bearish (0%)
+[2026-05-29 13:25:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 13:25:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 13:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:30:02] [FLOW] CVD=-4.2300 (-81.31%) | OIΔ=-0.06% | LiqImb=17.60%
+[2026-05-29 13:30:02] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0363%
+[2026-05-29 13:30:02] 📊 Preço de fechamento real (DataFrame): 73614.7
+[2026-05-29 13:30:02] Sentimento: bearish (0%)
+[2026-05-29 13:30:02] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 13:30:02] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 13:30:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:35:01] [FLOW] CVD=-3.2680 (-87.94%) | OIΔ=-0.02% | LiqImb=12.33%
+[2026-05-29 13:35:01] [DERIV] Funding=0.0082% | PredFunding=0.0082% | Premium=-0.0375%
+[2026-05-29 13:35:01] 📊 Preço de fechamento real (DataFrame): 74043.6
+[2026-05-29 13:35:01] Sentimento: bearish (0%)
+[2026-05-29 13:35:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 13:35:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (39.60%)
+[2026-05-29 13:35:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 13:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:40:01] [FLOW] CVD=2.2570 (41.00%) | OIΔ=-0.19% | LiqImb=11.92%
+[2026-05-29 13:40:01] [DERIV] Funding=0.0091% | PredFunding=0.0091% | Premium=-0.0496%
+[2026-05-29 13:40:01] 📊 Preço de fechamento real (DataFrame): 73953.8
+[2026-05-29 13:40:01] Sentimento: bearish (0%)
+[2026-05-29 13:40:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 13:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (29.32%)
+[2026-05-29 13:40:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 13:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:45:01] [FLOW] CVD=-1.3930 (-26.18%) | OIΔ=-0.04% | LiqImb=11.87%
+[2026-05-29 13:45:01] [DERIV] Funding=0.0096% | PredFunding=0.0096% | Premium=-0.0251%
+[2026-05-29 13:45:01] 📊 Preço de fechamento real (DataFrame): 74049.9
+[2026-05-29 13:45:01] Sentimento: bearish (0%)
+[2026-05-29 13:45:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 13:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (29.14%)
+[2026-05-29 13:45:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 13:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:50:02] [FLOW] CVD=-2.0470 (-100.00%) | OIΔ=0.04% | LiqImb=11.87%
+[2026-05-29 13:50:02] [DERIV] Funding=0.0100% | PredFunding=0.0100% | Premium=-0.0023%
+[2026-05-29 13:50:02] 📊 Preço de fechamento real (DataFrame): 74011.6
+[2026-05-29 13:50:02] Sentimento: bearish (0%)
+[2026-05-29 13:50:02] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 13:50:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (31.80%)
+[2026-05-29 13:50:02] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 13:50:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 13:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 13:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 13:55:02] [FLOW] CVD=-2.6920 (-87.74%) | OIΔ=-0.04% | LiqImb=11.87%
+[2026-05-29 13:55:02] [DERIV] Funding=0.0100% | PredFunding=0.0100% | Premium=-0.0333%
+[2026-05-29 13:55:02] 📊 Preço de fechamento real (DataFrame): 74016.4
+[2026-05-29 13:55:02] Sentimento: bearish (0%)
+[2026-05-29 13:55:02] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 13:55:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (27.87%)
+[2026-05-29 13:55:02] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 13:55:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:00:02] [FLOW] CVD=1.2070 (20.43%) | OIΔ=-0.16% | LiqImb=11.20%
+[2026-05-29 14:00:02] [DERIV] Funding=0.0100% | PredFunding=0.0100% | Premium=-0.0362%
+[2026-05-29 14:00:02] 📊 Preço de fechamento real (DataFrame): 74018.3
+[2026-05-29 14:00:02] Sentimento: bearish (0%)
+[2026-05-29 14:00:02] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 14:00:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (42.22%)
+[2026-05-29 14:00:02] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-29 14:00:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:05:02] [FLOW] CVD=-1.3060 (-22.81%) | OIΔ=0.38% | LiqImb=11.20%
+[2026-05-29 14:05:02] [DERIV] Funding=0.0100% | PredFunding=0.0100% | Premium=-0.0448%
+[2026-05-29 14:05:02] 📊 Preço de fechamento real (DataFrame): 73918.1
+[2026-05-29 14:05:02] Sentimento: bearish (0%)
+[2026-05-29 14:05:02] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 14:05:02] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 14:05:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:10:01] [FLOW] CVD=0.9130 (33.02%) | OIΔ=-0.01% | LiqImb=11.20%
+[2026-05-29 14:10:01] [DERIV] Funding=0.0097% | PredFunding=0.0097% | Premium=-0.0372%
+[2026-05-29 14:10:01] 📊 Preço de fechamento real (DataFrame): 74094.3
+[2026-05-29 14:10:01] Sentimento: bearish (0%)
+[2026-05-29 14:10:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 14:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (36.49%)
+[2026-05-29 14:10:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 14:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:15:01] [FLOW] CVD=2.1140 (24.34%) | OIΔ=-0.01% | LiqImb=-15.85%
+[2026-05-29 14:15:01] [DERIV] Funding=0.0087% | PredFunding=0.0087% | Premium=-0.0872%
+[2026-05-29 14:15:01] 📊 Preço de fechamento real (DataFrame): 74213.2
+[2026-05-29 14:15:01] Sentimento: bearish (0%)
+[2026-05-29 14:15:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 14:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (41.51%)
+[2026-05-29 14:15:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-29 14:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:20:01] [FLOW] CVD=2.3460 (42.90%) | OIΔ=0.20% | LiqImb=-17.60%
+[2026-05-29 14:20:02] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0560%
+[2026-05-29 14:20:02] 📊 Preço de fechamento real (DataFrame): 74178.7
+[2026-05-29 14:20:02] Sentimento: bearish (0%)
+[2026-05-29 14:20:02] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 14:20:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (45.43%)
+[2026-05-29 14:20:02] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 14:20:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:25:01] [FLOW] CVD=-0.7370 (-21.26%) | OIΔ=0.20% | LiqImb=-19.45%
+[2026-05-29 14:25:01] [DERIV] Funding=0.0049% | PredFunding=0.0049% | Premium=-0.0523%
+[2026-05-29 14:25:01] 📊 Preço de fechamento real (DataFrame): 74251.8
+[2026-05-29 14:25:01] Sentimento: bearish (0%)
+[2026-05-29 14:25:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 14:25:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (42.55%)
+[2026-05-29 14:25:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 14:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:30:01] [FLOW] CVD=0.0290 (0.73%) | OIΔ=-0.02% | LiqImb=-19.45%
+[2026-05-29 14:30:01] [DERIV] Funding=0.0042% | PredFunding=0.0042% | Premium=-0.0492%
+[2026-05-29 14:30:01] 📊 Preço de fechamento real (DataFrame): 74193.0
+[2026-05-29 14:30:01] Sentimento: bearish (0%)
+[2026-05-29 14:30:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 14:30:01] [ML] Weak bullish (51.26%), moderate confidence
+[2026-05-29 14:30:01] ❌ [DECISION] REJECT | Blended confidence: 50.0% < 65%
+[2026-05-29 14:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:35:02] [FLOW] CVD=-2.7810 (-73.63%) | OIΔ=0.01% | LiqImb=-20.07%
+[2026-05-29 14:35:02] [DERIV] Funding=0.0039% | PredFunding=0.0039% | Premium=-0.0510%
+[2026-05-29 14:35:02] 📊 Preço de fechamento real (DataFrame): 74233.3
+[2026-05-29 14:35:02] Sentimento: bearish (0%)
+[2026-05-29 14:35:02] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 14:35:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (42.88%)
+[2026-05-29 14:35:02] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 14:35:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:40:01] [FLOW] CVD=-2.0470 (-50.96%) | OIΔ=-0.06% | LiqImb=-20.07%
+[2026-05-29 14:40:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0463%
+[2026-05-29 14:40:01] 📊 Preço de fechamento real (DataFrame): 74267.1
+[2026-05-29 14:40:01] Sentimento: bearish (0%)
+[2026-05-29 14:40:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 14:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (42.37%)
+[2026-05-29 14:40:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 14:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:45:01] [FLOW] CVD=-6.1700 (-92.87%) | OIΔ=-0.06% | LiqImb=-20.07%
+[2026-05-29 14:45:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0470%
+[2026-05-29 14:45:01] 📊 Preço de fechamento real (DataFrame): 74176.9
+[2026-05-29 14:45:01] Sentimento: bearish (0%)
+[2026-05-29 14:45:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 14:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (23.52%)
+[2026-05-29 14:45:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 14:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:50:01] [FLOW] CVD=0.9020 (53.44%) | OIΔ=-0.01% | LiqImb=-20.07%
+[2026-05-29 14:50:02] [DERIV] Funding=0.0032% | PredFunding=0.0032% | Premium=-0.0557%
+[2026-05-29 14:50:02] 📊 Preço de fechamento real (DataFrame): 74006.3
+[2026-05-29 14:50:02] Sentimento: bearish (0%)
+[2026-05-29 14:50:02] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 14:50:02] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 14:50:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 14:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 14:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 14:55:01] [FLOW] CVD=-4.5920 (-66.17%) | OIΔ=-0.13% | LiqImb=-20.07%
+[2026-05-29 14:55:01] [DERIV] Funding=0.0028% | PredFunding=0.0028% | Premium=-0.0498%
+[2026-05-29 14:55:01] 📊 Preço de fechamento real (DataFrame): 73940.8
+[2026-05-29 14:55:01] Sentimento: bearish (0%)
+[2026-05-29 14:55:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 14:55:01] [ML] Weak bearish (58.16%), moderate confidence
+[2026-05-29 14:55:01] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-29 14:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:00:01] [FLOW] CVD=1.9660 (69.23%) | OIΔ=-0.16% | LiqImb=-20.06%
+[2026-05-29 15:00:01] [DERIV] Funding=0.0028% | PredFunding=0.0028% | Premium=-0.0513%
+[2026-05-29 15:00:01] 📊 Preço de fechamento real (DataFrame): 73951.9
+[2026-05-29 15:00:01] Sentimento: bearish (0%)
+[2026-05-29 15:00:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 15:00:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 15:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:05:01] [FLOW] CVD=-6.2860 (-80.65%) | OIΔ=-0.24% | LiqImb=-20.06%
+[2026-05-29 15:05:01] [DERIV] Funding=0.0032% | PredFunding=0.0032% | Premium=-0.0454%
+[2026-05-29 15:05:01] 📊 Preço de fechamento real (DataFrame): 73953.6
+[2026-05-29 15:05:01] Sentimento: bearish (0%)
+[2026-05-29 15:05:01] Sinal técnico: hold | Conf. técnica: 18.8% | Conf. final: 9.4% | Risco: alto
+[2026-05-29 15:05:01] ❌ [DECISION] REJECT | Blended confidence: 13.2% < 65%
+[2026-05-29 15:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:10:01] [FLOW] CVD=1.8540 (75.00%) | OIΔ=-0.24% | LiqImb=-20.07%
+[2026-05-29 15:10:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0488%
+[2026-05-29 15:10:01] 📊 Preço de fechamento real (DataFrame): 74009.6
+[2026-05-29 15:10:01] Sentimento: bearish (0%)
+[2026-05-29 15:10:01] Sinal técnico: buy | Conf. técnica: 31.2% | Conf. final: 15.6% | Risco: alto
+[2026-05-29 15:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (32.03%)
+[2026-05-29 15:10:01] ❌ [DECISION] REJECT | Blended confidence: 21.8% < 65%
+[2026-05-29 15:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:15:01] [FLOW] CVD=0.9090 (99.34%) | OIΔ=-0.31% | LiqImb=-20.07%
+[2026-05-29 15:15:01] [DERIV] Funding=0.0028% | PredFunding=0.0028% | Premium=-0.0451%
+[2026-05-29 15:15:01] 📊 Preço de fechamento real (DataFrame): 74008.9
+[2026-05-29 15:15:01] Sentimento: bearish (0%)
+[2026-05-29 15:15:01] Sinal técnico: buy | Conf. técnica: 43.8% | Conf. final: 21.9% | Risco: alto
+[2026-05-29 15:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (27.34%)
+[2026-05-29 15:15:01] ❌ [DECISION] REJECT | Blended confidence: 30.7% < 65%
+[2026-05-29 15:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:20:01] [FLOW] CVD=0.5240 (30.36%) | OIΔ=-0.48% | LiqImb=-18.07%
+[2026-05-29 15:20:01] [DERIV] Funding=0.0027% | PredFunding=0.0027% | Premium=-0.0503%
+[2026-05-29 15:20:01] 📊 Preço de fechamento real (DataFrame): 73866.0
+[2026-05-29 15:20:01] Sentimento: bearish (0%)
+[2026-05-29 15:20:01] Sinal técnico: hold | Conf. técnica: 6.2% | Conf. final: 3.1% | Risco: alto
+[2026-05-29 15:20:01] ❌ [DECISION] REJECT | Blended confidence: 4.3% < 65%
+[2026-05-29 15:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:25:01] [FLOW] CVD=-0.6620 (-18.95%) | OIΔ=-0.48% | LiqImb=-13.32%
+[2026-05-29 15:25:01] [DERIV] Funding=0.0029% | PredFunding=0.0029% | Premium=-0.0339%
+[2026-05-29 15:25:01] 📊 Preço de fechamento real (DataFrame): 73825.2
+[2026-05-29 15:25:01] Sentimento: bearish (0%)
+[2026-05-29 15:25:01] Sinal técnico: sell | Conf. técnica: 31.2% | Conf. final: 15.6% | Risco: alto
+[2026-05-29 15:25:01] [ML] Moderate bearish (65.04%), high confidence
+[2026-05-29 15:25:01] ❌ [DECISION] REJECT | Blended confidence: 44.3% < 65%
+[2026-05-29 15:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:30:01] [FLOW] CVD=-0.7200 (-11.90%) | OIΔ=0.79% | LiqImb=-8.57%
+[2026-05-29 15:30:01] [DERIV] Funding=0.0035% | PredFunding=0.0035% | Premium=-0.0428%
+[2026-05-29 15:30:01] 📊 Preço de fechamento real (DataFrame): 73758.3
+[2026-05-29 15:30:01] Sentimento: bearish (0%)
+[2026-05-29 15:30:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 15:30:01] [ML] Weak bearish (57.85%), moderate confidence
+[2026-05-29 15:30:01] ❌ [DECISION] REJECT | Blended confidence: 50.0% < 65%
+[2026-05-29 15:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:35:01] [FLOW] CVD=-1.6760 (-42.41%) | OIΔ=-0.02% | LiqImb=-8.57%
+[2026-05-29 15:35:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0453%
+[2026-05-29 15:35:01] 📊 Preço de fechamento real (DataFrame): 73799.1
+[2026-05-29 15:35:01] Sentimento: bearish (0%)
+[2026-05-29 15:35:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 15:35:01] [ML] Weak bearish (55.42%), moderate confidence
+[2026-05-29 15:35:01] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-29 15:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:40:01] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:40:01] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:40:02] [FLOW] CVD=-2.9770 (-43.76%) | OIΔ=-0.02% | LiqImb=-8.57%
+[2026-05-29 15:40:02] [DERIV] Funding=0.0037% | PredFunding=0.0037% | Premium=-0.0438%
+[2026-05-29 15:40:02] 📊 Preço de fechamento real (DataFrame): 73800.4
+[2026-05-29 15:40:02] Sentimento: bearish (0%)
+[2026-05-29 15:40:02] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 15:40:02] [ML] Moderate bearish (67.92%), high confidence
+[2026-05-29 15:40:02] ❌ [DECISION] REJECT | Blended confidence: 48.7% < 65%
+[2026-05-29 15:40:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:45:02] [FLOW] CVD=1.3740 (55.94%) | OIΔ=0.24% | LiqImb=-8.57%
+[2026-05-29 15:45:02] [DERIV] Funding=0.0033% | PredFunding=0.0033% | Premium=-0.0487%
+[2026-05-29 15:45:02] 📊 Preço de fechamento real (DataFrame): 73760.3
+[2026-05-29 15:45:02] Sentimento: bearish (0%)
+[2026-05-29 15:45:02] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 15:45:02] [ML] Moderate bearish (63.21%), high confidence
+[2026-05-29 15:45:02] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-29 15:45:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:50:01] [FLOW] CVD=-6.0920 (-80.56%) | OIΔ=0.03% | LiqImb=4.76%
+[2026-05-29 15:50:01] [DERIV] Funding=0.0031% | PredFunding=0.0031% | Premium=-0.0467%
+[2026-05-29 15:50:01] 📊 Preço de fechamento real (DataFrame): 73524.9
+[2026-05-29 15:50:01] Sentimento: bearish (0%)
+[2026-05-29 15:50:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 15:50:01] [ML] Moderate bearish (67.53%), high confidence
+[2026-05-29 15:50:01] ❌ [DECISION] REJECT | Blended confidence: 57.5% < 65%
+[2026-05-29 15:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 15:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 15:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 15:55:01] [FLOW] CVD=-7.7700 (-69.10%) | OIΔ=-0.06% | LiqImb=97.46%
+[2026-05-29 15:55:01] [DERIV] Funding=0.0027% | PredFunding=0.0027% | Premium=-0.0508%
+[2026-05-29 15:55:01] 📊 Preço de fechamento real (DataFrame): 73299.2
+[2026-05-29 15:55:01] Sentimento: bearish (0%)
+[2026-05-29 15:55:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 15:55:01] [ML] Moderate bearish (60.57%), high confidence
+[2026-05-29 15:55:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 15:55:02] [EDGE METRICS] WR=33.3% | PF=0.05 | Exp=-0.0700 | Sharpe=-14.07
+[2026-05-29 15:55:02] ⚠ [KELLY] No edge detected (WR=33.3%). Reducing position to 0.
+[2026-05-29 15:55:03] Abrindo Sell | Preço Desejado: 73299.9 | TP: 73119.2 | SL: 73450.4 | TS: 60.2
+[2026-05-29 15:55:03] [MAKER] Limit=73293.9 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 15:55:04] ✅ Slippage Calculado. Executado a: 73293.9 (Solicitado: 73299.9)
+[2026-05-29 15:55:04] [MONGO] Decisão registrada em ml_dataset. trade_id=452da480-69cd-4b16-ab70-ce72b0a0d919
+[2026-05-29 15:55:05] Sell fechado - PnL: -0.08 (-0.006%) | Origem: misto
+[2026-05-29 15:55:05] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.08
+[2026-05-29 16:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:00:01] [FLOW] CVD=-7.1860 (-68.30%) | OIΔ=-0.76% | LiqImb=97.46%
+[2026-05-29 16:00:01] [DERIV] Funding=0.0024% | PredFunding=0.0024% | Premium=-0.0435%
+[2026-05-29 16:00:01] 📊 Preço de fechamento real (DataFrame): 73342.4
+[2026-05-29 16:00:01] Sentimento: bearish (0%)
+[2026-05-29 16:00:01] Sinal técnico: sell | Conf. técnica: 56.2% | Conf. final: 28.1% | Risco: alto
+[2026-05-29 16:00:01] [ML] Weak bearish (55.65%), moderate confidence
+[2026-05-29 16:00:01] ❌ [DECISION] REJECT | Blended confidence: 54.3% < 65%
+[2026-05-29 16:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:05:01] [FLOW] CVD=-3.6340 (-57.12%) | OIΔ=-0.31% | LiqImb=97.46%
+[2026-05-29 16:05:01] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0441%
+[2026-05-29 16:05:01] 📊 Preço de fechamento real (DataFrame): 73421.5
+[2026-05-29 16:05:01] Sentimento: bearish (0%)
+[2026-05-29 16:05:01] Sinal técnico: sell | Conf. técnica: 81.2% | Conf. final: 40.6% | Risco: alto
+[2026-05-29 16:05:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (63.60%)
+[2026-05-29 16:05:01] ❌ [DECISION] REJECT | Blended confidence: 56.8% < 65%
+[2026-05-29 16:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:10:01] [FLOW] CVD=-1.2660 (-34.65%) | OIΔ=-0.13% | LiqImb=97.66%
+[2026-05-29 16:10:01] [DERIV] Funding=0.0027% | PredFunding=0.0027% | Premium=-0.0461%
+[2026-05-29 16:10:01] 📊 Preço de fechamento real (DataFrame): 73435.2
+[2026-05-29 16:10:01] Sentimento: bearish (0%)
+[2026-05-29 16:10:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 16:10:01] [ML] Moderate bearish (69.15%), high confidence
+[2026-05-29 16:10:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 16:10:02] [EDGE METRICS] WR=31.6% | PF=0.05 | Exp=-0.0705 | Sharpe=-14.60
+[2026-05-29 16:10:02] ⚠ [KELLY] No edge detected (WR=31.6%). Reducing position to 0.
+[2026-05-29 16:10:03] Abrindo Sell | Preço Desejado: 73429.4 | TP: 73252.0 | SL: 73577.2 | TS: 59.1
+[2026-05-29 16:10:03] [MAKER] Limit=73430.2 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 16:10:04] ✅ Slippage Calculado. Executado a: 73430.2 (Solicitado: 73429.4)
+[2026-05-29 16:10:04] [MONGO] Decisão registrada em ml_dataset. trade_id=e1d00572-2c9b-4d17-976d-f641d5f3e5bb
+[2026-05-29 16:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:15:01] [FLOW] CVD=-3.7300 (-48.17%) | OIΔ=-0.00% | LiqImb=97.66%
+[2026-05-29 16:15:01] [DERIV] Funding=0.0026% | PredFunding=0.0026% | Premium=-0.0397%
+[2026-05-29 16:15:01] 📊 Preço de fechamento real (DataFrame): 73392.0
+[2026-05-29 16:15:01] Sentimento: bearish (0%)
+[2026-05-29 16:15:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 16:15:01] [ML] Moderate bearish (61.40%), high confidence
+[2026-05-29 16:15:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 16:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:20:02] [FLOW] CVD=0.5300 (27.95%) | OIΔ=-0.02% | LiqImb=97.66%
+[2026-05-29 16:20:02] [DERIV] Funding=0.0024% | PredFunding=0.0024% | Premium=-0.0700%
+[2026-05-29 16:20:02] 📊 Preço de fechamento real (DataFrame): 73264.3
+[2026-05-29 16:20:02] Sentimento: bearish (0%)
+[2026-05-29 16:20:02] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 16:20:02] [ML] Moderate bearish (63.30%), high confidence
+[2026-05-29 16:20:02] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 16:20:03] [EDGE METRICS] WR=31.6% | PF=0.05 | Exp=-0.0705 | Sharpe=-14.60
+[2026-05-29 16:20:03] ⚠ [KELLY] No edge detected (WR=31.6%). Reducing position to 0.
+[2026-05-29 16:20:03] Abrindo Sell | Preço Desejado: 73283.8 | TP: 73101.5 | SL: 73435.7 | TS: 60.8
+[2026-05-29 16:20:03] [MAKER] Limit=73283.7 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 16:20:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 16:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:25:01] [FLOW] CVD=1.0120 (35.63%) | OIΔ=-0.10% | LiqImb=97.66%
+[2026-05-29 16:25:01] [DERIV] Funding=0.0024% | PredFunding=0.0024% | Premium=-0.0442%
+[2026-05-29 16:25:01] 📊 Preço de fechamento real (DataFrame): 73293.0
+[2026-05-29 16:25:01] Sentimento: bearish (0%)
+[2026-05-29 16:25:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 16:25:01] [ML] Weak bearish (53.26%), moderate confidence
+[2026-05-29 16:25:01] ❌ [DECISION] REJECT | Blended confidence: 50.0% < 65%
+[2026-05-29 16:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:30:01] [FLOW] CVD=4.2870 (87.79%) | OIΔ=-0.10% | LiqImb=97.66%
+[2026-05-29 16:30:01] [DERIV] Funding=0.0026% | PredFunding=0.0026% | Premium=-0.0368%
+[2026-05-29 16:30:01] 📊 Preço de fechamento real (DataFrame): 73308.3
+[2026-05-29 16:30:01] Sentimento: bearish (0%)
+[2026-05-29 16:30:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 16:30:01] [ML] Strong bearish (73.32%), maximum confidence
+[2026-05-29 16:30:01] ❌ [DECISION] REJECT | Blended confidence: 65.0% < 65%
+[2026-05-29 16:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:35:01] [FLOW] CVD=5.4880 (96.86%) | OIΔ=-0.14% | LiqImb=97.66%
+[2026-05-29 16:35:01] [DERIV] Funding=0.0032% | PredFunding=0.0032% | Premium=-0.0385%
+[2026-05-29 16:35:01] 📊 Preço de fechamento real (DataFrame): 73543.6
+[2026-05-29 16:35:01] Sentimento: bearish (0%)
+[2026-05-29 16:35:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 16:35:01] [ML] Moderate bearish (68.59%), high confidence
+[2026-05-29 16:35:01] ❌ [DECISION] REJECT | Blended confidence: 48.7% < 65%
+[2026-05-29 16:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:40:01] [FLOW] CVD=-0.6880 (-5.99%) | OIΔ=0.49% | LiqImb=81.76%
+[2026-05-29 16:40:01] [DERIV] Funding=0.0037% | PredFunding=0.0037% | Premium=-0.0376%
+[2026-05-29 16:40:01] 📊 Preço de fechamento real (DataFrame): 73665.9
+[2026-05-29 16:40:01] Sentimento: bearish (0%)
+[2026-05-29 16:40:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 16:40:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 16:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:45:01] [FLOW] CVD=3.1190 (64.78%) | OIΔ=0.49% | LiqImb=79.80%
+[2026-05-29 16:45:01] [DERIV] Funding=0.0039% | PredFunding=0.0039% | Premium=-0.0397%
+[2026-05-29 16:45:01] 📊 Preço de fechamento real (DataFrame): 73656.2
+[2026-05-29 16:45:01] Sentimento: bearish (0%)
+[2026-05-29 16:45:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 16:45:01] [ML] Moderate bearish (67.16%), high confidence
+[2026-05-29 16:45:01] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-29 16:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:50:01] [FLOW] CVD=3.1030 (41.38%) | OIΔ=-0.00% | LiqImb=79.80%
+[2026-05-29 16:50:01] [DERIV] Funding=0.0043% | PredFunding=0.0043% | Premium=-0.0363%
+[2026-05-29 16:50:01] 📊 Preço de fechamento real (DataFrame): 73637.8
+[2026-05-29 16:50:01] Sentimento: bearish (0%)
+[2026-05-29 16:50:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 16:50:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 16:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 16:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 16:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 16:55:01] [FLOW] CVD=-0.9270 (-41.11%) | OIΔ=-0.00% | LiqImb=79.80%
+[2026-05-29 16:55:01] [DERIV] Funding=0.0043% | PredFunding=0.0043% | Premium=-0.0331%
+[2026-05-29 16:55:01] 📊 Preço de fechamento real (DataFrame): 73554.5
+[2026-05-29 16:55:01] Sentimento: bearish (0%)
+[2026-05-29 16:55:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 16:55:01] [ML] Strong bearish (72.03%), maximum confidence
+[2026-05-29 16:55:01] ✅ [DECISION] ENTER | Blended confidence: 73.8%
+[2026-05-29 16:55:02] [EDGE METRICS] WR=31.6% | PF=0.05 | Exp=-0.0705 | Sharpe=-14.60
+[2026-05-29 16:55:02] ⚠ [KELLY] No edge detected (WR=31.6%). Reducing position to 0.
+[2026-05-29 16:55:03] Abrindo Sell | Preço Desejado: 73574.7 | TP: 73390.4 | SL: 73728.3 | TS: 61.4
+[2026-05-29 16:55:03] [MAKER] Limit=73566.6 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 16:55:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 16:55:24] Sell fechado - PnL: -0.09 (-0.023%) | Origem: misto
+[2026-05-29 16:55:24] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.09
+[2026-05-29 16:55:24] [MONGO] Outcome atualizado em ml_dataset. trade_id=e1d00572-2c9b-4d17-976d-f641d5f3e5bb
+[2026-05-29 17:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:00:01] [FLOW] CVD=7.8080 (86.18%) | OIΔ=-0.02% | LiqImb=77.80%
+[2026-05-29 17:00:01] [DERIV] Funding=0.0043% | PredFunding=0.0043% | Premium=-0.0522%
+[2026-05-29 17:00:01] 📊 Preço de fechamento real (DataFrame): 73491.1
+[2026-05-29 17:00:01] Sentimento: bearish (0%)
+[2026-05-29 17:00:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 17:00:01] [ML] Moderate bearish (63.75%), high confidence
+[2026-05-29 17:00:01] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-29 17:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:05:01] [FLOW] CVD=0.2630 (8.19%) | OIΔ=0.01% | LiqImb=77.80%
+[2026-05-29 17:05:01] [DERIV] Funding=0.0046% | PredFunding=0.0046% | Premium=-0.0303%
+[2026-05-29 17:05:01] 📊 Preço de fechamento real (DataFrame): 73543.0
+[2026-05-29 17:05:01] Sentimento: bearish (0%)
+[2026-05-29 17:05:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 17:05:01] [ML] Moderate bearish (62.47%), high confidence
+[2026-05-29 17:05:01] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-29 17:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:10:01] [FLOW] CVD=-1.9220 (-23.72%) | OIΔ=0.09% | LiqImb=77.80%
+[2026-05-29 17:10:01] [DERIV] Funding=0.0050% | PredFunding=0.0050% | Premium=-0.0371%
+[2026-05-29 17:10:01] 📊 Preço de fechamento real (DataFrame): 73615.6
+[2026-05-29 17:10:01] Sentimento: bearish (0%)
+[2026-05-29 17:10:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:10:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:15:02] [FLOW] CVD=1.8010 (64.62%) | OIΔ=0.02% | LiqImb=77.80%
+[2026-05-29 17:15:02] [DERIV] Funding=0.0052% | PredFunding=0.0052% | Premium=-0.0387%
+[2026-05-29 17:15:02] 📊 Preço de fechamento real (DataFrame): 73625.3
+[2026-05-29 17:15:02] Sentimento: bearish (0%)
+[2026-05-29 17:15:02] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:15:02] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:15:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:20:01] [FLOW] CVD=1.1160 (81.94%) | OIΔ=0.04% | LiqImb=77.80%
+[2026-05-29 17:20:01] [DERIV] Funding=0.0054% | PredFunding=0.0054% | Premium=-0.0335%
+[2026-05-29 17:20:01] 📊 Preço de fechamento real (DataFrame): 73628.3
+[2026-05-29 17:20:01] Sentimento: bearish (0%)
+[2026-05-29 17:20:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:20:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:25:01] [FLOW] CVD=3.9970 (62.60%) | OIΔ=0.02% | LiqImb=75.66%
+[2026-05-29 17:25:01] [DERIV] Funding=0.0057% | PredFunding=0.0057% | Premium=-0.0396%
+[2026-05-29 17:25:01] 📊 Preço de fechamento real (DataFrame): 73713.9
+[2026-05-29 17:25:01] Sentimento: bearish (0%)
+[2026-05-29 17:25:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:25:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:30:01] [FLOW] CVD=-1.6500 (-35.85%) | OIΔ=-0.07% | LiqImb=75.66%
+[2026-05-29 17:30:01] [DERIV] Funding=0.0058% | PredFunding=0.0058% | Premium=-0.0440%
+[2026-05-29 17:30:01] 📊 Preço de fechamento real (DataFrame): 73676.1
+[2026-05-29 17:30:01] Sentimento: bearish (0%)
+[2026-05-29 17:30:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:30:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:35:01] [FLOW] CVD=-0.4230 (-12.50%) | OIΔ=0.01% | LiqImb=75.66%
+[2026-05-29 17:35:01] [DERIV] Funding=0.0058% | PredFunding=0.0058% | Premium=-0.0465%
+[2026-05-29 17:35:01] 📊 Preço de fechamento real (DataFrame): 73697.3
+[2026-05-29 17:35:01] Sentimento: bearish (0%)
+[2026-05-29 17:35:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:35:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:40:01] [FLOW] CVD=-2.6570 (-58.93%) | OIΔ=-0.00% | LiqImb=75.66%
+[2026-05-29 17:40:01] [DERIV] Funding=0.0059% | PredFunding=0.0059% | Premium=-0.0428%
+[2026-05-29 17:40:01] 📊 Preço de fechamento real (DataFrame): 73674.1
+[2026-05-29 17:40:01] Sentimento: bearish (0%)
+[2026-05-29 17:40:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:40:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:45:01] [FLOW] CVD=0.8200 (21.73%) | OIΔ=0.00% | LiqImb=75.66%
+[2026-05-29 17:45:01] [DERIV] Funding=0.0059% | PredFunding=0.0059% | Premium=-0.0532%
+[2026-05-29 17:45:01] 📊 Preço de fechamento real (DataFrame): 73667.0
+[2026-05-29 17:45:01] Sentimento: bearish (0%)
+[2026-05-29 17:45:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 17:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (44.49%)
+[2026-05-29 17:45:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 17:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:50:01] [FLOW] CVD=0.7800 (39.24%) | OIΔ=0.00% | LiqImb=75.66%
+[2026-05-29 17:50:01] [DERIV] Funding=0.0060% | PredFunding=0.0060% | Premium=-0.0387%
+[2026-05-29 17:50:01] 📊 Preço de fechamento real (DataFrame): 73696.1
+[2026-05-29 17:50:01] Sentimento: bearish (0%)
+[2026-05-29 17:50:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 17:50:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 17:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 17:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 17:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 17:55:01] [FLOW] CVD=-0.9980 (-40.67%) | OIΔ=-0.00% | LiqImb=75.72%
+[2026-05-29 17:55:01] [DERIV] Funding=0.0060% | PredFunding=0.0060% | Premium=-0.0520%
+[2026-05-29 17:55:01] 📊 Preço de fechamento real (DataFrame): 73627.1
+[2026-05-29 17:55:01] Sentimento: bearish (0%)
+[2026-05-29 17:55:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 17:55:01] [ML] Strong bearish (76.18%), maximum confidence
+[2026-05-29 17:55:01] ❌ [DECISION] REJECT | Blended confidence: 56.2% < 65%
+[2026-05-29 17:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:00:01] [FLOW] CVD=1.7330 (31.28%) | OIΔ=-0.08% | LiqImb=75.72%
+[2026-05-29 18:00:01] [DERIV] Funding=0.0060% | PredFunding=0.0060% | Premium=-0.0409%
+[2026-05-29 18:00:01] 📊 Preço de fechamento real (DataFrame): 73645.7
+[2026-05-29 18:00:01] Sentimento: bearish (0%)
+[2026-05-29 18:00:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 18:00:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 18:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:05:01] [FLOW] CVD=9.6470 (96.31%) | OIΔ=-0.04% | LiqImb=75.72%
+[2026-05-29 18:05:01] [DERIV] Funding=0.0059% | PredFunding=0.0059% | Premium=-0.0424%
+[2026-05-29 18:05:01] 📊 Preço de fechamento real (DataFrame): 73656.8
+[2026-05-29 18:05:01] Sentimento: bearish (0%)
+[2026-05-29 18:05:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 18:05:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (37.28%)
+[2026-05-29 18:05:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 18:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:10:01] [FLOW] CVD=0.8540 (64.50%) | OIΔ=-0.06% | LiqImb=75.72%
+[2026-05-29 18:10:01] [DERIV] Funding=0.0058% | PredFunding=0.0058% | Premium=-0.0476%
+[2026-05-29 18:10:01] 📊 Preço de fechamento real (DataFrame): 73686.4
+[2026-05-29 18:10:01] Sentimento: bearish (0%)
+[2026-05-29 18:10:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 18:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (45.95%)
+[2026-05-29 18:10:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 18:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:15:01] [FLOW] CVD=3.8590 (41.89%) | OIΔ=-0.03% | LiqImb=70.67%
+[2026-05-29 18:15:01] [DERIV] Funding=0.0060% | PredFunding=0.0060% | Premium=-0.0407%
+[2026-05-29 18:15:01] 📊 Preço de fechamento real (DataFrame): 73774.3
+[2026-05-29 18:15:01] Sentimento: bearish (0%)
+[2026-05-29 18:15:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 18:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (40.42%)
+[2026-05-29 18:15:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 18:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:20:01] [FLOW] CVD=-2.1350 (-43.47%) | OIΔ=-0.02% | LiqImb=70.67%
+[2026-05-29 18:20:01] [DERIV] Funding=0.0059% | PredFunding=0.0059% | Premium=-0.0472%
+[2026-05-29 18:20:01] 📊 Preço de fechamento real (DataFrame): 73687.9
+[2026-05-29 18:20:01] Sentimento: bearish (0%)
+[2026-05-29 18:20:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 18:20:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 18:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:25:01] [FLOW] CVD=-1.9730 (-10.75%) | OIΔ=0.01% | LiqImb=70.67%
+[2026-05-29 18:25:01] [DERIV] Funding=0.0059% | PredFunding=0.0059% | Premium=-0.0431%
+[2026-05-29 18:25:01] 📊 Preço de fechamento real (DataFrame): 73590.5
+[2026-05-29 18:25:01] Sentimento: bearish (0%)
+[2026-05-29 18:25:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 18:25:01] [ML] Strong bearish (75.01%), maximum confidence
+[2026-05-29 18:25:01] ❌ [DECISION] REJECT | Blended confidence: 65.0% < 65%
+[2026-05-29 18:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:30:01] [FLOW] CVD=-11.7780 (-74.21%) | OIΔ=-0.75% | LiqImb=70.67%
+[2026-05-29 18:30:01] [DERIV] Funding=0.0060% | PredFunding=0.0060% | Premium=-0.0337%
+[2026-05-29 18:30:01] 📊 Preço de fechamento real (DataFrame): 73503.0
+[2026-05-29 18:30:01] Sentimento: bearish (0%)
+[2026-05-29 18:30:01] Sinal técnico: sell | Conf. técnica: 81.2% | Conf. final: 40.6% | Risco: alto
+[2026-05-29 18:30:01] [ML] Moderate bearish (66.01%), high confidence
+[2026-05-29 18:30:01] ✅ [DECISION] ENTER | Blended confidence: 79.3%
+[2026-05-29 18:30:02] [EDGE METRICS] WR=30.0% | PF=0.05 | Exp=-0.0715 | Sharpe=-15.17
+[2026-05-29 18:30:02] ⚠ [KELLY] No edge detected (WR=30.0%). Reducing position to 0.
+[2026-05-29 18:30:03] Abrindo Sell | Preço Desejado: 73494.4 | TP: 73391.8 | SL: 73579.9 | TS: 34.2
+[2026-05-29 18:30:03] [MAKER] Limit=73494.5 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 18:30:04] ✅ Slippage Calculado. Executado a: 73494.5 (Solicitado: 73494.4)
+[2026-05-29 18:30:04] [MONGO] Decisão registrada em ml_dataset. trade_id=5585f89a-497e-4a81-89a2-6524f9ca0fbf
+[2026-05-29 18:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:35:01] [FLOW] CVD=-11.8380 (-94.07%) | OIΔ=-0.09% | LiqImb=70.67%
+[2026-05-29 18:35:01] [DERIV] Funding=0.0061% | PredFunding=0.0061% | Premium=-0.0411%
+[2026-05-29 18:35:01] 📊 Preço de fechamento real (DataFrame): 73514.6
+[2026-05-29 18:35:01] Sentimento: bearish (0%)
+[2026-05-29 18:35:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 18:35:01] [ML] Moderate bearish (60.10%), high confidence
+[2026-05-29 18:35:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 18:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:40:01] [FLOW] CVD=-11.9740 (-69.57%) | OIΔ=-0.18% | LiqImb=70.67%
+[2026-05-29 18:40:01] [DERIV] Funding=0.0062% | PredFunding=0.0062% | Premium=-0.0352%
+[2026-05-29 18:40:01] 📊 Preço de fechamento real (DataFrame): 73574.4
+[2026-05-29 18:40:01] Sentimento: bearish (0%)
+[2026-05-29 18:40:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 18:40:01] [ML] Moderate bearish (67.65%), high confidence
+[2026-05-29 18:40:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 18:40:02] [EDGE METRICS] WR=30.0% | PF=0.05 | Exp=-0.0715 | Sharpe=-15.17
+[2026-05-29 18:40:02] ⚠ [KELLY] No edge detected (WR=30.0%). Reducing position to 0.
+[2026-05-29 18:40:03] Abrindo Sell | Preço Desejado: 73580.0 | TP: 73471.4 | SL: 73670.5 | TS: 36.2
+[2026-05-29 18:40:03] [MAKER] Limit=73580.0 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 18:40:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 18:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:45:01] [FLOW] CVD=4.7910 (54.91%) | OIΔ=-0.05% | LiqImb=70.67%
+[2026-05-29 18:45:01] [DERIV] Funding=0.0065% | PredFunding=0.0065% | Premium=-0.0308%
+[2026-05-29 18:45:01] 📊 Preço de fechamento real (DataFrame): 73580.7
+[2026-05-29 18:45:01] Sentimento: bearish (0%)
+[2026-05-29 18:45:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 18:45:01] [ML] Moderate bearish (67.49%), high confidence
+[2026-05-29 18:45:01] ❌ [DECISION] REJECT | Blended confidence: 57.5% < 65%
+[2026-05-29 18:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 18:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:50:01] [FLOW] CVD=-10.3980 (-93.04%) | OIΔ=0.01% | LiqImb=70.61%
+[2026-05-29 18:50:01] [DERIV] Funding=0.0067% | PredFunding=0.0067% | Premium=-0.0378%
+[2026-05-29 18:50:01] 📊 Preço de fechamento real (DataFrame): 73454.3
+[2026-05-29 18:50:01] Sentimento: bearish (0%)
+[2026-05-29 18:50:01] Sinal técnico: sell | Conf. técnica: 87.5% | Conf. final: 43.8% | Risco: alto
+[2026-05-29 18:50:01] [ML] Moderate bearish (68.35%), high confidence
+[2026-05-29 18:50:01] ✅ [DECISION] ENTER | Blended confidence: 83.7%
+[2026-05-29 18:50:02] [EDGE METRICS] WR=30.0% | PF=0.05 | Exp=-0.0715 | Sharpe=-15.17
+[2026-05-29 18:50:02] ⚠ [KELLY] No edge detected (WR=30.0%). Reducing position to 0.
+[2026-05-29 18:50:03] Abrindo Sell | Preço Desejado: 73454.3 | TP: 73341.4 | SL: 73548.4 | TS: 37.6
+[2026-05-29 18:50:03] [MAKER] Limit=73454.4 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 18:50:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 18:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 18:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 18:55:01] [FLOW] CVD=1.0390 (29.00%) | OIΔ=-0.08% | LiqImb=70.61%
+[2026-05-29 18:55:01] [DERIV] Funding=0.0068% | PredFunding=0.0068% | Premium=-0.0451%
+[2026-05-29 18:55:01] 📊 Preço de fechamento real (DataFrame): 73389.6
+[2026-05-29 18:55:01] Sentimento: bearish (0%)
+[2026-05-29 18:55:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 18:55:01] [ML] Moderate bearish (61.69%), high confidence
+[2026-05-29 18:55:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 18:55:02] [EDGE METRICS] WR=30.0% | PF=0.05 | Exp=-0.0715 | Sharpe=-15.17
+[2026-05-29 18:55:02] ⚠ [KELLY] No edge detected (WR=30.0%). Reducing position to 0.
+[2026-05-29 18:55:03] Abrindo Sell | Preço Desejado: 73389.7 | TP: 73271.6 | SL: 73488.1 | TS: 39.4
+[2026-05-29 18:55:03] [MAKER] Limit=73389.7 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 18:55:05] ✅ Slippage Calculado. Executado a: 73389.7 (Solicitado: 73389.7)
+[2026-05-29 18:55:05] [MONGO] Decisão registrada em ml_dataset. trade_id=80040219-8ebd-4ee6-9a25-eb241d35d191
+[2026-05-29 18:55:05] Sell fechado - PnL: -0.07 (0.000%) | Origem: misto
+[2026-05-29 18:55:05] [MONGO] Trade salvo: BTCUSDT Sell | PnL: -0.07
+[2026-05-29 18:55:05] [MONGO] Outcome atualizado em ml_dataset. trade_id=5585f89a-497e-4a81-89a2-6524f9ca0fbf
+[2026-05-29 19:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:00:01] [FLOW] CVD=2.2530 (55.56%) | OIΔ=-0.13% | LiqImb=70.52%
+[2026-05-29 19:00:01] [DERIV] Funding=0.0069% | PredFunding=0.0069% | Premium=-0.0383%
+[2026-05-29 19:00:01] 📊 Preço de fechamento real (DataFrame): 73389.6
+[2026-05-29 19:00:01] Sentimento: bearish (0%)
+[2026-05-29 19:00:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 19:00:01] [ML] Weak bearish (55.40%), moderate confidence
+[2026-05-29 19:00:01] ❌ [DECISION] REJECT | Blended confidence: 58.8% < 65%
+[2026-05-29 19:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 19:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:05:01] [FLOW] CVD=-3.5580 (-65.21%) | OIΔ=-0.17% | LiqImb=70.52%
+[2026-05-29 19:05:01] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0387%
+[2026-05-29 19:05:01] 📊 Preço de fechamento real (DataFrame): 73381.5
+[2026-05-29 19:05:01] Sentimento: bearish (0%)
+[2026-05-29 19:05:01] Sinal técnico: sell | Conf. técnica: 87.5% | Conf. final: 43.8% | Risco: alto
+[2026-05-29 19:05:01] [ML] Moderate bearish (68.26%), high confidence
+[2026-05-29 19:05:01] ✅ [DECISION] ENTER | Blended confidence: 83.7%
+[2026-05-29 19:05:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:05:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:05:02] Abrindo Sell | Preço Desejado: 73381.5 | TP: 73264.4 | SL: 73479.1 | TS: 39.0
+[2026-05-29 19:05:02] [MAKER] Limit=73375.1 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:05:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:10:01] [FLOW] CVD=11.1450 (51.70%) | OIΔ=0.00% | LiqImb=70.35%
+[2026-05-29 19:10:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0424%
+[2026-05-29 19:10:01] 📊 Preço de fechamento real (DataFrame): 73374.0
+[2026-05-29 19:10:01] Sentimento: bearish (0%)
+[2026-05-29 19:10:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 19:10:01] [ML] Moderate bearish (60.73%), high confidence
+[2026-05-29 19:10:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 19:10:03] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:10:03] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:10:03] Abrindo Sell | Preço Desejado: 73369.1 | TP: 73254.7 | SL: 73464.4 | TS: 38.1
+[2026-05-29 19:10:03] [MAKER] Limit=73369.1 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:10:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:15:01] [FLOW] CVD=-3.6780 (-47.85%) | OIΔ=0.00% | LiqImb=70.35%
+[2026-05-29 19:15:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0403%
+[2026-05-29 19:15:01] 📊 Preço de fechamento real (DataFrame): 73373.7
+[2026-05-29 19:15:01] Sentimento: bearish (0%)
+[2026-05-29 19:15:01] Sinal técnico: sell | Conf. técnica: 87.5% | Conf. final: 43.8% | Risco: alto
+[2026-05-29 19:15:01] [ML] Moderate bearish (63.99%), high confidence
+[2026-05-29 19:15:01] ✅ [DECISION] ENTER | Blended confidence: 83.7%
+[2026-05-29 19:15:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:15:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:15:02] Abrindo Sell | Preço Desejado: 73376.2 | TP: 73261.4 | SL: 73471.9 | TS: 38.3
+[2026-05-29 19:15:02] [MAKER] Limit=73391.6 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:15:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:20:01] [FLOW] CVD=2.3420 (76.19%) | OIΔ=-0.02% | LiqImb=70.35%
+[2026-05-29 19:20:01] [DERIV] Funding=0.0073% | PredFunding=0.0073% | Premium=-0.0331%
+[2026-05-29 19:20:01] 📊 Preço de fechamento real (DataFrame): 73467.1
+[2026-05-29 19:20:01] Sentimento: bearish (0%)
+[2026-05-29 19:20:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 19:20:01] [ML] Moderate bearish (66.33%), high confidence
+[2026-05-29 19:20:01] ❌ [DECISION] REJECT | Blended confidence: 57.5% < 65%
+[2026-05-29 19:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 19:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:25:01] [FLOW] CVD=-1.4740 (-87.74%) | OIΔ=-0.02% | LiqImb=70.35%
+[2026-05-29 19:25:01] [DERIV] Funding=0.0074% | PredFunding=0.0074% | Premium=-0.0472%
+[2026-05-29 19:25:01] 📊 Preço de fechamento real (DataFrame): 73492.2
+[2026-05-29 19:25:01] Sentimento: bearish (0%)
+[2026-05-29 19:25:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 19:25:01] [ML] Moderate bearish (65.09%), high confidence
+[2026-05-29 19:25:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 19:25:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:25:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:25:03] Abrindo Sell | Preço Desejado: 73492.3 | TP: 73382.1 | SL: 73584.1 | TS: 36.7
+[2026-05-29 19:25:03] [MAKER] Limit=73492.3 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:25:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:30:01] [FLOW] CVD=2.9880 (64.84%) | OIΔ=0.02% | LiqImb=70.35%
+[2026-05-29 19:30:01] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0458%
+[2026-05-29 19:30:01] 📊 Preço de fechamento real (DataFrame): 73493.1
+[2026-05-29 19:30:01] Sentimento: bearish (0%)
+[2026-05-29 19:30:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 19:30:01] [ML] Strong bearish (77.24%), maximum confidence
+[2026-05-29 19:30:01] ❌ [DECISION] REJECT | Blended confidence: 65.0% < 65%
+[2026-05-29 19:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 19:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:35:01] [FLOW] CVD=-2.1320 (-83.54%) | OIΔ=-0.07% | LiqImb=70.35%
+[2026-05-29 19:35:01] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0405%
+[2026-05-29 19:35:01] 📊 Preço de fechamento real (DataFrame): 73484.5
+[2026-05-29 19:35:01] Sentimento: bearish (0%)
+[2026-05-29 19:35:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 19:35:01] [ML] Moderate bearish (67.38%), high confidence
+[2026-05-29 19:35:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 19:35:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:35:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:35:03] Abrindo Sell | Preço Desejado: 73464.9 | TP: 73376.0 | SL: 73539.0 | TS: 29.6
+[2026-05-29 19:35:03] [MAKER] Limit=73465.0 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:35:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:40:01] [FLOW] CVD=-1.6950 (-76.52%) | OIΔ=-0.07% | LiqImb=70.35%
+[2026-05-29 19:40:01] [DERIV] Funding=0.0076% | PredFunding=0.0076% | Premium=-0.0406%
+[2026-05-29 19:40:01] 📊 Preço de fechamento real (DataFrame): 73423.5
+[2026-05-29 19:40:01] Sentimento: bearish (0%)
+[2026-05-29 19:40:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 19:40:01] [ML] Moderate bearish (64.64%), high confidence
+[2026-05-29 19:40:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 19:40:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:40:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:40:03] Abrindo Sell | Preço Desejado: 73423.6 | TP: 73335.0 | SL: 73497.4 | TS: 29.5
+[2026-05-29 19:40:03] [MAKER] Limit=73423.6 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:40:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:45:01] [FLOW] CVD=-3.0460 (-86.93%) | OIΔ=-0.11% | LiqImb=70.35%
+[2026-05-29 19:45:01] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0469%
+[2026-05-29 19:45:01] 📊 Preço de fechamento real (DataFrame): 73430.7
+[2026-05-29 19:45:01] Sentimento: bearish (0%)
+[2026-05-29 19:45:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 19:45:01] [ML] Moderate bearish (62.47%), high confidence
+[2026-05-29 19:45:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 19:45:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:45:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:45:02] Abrindo Sell | Preço Desejado: 73430.8 | TP: 73350.0 | SL: 73498.1 | TS: 26.9
+[2026-05-29 19:45:02] [MAKER] Limit=73430.8 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:45:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 19:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:50:01] [FLOW] CVD=-8.4400 (-54.53%) | OIΔ=0.20% | LiqImb=70.53%
+[2026-05-29 19:50:01] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0339%
+[2026-05-29 19:50:01] 📊 Preço de fechamento real (DataFrame): 73444.5
+[2026-05-29 19:50:01] Sentimento: bearish (0%)
+[2026-05-29 19:50:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 19:50:01] [ML] Moderate bearish (68.11%), high confidence
+[2026-05-29 19:50:01] ❌ [DECISION] REJECT | Blended confidence: 57.5% < 65%
+[2026-05-29 19:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 19:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 19:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 19:55:01] [FLOW] CVD=0.0900 (0.84%) | OIΔ=0.20% | LiqImb=70.53%
+[2026-05-29 19:55:01] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0442%
+[2026-05-29 19:55:01] 📊 Preço de fechamento real (DataFrame): 73400.0
+[2026-05-29 19:55:01] Sentimento: bearish (0%)
+[2026-05-29 19:55:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 19:55:01] [ML] Moderate bearish (62.79%), high confidence
+[2026-05-29 19:55:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 19:55:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 19:55:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 19:55:02] Abrindo Sell | Preço Desejado: 73409.7 | TP: 73321.0 | SL: 73483.6 | TS: 29.6
+[2026-05-29 19:55:02] [MAKER] Limit=73409.8 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 19:55:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 20:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:00:01] [FLOW] CVD=-14.1320 (-95.75%) | OIΔ=0.40% | LiqImb=70.19%
+[2026-05-29 20:00:01] [DERIV] Funding=0.0075% | PredFunding=0.0075% | Premium=-0.0462%
+[2026-05-29 20:00:01] 📊 Preço de fechamento real (DataFrame): 73449.4
+[2026-05-29 20:00:01] Sentimento: bearish (0%)
+[2026-05-29 20:00:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 20:00:01] [ML] Weak bearish (59.44%), moderate confidence
+[2026-05-29 20:00:01] ❌ [DECISION] REJECT | Blended confidence: 41.2% < 65%
+[2026-05-29 20:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 20:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:05:01] [FLOW] CVD=0.6780 (44.61%) | OIΔ=-0.10% | LiqImb=70.19%
+[2026-05-29 20:05:01] [DERIV] Funding=0.0074% | PredFunding=0.0074% | Premium=-0.0359%
+[2026-05-29 20:05:01] 📊 Preço de fechamento real (DataFrame): 73440.9
+[2026-05-29 20:05:01] Sentimento: bearish (0%)
+[2026-05-29 20:05:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 20:05:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 20:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 20:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:10:01] [FLOW] CVD=1.5420 (58.10%) | OIΔ=-0.01% | LiqImb=70.19%
+[2026-05-29 20:10:01] [DERIV] Funding=0.0074% | PredFunding=0.0074% | Premium=-0.0407%
+[2026-05-29 20:10:01] 📊 Preço de fechamento real (DataFrame): 73424.0
+[2026-05-29 20:10:01] Sentimento: bearish (0%)
+[2026-05-29 20:10:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 20:10:01] [ML] Moderate bearish (69.34%), high confidence
+[2026-05-29 20:10:01] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-29 20:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 20:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:15:01] [FLOW] CVD=13.3060 (93.63%) | OIΔ=-0.04% | LiqImb=68.45%
+[2026-05-29 20:15:01] [DERIV] Funding=0.0074% | PredFunding=0.0074% | Premium=-0.0502%
+[2026-05-29 20:15:01] 📊 Preço de fechamento real (DataFrame): 73376.1
+[2026-05-29 20:15:01] Sentimento: bearish (0%)
+[2026-05-29 20:15:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 20:15:01] [ML] Weak bearish (59.58%), moderate confidence
+[2026-05-29 20:15:01] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-29 20:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 20:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:20:02] [FLOW] CVD=0.9480 (56.97%) | OIΔ=-0.04% | LiqImb=68.45%
+[2026-05-29 20:20:02] [DERIV] Funding=0.0074% | PredFunding=0.0074% | Premium=-0.0439%
+[2026-05-29 20:20:02] 📊 Preço de fechamento real (DataFrame): 73392.1
+[2026-05-29 20:20:02] Sentimento: bearish (0%)
+[2026-05-29 20:20:02] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 20:20:02] [ML] Weak bearish (56.07%), moderate confidence
+[2026-05-29 20:20:02] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-29 20:20:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 20:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:25:01] [FLOW] CVD=-2.1600 (-92.70%) | OIΔ=0.08% | LiqImb=66.32%
+[2026-05-29 20:25:01] [DERIV] Funding=0.0073% | PredFunding=0.0073% | Premium=-0.0399%
+[2026-05-29 20:25:01] 📊 Preço de fechamento real (DataFrame): 73313.8
+[2026-05-29 20:25:01] Sentimento: bearish (0%)
+[2026-05-29 20:25:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 20:25:01] [ML] Weak bearish (56.16%), moderate confidence
+[2026-05-29 20:25:01] ✅ [DECISION] ENTER | Blended confidence: 67.5%
+[2026-05-29 20:25:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 20:25:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 20:25:02] Abrindo Sell | Preço Desejado: 73312.3 | TP: 73218.6 | SL: 73390.4 | TS: 31.2
+[2026-05-29 20:25:02] [MAKER] Limit=73312.8 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 20:25:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 20:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:30:01] [FLOW] CVD=-7.5980 (-72.03%) | OIΔ=-0.02% | LiqImb=66.31%
+[2026-05-29 20:30:01] [DERIV] Funding=0.0073% | PredFunding=0.0073% | Premium=-0.0390%
+[2026-05-29 20:30:01] 📊 Preço de fechamento real (DataFrame): 73355.5
+[2026-05-29 20:30:01] Sentimento: bearish (0%)
+[2026-05-29 20:30:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 20:30:01] [ML] Weak bearish (50.66%), moderate confidence
+[2026-05-29 20:30:01] ✅ [DECISION] ENTER | Blended confidence: 67.5%
+[2026-05-29 20:30:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 20:30:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 20:30:02] Abrindo Sell | Preço Desejado: 73355.5 | TP: 73263.9 | SL: 73431.9 | TS: 30.5
+[2026-05-29 20:30:02] [MAKER] Limit=73355.6 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 20:30:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 20:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:35:01] [FLOW] CVD=-2.5480 (-100.00%) | OIΔ=0.10% | LiqImb=66.31%
+[2026-05-29 20:35:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0307%
+[2026-05-29 20:35:01] 📊 Preço de fechamento real (DataFrame): 73337.2
+[2026-05-29 20:35:01] Sentimento: bearish (0%)
+[2026-05-29 20:35:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 20:35:01] [ML] Moderate bearish (60.05%), high confidence
+[2026-05-29 20:35:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 20:35:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 20:35:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 20:35:02] Abrindo Sell | Preço Desejado: 73300.1 | TP: 73209.6 | SL: 73375.5 | TS: 30.2
+[2026-05-29 20:35:02] [MAKER] Limit=73303.7 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 20:35:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 20:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:40:01] [FLOW] CVD=-1.6540 (-45.09%) | OIΔ=-0.01% | LiqImb=66.31%
+[2026-05-29 20:40:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0447%
+[2026-05-29 20:40:01] 📊 Preço de fechamento real (DataFrame): 73329.7
+[2026-05-29 20:40:01] Sentimento: bearish (0%)
+[2026-05-29 20:40:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 20:40:01] [ML] Moderate bearish (67.18%), high confidence
+[2026-05-29 20:40:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-29 20:40:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 20:40:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 20:40:02] Abrindo Sell | Preço Desejado: 73329.1 | TP: 73236.3 | SL: 73406.5 | TS: 30.9
+[2026-05-29 20:40:02] [MAKER] Limit=73329.1 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 20:40:04] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 20:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:45:01] [FLOW] CVD=-3.3560 (-94.27%) | OIΔ=0.01% | LiqImb=66.31%
+[2026-05-29 20:45:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0277%
+[2026-05-29 20:45:01] 📊 Preço de fechamento real (DataFrame): 73401.8
+[2026-05-29 20:45:01] Sentimento: bearish (0%)
+[2026-05-29 20:45:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 20:45:01] [ML] Moderate bearish (64.34%), high confidence
+[2026-05-29 20:45:01] ✅ [DECISION] ENTER | Blended confidence: 66.2%
+[2026-05-29 20:45:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-29 20:45:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-29 20:45:03] Abrindo Sell | Preço Desejado: 73383.5 | TP: 73288.3 | SL: 73462.9 | TS: 31.7
+[2026-05-29 20:45:03] [MAKER] Limit=73383.6 | ATR SLx=1.0 TPx=1.2
+[2026-05-29 20:45:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-29 20:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:50:01] [FLOW] CVD=4.3600 (81.34%) | OIΔ=-0.01% | LiqImb=66.31%
+[2026-05-29 20:50:01] [DERIV] Funding=0.0072% | PredFunding=0.0072% | Premium=-0.0435%
+[2026-05-29 20:50:01] 📊 Preço de fechamento real (DataFrame): 73405.1
+[2026-05-29 20:50:01] Sentimento: bearish (0%)
+[2026-05-29 20:50:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 20:50:01] [ML] Strong bearish (75.83%), maximum confidence
+[2026-05-29 20:50:01] ❌ [DECISION] REJECT | Blended confidence: 47.5% < 65%
+[2026-05-29 20:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 20:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 20:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 20:55:01] [FLOW] CVD=2.6230 (52.81%) | OIΔ=-0.01% | LiqImb=66.31%
+[2026-05-29 20:55:01] [DERIV] Funding=0.0071% | PredFunding=0.0071% | Premium=-0.0493%
+[2026-05-29 20:55:01] 📊 Preço de fechamento real (DataFrame): 73439.4
+[2026-05-29 20:55:01] Sentimento: bearish (0%)
+[2026-05-29 20:55:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 20:55:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 20:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:00:02] [FLOW] CVD=2.6490 (67.94%) | OIΔ=-0.01% | LiqImb=66.31%
+[2026-05-29 21:00:02] [DERIV] Funding=0.0070% | PredFunding=0.0070% | Premium=-0.0363%
+[2026-05-29 21:00:02] 📊 Preço de fechamento real (DataFrame): 73437.3
+[2026-05-29 21:00:02] Sentimento: bearish (0%)
+[2026-05-29 21:00:02] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 21:00:02] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 21:00:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:05:01] [FLOW] CVD=0.6000 (18.94%) | OIΔ=0.01% | LiqImb=66.31%
+[2026-05-29 21:05:01] [DERIV] Funding=-0.0010% | PredFunding=-0.0010% | Premium=-0.0494%
+[2026-05-29 21:05:01] 📊 Preço de fechamento real (DataFrame): 73412.6
+[2026-05-29 21:05:01] Sentimento: bearish (0%)
+[2026-05-29 21:05:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 21:05:01] [ML] Strong bearish (71.74%), maximum confidence
+[2026-05-29 21:05:01] ❌ [DECISION] REJECT | Blended confidence: 47.5% < 65%
+[2026-05-29 21:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:10:01] [FLOW] CVD=1.6490 (37.10%) | OIΔ=0.01% | LiqImb=66.19%
+[2026-05-29 21:10:01] [DERIV] Funding=0.0053% | PredFunding=0.0053% | Premium=-0.0426%
+[2026-05-29 21:10:01] 📊 Preço de fechamento real (DataFrame): 73482.9
+[2026-05-29 21:10:01] Sentimento: bearish (0%)
+[2026-05-29 21:10:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 21:10:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 21:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:15:01] [FLOW] CVD=-0.4270 (-39.50%) | OIΔ=0.00% | LiqImb=66.19%
+[2026-05-29 21:15:01] [DERIV] Funding=0.0018% | PredFunding=0.0018% | Premium=-0.0493%
+[2026-05-29 21:15:01] 📊 Preço de fechamento real (DataFrame): 73454.6
+[2026-05-29 21:15:01] Sentimento: bearish (0%)
+[2026-05-29 21:15:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 21:15:01] [ML] Moderate bearish (62.16%), high confidence
+[2026-05-29 21:15:01] ❌ [DECISION] REJECT | Blended confidence: 40.0% < 65%
+[2026-05-29 21:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:20:02] [FLOW] CVD=-1.0680 (-36.48%) | OIΔ=-0.01% | LiqImb=65.62%
+[2026-05-29 21:20:02] [DERIV] Funding=0.0047% | PredFunding=0.0047% | Premium=-0.0451%
+[2026-05-29 21:20:02] 📊 Preço de fechamento real (DataFrame): 73455.9
+[2026-05-29 21:20:02] Sentimento: bearish (0%)
+[2026-05-29 21:20:02] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 21:20:02] [ML] Strong bearish (74.57%), maximum confidence
+[2026-05-29 21:20:02] ❌ [DECISION] REJECT | Blended confidence: 47.5% < 65%
+[2026-05-29 21:20:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:25:01] [FLOW] CVD=-9.0990 (-98.78%) | OIΔ=-0.01% | LiqImb=65.65%
+[2026-05-29 21:25:01] [DERIV] Funding=0.0057% | PredFunding=0.0057% | Premium=-0.0438%
+[2026-05-29 21:25:01] 📊 Preço de fechamento real (DataFrame): 73438.8
+[2026-05-29 21:25:01] Sentimento: bearish (0%)
+[2026-05-29 21:25:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 21:25:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 21:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:30:01] [FLOW] CVD=0.6590 (30.44%) | OIΔ=0.04% | LiqImb=65.65%
+[2026-05-29 21:30:01] [DERIV] Funding=0.0037% | PredFunding=0.0037% | Premium=-0.0517%
+[2026-05-29 21:30:01] 📊 Preço de fechamento real (DataFrame): 73430.7
+[2026-05-29 21:30:01] Sentimento: bearish (0%)
+[2026-05-29 21:30:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 21:30:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 21:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:35:01] [FLOW] CVD=-0.8450 (-30.94%) | OIΔ=0.02% | LiqImb=65.67%
+[2026-05-29 21:35:01] [DERIV] Funding=0.0033% | PredFunding=0.0033% | Premium=-0.0448%
+[2026-05-29 21:35:01] 📊 Preço de fechamento real (DataFrame): 73399.7
+[2026-05-29 21:35:01] Sentimento: bearish (0%)
+[2026-05-29 21:35:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 21:35:01] [ML] Moderate bearish (63.42%), high confidence
+[2026-05-29 21:35:01] ❌ [DECISION] REJECT | Blended confidence: 48.7% < 65%
+[2026-05-29 21:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:40:01] [FLOW] CVD=1.9690 (38.24%) | OIΔ=-0.06% | LiqImb=65.67%
+[2026-05-29 21:40:01] [DERIV] Funding=0.0039% | PredFunding=0.0039% | Premium=-0.0413%
+[2026-05-29 21:40:01] 📊 Preço de fechamento real (DataFrame): 73483.6
+[2026-05-29 21:40:01] Sentimento: bearish (0%)
+[2026-05-29 21:40:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 21:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (44.85%)
+[2026-05-29 21:40:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 21:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:45:01] [FLOW] CVD=1.2290 (39.79%) | OIΔ=-0.05% | LiqImb=65.67%
+[2026-05-29 21:45:01] [DERIV] Funding=0.0040% | PredFunding=0.0040% | Premium=-0.0388%
+[2026-05-29 21:45:01] 📊 Preço de fechamento real (DataFrame): 73489.9
+[2026-05-29 21:45:01] Sentimento: bearish (0%)
+[2026-05-29 21:45:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 21:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (39.59%)
+[2026-05-29 21:45:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 21:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:50:01] [FLOW] CVD=-4.9820 (-79.71%) | OIΔ=0.13% | LiqImb=66.63%
+[2026-05-29 21:50:01] [DERIV] Funding=0.0046% | PredFunding=0.0046% | Premium=-0.0423%
+[2026-05-29 21:50:01] 📊 Preço de fechamento real (DataFrame): 73482.1
+[2026-05-29 21:50:01] Sentimento: bearish (0%)
+[2026-05-29 21:50:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 21:50:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 21:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 21:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 21:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 21:55:01] [FLOW] CVD=-0.7630 (-37.38%) | OIΔ=0.02% | LiqImb=66.63%
+[2026-05-29 21:55:01] [DERIV] Funding=0.0043% | PredFunding=0.0043% | Premium=-0.0464%
+[2026-05-29 21:55:01] 📊 Preço de fechamento real (DataFrame): 73481.6
+[2026-05-29 21:55:01] Sentimento: bearish (0%)
+[2026-05-29 21:55:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 21:55:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 21:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:00:01] [FLOW] CVD=-3.9270 (-59.56%) | OIΔ=0.01% | LiqImb=66.63%
+[2026-05-29 22:00:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0481%
+[2026-05-29 22:00:01] 📊 Preço de fechamento real (DataFrame): 73466.2
+[2026-05-29 22:00:01] Sentimento: bearish (0%)
+[2026-05-29 22:00:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 22:00:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 22:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:05:01] [FLOW] CVD=-0.8870 (-74.10%) | OIΔ=0.15% | LiqImb=66.63%
+[2026-05-29 22:05:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0378%
+[2026-05-29 22:05:01] 📊 Preço de fechamento real (DataFrame): 73496.5
+[2026-05-29 22:05:01] Sentimento: bearish (0%)
+[2026-05-29 22:05:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-29 22:05:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-29 22:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:10:01] [FLOW] CVD=0.4900 (13.47%) | OIΔ=-0.02% | LiqImb=66.59%
+[2026-05-29 22:10:01] [DERIV] Funding=0.0035% | PredFunding=0.0035% | Premium=-0.0418%
+[2026-05-29 22:10:01] 📊 Preço de fechamento real (DataFrame): 73545.1
+[2026-05-29 22:10:01] Sentimento: bearish (0%)
+[2026-05-29 22:10:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 22:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (36.19%)
+[2026-05-29 22:10:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 22:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:15:01] [FLOW] CVD=0.9310 (24.45%) | OIΔ=-0.02% | LiqImb=66.59%
+[2026-05-29 22:15:01] [DERIV] Funding=0.0037% | PredFunding=0.0037% | Premium=-0.0469%
+[2026-05-29 22:15:01] 📊 Preço de fechamento real (DataFrame): 73543.8
+[2026-05-29 22:15:01] Sentimento: bearish (0%)
+[2026-05-29 22:15:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 22:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (28.63%)
+[2026-05-29 22:15:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 22:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:20:01] [FLOW] CVD=4.7420 (93.90%) | OIΔ=-0.02% | LiqImb=65.83%
+[2026-05-29 22:20:01] [DERIV] Funding=0.0038% | PredFunding=0.0038% | Premium=-0.0387%
+[2026-05-29 22:20:01] 📊 Preço de fechamento real (DataFrame): 73578.1
+[2026-05-29 22:20:01] Sentimento: bearish (0%)
+[2026-05-29 22:20:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 22:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (37.02%)
+[2026-05-29 22:20:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 22:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:25:01] [FLOW] CVD=-0.3160 (-5.05%) | OIΔ=0.04% | LiqImb=65.59%
+[2026-05-29 22:25:01] [DERIV] Funding=0.0040% | PredFunding=0.0040% | Premium=-0.0453%
+[2026-05-29 22:25:01] 📊 Preço de fechamento real (DataFrame): 73595.1
+[2026-05-29 22:25:01] Sentimento: bearish (0%)
+[2026-05-29 22:25:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 22:25:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (27.63%)
+[2026-05-29 22:25:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 22:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:30:01] [FLOW] CVD=6.0330 (44.38%) | OIΔ=-0.04% | LiqImb=65.59%
+[2026-05-29 22:30:01] [DERIV] Funding=0.0039% | PredFunding=0.0039% | Premium=-0.0426%
+[2026-05-29 22:30:01] 📊 Preço de fechamento real (DataFrame): 73597.1
+[2026-05-29 22:30:01] Sentimento: bearish (0%)
+[2026-05-29 22:30:01] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 22:30:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (24.79%)
+[2026-05-29 22:30:01] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-29 22:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:35:01] [FLOW] CVD=-2.1330 (-16.78%) | OIΔ=-0.01% | LiqImb=66.17%
+[2026-05-29 22:35:01] [DERIV] Funding=0.0041% | PredFunding=0.0041% | Premium=-0.0410%
+[2026-05-29 22:35:01] 📊 Preço de fechamento real (DataFrame): 73601.0
+[2026-05-29 22:35:01] Sentimento: bearish (0%)
+[2026-05-29 22:35:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 22:35:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (30.13%)
+[2026-05-29 22:35:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 22:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:40:01] [FLOW] CVD=-1.5600 (-34.77%) | OIΔ=-0.01% | LiqImb=65.10%
+[2026-05-29 22:40:01] [DERIV] Funding=0.0044% | PredFunding=0.0044% | Premium=-0.0457%
+[2026-05-29 22:40:01] 📊 Preço de fechamento real (DataFrame): 73602.9
+[2026-05-29 22:40:01] Sentimento: bearish (0%)
+[2026-05-29 22:40:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 22:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (31.95%)
+[2026-05-29 22:40:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 22:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:45:01] [FLOW] CVD=2.5170 (56.70%) | OIΔ=-0.03% | LiqImb=65.10%
+[2026-05-29 22:45:01] [DERIV] Funding=0.0038% | PredFunding=0.0038% | Premium=-0.0413%
+[2026-05-29 22:45:01] 📊 Preço de fechamento real (DataFrame): 73574.2
+[2026-05-29 22:45:01] Sentimento: bearish (0%)
+[2026-05-29 22:45:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 22:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (41.46%)
+[2026-05-29 22:45:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 22:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:50:01] [FLOW] CVD=2.7040 (75.15%) | OIΔ=-0.00% | LiqImb=65.10%
+[2026-05-29 22:50:01] [DERIV] Funding=0.0040% | PredFunding=0.0040% | Premium=-0.0384%
+[2026-05-29 22:50:01] 📊 Preço de fechamento real (DataFrame): 73608.6
+[2026-05-29 22:50:01] Sentimento: bearish (0%)
+[2026-05-29 22:50:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 22:50:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (39.60%)
+[2026-05-29 22:50:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 22:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 22:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 22:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 22:55:01] [FLOW] CVD=2.4530 (92.05%) | OIΔ=0.01% | LiqImb=65.10%
+[2026-05-29 22:55:01] [DERIV] Funding=0.0040% | PredFunding=0.0040% | Premium=-0.0385%
+[2026-05-29 22:55:01] 📊 Preço de fechamento real (DataFrame): 73611.5
+[2026-05-29 22:55:01] Sentimento: bearish (0%)
+[2026-05-29 22:55:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 22:55:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (37.67%)
+[2026-05-29 22:55:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 22:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:00:01] [FLOW] CVD=8.1910 (78.35%) | OIΔ=-0.07% | LiqImb=65.10%
+[2026-05-29 23:00:01] [DERIV] Funding=0.0042% | PredFunding=0.0042% | Premium=-0.0377%
+[2026-05-29 23:00:01] 📊 Preço de fechamento real (DataFrame): 73632.0
+[2026-05-29 23:00:01] Sentimento: bearish (0%)
+[2026-05-29 23:00:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 23:00:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (27.52%)
+[2026-05-29 23:00:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 23:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:05:01] [FLOW] CVD=1.1720 (46.96%) | OIΔ=-0.01% | LiqImb=65.10%
+[2026-05-29 23:05:01] [DERIV] Funding=0.0044% | PredFunding=0.0044% | Premium=-0.0488%
+[2026-05-29 23:05:01] 📊 Preço de fechamento real (DataFrame): 73664.8
+[2026-05-29 23:05:01] Sentimento: bearish (0%)
+[2026-05-29 23:05:01] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-29 23:05:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (35.15%)
+[2026-05-29 23:05:01] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-29 23:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:10:01] [FLOW] CVD=1.7360 (34.64%) | OIΔ=0.01% | LiqImb=65.10%
+[2026-05-29 23:10:01] [DERIV] Funding=0.0040% | PredFunding=0.0040% | Premium=-0.0524%
+[2026-05-29 23:10:01] 📊 Preço de fechamento real (DataFrame): 73650.0
+[2026-05-29 23:10:01] Sentimento: bearish (0%)
+[2026-05-29 23:10:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 23:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (30.50%)
+[2026-05-29 23:10:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 23:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:15:01] [FLOW] CVD=-0.8310 (-15.27%) | OIΔ=-0.01% | LiqImb=64.35%
+[2026-05-29 23:15:01] [DERIV] Funding=0.0037% | PredFunding=0.0037% | Premium=-0.0509%
+[2026-05-29 23:15:01] 📊 Preço de fechamento real (DataFrame): 73636.8
+[2026-05-29 23:15:01] Sentimento: bearish (0%)
+[2026-05-29 23:15:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 23:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (34.75%)
+[2026-05-29 23:15:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 23:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:20:01] [FLOW] CVD=-1.0990 (-77.23%) | OIΔ=-0.00% | LiqImb=64.35%
+[2026-05-29 23:20:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0486%
+[2026-05-29 23:20:01] 📊 Preço de fechamento real (DataFrame): 73630.3
+[2026-05-29 23:20:01] Sentimento: bearish (0%)
+[2026-05-29 23:20:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 23:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (39.53%)
+[2026-05-29 23:20:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 23:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:25:01] [FLOW] CVD=-2.1110 (-35.51%) | OIΔ=-0.01% | LiqImb=64.35%
+[2026-05-29 23:25:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0491%
+[2026-05-29 23:25:01] 📊 Preço de fechamento real (DataFrame): 73578.2
+[2026-05-29 23:25:01] Sentimento: bearish (0%)
+[2026-05-29 23:25:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-29 23:25:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-29 23:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:30:01] [FLOW] CVD=0.3950 (9.86%) | OIΔ=0.01% | LiqImb=64.35%
+[2026-05-29 23:30:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0408%
+[2026-05-29 23:30:01] 📊 Preço de fechamento real (DataFrame): 73597.3
+[2026-05-29 23:30:01] Sentimento: bearish (0%)
+[2026-05-29 23:30:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 23:30:01] [ML] Weak bullish (50.48%), moderate confidence
+[2026-05-29 23:30:01] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-29 23:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:35:01] [FLOW] CVD=1.2950 (29.91%) | OIΔ=0.01% | LiqImb=64.35%
+[2026-05-29 23:35:01] [DERIV] Funding=0.0037% | PredFunding=0.0037% | Premium=-0.0401%
+[2026-05-29 23:35:01] 📊 Preço de fechamento real (DataFrame): 73676.8
+[2026-05-29 23:35:01] Sentimento: bearish (0%)
+[2026-05-29 23:35:01] Sinal técnico: buy | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-29 23:35:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (37.88%)
+[2026-05-29 23:35:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-29 23:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:40:01] [FLOW] CVD=-2.1660 (-94.42%) | OIΔ=0.00% | LiqImb=64.36%
+[2026-05-29 23:40:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0437%
+[2026-05-29 23:40:01] 📊 Preço de fechamento real (DataFrame): 73664.6
+[2026-05-29 23:40:01] Sentimento: bearish (0%)
+[2026-05-29 23:40:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-29 23:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (31.56%)
+[2026-05-29 23:40:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-29 23:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:45:01] [FLOW] CVD=2.3630 (18.41%) | OIΔ=0.13% | LiqImb=64.36%
+[2026-05-29 23:45:01] [DERIV] Funding=0.0035% | PredFunding=0.0035% | Premium=-0.0464%
+[2026-05-29 23:45:01] 📊 Preço de fechamento real (DataFrame): 73677.4
+[2026-05-29 23:45:01] Sentimento: bearish (0%)
+[2026-05-29 23:45:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 23:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (35.44%)
+[2026-05-29 23:45:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-29 23:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:50:01] [FLOW] CVD=-0.5700 (-36.31%) | OIΔ=0.13% | LiqImb=64.36%
+[2026-05-29 23:50:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0450%
+[2026-05-29 23:50:01] 📊 Preço de fechamento real (DataFrame): 73663.5
+[2026-05-29 23:50:01] Sentimento: bearish (0%)
+[2026-05-29 23:50:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-29 23:50:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (29.42%)
+[2026-05-29 23:50:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-29 23:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-29 23:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-29 23:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-29 23:55:01] [FLOW] CVD=4.0140 (80.02%) | OIΔ=0.05% | LiqImb=64.02%
+[2026-05-29 23:55:01] [DERIV] Funding=0.0032% | PredFunding=0.0032% | Premium=-0.0543%
+[2026-05-29 23:55:01] 📊 Preço de fechamento real (DataFrame): 73737.0
+[2026-05-29 23:55:01] Sentimento: bearish (0%)
+[2026-05-29 23:55:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-29 23:55:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (30.50%)
+[2026-05-29 23:55:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-29 23:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:00:01] [FLOW] CVD=-1.8750 (-76.37%) | OIΔ=0.03% | LiqImb=63.82%
+[2026-05-30 00:00:01] [DERIV] Funding=0.0029% | PredFunding=0.0029% | Premium=-0.0509%
+[2026-05-30 00:00:01] 📊 Preço de fechamento real (DataFrame): 73749.9
+[2026-05-30 00:00:01] Sentimento: bearish (0%)
+[2026-05-30 00:00:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 00:00:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (30.09%)
+[2026-05-30 00:00:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-30 00:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:05:01] [FLOW] CVD=4.3460 (57.06%) | OIΔ=-0.03% | LiqImb=63.82%
+[2026-05-30 00:05:01] [DERIV] Funding=0.0026% | PredFunding=0.0026% | Premium=-0.0482%
+[2026-05-30 00:05:01] 📊 Preço de fechamento real (DataFrame): 73756.4
+[2026-05-30 00:05:01] Sentimento: bearish (0%)
+[2026-05-30 00:05:01] Sinal técnico: buy | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-30 00:05:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (35.77%)
+[2026-05-30 00:05:01] ❌ [DECISION] REJECT | Blended confidence: 52.5% < 65%
+[2026-05-30 00:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:10:01] [FLOW] CVD=1.2850 (100.00%) | OIΔ=-0.01% | LiqImb=63.82%
+[2026-05-30 00:10:01] [DERIV] Funding=0.0024% | PredFunding=0.0024% | Premium=-0.0504%
+[2026-05-30 00:10:01] 📊 Preço de fechamento real (DataFrame): 73754.0
+[2026-05-30 00:10:01] Sentimento: bearish (0%)
+[2026-05-30 00:10:01] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-30 00:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (24.30%)
+[2026-05-30 00:10:01] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-30 00:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:15:01] [FLOW] CVD=-3.0430 (-74.27%) | OIΔ=-0.03% | LiqImb=63.82%
+[2026-05-30 00:15:01] [DERIV] Funding=0.0022% | PredFunding=0.0022% | Premium=-0.0506%
+[2026-05-30 00:15:01] 📊 Preço de fechamento real (DataFrame): 73729.8
+[2026-05-30 00:15:01] Sentimento: bearish (0%)
+[2026-05-30 00:15:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 00:15:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (32.05%)
+[2026-05-30 00:15:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-30 00:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:20:01] [FLOW] CVD=2.4390 (45.53%) | OIΔ=0.01% | LiqImb=63.48%
+[2026-05-30 00:20:01] [DERIV] Funding=0.0022% | PredFunding=0.0022% | Premium=-0.0502%
+[2026-05-30 00:20:01] 📊 Preço de fechamento real (DataFrame): 73695.1
+[2026-05-30 00:20:01] Sentimento: bearish (0%)
+[2026-05-30 00:20:01] Sinal técnico: buy | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-30 00:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (47.56%)
+[2026-05-30 00:20:01] ❌ [DECISION] REJECT | Blended confidence: 43.8% < 65%
+[2026-05-30 00:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:25:01] [FLOW] CVD=-8.3220 (-91.59%) | OIΔ=0.01% | LiqImb=63.48%
+[2026-05-30 00:25:01] [DERIV] Funding=0.0021% | PredFunding=0.0021% | Premium=-0.0493%
+[2026-05-30 00:25:01] 📊 Preço de fechamento real (DataFrame): 73664.4
+[2026-05-30 00:25:01] Sentimento: bearish (0%)
+[2026-05-30 00:25:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 00:25:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (60.12%)
+[2026-05-30 00:25:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-30 00:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:30:01] [FLOW] CVD=-5.3110 (-80.92%) | OIΔ=0.01% | LiqImb=63.48%
+[2026-05-30 00:30:01] [DERIV] Funding=0.0021% | PredFunding=0.0021% | Premium=-0.0442%
+[2026-05-30 00:30:01] 📊 Preço de fechamento real (DataFrame): 73632.5
+[2026-05-30 00:30:01] Sentimento: bearish (0%)
+[2026-05-30 00:30:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-30 00:30:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-30 00:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:35:01] [FLOW] CVD=-3.9320 (-80.47%) | OIΔ=-0.01% | LiqImb=63.48%
+[2026-05-30 00:35:01] [DERIV] Funding=0.0021% | PredFunding=0.0021% | Premium=-0.0463%
+[2026-05-30 00:35:01] 📊 Preço de fechamento real (DataFrame): 73572.7
+[2026-05-30 00:35:01] Sentimento: bearish (0%)
+[2026-05-30 00:35:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 00:35:01] [ML] Weak bearish (56.77%), moderate confidence
+[2026-05-30 00:35:01] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-30 00:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:40:01] [FLOW] CVD=4.3330 (93.81%) | OIΔ=-0.14% | LiqImb=63.48%
+[2026-05-30 00:40:01] [DERIV] Funding=0.0019% | PredFunding=0.0019% | Premium=-0.0329%
+[2026-05-30 00:40:01] 📊 Preço de fechamento real (DataFrame): 73580.8
+[2026-05-30 00:40:01] Sentimento: bearish (0%)
+[2026-05-30 00:40:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 00:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (49.69%)
+[2026-05-30 00:40:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-30 00:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:45:01] [FLOW] CVD=-1.6450 (-34.87%) | OIΔ=-0.14% | LiqImb=63.48%
+[2026-05-30 00:45:01] [DERIV] Funding=0.0021% | PredFunding=0.0021% | Premium=-0.0424%
+[2026-05-30 00:45:01] 📊 Preço de fechamento real (DataFrame): 73508.7
+[2026-05-30 00:45:02] Sentimento: bearish (0%)
+[2026-05-30 00:45:02] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 00:45:02] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (53.82%)
+[2026-05-30 00:45:02] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-30 00:45:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:50:01] [FLOW] CVD=-0.6950 (-27.46%) | OIΔ=0.01% | LiqImb=63.48%
+[2026-05-30 00:50:01] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0422%
+[2026-05-30 00:50:01] 📊 Preço de fechamento real (DataFrame): 73550.0
+[2026-05-30 00:50:01] Sentimento: bearish (0%)
+[2026-05-30 00:50:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 00:50:01] [ML] Weak bearish (55.84%), moderate confidence
+[2026-05-30 00:50:01] ❌ [DECISION] REJECT | Blended confidence: 41.2% < 65%
+[2026-05-30 00:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 00:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 00:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 00:55:01] [FLOW] CVD=-2.3890 (-44.25%) | OIΔ=0.00% | LiqImb=63.48%
+[2026-05-30 00:55:01] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0475%
+[2026-05-30 00:55:01] 📊 Preço de fechamento real (DataFrame): 73518.8
+[2026-05-30 00:55:01] Sentimento: bearish (0%)
+[2026-05-30 00:55:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 00:55:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (52.53%)
+[2026-05-30 00:55:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-30 00:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:00:01] [FLOW] CVD=6.8690 (74.03%) | OIΔ=0.00% | LiqImb=63.48%
+[2026-05-30 01:00:01] [DERIV] Funding=0.0025% | PredFunding=0.0025% | Premium=-0.0408%
+[2026-05-30 01:00:01] 📊 Preço de fechamento real (DataFrame): 73495.8
+[2026-05-30 01:00:01] Sentimento: bearish (0%)
+[2026-05-30 01:00:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-30 01:00:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-30 01:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:05:01] [FLOW] CVD=-6.2560 (-65.00%) | OIΔ=0.04% | LiqImb=63.48%
+[2026-05-30 01:05:01] [DERIV] Funding=0.0026% | PredFunding=0.0026% | Premium=-0.0501%
+[2026-05-30 01:05:01] 📊 Preço de fechamento real (DataFrame): 73471.2
+[2026-05-30 01:05:01] Sentimento: bearish (0%)
+[2026-05-30 01:05:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-30 01:05:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (52.45%)
+[2026-05-30 01:05:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-30 01:05:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:10:01] [FLOW] CVD=-12.5230 (-69.55%) | OIΔ=0.08% | LiqImb=59.85%
+[2026-05-30 01:10:01] [DERIV] Funding=0.0027% | PredFunding=0.0027% | Premium=-0.0470%
+[2026-05-30 01:10:01] 📊 Preço de fechamento real (DataFrame): 73313.1
+[2026-05-30 01:10:01] Sentimento: bearish (0%)
+[2026-05-30 01:10:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-30 01:10:01] [ML] Weak bearish (57.47%), moderate confidence
+[2026-05-30 01:10:01] ✅ [DECISION] ENTER | Blended confidence: 67.5%
+[2026-05-30 01:10:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-30 01:10:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-30 01:10:02] Abrindo Sell | Preço Desejado: 73316.1 | TP: 73246.8 | SL: 73373.8 | TS: 23.1
+[2026-05-30 01:10:02] [MAKER] Limit=73316.2 | ATR SLx=1.0 TPx=1.2
+[2026-05-30 01:10:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-30 01:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:15:01] [FLOW] CVD=-0.2650 (-15.84%) | OIΔ=0.25% | LiqImb=59.54%
+[2026-05-30 01:15:01] [DERIV] Funding=0.0028% | PredFunding=0.0028% | Premium=-0.0403%
+[2026-05-30 01:15:01] 📊 Preço de fechamento real (DataFrame): 73461.4
+[2026-05-30 01:15:01] Sentimento: bearish (0%)
+[2026-05-30 01:15:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 01:15:01] [ML] Weak bearish (52.74%), moderate confidence
+[2026-05-30 01:15:01] ❌ [DECISION] REJECT | Blended confidence: 41.2% < 65%
+[2026-05-30 01:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:20:01] [FLOW] CVD=0.1970 (4.71%) | OIΔ=0.09% | LiqImb=59.54%
+[2026-05-30 01:20:01] [DERIV] Funding=0.0027% | PredFunding=0.0027% | Premium=-0.0421%
+[2026-05-30 01:20:01] 📊 Preço de fechamento real (DataFrame): 73384.5
+[2026-05-30 01:20:01] Sentimento: bearish (0%)
+[2026-05-30 01:20:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-30 01:20:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (50.06%)
+[2026-05-30 01:20:01] ❌ [DECISION] REJECT | Blended confidence: 35.0% < 65%
+[2026-05-30 01:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:25:01] [FLOW] CVD=1.2370 (43.85%) | OIΔ=-0.00% | LiqImb=59.54%
+[2026-05-30 01:25:01] [DERIV] Funding=0.0030% | PredFunding=0.0030% | Premium=-0.0411%
+[2026-05-30 01:25:01] 📊 Preço de fechamento real (DataFrame): 73383.5
+[2026-05-30 01:25:01] Sentimento: bearish (0%)
+[2026-05-30 01:25:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 01:25:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer SELL, mas ML quer Bullish (50.06%)
+[2026-05-30 01:25:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-30 01:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:30:01] [FLOW] CVD=-3.8560 (-91.77%) | OIΔ=0.05% | LiqImb=58.41%
+[2026-05-30 01:30:01] [DERIV] Funding=0.0031% | PredFunding=0.0031% | Premium=-0.0443%
+[2026-05-30 01:30:01] 📊 Preço de fechamento real (DataFrame): 73306.2
+[2026-05-30 01:30:01] Sentimento: bearish (0%)
+[2026-05-30 01:30:01] Sinal técnico: sell | Conf. técnica: 75.0% | Conf. final: 37.5% | Risco: alto
+[2026-05-30 01:30:01] [ML] Moderate bearish (65.22%), high confidence
+[2026-05-30 01:30:01] ✅ [DECISION] ENTER | Blended confidence: 75.0%
+[2026-05-30 01:30:02] [EDGE METRICS] WR=28.6% | PF=0.04 | Exp=-0.0714 | Sharpe=-15.58
+[2026-05-30 01:30:02] ⚠ [KELLY] No edge detected (WR=28.6%). Reducing position to 0.
+[2026-05-30 01:30:03] Abrindo Sell | Preço Desejado: 73292.0 | TP: 73153.3 | SL: 73384.4 | TS: 30.8
+[2026-05-30 01:30:03] [MAKER] Limit=73295.2 | ATR SLx=1.2 TPx=1.8
+[2026-05-30 01:30:05] ⚠ Ordem maker enviada, mas ainda nao preenchida. Aguardando proximo ciclo.
+[2026-05-30 01:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:35:01] [FLOW] CVD=1.2890 (35.13%) | OIΔ=-0.04% | LiqImb=54.48%
+[2026-05-30 01:35:01] [DERIV] Funding=0.0029% | PredFunding=0.0029% | Premium=-0.0459%
+[2026-05-30 01:35:01] 📊 Preço de fechamento real (DataFrame): 73200.8
+[2026-05-30 01:35:01] Sentimento: bearish (0%)
+[2026-05-30 01:35:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-30 01:35:01] [ML] Weak bearish (53.88%), moderate confidence
+[2026-05-30 01:35:01] ❌ [DECISION] REJECT | Blended confidence: 50.0% < 65%
+[2026-05-30 01:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:40:01] [FLOW] CVD=-5.6590 (-90.62%) | OIΔ=0.04% | LiqImb=51.68%
+[2026-05-30 01:40:01] [DERIV] Funding=0.0030% | PredFunding=0.0030% | Premium=-0.0470%
+[2026-05-30 01:40:01] 📊 Preço de fechamento real (DataFrame): 73236.9
+[2026-05-30 01:40:01] Sentimento: bearish (0%)
+[2026-05-30 01:40:01] Sinal técnico: sell | Conf. técnica: 50.0% | Conf. final: 25.0% | Risco: alto
+[2026-05-30 01:40:01] [ML] Weak bearish (56.54%), moderate confidence
+[2026-05-30 01:40:01] ❌ [DECISION] REJECT | Blended confidence: 50.0% < 65%
+[2026-05-30 01:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:45:01] [FLOW] CVD=1.9470 (64.19%) | OIΔ=0.01% | LiqImb=51.68%
+[2026-05-30 01:45:01] [DERIV] Funding=0.0031% | PredFunding=0.0031% | Premium=-0.0344%
+[2026-05-30 01:45:01] 📊 Preço de fechamento real (DataFrame): 73286.6
+[2026-05-30 01:45:01] Sentimento: bearish (0%)
+[2026-05-30 01:45:01] Sinal técnico: sell | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 01:45:01] [ML] Moderate bearish (61.94%), high confidence
+[2026-05-30 01:45:01] ❌ [DECISION] REJECT | Blended confidence: 48.7% < 65%
+[2026-05-30 01:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:50:01] [FLOW] CVD=2.1420 (48.37%) | OIΔ=-0.04% | LiqImb=51.68%
+[2026-05-30 01:50:01] [DERIV] Funding=0.0032% | PredFunding=0.0032% | Premium=-0.0439%
+[2026-05-30 01:50:01] 📊 Preço de fechamento real (DataFrame): 73332.8
+[2026-05-30 01:50:01] Sentimento: bearish (0%)
+[2026-05-30 01:50:01] Sinal técnico: sell | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 01:50:01] [ML] Weak bearish (53.99%), moderate confidence
+[2026-05-30 01:50:01] ❌ [DECISION] REJECT | Blended confidence: 32.5% < 65%
+[2026-05-30 01:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 01:55:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 01:55:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 01:55:01] [FLOW] CVD=-0.3730 (-15.18%) | OIΔ=0.04% | LiqImb=51.68%
+[2026-05-30 01:55:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0505%
+[2026-05-30 01:55:01] 📊 Preço de fechamento real (DataFrame): 73315.8
+[2026-05-30 01:55:01] Sentimento: bearish (0%)
+[2026-05-30 01:55:01] Sinal técnico: sell | Conf. técnica: 62.5% | Conf. final: 31.2% | Risco: alto
+[2026-05-30 01:55:01] [ML] Weak bearish (58.41%), moderate confidence
+[2026-05-30 01:55:01] ❌ [DECISION] REJECT | Blended confidence: 58.8% < 65%
+[2026-05-30 01:55:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:00:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:00:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:00:01] [FLOW] CVD=15.5460 (89.65%) | OIΔ=-0.20% | LiqImb=51.68%
+[2026-05-30 02:00:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0400%
+[2026-05-30 02:00:01] 📊 Preço de fechamento real (DataFrame): 73365.7
+[2026-05-30 02:00:01] Sentimento: bearish (0%)
+[2026-05-30 02:00:01] Sinal técnico: sell | Conf. técnica: 31.2% | Conf. final: 15.6% | Risco: alto
+[2026-05-30 02:00:01] [ML] Moderate bearish (61.67%), high confidence
+[2026-05-30 02:00:01] ❌ [DECISION] REJECT | Blended confidence: 44.3% < 65%
+[2026-05-30 02:00:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:05:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:05:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:05:02] [FLOW] CVD=14.4440 (66.67%) | OIΔ=-0.20% | LiqImb=51.68%
+[2026-05-30 02:05:02] [DERIV] Funding=0.0035% | PredFunding=0.0035% | Premium=-0.0420%
+[2026-05-30 02:05:02] 📊 Preço de fechamento real (DataFrame): 73384.1
+[2026-05-30 02:05:02] Sentimento: bearish (0%)
+[2026-05-30 02:05:02] Sinal técnico: hold | Conf. técnica: 18.8% | Conf. final: 9.4% | Risco: alto
+[2026-05-30 02:05:02] ❌ [DECISION] REJECT | Blended confidence: 13.2% < 65%
+[2026-05-30 02:05:02] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:10:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:10:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:10:01] [FLOW] CVD=2.0930 (26.17%) | OIΔ=0.05% | LiqImb=9.98%
+[2026-05-30 02:10:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0447%
+[2026-05-30 02:10:01] 📊 Preço de fechamento real (DataFrame): 73481.0
+[2026-05-30 02:10:01] Sentimento: bearish (0%)
+[2026-05-30 02:10:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 02:10:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (35.34%)
+[2026-05-30 02:10:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-30 02:10:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:15:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:15:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:15:01] [FLOW] CVD=12.2650 (98.95%) | OIΔ=0.45% | LiqImb=9.98%
+[2026-05-30 02:15:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0462%
+[2026-05-30 02:15:01] 📊 Preço de fechamento real (DataFrame): 73468.9
+[2026-05-30 02:15:01] Sentimento: bearish (0%)
+[2026-05-30 02:15:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-30 02:15:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-30 02:15:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:20:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:20:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:20:01] [FLOW] CVD=-2.7360 (-58.49%) | OIΔ=-0.04% | LiqImb=9.98%
+[2026-05-30 02:20:01] [DERIV] Funding=0.0036% | PredFunding=0.0036% | Premium=-0.0454%
+[2026-05-30 02:20:01] 📊 Preço de fechamento real (DataFrame): 73501.9
+[2026-05-30 02:20:01] Sentimento: bearish (0%)
+[2026-05-30 02:20:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-30 02:20:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-30 02:20:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:25:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:25:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:25:01] [FLOW] CVD=-2.4820 (-76.09%) | OIΔ=-0.00% | LiqImb=9.98%
+[2026-05-30 02:25:01] [DERIV] Funding=0.0035% | PredFunding=0.0035% | Premium=-0.0494%
+[2026-05-30 02:25:01] 📊 Preço de fechamento real (DataFrame): 73490.6
+[2026-05-30 02:25:01] Sentimento: bearish (0%)
+[2026-05-30 02:25:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-30 02:25:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-30 02:25:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:30:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:30:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:30:01] [FLOW] CVD=-2.4890 (-35.32%) | OIΔ=-0.01% | LiqImb=9.98%
+[2026-05-30 02:30:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0511%
+[2026-05-30 02:30:01] 📊 Preço de fechamento real (DataFrame): 73480.9
+[2026-05-30 02:30:01] Sentimento: bearish (0%)
+[2026-05-30 02:30:01] Sinal técnico: hold | Conf. técnica: 0.0% | Conf. final: 0.0% | Risco: alto
+[2026-05-30 02:30:01] ❌ [DECISION] REJECT | Blended confidence: 0.0% < 65%
+[2026-05-30 02:30:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:35:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:35:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:35:01] [FLOW] CVD=4.8000 (88.79%) | OIΔ=0.02% | LiqImb=9.98%
+[2026-05-30 02:35:01] [DERIV] Funding=0.0034% | PredFunding=0.0034% | Premium=-0.0478%
+[2026-05-30 02:35:01] 📊 Preço de fechamento real (DataFrame): 73507.4
+[2026-05-30 02:35:01] Sentimento: bearish (0%)
+[2026-05-30 02:35:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 02:35:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (43.84%)
+[2026-05-30 02:35:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-30 02:35:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:40:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:40:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:40:01] [FLOW] CVD=5.1770 (27.68%) | OIΔ=-0.08% | LiqImb=9.98%
+[2026-05-30 02:40:01] [DERIV] Funding=0.0033% | PredFunding=0.0033% | Premium=-0.0461%
+[2026-05-30 02:40:01] 📊 Preço de fechamento real (DataFrame): 73534.9
+[2026-05-30 02:40:01] Sentimento: bearish (0%)
+[2026-05-30 02:40:01] Sinal técnico: buy | Conf. técnica: 25.0% | Conf. final: 12.5% | Risco: alto
+[2026-05-30 02:40:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (34.38%)
+[2026-05-30 02:40:01] ❌ [DECISION] REJECT | Blended confidence: 17.5% < 65%
+[2026-05-30 02:40:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:45:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:45:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:45:01] [FLOW] CVD=2.2200 (91.36%) | OIΔ=-0.08% | LiqImb=9.98%
+[2026-05-30 02:45:01] [DERIV] Funding=0.0033% | PredFunding=0.0033% | Premium=-0.0420%
+[2026-05-30 02:45:01] 📊 Preço de fechamento real (DataFrame): 73547.6
+[2026-05-30 02:45:01] Sentimento: bearish (0%)
+[2026-05-30 02:45:01] Sinal técnico: buy | Conf. técnica: 37.5% | Conf. final: 18.8% | Risco: alto
+[2026-05-30 02:45:01] ❌ [ML] DIVERGÊNCIA: Sinal Técnico quer BUY, mas ML quer Bearish (41.78%)
+[2026-05-30 02:45:01] ❌ [DECISION] REJECT | Blended confidence: 26.2% < 65%
+[2026-05-30 02:45:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
+[2026-05-30 02:50:00] 🕯️ Candle fechado! Iniciando extração de dados da Corretora e análise de ML...
+[2026-05-30 02:50:00] [ADAPT] Both technical and sentiment in drawdown. Maintaining weights.
+[2026-05-30 02:50:01] [FLOW] CVD=-9.0250 (-95.25%) | OIΔ=0.02% | LiqImb=9.98%
+[2026-05-30 02:50:01] [DERIV] Funding=0.0033% | PredFunding=0.0033% | Premium=-0.0491%
+[2026-05-30 02:50:01] 📊 Preço de fechamento real (DataFrame): 73572.9
+[2026-05-30 02:50:01] Sentimento: bearish (0%)
+[2026-05-30 02:50:01] Sinal técnico: hold | Conf. técnica: 12.5% | Conf. final: 6.2% | Risco: alto
+[2026-05-30 02:50:01] ❌ [DECISION] REJECT | Blended confidence: 8.8% < 65%
+[2026-05-30 02:50:01] ⚠ ML filtering rejected entry - insufficient blended confidence.
