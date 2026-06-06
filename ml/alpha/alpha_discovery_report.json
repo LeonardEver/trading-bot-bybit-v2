@@ -1,0 +1,26 @@
+{
+  "vwap_reversion": {
+    "short_reversion_from_high_vwap_z": {
+      "count": 19712,
+      "mean_forward_return": -1.80380252832573e-05,
+      "hit_rate": 0.47250405844155846
+    },
+    "long_reversion_from_low_vwap_z": {
+      "count": 19372,
+      "mean_forward_return": 1.3619732242264666e-05,
+      "hit_rate": 0.5247264092504645
+    }
+  },
+  "cvd_spot_perp_divergence": {
+    "spot_stronger_than_perp": {
+      "count": 0,
+      "mean_forward_return": 0.0,
+      "hit_rate": 0.0
+    },
+    "perp_stronger_than_spot": {
+      "count": 0,
+      "mean_forward_return": 0.0,
+      "hit_rate": 0.0
+    }
+  }
+}

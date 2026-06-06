@@ -5,6 +5,35 @@ FRACDIFF_D = 0.4
 FRACDIFF_THRESHOLD = 1e-4
 
 
+def _default_ml_features() -> list[str]:
+    from ml.config import FEATURES
+
+    return list(FEATURES)
+
+
+def apply_strict_feature_lag(
+    df: pd.DataFrame,
+    feature_columns: list[str] | None = None,
+    periods: int = 1,
+) -> pd.DataFrame:
+    """
+    Lag the ML feature view so row t only contains information confirmed by t-1.
+
+    OHLCV, labels, and operational columns are intentionally left untouched; only
+    the model feature columns are shifted. Missing feature columns are ignored so
+    callers can apply this safely before every optional data source is available.
+    """
+    if periods < 1:
+        raise ValueError("periods must be >= 1 for strict causal feature lag")
+
+    df = df.copy()
+    columns = feature_columns if feature_columns is not None else _default_ml_features()
+    existing = [col for col in columns if col in df.columns]
+    if existing:
+        df[existing] = df[existing].shift(periods)
+    return df
+
+
 def get_fractional_diff_weights(d: float = FRACDIFF_D, threshold: float = FRACDIFF_THRESHOLD) -> np.ndarray:
     """
     Return fixed-width fractional differencing weights.
@@ -130,6 +159,27 @@ def prepare_features(df: pd.DataFrame) -> pd.DataFrame:
     # Nominal volume average kept for strategy/risk logic.
     df["volume_ma"] = volume.rolling(window=20).mean()
 
+    if "timestamp" in df.columns:
+        if pd.api.types.is_numeric_dtype(df["timestamp"]):
+            timestamp = pd.to_datetime(df["timestamp"], unit="ms", errors="coerce")
+        else:
+            timestamp = pd.to_datetime(df["timestamp"], errors="coerce")
+    else:
+        timestamp = pd.Series(pd.NaT, index=df.index)
+
+    typical_price = (high + low + close) / 3
+    pv = typical_price * volume
+    session_key = timestamp.dt.strftime("%Y-%m-%d").fillna("unknown")
+    session_pv = pv.groupby(session_key).cumsum()
+    session_volume = volume.groupby(session_key).cumsum()
+    anchored_vwap = session_pv / session_volume.replace(0, np.nan)
+    df["anchored_vwap"] = anchored_vwap
+    df["anchored_vwap_distance"] = (close - anchored_vwap) / close
+    df["session_volume_share"] = volume / session_volume.replace(0, np.nan)
+    vwap_distance = close - anchored_vwap
+    vwap_std = vwap_distance.rolling(window=50).std()
+    df["vwap_deviation_zscore"] = vwap_distance / vwap_std.replace(0, np.nan)
+
     # Extra defaults.
     if "sentiment_score" not in df.columns:
         df["sentiment_score"] = 0.0
@@ -151,6 +201,7 @@ def prepare_features(df: pd.DataFrame) -> pd.DataFrame:
     df["predicted_funding_rate"] = df.get("predicted_funding_rate", df["funding_rate"])
     df["premium_index"] = df.get("premium_index", 0.0)
     df["premium_basis_pct"] = df.get("premium_basis_pct", 0.0)
+    df["funding_rate_delta"] = pd.to_numeric(df["funding_rate"], errors="coerce").diff().fillna(0.0)
     df["cvd"] = df.get("cvd", 0.0)
     df["cvd_ratio"] = df.get("cvd_ratio", 0.0)
     df["oi"] = df.get("oi", 0.0)
@@ -158,5 +209,13 @@ def prepare_features(df: pd.DataFrame) -> pd.DataFrame:
     df["liquidation_imbalance"] = df.get("liquidation_imbalance", 0.0)
     df["liquidation_notional"] = df.get("liquidation_notional", 0.0)
     df["liquidation_reversal_signal"] = df.get("liquidation_reversal_signal", 0)
+    df["liquidation_cluster_density"] = df.get("liquidation_cluster_density", 0.0)
+    df["liquidation_cluster_side"] = df.get("liquidation_cluster_side", 0.0)
+    df["spot_cvd_ratio"] = df.get("spot_cvd_ratio", df["cvd_ratio"])
+    df["perp_cvd_ratio"] = df.get("perp_cvd_ratio", df["cvd_ratio"])
+    df["spot_perp_cvd_divergence"] = df.get(
+        "spot_perp_cvd_divergence",
+        pd.to_numeric(df["spot_cvd_ratio"], errors="coerce") - pd.to_numeric(df["perp_cvd_ratio"], errors="coerce"),
+    )
 
     return df

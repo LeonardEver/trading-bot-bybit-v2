@@ -24,7 +24,7 @@ if str(ROOT) not in sys.path:
 # ------------------------------------------------------------------
 try:
     from ml.config import FEATURES
-    from ml.features import prepare_features
+    from ml.features import apply_strict_feature_lag, prepare_features
 except Exception as e:
     print(f"[IMPORT] Falha ao importar FEATURES/prepare_features: {e}")
     print("-> Verifique se existe 'ml/__init__.py' e 'utils/__init__.py' (podem ser vazios).")
@@ -123,6 +123,16 @@ def _normalize_ohlcv_df(df):
             df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
 
     # Garante tipos numéricos
+    if "timestamp" in df.columns:
+        parsed_ts = pd.to_datetime(df["timestamp"], errors="coerce", utc=True)
+        if parsed_ts.notna().any():
+            df["timestamp"] = (parsed_ts.astype("int64") // 1_000_000).where(parsed_ts.notna())
+            df["timestamp"] = df["timestamp"].where(df["timestamp"] >= 1_000_000_000_000, df["timestamp"] * 1000)
+        else:
+            numeric_ts = pd.to_numeric(df["timestamp"], errors="coerce")
+            numeric_ts = numeric_ts.where(numeric_ts >= 1_000_000_000_000, numeric_ts * 1000)
+            df["timestamp"] = numeric_ts.round()
+
     for col in ["open", "high", "low", "close", "volume"]:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
@@ -208,6 +218,7 @@ def predict_signal(df):
 
     # Prepara features
     df = prepare_features(df)
+    df_ml = apply_strict_feature_lag(df, FEATURES, periods=1)
 
     # Garante que TODAS as features usadas no treino existem
     for f in FEATURES:
@@ -216,7 +227,7 @@ def predict_signal(df):
             df[f] = 0.0
 
     # Reordena colunas para o mesmo formato do treino
-    X = df[FEATURES].ffill().fillna(0)
+    X = df_ml[FEATURES].astype(float).ffill().fillna(0)
 
     # Último candle
     x_last = X.iloc[[-1]]

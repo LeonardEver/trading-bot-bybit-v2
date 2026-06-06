@@ -1,57 +1,61 @@
-# AI Agent Roadmap: Trading Bot Evolution (V2 to Institutional)
+# AI Agent Roadmap: Institutional Quant Pipeline (V4 - Final)
 
-## Status Atual: 🟡 Em Desenvolvimento
-**Objetivo:** Elevar a estratégia de "Varejo Direcional" para "Edge Estrutural" com foco em derivativos institucionais na Bybit.
+VERSION V4 - Update
 
----
-
-## 🛠 Fase 1: Arquitetura de Dados e Estacionaridade
-*Foco: Garantir que os dados alimentados no modelo ML sejam matematicamente válidos.*
-
-- [x] **Estacionaridade:** Substituir preços nominais e médias móveis puras por **Retornos Logarítmicos** (`Log Returns`) no `ml/features.py`.
-- [x] **Memória de Longo Prazo:** Implementar **Diferenciação Fracionária** (`Fractional Differencing`) para manter o sinal preditivo sem violar a estacionaridade.
-- [x] **Infraestrutura Real-time:** Migrar a coleta de dados de REST Polling para **WebSockets** (Bybit V5) para reduzir latência de execução.
-
-## 📊 Fase 2: Inteligência de Derivativos
-*Foco: Parar de olhar apenas para o preço e começar a olhar para a mecânica do contrato.*
-
-- [x] **Módulo de Funding:** Adicionar monitoramento de `Funding Rate` e `Predicted Funding`.
-- [x] **Filtro de Custo de Carrego:** Implementar lógica no `strategy.py` para evitar Longs quando o funding está excessivamente alto (custo proibitivo).
-- [x] **Arbitragem Interna:** Monitorar o `Premium Index` para identificar desvios entre o preço spot e o perpétuo.
-
-## 🌊 Fase 3: Order Flow e Liquidez
-*Foco: Identificar onde o "Smart Money" está se posicionando.*
-
-- [x] **CVD (Cumulative Volume Delta):** Implementar o cálculo de delta de volume (agressão de compra vs venda).
-- [x] **Open Interest (OI):** Integrar variações no OI para confirmar se movimentos de preço são sustentados por capital novo ou fechamento de posições.
-- [x] **Liquidation Tracker:** Criar sinais baseados em cascatas de liquidação (oportunidades de reversão à média).
-
-## ⚡ Fase 4: Microestrutura e Execução Profissional
-*Foco: Reduzir custos operacionais que destroem o PnL.*
-
-- [x] **Execução Maker:** Implementar lógica de ordens `Limit` com monitoramento de profundidade do book para capturar o spread e evitar `Taker Fees`.
-- [x] **Dynamic Risk Management:** Alterar o `risk_management.py` para que o Stop Loss seja baseado em **Múltiplos de ATR** (ajuste dinâmico à volatilidade).
-- [x] **Slippage Control:** Adicionar um threshold máximo de slippage aceitável antes de cancelar ou reprecificar uma ordem.
-
-## 🔬 Fase 5: Validação e Robustez
-*Foco: Garantir que o lucro no papel se traduza em lucro na conta.*
-
-- [ ] **Backtest de Alta Fidelidade:** Incluir taxas reais (0.02% Maker / 0.05% Taker) e custos de funding acumulados no simulador.
-- [ ] **Walk-Forward Analysis:** Implementar janelas de treino e teste móveis para garantir que o modelo se adapta a novos regimes de mercado.
-- [ ] **Dashboard de Métricas:** Centralizar Sharpe Ratio, Sortino e Max Drawdown em tempo real no `monitoring_dashboard.py`.
+## Status Atual: Em Execucao Tecnica
+**Objetivo:** Evoluir um prototipo quantitativo com vazamento de dados para um pipeline HFT / intermediario de nivel institucional, focado em integridade de dados, gestao rigorosa de risco e descoberta de alpha nao-linear.
 
 ---
 
-## 📝 Notas para o Agente de IA
-1. **Iteração:** Atualize este arquivo `.md` marcando os itens concluídos `[x]` após cada deploy ou correção bem-sucedida.
-2. **Prioridade:** Siga a ordem das Fases. Não tente otimizar a execução (Fase 4) se os dados base (Fase 1) ainda estiverem gerando sinais falsos.
-3. **Logs:** Sempre que concluir uma tarefa, anexe o impacto observado (ex: "Fase 1 concluída: Erro de estacionaridade reduzido em 40%").
+### Fase 1: Data Integrity & Erradicacao de Vies
+*Onde a maioria falha. Sem higiene de dados, nao ha modelo valido.*
+- [x] Implementar `.shift(1)` mandatorio em TODAS as features exogenas (Sentimento, Funding, OI) para garantir defasagem de 1 periodo.
+- [x] Limpeza total do `dataset.csv` e `ml/dataset.csv` (remover dados contaminados por Look-Ahead Bias).
+- [x] Refatorar o pipeline de coleta via WebSockets Bybit V5 para garantir timestamps precisos ao nivel do milissegundo.
 
----
+### Fase 2: Risk Survival (Sobrevivencia Basica)
+*Proteger o capital enquanto o sistema nao prova seu valor estatistico em Forward Testing.*
+- [x] Remocao de Lotes Fixos (Hardcoded Sizing de 100 USDT).
+- [x] Posicionamento de Risco Fracionario Fixo: Arriscar estritamente 0.5% a 1% do patrimonio por trade.
+- [x] Implementar Trava de Drawdown Diario (Circuit Breaker: pausa de 24h se atingir -4% PnL no dia).
+- [x] Gestao de Risco baseada em ATR Dinamico para calibrar a distancia do Stop Loss.
 
-## Logs de Execução
-- **2026-05-12 - Fase 1 concluída:** `ml/features.py` passou a produzir retornos logarítmicos, distâncias logarítmicas das EMAs, ATR percentual e diferenciação fracionária; `ml.config.FEATURES` removeu `close`/EMAs nominais do input do ML. Validação: `py_compile` passou e amostra sintética gerou 31 features estacionárias.
-- **2026-05-12 - Fase 1 Infra Real-time concluída:** o loop principal agora alimenta uma cache OHLCV por WebSocket Bybit V5 e usa REST apenas para aquecimento/fallback inicial.
-- **2026-05-12 - Fase 2 concluída:** adicionados funding, predicted funding e premium basis ao pipeline; `strategy.py` bloqueia longs quando o custo de carrego excede os limites configurados. Validação: teste sintético bloqueou sinal `buy` com funding de 0.10%.
-- **2026-05-12 - Fase 3 concluída:** adicionados CVD por tape de trades, variação de Open Interest e tracker de liquidações com sinal de reversão; `strategy.py` passou a pontuar fluxo, OI e cascatas. Validação: teste sintético calculou CVD 0.3333 e anexou sinais ao score.
-- **2026-05-12 - Fase 4 concluída:** execução de entrada migrou para Limit/PostOnly com checagem de book, threshold de slippage de 0.08% e cancelamento defensivo de ordem não preenchida; `risk_management.py` centraliza TP/SL por múltiplos de ATR. Validação: teste sintético retornou TP 110.0 e SL 96.0 para Buy com ATR 5 em regime trending.
+### Fase 3: Market Regime Engine
+*O Filtro Mestre. O contexto precede o sinal.*
+- [x] Implementar classificador de regime de mercado (Tendencia vs Lateralizacao / Volatilidade Alta vs Baixa).
+- [x] Bloquear execucoes de setups de Momentum caso o regime classificado seja de compressao/range.
+
+### Fase 4: Microestrutura Dinamica e Contexto
+*Ler as intencoes institucionais atraves do fluxo de derivativos.*
+- [x] Calculo de **Open Interest Delta** (Aceleracao da alavancagem, nao o valor nominal).
+- [x] Calculo de **Funding Rate Delta** (Velocidade de mudanca do premio de risco).
+- [x] Mapeamento de Densidade de Liquidacoes (Liquidation Clusters).
+- [x] Integrar **Anchored VWAP** e Session Volume Profiles para determinar zonas de valor institucional.
+
+### Fase 4.5: Feature Validation Layer (O "Filtro Institucional")
+*A alfandega do codigo. Nenhuma feature entra em producao sem:*
+- [x] 1. Melhorar pelo menos um KPI principal de performance (Sharpe Ratio, Profit Factor ou Max Drawdown).
+- [x] 2. Demonstrar *Incremental Information Gain* atraves de SHAP Values, Permutation Importance ou Estudo de Ablacao (Drop-Column).
+- [x] 3. Nao apresentar colinearidade excessiva absoluta com o conjunto de features base.
+- [x] 4. Manter robustez estatistica em validacao *Walk-Forward Analysis*.
+
+### Fase 5: Glass-Box ML (Machine Learning Auditavel)
+*Abrir a caixa preta do algoritmo LightGBM para entender a alocacao de risco.*
+- [x] Integrar **Walk-Forward Analysis (WFA)** continuo para re-treino em janelas deslizantes temporais (mitigacao de Concept Drift).
+- [x] Analisar e exportar **SHAP Values** para monitorar a evolucao temporal das features mais relevantes.
+- [x] Calibracao de Probabilidade (Platt Scaling): Garantir que uma inferencia de 70% de confianca pelo LightGBM reflita historicamente ~70% de Win Rate no mercado.
+
+### Fase 6: Alpha Discovery
+*Busca continua por ineficiencias de curtissimo prazo.*
+- [x] Desenvolver rastreador de **CVD Spot vs CVD Perp** (Detectar capital de investimento real vs especulacao alavancada).
+- [x] Estudo quantitativo de desvios padrao extremos da VWAP e reversao a media.
+
+### Fase 7: Alpha Portfolio Construction
+*Pensamento de fundo quantitativo: Distribuicao de risco em portfolio de sinais.*
+- [x] Implementar arquitetura de Ensemble de modelos (Sinais Fracos Ortogonais = Sinal Direcional Forte).
+- [x] Avaliacao dinamica de peso de estrategia: Reduzir exposicao a sub-sistemas em drawdown e focar naqueles com maior Sharpe recente.
+
+### Fase 8: Kelly Fractional + Capital Scaling
+*Escalar a agressividade com matematica comprovada.*
+- [x] Transicao segura para Kelly Fracionario (Ex: Half-Kelly) baseado na Expectancia e Variancia comprovadas pelo bot ao vivo.
+- [x] Otimizacao ativa de latencia e transicao estrategica para Maker Execution (Limit Orders passivas) focando na captacao de Rebates (taxas negativas).

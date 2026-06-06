@@ -180,9 +180,9 @@ def get_derivatives_metrics(symbol):
         }
 
 
-def get_public_trades(symbol, limit=200):
+def get_public_trades(symbol, limit=200, category="linear"):
     try:
-        result = session.get_public_trade_history(category="linear", symbol=symbol, limit=limit)
+        result = session.get_public_trade_history(category=category, symbol=symbol, limit=limit)
         return result.get("result", {}).get("list", [])
     except Exception as e:
         print(f"Erro ao obter trades publicos: {e}")

@@ -1,0 +1,22 @@
+{
+  "overall": {
+    "auc": 0.507972238632648,
+    "accuracy": 0.5090036014405762,
+    "log_loss": 0.8422000083000856,
+    "profit_factor": 1.0366748166259168,
+    "max_drawdown": -58.0,
+    "sharpe": 0.2859018407200319
+  },
+  "baseline": {
+    "auc": 0.5,
+    "accuracy": 0.5027611044417767,
+    "profit_factor": 1.0111057460164172,
+    "max_drawdown": -38.0,
+    "sharpe": 0.08766368501486865
+  },
+  "kpi_improved": true,
+  "positive_information_gain_features": 21,
+  "collinearity_pairs_over_095": 1,
+  "explanation_method": "lightgbm_pred_contrib",
+  "calibrator_path": "C:\\Users\\leoar\\Documents\\Code\\trading-bot-bybit-v2\\ml\\model_calibrator.pkl"
+}

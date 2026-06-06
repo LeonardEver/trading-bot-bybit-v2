@@ -29,12 +29,13 @@ from trading.logger import log_event
 from utils.technical_indicators import calculate_indicators
 from database.mongo_logger import log_trade, log_signal_decision, update_signal_outcome
 from ml.config import FEATURES
-from ml.features import prepare_features
+from ml.features import apply_strict_feature_lag, prepare_features
 from trading.risk_management import calculate_atr_exit_prices
 from utils.order_flow import (
     add_order_flow_features,
     calculate_cvd_from_trades,
     calculate_liquidation_metrics,
+    calculate_spot_perp_cvd_divergence,
     estimate_cvd_from_candles,
 )
 from pybit.unified_trading import WebSocket 
@@ -50,6 +51,8 @@ LOG_FILE = "trading_log.csv"
 WATCHDOG_TIMEOUT_SECONDS = 6 * 60
 TESTNET_MODE = False
 WEBSOCKET_CHANNEL_TYPE = "linear"
+MAX_DAILY_DRAWDOWN_PCT = -4.0
+CIRCUIT_BREAKER_HOURS = 24
 
 TAKE_PROFIT_PCT = 0.0010
 STOP_LOSS_PCT = 0.0010
@@ -75,6 +78,8 @@ peso_sentimento = 0.5
 
 # Caminho e features do modelo ML
 MODEL_PATH = Path("ml/model_lgb.pkl")
+ENSEMBLE_PATH = Path("ml/model_ensemble.pkl")
+CALIBRATOR_PATH = Path("ml/model_calibrator.pkl")
 
 # Carrega modelo, se existir
 model = None
@@ -84,6 +89,41 @@ if MODEL_PATH.exists():
     log_event(f"Modelo ML carregado de {MODEL_PATH}")
 else:
     log_event("⚠ Modelo ML não encontrado — rodando sem filtro de ML.")
+
+
+def normalize_timestamp_ms_value(value):
+    """Return a timestamp as integer milliseconds."""
+    if value is None:
+        return None
+    if isinstance(value, pd.Timestamp):
+        if value.tzinfo is None:
+            value = value.tz_localize("UTC")
+        return int(value.timestamp() * 1000)
+    if isinstance(value, datetime):
+        return int(value.timestamp() * 1000)
+
+    numeric = pd.to_numeric(value, errors="coerce")
+    if pd.isna(numeric):
+        parsed = pd.to_datetime(value, errors="coerce", utc=True)
+        if pd.isna(parsed):
+            return None
+        return int(parsed.timestamp() * 1000)
+
+    numeric = float(numeric)
+    if numeric < 1_000_000_000_000:
+        numeric *= 1000
+    return int(round(numeric))
+
+
+def normalize_timestamp_ms_series(series):
+    """Normalize a timestamp Series to nullable integer milliseconds."""
+    return series.map(normalize_timestamp_ms_value).astype("Int64")
+
+
+if ENSEMBLE_PATH.exists():
+    model = joblib.load(ENSEMBLE_PATH)
+    ultima_modificacao_modelo = os.path.getmtime(ENSEMBLE_PATH)
+    log_event(f"Ensemble ML carregado de {ENSEMBLE_PATH}")
 
 
 # ============================================================
@@ -137,6 +177,43 @@ def calculate_recent_edge(lookback_trades=50):
         return 0.33, 0.01, 0.01, 1.0, 0.0, 0.0
 
 
+def calculate_today_pnl_pct():
+    """Return today's realized PnL as a percentage of current equity."""
+    if not Path(LOG_FILE).exists():
+        return 0.0
+
+    try:
+        trades = pd.read_csv(LOG_FILE)
+        if trades.empty or "timestamp" not in trades.columns or "pnl" not in trades.columns:
+            return 0.0
+
+        timestamps = pd.to_datetime(trades["timestamp"], errors="coerce")
+        today_mask = timestamps.dt.date == datetime.now().date()
+        today_pnl = pd.to_numeric(trades.loc[today_mask, "pnl"], errors="coerce").fillna(0.0).sum()
+        equity = float(get_balance() or 0.0)
+        if equity <= 0:
+            return 0.0
+        return (today_pnl / equity) * 100
+    except Exception as e:
+        log_event(f"[ERROR] Daily drawdown calculation: {e}")
+        return 0.0
+
+
+def enforce_daily_drawdown_circuit_breaker():
+    """Pause new entries for 24h if realized daily PnL reaches -4%."""
+    global bloqueio_ate
+
+    daily_pnl_pct = calculate_today_pnl_pct()
+    if daily_pnl_pct <= MAX_DAILY_DRAWDOWN_PCT:
+        bloqueio_ate = max(bloqueio_ate, datetime.now() + timedelta(hours=CIRCUIT_BREAKER_HOURS))
+        log_event(
+            f"[CIRCUIT] Daily drawdown {daily_pnl_pct:.2f}% <= {MAX_DAILY_DRAWDOWN_PCT:.2f}%. "
+            f"Trading paused until {bloqueio_ate.strftime('%Y-%m-%d %H:%M:%S')}."
+        )
+        return False
+    return True
+
+
 def calculate_order_qty_kelly_criterion(symbol, risk_level, current_price, capital="dynamic"):
     """
     CORRECTED: Position sizing using Kelly Criterion
@@ -166,9 +243,9 @@ def calculate_order_qty_kelly_criterion(symbol, risk_level, current_price, capit
     risk_multiplier = {"baixo": 0.5, "medio": 1.0, "alto": 1.5}.get(risk_level, 1.0)
     adjusted_kelly = kelly_f * risk_multiplier
     
-    max_risk_usd = actual_balance * 0.01 if risk_level == "baixo" else \
-                   actual_balance * 0.015 if risk_level == "medio" else \
-                   actual_balance * 0.02
+    max_risk_usd = actual_balance * 0.005 if risk_level == "baixo" else \
+                   actual_balance * 0.0075 if risk_level == "medio" else \
+                   actual_balance * 0.01
     
     position_usd = actual_balance * adjusted_kelly
     position_usd = min(position_usd, max_risk_usd)
@@ -318,10 +395,11 @@ def model_predict_prob_corrected(row, technical_confidence, sinal_tecnico):
     """
     global model, ultima_modificacao_modelo
     
-    if MODEL_PATH.exists():
-        modificacao_atual = os.path.getmtime(MODEL_PATH)
+    reload_path = ENSEMBLE_PATH if ENSEMBLE_PATH.exists() else MODEL_PATH
+    if reload_path.exists():
+        modificacao_atual = os.path.getmtime(reload_path)
         if modificacao_atual > ultima_modificacao_modelo:
-            model = joblib.load(MODEL_PATH)
+            model = joblib.load(reload_path)
             ultima_modificacao_modelo = modificacao_atual
             log_event("🧠 [HOT-RELOAD] ML model updated")
     
@@ -341,14 +419,29 @@ def model_predict_prob_corrected(row, technical_confidence, sinal_tecnico):
             if f not in df_row.columns:
                 df_row[f] = 0.0
         
-        X = df_row[FEATURES].fillna(0)
+        X = df_row[FEATURES].astype(float).fillna(0)
         
-        if hasattr(model, "predict_proba"):
+        if isinstance(model, list):
+            preds = []
+            for sub_model in model:
+                if hasattr(sub_model, "predict_proba"):
+                    preds.append(float(sub_model.predict_proba(X)[0][1]))
+                else:
+                    preds.append(float(sub_model.predict(X)[0]))
+            prob = float(np.mean(preds)) if preds else 0.5
+        elif hasattr(model, "predict_proba"):
             prob = model.predict_proba(X)[0][1]
         else:
             prob = model.predict(X)[0]
         
         prob = float(prob)
+        if CALIBRATOR_PATH.exists():
+            try:
+                calibrator = joblib.load(CALIBRATOR_PATH)
+                prob = float(calibrator.predict_proba([[prob]])[0][1])
+            except Exception as calib_error:
+                log_event(f"[ML] Calibrator unavailable, using raw probability: {calib_error}")
+
         ml_confidence = 0.0
         
         # CORRECTED: Avaliação direcional com base no sinal técnico
@@ -404,8 +497,11 @@ def atualizar_cache_candle_ws(candle):
     global historico_candles_ws
 
     try:
+        timestamp = normalize_timestamp_ms_value(candle.get("start") or candle.get("timestamp") or candle.get("time"))
+        if timestamp is None:
+            raise ValueError("timestamp ausente")
         row = {
-            "timestamp": int(candle.get("start")),
+            "timestamp": timestamp,
             "open": float(candle.get("open")),
             "high": float(candle.get("high")),
             "low": float(candle.get("low")),
@@ -418,8 +514,10 @@ def atualizar_cache_candle_ws(candle):
 
     with candle_cache_lock:
         historico_candles_ws = pd.concat([historico_candles_ws, pd.DataFrame([row])], ignore_index=True)
+        historico_candles_ws["timestamp"] = normalize_timestamp_ms_series(historico_candles_ws["timestamp"])
         historico_candles_ws = (
             historico_candles_ws
+            .dropna(subset=["timestamp"])
             .drop_duplicates(subset=["timestamp"], keep="last")
             .sort_values("timestamp")
             .tail(500)
@@ -432,11 +530,17 @@ def obter_candles_para_analise():
     with candle_cache_lock:
         df_ws = historico_candles_ws.copy()
 
+    if "timestamp" in df_ws.columns and not df_ws.empty:
+        df_ws["timestamp"] = normalize_timestamp_ms_series(df_ws["timestamp"])
+        df_ws = df_ws.dropna(subset=["timestamp"]).sort_values("timestamp").reset_index(drop=True)
+
     if len(df_ws) >= 320:
         return df_ws
 
     df_rest = get_ohlcv(SYMBOL, interval="5", limit=1000)
     if not df_rest.empty:
+        df_rest["timestamp"] = normalize_timestamp_ms_series(df_rest["timestamp"])
+        df_rest = df_rest.dropna(subset=["timestamp"]).sort_values("timestamp").reset_index(drop=True)
         with candle_cache_lock:
             globals()["historico_candles_ws"] = df_rest.tail(500).reset_index(drop=True)
         log_event("[DATA] Cache WebSocket aquecida via REST inicial.")
@@ -445,9 +549,50 @@ def obter_candles_para_analise():
 
 def anexar_metricas_derivativos(df, metrics):
     df = df.copy()
-    for key in ["funding_rate", "predicted_funding_rate", "premium_index", "premium_basis_pct"]:
-        df[key] = float(metrics.get(key, 0.0) or 0.0)
+    keys = ["funding_rate", "predicted_funding_rate", "premium_index", "premium_basis_pct"]
+    for key in keys:
+        if key not in df.columns:
+            df[key] = np.nan
+    if not df.empty:
+        last_idx = df.index[-1]
+        for key in keys:
+            df.at[last_idx, key] = float(metrics.get(key, 0.0) or 0.0)
     return df
+
+
+def persist_latest_market_snapshot(df):
+    """Persist latest exogenous metrics in the candle cache for the next cycle."""
+    global historico_candles_ws
+
+    if df.empty or "timestamp" not in df.columns:
+        return
+
+    metric_cols = [
+        "funding_rate", "predicted_funding_rate", "premium_index", "premium_basis_pct",
+        "cvd", "cvd_ratio", "oi", "oi_change_pct",
+        "liquidation_imbalance", "liquidation_notional", "liquidation_reversal_signal",
+        "liquidation_cluster_density", "liquidation_cluster_side",
+        "spot_cvd_ratio", "perp_cvd_ratio", "spot_perp_cvd_divergence",
+        "sentiment_score", "risk_level_encoded",
+    ]
+    last = df.iloc[-1]
+    timestamp = normalize_timestamp_ms_value(last.get("timestamp"))
+    if timestamp is None:
+        return
+
+    with candle_cache_lock:
+        if historico_candles_ws.empty or "timestamp" not in historico_candles_ws.columns:
+            return
+        historico_candles_ws["timestamp"] = normalize_timestamp_ms_series(historico_candles_ws["timestamp"])
+        mask = historico_candles_ws["timestamp"] == timestamp
+        if not mask.any():
+            return
+        idx = historico_candles_ws.index[mask][-1]
+        for col in metric_cols:
+            if col in df.columns:
+                if col not in historico_candles_ws.columns:
+                    historico_candles_ws[col] = np.nan
+                historico_candles_ws.at[idx, col] = last.get(col)
 
 
 def obter_metricas_order_flow(df):
@@ -455,9 +600,12 @@ def obter_metricas_order_flow(df):
         trades_ws = list(trade_tape_ws)
         liquidation_events = list(liquidation_events_ws)
 
-    trades = trades_ws or get_public_trades(SYMBOL, limit=200)
-    cvd_metrics = calculate_cvd_from_trades(trades)
-    if not trades:
+    perp_trades = trades_ws or get_public_trades(SYMBOL, limit=200, category="linear")
+    spot_trades = get_public_trades(SYMBOL, limit=200, category="spot")
+    cvd_metrics = calculate_cvd_from_trades(perp_trades)
+    if spot_trades or perp_trades:
+        cvd_metrics.update(calculate_spot_perp_cvd_divergence(spot_trades, perp_trades))
+    if not perp_trades:
         cvd_metrics = estimate_cvd_from_candles(df)
 
     oi_metrics = get_open_interest_metrics(SYMBOL, interval_time="5min", limit=2)
@@ -477,6 +625,9 @@ def obter_metricas_order_flow(df):
 def abrir_ordem(df=None):
     global ultima_ordem, bloqueio_ate
 
+    if not enforce_daily_drawdown_circuit_breaker():
+        return
+
     if datetime.now() < bloqueio_ate:
         log_event(f"⏳ Bot em modo Circuit Breaker. Operações suspensas até {bloqueio_ate.strftime('%H:%M:%S')}.")
         return
@@ -485,12 +636,15 @@ def abrir_ordem(df=None):
     if df.empty:
         return
 
+    if "timestamp" in df.columns:
+        df["timestamp"] = normalize_timestamp_ms_series(df["timestamp"])
+        df = df.dropna(subset=["timestamp"]).sort_values("timestamp").reset_index(drop=True)
+
     df = calculate_indicators(df)
     derivatives_metrics = get_derivatives_metrics(SYMBOL)
     df = anexar_metricas_derivativos(df, derivatives_metrics)
     cvd_metrics, oi_metrics, liquidation_metrics = obter_metricas_order_flow(df)
     df = add_order_flow_features(df, cvd_metrics, oi_metrics, liquidation_metrics)
-    df = prepare_features(df)
     log_event(
         "[DERIV] Funding={:.4%} | PredFunding={:.4%} | Premium={:.4%}".format(
             derivatives_metrics.get("funding_rate", 0.0) or 0.0,
@@ -509,33 +663,42 @@ def abrir_ordem(df=None):
     else:
         confiança_sentimento = 50
 
-    df["sentiment_score"] = sent_score
+    if "sentiment_score" not in df.columns:
+        df["sentiment_score"] = np.nan
+    df.at[df.index[-1], "sentiment_score"] = sent_score
 
-    ts = pd.to_datetime(df["timestamp"]) if "timestamp" in df.columns else pd.to_datetime(df.index)
-    if isinstance(ts, pd.DatetimeIndex):
-        df["hour"], df["minute"] = ts.hour, ts.minute
-    else:
-        df["hour"], df["minute"] = ts.dt.hour, ts.dt.minute
+    df = prepare_features(df)
+    market_regime = detect_market_regime(df)
 
     log_event(f"Sentimento: {sentimento_str} ({confiança_sentimento}%)")
 
     trade_decision = generate_trade_signal(df, derivatives_metrics=derivatives_metrics)
     sinal_tecnico = trade_decision.get("signal")
     confiança_tecnica = trade_decision.get("confidence", 50.0)
+    if market_regime == "ranging" and sinal_tecnico in ["buy", "sell"]:
+        log_event("[REGIME] Momentum signal blocked in ranging regime.")
+        return
 
     confiança_final = (peso_tecnico * confiança_tecnica) + (peso_sentimento * confiança_sentimento)
 
     if confiança_final >= 80:
         risk_level = "baixo"
+        risk_level_encoded = 0
     elif confiança_final >= 60:
         risk_level = "medio"
+        risk_level_encoded = 1
     else:
         risk_level = "alto"
+        risk_level_encoded = 2
 
     log_event(f"Sinal técnico: {sinal_tecnico} | Conf. técnica: {confiança_tecnica}% | "
               f"Conf. final: {confiança_final:.1f}% | Risco: {risk_level}")
 
-    prob_ml = model_predict_prob_corrected(df.iloc[-1].to_dict(), confiança_tecnica, sinal_tecnico)
+    df.at[df.index[-1], "risk_level_encoded"] = risk_level_encoded
+    persist_latest_market_snapshot(df)
+
+    df_ml = apply_strict_feature_lag(df, FEATURES, periods=1)
+    prob_ml = model_predict_prob_corrected(df_ml.iloc[-1].to_dict(), confiança_tecnica, sinal_tecnico)
     if prob_ml is None:
         log_event("⚠ ML filtering rejected entry - insufficient blended confidence.")
         return
@@ -578,7 +741,6 @@ def abrir_ordem(df=None):
     atr_atual = df.iloc[-1]['atr']
     
     # CORRECTED: Dynamic TP/SL with regime detection
-    market_regime = detect_market_regime(df)
     side = "Buy" if sinal_tecnico == "buy" else "Sell"
     exits = calculate_atr_exit_prices(price, atr_atual, side, market_regime)
     take_profit = exits["take_profit"]

@@ -23,6 +23,7 @@ from ml.config import FEATURES
 
 DATA_CSV = ROOT / "ml" / "dataset.csv"
 MODEL_OUT = ROOT / "ml" / "model_lgb.pkl"
+ENSEMBLE_OUT = ROOT / "ml" / "model_ensemble.pkl"
 METRICS_OUT = ROOT / "ml" / "training_metrics.png"
 
 def load_dataset():
@@ -51,8 +52,12 @@ def load_dataset():
 
     # 4. Converter risco para número
     if "risk_level" in df.columns:
-        risk_map = {"baixo": 0, "medio": 1, "alto": 2}
-        df["risk_level_encoded"] = df["risk_level"].map(risk_map).fillna(1)
+        risk_map = {"baixo": 0, "low": 0, "medio": 1, "medium": 1, "alto": 2, "high": 2}
+        mapped_risk = df["risk_level"].astype(str).str.lower().map(risk_map)
+        if "risk_level_encoded" in df.columns:
+            df["risk_level_encoded"] = pd.to_numeric(df["risk_level_encoded"], errors="coerce").fillna(mapped_risk).fillna(1)
+        else:
+            df["risk_level_encoded"] = mapped_risk.fillna(1)
 
     # 5. Garantir todas as features
     for f in FEATURES:
@@ -64,7 +69,7 @@ def load_dataset():
 
 def train():
     df = load_dataset()
-    X = df[FEATURES].ffill().fillna(0)
+    X = df[FEATURES].astype(float).ffill().fillna(0)
     y = df["label"].astype(int)
 
     tscv = TimeSeriesSplit(n_splits=5)
@@ -105,6 +110,20 @@ def train():
     print(f"\n✅ Treino finalizado — Melhor AUC: {best_auc:.4f}")
     joblib.dump(best_model, MODEL_OUT)
     print(f"📦 Modelo salvo em {MODEL_OUT}")
+
+    ensemble = []
+    for seed in [42, 1337, 2026]:
+        train_data = lgb.Dataset(X, label=y)
+        params = {
+            "objective": "binary",
+            "metric": "auc",
+            "verbosity": -1,
+            "boosting_type": "gbdt",
+            "seed": seed,
+        }
+        ensemble.append(lgb.train(params, train_data, num_boost_round=300))
+    joblib.dump(ensemble, ENSEMBLE_OUT)
+    print(f"Ensemble salvo em {ENSEMBLE_OUT}")
 
     # Plotar métricas
     plt.figure(figsize=(8, 4))

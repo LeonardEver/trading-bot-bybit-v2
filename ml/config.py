@@ -17,8 +17,11 @@ FEATURES = [
     
     # Derivativos / Order Flow (Mesmo que mockados no momento)
     "funding_rate", "predicted_funding_rate", "premium_index",
-    "premium_basis_pct", "cvd_ratio", "oi_change_pct",
+    "premium_basis_pct", "funding_rate_delta", "cvd_ratio", "oi_change_pct",
     "liquidation_imbalance", "liquidation_notional", "liquidation_reversal_signal",
+    "liquidation_cluster_density", "liquidation_cluster_side",
+    "anchored_vwap_distance", "session_volume_share", "vwap_deviation_zscore",
+    "spot_perp_cvd_divergence",
     
     # Contexto Temporal / Sentimento
     "sentiment_score", "hour", "minute", "risk_level_encoded"

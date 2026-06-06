@@ -327,7 +327,7 @@ def model_predict_prob_corrected(row, technical_confidence):
             if f not in df_row.columns:
                 df_row[f] = 0.0
         
-        X = df_row[FEATURES].fillna(0)
+        X = df_row[FEATURES].astype(float).fillna(0)
         
         if hasattr(model, "predict_proba"):
             prob = model.predict_proba(X)[0][1]

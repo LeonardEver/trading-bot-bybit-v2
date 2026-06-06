@@ -1,5 +1,6 @@
 from trading.bybit_api import get_balance, get_position
 
+
 ATR_STOP_MULTIPLIERS = {
     "trending": 0.8,
     "high_vol": 1.2,
@@ -15,35 +16,27 @@ ATR_TAKE_PROFIT_MULTIPLIERS = {
 }
 
 
-# trading/risk_management.py
 def calculate_order_qty(symbol, risk_level, price):
-    """
-    Calcula quantidade de contratos baseado no risco (Max 2%).
-    """
-    saldo_usdt = 100.0  # O ideal é usar a sua função get_balance() da API aqui
-    
-    # Níveis institucionais de exposição:
-    if risk_level == "baixo":
-        pct = 0.01   # 1% do capital
-    elif risk_level == "medio":
-        pct = 0.015  # 1.5% do capital
-    else:
-        pct = 0.02   # 2% do capital
+    """Calculate quantity from fixed fractional risk: 0.5% to 1.0% of equity."""
+    balance_usdt = float(get_balance() or 0.0)
+    if balance_usdt <= 0 or not price:
+        return 0.0
 
-    valor_usdt = saldo_usdt * pct
-    qty = valor_usdt / price  # converte em BTC
+    risk_pct = {
+        "baixo": 0.005,
+        "medio": 0.0075,
+        "alto": 0.01,
+        "low": 0.005,
+        "medium": 0.0075,
+        "high": 0.01,
+    }.get(str(risk_level).lower(), 0.0075)
 
-    # garante mínimo exigido pela Bybit
-    if qty < 0.001:
-        qty = 0.001
-
+    qty = (balance_usdt * risk_pct) / float(price)
     return round(qty, 3)
 
 
 def calculate_atr_exit_prices(price, atr, side, market_regime="normal"):
-    """
-    Dynamic ATR-based TP/SL. This centralizes stop distance in the risk module.
-    """
+    """Dynamic ATR-based TP/SL. This centralizes stop distance in the risk module."""
     price = float(price)
     atr = float(atr)
     stop_mult = ATR_STOP_MULTIPLIERS.get(market_regime, ATR_STOP_MULTIPLIERS["normal"])
@@ -66,17 +59,12 @@ def calculate_atr_exit_prices(price, atr, side, market_regime="normal"):
 
 
 def has_open_position(symbol: str, side: str = None) -> bool:
-    """
-    Verifica se existe posição aberta para o símbolo.
-    Se `side` for 'Buy' ou 'Sell', verifica apenas aquela direção.
-    No modo Hedge, a Bybit retorna uma lista de posições (long e short separadas).
-    """
+    """Check if there is an open position for a symbol, optionally by side."""
     positions = get_position(symbol)
 
     if not positions:
         return False
 
-    # Se a API retornar apenas um dicionário (modo single)
     if isinstance(positions, dict):
         if float(positions.get("size", 0)) <= 0:
             return False
@@ -84,7 +72,6 @@ def has_open_position(symbol: str, side: str = None) -> bool:
             return False
         return True
 
-    # Se a API retornar lista (modo hedge)
     for pos in positions:
         if float(pos.get("size", 0)) > 0:
             if not side or pos.get("side") == side:
@@ -93,13 +80,18 @@ def has_open_position(symbol: str, side: str = None) -> bool:
     return False
 
 
-def calculate_exit_conditions(entry_price, current_price, direction,
-                               atr=None, market_regime="normal",
-                               stop_loss_pct=1.0, take_profit_pct=2.0,
-                               trailing_trigger_pct=1.5, trailing_step_pct=0.3):
-    """
-    Define quando sair da posição com base em SL, TP e Trailing Stop.
-    """
+def calculate_exit_conditions(
+    entry_price,
+    current_price,
+    direction,
+    atr=None,
+    market_regime="normal",
+    stop_loss_pct=1.0,
+    take_profit_pct=2.0,
+    trailing_trigger_pct=1.5,
+    trailing_step_pct=0.3,
+):
+    """Define exit conditions using ATR exits when ATR is available."""
     stop_loss_price = None
     take_profit_price = None
     new_stop_loss_price = None
@@ -142,5 +134,5 @@ def calculate_exit_conditions(entry_price, current_price, direction,
         "should_exit": should_exit,
         "stop_loss_price": stop_loss_price,
         "take_profit_price": take_profit_price,
-        "reason": reason
+        "reason": reason,
     }

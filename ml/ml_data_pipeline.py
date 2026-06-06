@@ -1,41 +1,61 @@
-# ml/ml_data_pipeline.py 
+# ml/ml_data_pipeline.py
 """
-Pipeline de dados:
-- baixa OHLCV (usa sua função get_ohlcv)
-- calcula indicadores (usa calculate_indicators)
-- cria label: 1 se TP atingido antes do SL dentro do horizonte H (minutos), senão 0
-- salva dataset.csv pronto para treinar
+Pipeline de dados causal:
+- baixa OHLCV
+- anexa dados exogenos brutos quando disponiveis
+- calcula indicadores
+- cria Y(t) como direcao realizada no candle t
+- aplica lag estrito em X para que a linha t use apenas informacao de t-1
+- salva dataset.csv e ml/dataset.csv prontos para treino
 """
-# --- permitir imports a partir da raiz do projeto ---
 import sys
 from pathlib import Path
-ROOT = Path(__file__).resolve().parents[1]  # pasta raiz do projeto
+
+ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-import pandas as pd
 import numpy as np
-import os
-from utils.ohlcv import get_ohlcv
-from ml.features import prepare_features
-from sentiment.sentiment_analysis import get_news_sentiment
+import pandas as pd
+
 from ml.config import FEATURES
-from ml.features import prepare_features
+from ml.features import apply_strict_feature_lag, prepare_features
+from sentiment.sentiment_analysis import get_news_sentiment
+from utils.ohlcv import get_ohlcv
 
 
-# Parâmetros
 SYMBOL = "BTCUSDT"
-TF = "5"                # timeframe base (ajuste se quiser: '1m','5m','15m')
-HORIZON_MIN = 15         # horizonte para o label (minutos)
-TP_ATR_MULT = 0.8
-SL_ATR_MULT = 0.6
+TF = "5"
 LOOKBACK = 100000
-OUT_CSV = Path("dataset.csv")
+OUT_CSVS = [ROOT / "dataset.csv", ROOT / "ml" / "dataset.csv"]
+
+
+def _timestamp_value_to_ms(value):
+    if pd.isna(value):
+        return pd.NA
+
+    numeric = pd.to_numeric(value, errors="coerce")
+    if not pd.isna(numeric):
+        numeric = float(numeric)
+        if numeric < 1_000_000_000_000:
+            numeric *= 1000
+        return int(round(numeric))
+
+    parsed = pd.to_datetime(value, errors="coerce", utc=True)
+    if pd.isna(parsed):
+        return pd.NA
+    return int(parsed.timestamp() * 1000)
+
+
+def to_timestamp_ms(series: pd.Series) -> pd.Series:
+    """Normalize timestamps to integer milliseconds for internal storage."""
+    return series.map(_timestamp_value_to_ms).astype("Int64")
+
 
 def fetch_ohlcv(symbol, interval=None, limit=LOOKBACK):
     """
-    Tenta chamar get_ohlcv com assinatura cheia ou a versão simples.
-    Retorna DataFrame padronizado com coluna 'timestamp' (datetime).
+    Tenta chamar get_ohlcv com assinatura cheia ou a versao simples.
+    Retorna DataFrame padronizado com coluna timestamp em milissegundos.
     """
     try:
         df = get_ohlcv(symbol, interval=interval, limit=limit)
@@ -48,119 +68,116 @@ def fetch_ohlcv(symbol, interval=None, limit=LOOKBACK):
     if df is None:
         return pd.DataFrame()
 
-    # debug: mostrar colunas brutas para ajudar diagnosis
     print("[DEBUG] Colunas OHLCV brutas:", list(df.columns) if isinstance(df, pd.DataFrame) else "nao-DF")
 
-    # garantir timestamp/datatypes — se get_ohlcv já normalizou via utils/ohlcv, isso será OK
-    if isinstance(df, pd.DataFrame):
-        if "timestamp" not in df.columns:
-            # tenta nomes comuns
-            if "startTime" in df.columns:
-                df = df.rename(columns={"startTime": "timestamp"})
-            elif "start_time" in df.columns:
-                df = df.rename(columns={"start_time": "timestamp"})
-            elif df.index.__class__.__name__ == "DatetimeIndex":
-                df = df.reset_index().rename(columns={"index": "timestamp"})
-
-        # converter se numérico
-        if "timestamp" in df.columns:
-            if not np.issubdtype(df["timestamp"].dtype, np.datetime64):
-                try:
-                    df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms", errors="coerce")
-                    if df["timestamp"].isna().all():
-                        df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
-                except Exception:
-                    df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
-    else:
-        # se não for DataFrame, tentar construir um
+    if not isinstance(df, pd.DataFrame):
         try:
             df = pd.DataFrame(df)
         except Exception:
             return pd.DataFrame()
 
-    # se não temos timestamp válido, retorna vazio para não quebrar pipeline
-    if "timestamp" not in df.columns or df["timestamp"].isna().all():
-        print("[DEBUG] timestamp ausente ou inválido após normalização. Colunas:", list(df.columns))
+    df = df.copy()
+    if "timestamp" not in df.columns:
+        if "startTime" in df.columns:
+            df = df.rename(columns={"startTime": "timestamp"})
+        elif "start_time" in df.columns:
+            df = df.rename(columns={"start_time": "timestamp"})
+        elif isinstance(df.index, pd.DatetimeIndex):
+            df = df.reset_index().rename(columns={"index": "timestamp"})
+
+    if "timestamp" not in df.columns:
+        print("[DEBUG] timestamp ausente apos normalizacao. Colunas:", list(df.columns))
         return pd.DataFrame()
 
-    return df
+    df["timestamp"] = to_timestamp_ms(df["timestamp"])
+    df = df.dropna(subset=["timestamp"])
+    if df.empty:
+        print("[DEBUG] timestamp invalido apos normalizacao. Colunas:", list(df.columns))
+        return pd.DataFrame()
+
+    return df.sort_values("timestamp").reset_index(drop=True)
+
 
 def map_sentiment_to_score(label):
-    # adapta seu get_news_sentiment: 'positive','neutral','negative'
-    if label is None: return 0.0
-    l = str(label).lower()
-    if "pos" in l: return 1.0
-    if "neg" in l: return -1.0
+    if label is None:
+        return 0.0
+    value = str(label).lower()
+    if "pos" in value or "bull" in value:
+        return 1.0
+    if "neg" in value or "bear" in value:
+        return -1.0
     return 0.0
 
 
-def build_labels(df, horizon_min=HORIZON_MIN, tp_mult=TP_ATR_MULT, sl_mult=SL_ATR_MULT):
+def build_labels(df: pd.DataFrame) -> pd.DataFrame:
+    """Create Y(t): close direction realized during candle t."""
     df = df.copy().reset_index(drop=True)
-    n = len(df)
-    labels = np.zeros(n, dtype=int)
-
-    # níveis de TP/SL baseados em ATR
-    if "atr" not in df.columns:
-        raise RuntimeError("ATR não encontrado — rode calculate_indicators antes.")
-    tp_levels = df["close"] + df["atr"] * tp_mult
-    sl_levels = df["close"] - df["atr"] * sl_mult
-
-    times = pd.to_datetime(df["timestamp"])
-    # calculamos horizon_time para cada linha e varremos à frente
-    for i in range(n):
-        start = times.iloc[i]
-        horizon_time = start + pd.Timedelta(minutes=horizon_min)
-        tp = tp_levels.iloc[i]
-        sl = sl_levels.iloc[i]
-        j = i + 1
-        # percorre candles até o horizonte
-        while j < n and times.iloc[j] <= horizon_time:
-            high = df["high"].iloc[j]
-            low = df["low"].iloc[j]
-            # se ambos atingidos no mesmo candle --> marca 0 (conservador)
-            if high >= tp and low <= sl:
-                labels[i] = 0
-                break
-            if high >= tp:
-                labels[i] = 1
-                break
-            if low <= sl:
-                labels[i] = 0
-                break
-            j += 1
-        # senão continua 0
-    df["label"] = labels
+    close = pd.to_numeric(df["close"], errors="coerce")
+    df["target_return"] = close.pct_change()
+    df["label"] = np.where(df["target_return"].notna(), (df["target_return"] > 0).astype(int), np.nan)
     return df
 
 
 def assign_risk_level(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Atribui nível de risco baseado na confiabilidade do sinal (sentiment_score).
-    """
+    """Atribui nivel de risco bruto; o valor de ML sera defasado depois."""
+    df = df.copy()
     conditions = [
-        (df["sentiment_score"] >= 0.8),   # risco baixo
-        (df["sentiment_score"] >= 0.6),   # risco médio
-        (df["sentiment_score"] < 0.6),    # risco alto
+        (df["sentiment_score"] >= 0.8),
+        (df["sentiment_score"] >= 0.6),
+        (df["sentiment_score"] < 0.6),
     ]
     choices = ["low", "medium", "high"]
-
     df["risk_level"] = np.select(conditions, choices, default="medium")
+    df["risk_level_encoded"] = df["risk_level"].map({"low": 0, "medium": 1, "high": 2}).fillna(1)
     return df
 
 
-def attach_sentiment(df):
-    # Atenção: chamada ao get_news_sentiment pode ser lenta — aqui fazemos chamada por candle.
-    # Melhor coleta em lote histórico para produção. Aqui é simples.
+def attach_sentiment(df: pd.DataFrame) -> pd.DataFrame:
     sent_scores = []
-    for ts in pd.to_datetime(df["timestamp"]):
-        # sua função recebe "BTC" no exemplo; mapeie como preferir
+    for _ in pd.to_datetime(df["timestamp"], unit="ms", errors="coerce"):
         try:
-            s = get_news_sentiment("BTC")  # adaptável: pode usar intervalo de tempo em função
+            sentiment = get_news_sentiment("BTC")
         except Exception:
-            s = None
-        sent_scores.append(map_sentiment_to_score(s))
+            sentiment = None
+        sent_scores.append(map_sentiment_to_score(sentiment))
+    df = df.copy()
     df["sentiment_score"] = sent_scores
     return df
+
+
+def build_causal_dataset(raw_df: pd.DataFrame) -> pd.DataFrame:
+    df = raw_df.copy()
+    df["timestamp"] = to_timestamp_ms(df["timestamp"])
+
+    df = prepare_features(df)
+    df = build_labels(df)
+    df = apply_strict_feature_lag(df, FEATURES, periods=1)
+    df = df.dropna(subset=FEATURES + ["label"]).reset_index(drop=True)
+    return df
+
+
+def regenerate_existing_datasets(source_csv: Path | str = ROOT / "dataset.csv") -> pd.DataFrame:
+    """Clean existing CSV data and rewrite both training datasets with strict lag."""
+    source_csv = Path(source_csv)
+    if not source_csv.exists():
+        raise FileNotFoundError(f"Dataset fonte nao encontrado: {source_csv}")
+
+    raw_df = pd.read_csv(source_csv)
+    required = {"timestamp", "open", "high", "low", "close", "volume"}
+    missing = required - set(raw_df.columns)
+    if missing:
+        raise ValueError(f"Dataset fonte sem colunas obrigatorias: {sorted(missing)}")
+
+    if "sentiment_score" not in raw_df.columns:
+        raw_df["sentiment_score"] = 0.0
+    if "risk_level_encoded" not in raw_df.columns:
+        raw_df["risk_level_encoded"] = 1
+
+    cleaned = build_causal_dataset(raw_df)
+    for out_csv in OUT_CSVS:
+        out_csv.parent.mkdir(parents=True, exist_ok=True)
+        cleaned.to_csv(out_csv, index=False)
+    return cleaned
 
 
 def main():
@@ -170,23 +187,6 @@ def main():
         print("Erro: nenhum dado OHLCV retornado.")
         return
 
-    # Garantir coluna timestamp
-    if "startTime" in df.columns and "timestamp" not in df.columns:
-        df = df.rename(columns={"startTime": "timestamp"})
-
-    # Converter para datetime se ainda for numérico
-    if np.issubdtype(df["timestamp"].dtype, np.number):
-        df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
-
-    # 🔹 Calcular indicadores antes de labels
-    print("Calculando features ML (FracDiff, LogReturns, etc)...")
-    try:
-        df = prepare_features(df)
-    except Exception as e:
-        print("Erro ao calcular features:", e)
-        return
-
-    # 🔹 Anexar sentimento
     print("Anexando sentimento (pode demorar)...")
     try:
         df = attach_sentiment(df)
@@ -194,22 +194,21 @@ def main():
         print("Erro no sentiment attach:", e)
         df["sentiment_score"] = 0.0
 
-    # 🔹 Construir labels (agora já tem ATR, RSI, etc.)
-    print("Construindo labels...")
-    df = build_labels(df)
-
-    # 🔹 Atribui nível de Risco
-    print("Atribuindo nível de risco...")
+    print("Atribuindo nivel de risco...")
     df = assign_risk_level(df)
 
-    # 🔹 Salvar dataset
-    print("Preparando features estacionarias...")
-    df = prepare_features(df)
+    print("Calculando features e labels causais X(t-1) -> Y(t)...")
+    try:
+        df = build_causal_dataset(df)
+    except Exception as e:
+        print("Erro ao construir dataset causal:", e)
+        return
 
-    print(f"Salvando dataset em {OUT_CSV}")
-    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(OUT_CSV, index=False)
-    print("✅ Concluído.")
+    for out_csv in OUT_CSVS:
+        print(f"Salvando dataset em {out_csv}")
+        out_csv.parent.mkdir(parents=True, exist_ok=True)
+        df.to_csv(out_csv, index=False)
+    print("Concluido.")
 
 
 if __name__ == "__main__":
