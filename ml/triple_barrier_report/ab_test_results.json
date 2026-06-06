@@ -1,0 +1,533 @@
+{
+  "timestamp": "2026-06-06T14:31:13.847403",
+  "experiment_a": {
+    "stats": {
+      "min": 0.004798590202432381,
+      "max": 0.9999609226107913,
+      "mean": 0.7163063288323676,
+      "median": 0.7875090562200954,
+      "std": 0.25513810551133936
+    },
+    "percentiles": {
+      "P50": 0.7875090562200954,
+      "P75": 0.9389376305685875,
+      "P80": 0.9588949775885433,
+      "P85": 0.9759267136107074,
+      "P90": 0.9890829509558392,
+      "P95": 0.9970004711243894,
+      "P97": 0.9985857949676118,
+      "P99": 0.9995425687179564
+    },
+    "freq_results": [
+      {
+        "threshold": 0.5,
+        "n_signals": 64875,
+        "pct_dataset": 78.3,
+        "signals_per_day": 225.5,
+        "signals_per_week": 1579.0
+      },
+      {
+        "threshold": 0.55,
+        "n_signals": 61611,
+        "pct_dataset": 74.36,
+        "signals_per_day": 214.2,
+        "signals_per_week": 1499.0
+      },
+      {
+        "threshold": 0.6,
+        "n_signals": 58041,
+        "pct_dataset": 70.05,
+        "signals_per_day": 201.7,
+        "signals_per_week": 1412.0
+      },
+      {
+        "threshold": 0.65,
+        "n_signals": 54141,
+        "pct_dataset": 65.34,
+        "signals_per_day": 188.2,
+        "signals_per_week": 1317.0
+      },
+      {
+        "threshold": 0.7,
+        "n_signals": 49838,
+        "pct_dataset": 60.15,
+        "signals_per_day": 173.2,
+        "signals_per_week": 1213.0
+      },
+      {
+        "threshold": 0.75,
+        "n_signals": 45178,
+        "pct_dataset": 54.53,
+        "signals_per_day": 157.0,
+        "signals_per_week": 1099.0
+      },
+      {
+        "threshold": 0.8,
+        "n_signals": 40115,
+        "pct_dataset": 48.42,
+        "signals_per_day": 139.4,
+        "signals_per_week": 976.0
+      },
+      {
+        "threshold": 0.85,
+        "n_signals": 34323,
+        "pct_dataset": 41.43,
+        "signals_per_day": 119.3,
+        "signals_per_week": 835.0
+      },
+      {
+        "threshold": 0.9,
+        "n_signals": 27422,
+        "pct_dataset": 33.1,
+        "signals_per_day": 95.3,
+        "signals_per_week": 667.0
+      }
+    ],
+    "lift_results": [
+      {
+        "threshold": 0.5,
+        "n": 64875,
+        "tp": 11704,
+        "sl": 30976,
+        "neutral": 22195,
+        "wr": 0.2742,
+        "lift_vs_global": -0.0018
+      },
+      {
+        "threshold": 0.55,
+        "n": 61611,
+        "tp": 11085,
+        "sl": 29382,
+        "neutral": 21144,
+        "wr": 0.2739,
+        "lift_vs_global": -0.0021
+      },
+      {
+        "threshold": 0.6,
+        "n": 58041,
+        "tp": 10421,
+        "sl": 27607,
+        "neutral": 20013,
+        "wr": 0.274,
+        "lift_vs_global": -0.002
+      },
+      {
+        "threshold": 0.65,
+        "n": 54141,
+        "tp": 9686,
+        "sl": 25637,
+        "neutral": 18818,
+        "wr": 0.2742,
+        "lift_vs_global": -0.0018
+      },
+      {
+        "threshold": 0.7,
+        "n": 49838,
+        "tp": 8868,
+        "sl": 23395,
+        "neutral": 17575,
+        "wr": 0.2749,
+        "lift_vs_global": -0.0011
+      },
+      {
+        "threshold": 0.75,
+        "n": 45178,
+        "tp": 7953,
+        "sl": 21078,
+        "neutral": 16147,
+        "wr": 0.2739,
+        "lift_vs_global": -0.0021
+      },
+      {
+        "threshold": 0.8,
+        "n": 40115,
+        "tp": 7013,
+        "sl": 18614,
+        "neutral": 14488,
+        "wr": 0.2737,
+        "lift_vs_global": -0.0024
+      },
+      {
+        "threshold": 0.85,
+        "n": 34323,
+        "tp": 5861,
+        "sl": 15878,
+        "neutral": 12584,
+        "wr": 0.2696,
+        "lift_vs_global": -0.0064
+      },
+      {
+        "threshold": 0.9,
+        "n": 27422,
+        "tp": 4599,
+        "sl": 12623,
+        "neutral": 10200,
+        "wr": 0.267,
+        "lift_vs_global": -0.009
+      }
+    ],
+    "decile_results": [
+      {
+        "decil": 1,
+        "intervalo": "[0.0048, 0.3160)",
+        "n": 8286,
+        "hit_rate": 0.2613,
+        "pct_tradeable": 26.13
+      },
+      {
+        "decil": 2,
+        "intervalo": "[0.3160, 0.4781)",
+        "n": 8285,
+        "hit_rate": 0.443,
+        "pct_tradeable": 44.3
+      },
+      {
+        "decil": 3,
+        "intervalo": "[0.4781, 0.6005)",
+        "n": 8286,
+        "hit_rate": 0.5409,
+        "pct_tradeable": 54.09
+      },
+      {
+        "decil": 4,
+        "intervalo": "[0.6005, 0.7014)",
+        "n": 8285,
+        "hit_rate": 0.6168,
+        "pct_tradeable": 61.68
+      },
+      {
+        "decil": 5,
+        "intervalo": "[0.7014, 0.7875)",
+        "n": 8285,
+        "hit_rate": 0.6841,
+        "pct_tradeable": 68.41
+      },
+      {
+        "decil": 6,
+        "intervalo": "[0.7875, 0.8594)",
+        "n": 8286,
+        "hit_rate": 0.7574,
+        "pct_tradeable": 75.74
+      },
+      {
+        "decil": 7,
+        "intervalo": "[0.8594, 0.9164)",
+        "n": 8285,
+        "hit_rate": 0.8292,
+        "pct_tradeable": 82.92
+      },
+      {
+        "decil": 8,
+        "intervalo": "[0.9164, 0.9589)",
+        "n": 8286,
+        "hit_rate": 0.8817,
+        "pct_tradeable": 88.17
+      },
+      {
+        "decil": 9,
+        "intervalo": "[0.9589, 0.9891)",
+        "n": 8285,
+        "hit_rate": 0.9387,
+        "pct_tradeable": 93.87
+      },
+      {
+        "decil": 10,
+        "intervalo": "[0.9891, 1.0000)",
+        "n": 8285,
+        "hit_rate": 0.9884,
+        "pct_tradeable": 98.84
+      }
+    ],
+    "operational_threshold": 0.5
+  },
+  "experiment_b": {
+    "scenarios": [
+      {
+        "label": "Control (Sem Gate)",
+        "threshold": null,
+        "n_signals": 82855,
+        "n_trades": 57445,
+        "n_neutral": 25410,
+        "n_wins": 15881,
+        "n_losses": 41564,
+        "win_rate": 0.2765,
+        "avg_win_pct": 0.4,
+        "avg_loss_pct": 0.2,
+        "expectancy_pct": -0.0341,
+        "profit_factor": 0.7642,
+        "sharpe": -30.4052,
+        "sortino": -2.4537770178823795e+17,
+        "max_drawdown_pct": -1955.5777,
+        "calmar": -1.0025,
+        "recovery_factor": 0.0325,
+        "total_return_pct": -1960.4,
+        "trades_per_month": 8640.0
+      },
+      {
+        "label": "Operational (>=0.50)",
+        "threshold": 0.5,
+        "n_signals": 64875,
+        "n_trades": 48132,
+        "n_neutral": 16743,
+        "n_wins": 13606,
+        "n_losses": 34526,
+        "win_rate": 0.2827,
+        "avg_win_pct": 0.4,
+        "avg_loss_pct": 0.2,
+        "expectancy_pct": -0.0304,
+        "profit_factor": 0.7882,
+        "sharpe": -24.6379,
+        "sortino": -1.0345846536769488e+17,
+        "max_drawdown_pct": -1459.9602,
+        "calmar": -1.0019,
+        "recovery_factor": 0.0373,
+        "total_return_pct": -1462.8,
+        "trades_per_month": 6765.1
+      },
+      {
+        "label": "Aggressive (>=0.55)",
+        "threshold": 0.55,
+        "n_signals": 61611,
+        "n_trades": 46195,
+        "n_neutral": 15416,
+        "n_wins": 13056,
+        "n_losses": 33139,
+        "win_rate": 0.2826,
+        "avg_win_pct": 0.4,
+        "avg_loss_pct": 0.2,
+        "expectancy_pct": -0.0304,
+        "profit_factor": 0.788,
+        "sharpe": -24.1648,
+        "sortino": -2.0399549742209152e+17,
+        "max_drawdown_pct": -1402.7888,
+        "calmar": -1.0019,
+        "recovery_factor": 0.0372,
+        "total_return_pct": -1405.4,
+        "trades_per_month": 6424.7
+      },
+      {
+        "label": "Extreme (>=1.00)",
+        "threshold": 0.9970004711243894,
+        "n_signals": 4143,
+        "n_trades": 3838,
+        "n_neutral": 305,
+        "n_wins": 1165,
+        "n_losses": 2673,
+        "win_rate": 0.3035,
+        "avg_win_pct": 0.4,
+        "avg_loss_pct": 0.2,
+        "expectancy_pct": -0.0179,
+        "profit_factor": 0.8717,
+        "sharpe": -4.0132,
+        "sortino": -1.919934509889607e+16,
+        "max_drawdown_pct": -70.2756,
+        "calmar": -0.9762,
+        "recovery_factor": 0.0663,
+        "total_return_pct": -68.6,
+        "trades_per_month": 432.0
+      }
+    ],
+    "regime_breakdown": [
+      {
+        "regime": "trend",
+        "scenario": "Control (Sem Gate)",
+        "n": "3392",
+        "tp": 1141,
+        "sl": 2180,
+        "wr": 0.3436
+      },
+      {
+        "regime": "trend",
+        "scenario": "Operational (>=0.50)",
+        "n": "3209",
+        "tp": 1076,
+        "sl": 2075,
+        "wr": 0.3415
+      },
+      {
+        "regime": "trend",
+        "scenario": "Aggressive (>=0.55)",
+        "n": "3134",
+        "tp": 1051,
+        "sl": 2030,
+        "wr": 0.3411
+      },
+      {
+        "regime": "trend",
+        "scenario": "Extreme (>=1.00)",
+        "n": "560",
+        "tp": 207,
+        "sl": 351,
+        "wr": 0.371
+      },
+      {
+        "regime": "range",
+        "scenario": "Control (Sem Gate)",
+        "n": "16523",
+        "tp": 2909,
+        "sl": 7870,
+        "wr": 0.2699
+      },
+      {
+        "regime": "range",
+        "scenario": "Operational (>=0.50)",
+        "n": "12752",
+        "tp": 2491,
+        "sl": 6564,
+        "wr": 0.2751
+      },
+      {
+        "regime": "range",
+        "scenario": "Aggressive (>=0.55)",
+        "n": "12074",
+        "tp": 2392,
+        "sl": 6308,
+        "wr": 0.2749
+      },
+      {
+        "regime": "range",
+        "scenario": "Extreme (>=1.00)",
+        "n": "826",
+        "tp": 213,
+        "sl": 554,
+        "wr": 0.2777
+      },
+      {
+        "regime": "high_vol",
+        "scenario": "Control (Sem Gate)",
+        "n": "14469",
+        "tp": 4115,
+        "sl": 9183,
+        "wr": 0.3094
+      },
+      {
+        "regime": "high_vol",
+        "scenario": "Operational (>=0.50)",
+        "n": "12758",
+        "tp": 3724,
+        "sl": 8137,
+        "wr": 0.314
+      },
+      {
+        "regime": "high_vol",
+        "scenario": "Aggressive (>=0.55)",
+        "n": "12349",
+        "tp": 3614,
+        "sl": 7882,
+        "wr": 0.3144
+      },
+      {
+        "regime": "high_vol",
+        "scenario": "Extreme (>=1.00)",
+        "n": "1486",
+        "tp": 494,
+        "sl": 978,
+        "wr": 0.3356
+      },
+      {
+        "regime": "low_vol",
+        "scenario": "Control (Sem Gate)",
+        "n": "16614",
+        "tp": 1442,
+        "sl": 5291,
+        "wr": 0.2142
+      },
+      {
+        "regime": "low_vol",
+        "scenario": "Operational (>=0.50)",
+        "n": "10917",
+        "tp": 1049,
+        "sl": 3856,
+        "wr": 0.2139
+      },
+      {
+        "regime": "low_vol",
+        "scenario": "Aggressive (>=0.55)",
+        "n": "10131",
+        "tp": 993,
+        "sl": 3621,
+        "wr": 0.2152
+      },
+      {
+        "regime": "low_vol",
+        "scenario": "Extreme (>=1.00)",
+        "n": "247",
+        "tp": 21,
+        "sl": 117,
+        "wr": 0.1522
+      },
+      {
+        "regime": "normal",
+        "scenario": "Control (Sem Gate)",
+        "n": "31857",
+        "tp": 6274,
+        "sl": 17040,
+        "wr": 0.2691
+      },
+      {
+        "regime": "normal",
+        "scenario": "Operational (>=0.50)",
+        "n": "25239",
+        "tp": 5266,
+        "sl": 13894,
+        "wr": 0.2748
+      },
+      {
+        "regime": "normal",
+        "scenario": "Aggressive (>=0.55)",
+        "n": "23923",
+        "tp": 5006,
+        "sl": 13298,
+        "wr": 0.2735
+      },
+      {
+        "regime": "normal",
+        "scenario": "Extreme (>=1.00)",
+        "n": "1024",
+        "tp": 230,
+        "sl": 673,
+        "wr": 0.2547
+      }
+    ],
+    "score_breakdown": [
+      {
+        "band": "0.50-0.60",
+        "n": 6834,
+        "tp": 1084,
+        "sl": 3033,
+        "neutral": 2717,
+        "wr": 0.2633
+      },
+      {
+        "band": "0.60-0.70",
+        "n": 8203,
+        "tp": 1335,
+        "sl": 3830,
+        "neutral": 3038,
+        "wr": 0.2585
+      },
+      {
+        "band": "0.70-0.80",
+        "n": 9723,
+        "tp": 1752,
+        "sl": 4752,
+        "neutral": 3219,
+        "wr": 0.2694
+      },
+      {
+        "band": "0.80-1.00",
+        "n": 40115,
+        "tp": 9435,
+        "sl": 22911,
+        "neutral": 7769,
+        "wr": 0.2917
+      }
+    ],
+    "thresholds_used": {
+      "operational": 0.5,
+      "aggressive": 0.55,
+      "extreme": 0.9970004711243894
+    }
+  },
+  "answers": "**Q1: SIM** — Profit Factor sobe de 0.76 para 0.79 (+0.02) com o gate operacional.\n**Q2: SIM** — Max DD reduz de 1955.58% para 1459.96% (495.62pp a menos).\n**Q3: SIM** — Expectancy sobe de -0.0341% para -0.0304%.\n**Q4:** O threshold **0.9970004711243894** maximiza Sharpe (-4.01).\n**Q5: SIM** — Threshold >=0.50 gera 225.5 sinais/dia, dentro da faixa alvo de 10-15/dia."
+}

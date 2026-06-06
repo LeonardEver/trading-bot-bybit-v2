@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-06-06T15:45:04.616824",
+  "experiment_a": {
+    "experiment": "Microstructure",
+    "auc": 0.4951880764995228,
+    "pr_auc": 0.2732809157763288,
+    "log_loss": 0.5922595668188062,
+    "brier": 0.20118543737918246,
+    "profit_factor": 0,
+    "sharpe": 0,
+    "expectancy_pct": 0,
+    "max_dd_pct": 0,
+    "n_trades": 0,
+    "win_rate": 0,
+    "status": "REPROVADO",
+    "passed": false,
+    "excellent": false,
+    "shap_top": [
+      "cvd",
+      "cvd_delta",
+      "cvd_acceleration"
+    ],
+    "dominant_feature": null
+  },
+  "experiment_b": {
+    "experiment": "Regime Models",
+    "global": {
+      "auc": 0.5368518336503094,
+      "pf": 0.9212,
+      "sharpe": -2.505
+    },
+    "best_regime": "trend",
+    "best_auc": 0.5621751990898748,
+    "auc_above_060": false,
+    "status": "REPROVADO"
+  },
+  "experiment_b_regimes": {
+    "trend": {
+      "n": 2388,
+      "auc": 0.5621751990898748,
+      "pr_auc": 0.3194395284033751,
+      "profit_factor": 1.0876,
+      "sharpe": 0.7244,
+      "expectancy_pct": 0.0113,
+      "win_rate": 0.3522
+    },
+    "range": {
+      "n": 14115,
+      "auc": 0.5148303883090155,
+      "pr_auc": 0.30121641221576273,
+      "profit_factor": 0.8622,
+      "sharpe": -3.2589,
+      "expectancy_pct": -0.0193,
+      "win_rate": 0.3012
+    },
+    "high_vol": {
+      "n": 13988,
+      "auc": 0.5163571683886232,
+      "pr_auc": 0.28820879586180315,
+      "profit_factor": 0.8067,
+      "sharpe": -4.2432,
+      "expectancy_pct": -0.0275,
+      "win_rate": 0.2874
+    },
+    "low_vol": {
+      "n": 11014,
+      "auc": 0.5380282521238327,
+      "pr_auc": 0.2948006535508599,
+      "profit_factor": 0.9057,
+      "sharpe": -1.3091,
+      "expectancy_pct": -0.013,
+      "win_rate": 0.3117
+    }
+  },
+  "experiment_c": {
+    "experiment": "Meta Labeling",
+    "auc": 0.5048201317511444,
+    "pr_auc": 0.28327915419519567,
+    "baseline_pf": 0.7819,
+    "filtered_pf": 0.7893,
+    "baseline_dd": -1262.1881,
+    "filtered_dd": -967.619,
+    "baseline_sharpe": -23.7564,
+    "filtered_sharpe": -20.4218,
+    "worst_20pct_wr": 0.2733373277411624,
+    "best_80pct_wr": 0.2829838226482924,
+    "eliminated_20pct": true,
+    "pf_improved": true,
+    "dd_reduced": true,
+    "passed": true,
+    "status": "APROVADO"
+  }
+}
